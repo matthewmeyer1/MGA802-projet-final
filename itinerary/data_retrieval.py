@@ -1,5 +1,6 @@
-from airport import Airport
+
+
 
 def airport_data(icao, airport_list):
-
-    return
+    print(airport_list.at[icao, "lat"])
+    return airport_list.at[icao, "lat"], airport_list.at[icao, "lon"], icao

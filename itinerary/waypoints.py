@@ -13,3 +13,4 @@ class Waypoint:
             "lon": self.lon,
             "alt": self.alt
         }
+
