@@ -1,11 +1,16 @@
 from itinerary import itinerary
 import pandas as pd
+from data.extraction import extraction
 
 airports = {'lat': [45.63954, 45.4580, 44.22639],
             'lon': [-74.37112, -73.7497, -76.59667]}
 
 apd = pd.DataFrame(airports)
 apd.index = ['CSE4', 'CYUL', 'KYGK']
+
+#airport_list = extraction.get_airports()
+#print(airport_list)
+
 print(apd)
 it1 = itinerary.Itinerary()
 

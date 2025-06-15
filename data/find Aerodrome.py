@@ -56,5 +56,3 @@ for file in cfs_files:
 
 # Convertir en DataFrame pour manipulation/affichage/exportation
 df = pd.DataFrame(all_data)
-from ace_tools import display_dataframe_to_user
-display_dataframe_to_user(name="Aérodromes extraits du CFS", dataframe=df)
