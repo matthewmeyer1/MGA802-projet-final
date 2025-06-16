@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Ajout des modifications du fonctions &quot;testing&quot; au module &quot;extraction&quot;">
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/extraction/extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/extraction/extraction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/itinerary_ui.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Antoine" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,6 +53,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.extraction.executor": "Run",
+    "Python.itinerary_ui.executor": "Run",
     "Python.testing.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -112,23 +114,7 @@
       <option name="project" value="LOCAL" />
       <updated>1750019565951</updated>
     </task>
-    <task id="LOCAL-00005" summary="Ajout de regex et renvoie un dataframe avec les noms des aéroports, leur latitudes et longitude">
-      <option name="closed" value="true" />
-      <created>1750115795094</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1750115795094</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Ajout des modifications du fonctions &quot;testing&quot; au module &quot;extraction&quot;">
-      <option name="closed" value="true" />
-      <created>1750116140765</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1750116140766</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,8 +131,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project structure" />
     <MESSAGE value="Ajout fonction extraction de d'information des pdf vers des listes pythons" />
-    <MESSAGE value="Ajout de regex et renvoie un dataframe avec les noms des aéroports, leur latitudes et longitude" />
-    <MESSAGE value="Ajout des modifications du fonctions &quot;testing&quot; au module &quot;extraction&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout des modifications du fonctions &quot;testing&quot; au module &quot;extraction&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout fonction extraction de d'information des pdf vers des listes pythons" />
   </component>
 </project>

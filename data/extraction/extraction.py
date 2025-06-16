@@ -41,7 +41,7 @@ def extract_airport_info(text):
     for i in range(len(info)):
         airport_name[i] = info[i][2:6]
         lat[i] = dms_to_decimal(re.findall("N[0-9 ]{5,8}", info[i])[0])
-        lon[i] = dms_to_decimal(re.findall("W[0-9 ]{5,8}", info[i])[0])
+        lon[i] = -dms_to_decimal(re.findall("W[0-9 ]{5,8}", info[i])[0])
 
     airports = {'lat': lat,
                 'lon': lon}
@@ -52,14 +52,11 @@ def extract_airport_info(text):
 
     return apdf
 
-def get_airports():
-    text = pdf_to_text("./data/ressources/pdf/cfs_qc")
+def get_airports(file_path):
+    text = pdf_to_text(file_path)
     apdf = extract_airport_info(text)
 
     return apdf
-
-apd = get_airports()
-
 
 # print(len(aeroport_name), aeroport_name)
 # print(len(longitude), longitude)
