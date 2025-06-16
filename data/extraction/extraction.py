@@ -53,7 +53,7 @@ def extract_airport_info(text):
     return apdf
 
 def get_airports():
-    text = pdf_to_text("../ressources/pdf/cfs_qc")
+    text = pdf_to_text("./data/ressources/pdf/cfs_qc")
     apdf = extract_airport_info(text)
 
     return apdf
