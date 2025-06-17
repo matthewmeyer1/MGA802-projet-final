@@ -27,12 +27,14 @@ def pdf_to_text(pdf_path):
     for page in doc: # iterate the document pages
         text.append(str(page.get_text())) # get plain text encoded as UTF-8
     "".join(text)
-    #print(text)
+    # print(text)
     return str(text)
 
 
 def extract_airport_info(text):
-    info = re.findall(".nC[A-Z][A-Z0-9]{2}.nREF.nN[0-9 ]{5,8} W[0-9 ]{5,8}", text)
+    info = re.findall(".nC[A-Z][A-Z0-9]{2}.nREF.nN[0-9 ]{2,8} W[0-9 ]{2,8}", text)
+    alt = re.findall(r"UTC-[0-9() \\n]+Elev [0-9]+", text)
+    alt.pop(-1) # Suppresion du dernier élément de la liste
 
     lon = ["A"] * len(info)
     lat = ["A"] * len(info)
@@ -40,11 +42,19 @@ def extract_airport_info(text):
 
     for i in range(len(info)):
         airport_name[i] = info[i][2:6]
-        lat[i] = dms_to_decimal(re.findall("N[0-9 ]{5,8}", info[i])[0])
-        lon[i] = -dms_to_decimal(re.findall("W[0-9 ]{5,8}", info[i])[0])
+
+        try:
+            lat[i] = dms_to_decimal(re.search("N[0-9 ]{5,8}", info[i]).group())
+            lon[i] = -dms_to_decimal(re.search("W[0-9 ]{5,8}", info[i]).group())
+            alt[i] = re.search("[0-9]{2,}", alt[i]).group()
+
+        except AttributeError:
+            continue
 
     airports = {'lat': lat,
-                'lon': lon}
+                'lon': lon,
+                'alt': alt}
+
     apdf = pd.DataFrame(airports)
     apdf.index = airport_name
 
@@ -57,6 +67,8 @@ def get_airports(file_path):
     apdf = extract_airport_info(text)
 
     return apdf
+
+# get_airports("../ressources/pdf/cfs_qc")
 
 # print(len(aeroport_name), aeroport_name)
 # print(len(longitude), longitude)
