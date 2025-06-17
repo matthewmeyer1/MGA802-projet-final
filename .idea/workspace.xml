@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="update gitignore">
-      <change afterPath="$PROJECT_DIR$/data/extraction/extraction_avions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="nouvelle branche matthew">
       <change beforePath="$PROJECT_DIR$/itinerary/itinerary.py" beforeDir="false" afterPath="$PROJECT_DIR$/itinerary/itinerary.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/itinerary/legs.py" beforeDir="false" afterPath="$PROJECT_DIR$/itinerary/legs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/itinerary_ui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp.csv" beforeDir="false" afterPath="$PROJECT_DIR$/wp.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +46,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2yNH724HuAlmXoatURJQ3mAMmln" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -56,6 +58,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.extraction.executor": "Run",
     "Python.extraction_avions.executor": "Run",
+    "Python.itinerary.executor": "Run",
     "Python.itinerary_ui.executor": "Run",
     "Python.legs.executor": "Run",
     "Python.testing.executor": "Run",

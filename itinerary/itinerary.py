@@ -4,7 +4,7 @@ from .legs import Leg
 from .data_retrieval import airport_data
 import datetime
 import pytz
-
+import time
 
 class Itinerary:
     def __init__(self):
@@ -38,11 +38,11 @@ class Itinerary:
             self.add_waypoint(lat, lon, name)
 
 
-    def add_waypoint(self, lat, long, name="", wp_index=None):
+    def add_waypoint(self, lat, long, name="", alt=0, wp_index=None):
         if wp_index is None:
-            self.wp.append(Waypoint(lat, long, name))
+            self.wp.append(Waypoint(lat, long, name, alt))
         else:
-            self.wp.insert(wp_index, Waypoint(lat, long, name))
+            self.wp.insert(wp_index, Waypoint(lat, long, name, alt))
 
 
     def remove_waypoint(self, index):
@@ -67,7 +67,10 @@ class Itinerary:
         leg_list = []
         for i in range(len(self.wp) - 1):
             leg_list.append(Leg(self.wp[i], self.wp[i + 1], tas=100))
-            #leg_list[i].calc_wind(self.start_time)
+            if i == 0:
+                leg_list[i].calc_wind(self.start_time)
+            else:
+                leg_list[i].calc_wind(self.start_time + datetime.timedelta(minutes=leg_list[i - 1].time_tot))
             leg_list[i].calc_speeds()
 
             if i == 0:
@@ -81,6 +84,8 @@ class Itinerary:
                 print(self.wp[i+1].lat, self.wp[i+1].lon)
                 self.add_waypoint(33, 55, wp_index = i + 1, name="emergency_wp")
                 print("Not enough gas !!!! crash imminent!!!")
+
+            time.sleep(0.5)
 
         self.legs = leg_list
 

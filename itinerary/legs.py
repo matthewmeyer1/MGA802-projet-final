@@ -4,19 +4,21 @@ import requests
 import json
 import datetime
 import geomag
+import python_weather
 
 
 
 class Leg:
 
     def __init__(self, starting_wp, ending_wp, name="", tas=0):
+        self.api_key = '864fd677527caa715ebc702abe76c1ff'
         self.starting_wp = starting_wp
         self.ending_wp = ending_wp
         self.distance = self.calc_dist()
         self.tc = self.calc_tc()
         self.wind_dir = 0
         self.wind_speed = 0
-        self.time_start = 0
+        self.weather_time = 0
         self.th = 0
         self.mh = 0
         self.wca = 0
@@ -50,9 +52,34 @@ class Leg:
         brng = math.degrees(brng)
         return (brng + 360) % 360
 
+    def calc_wind_2(self):
+        lat = str((self.ending_wp.lat + self.starting_wp.lat) / 2)
+        lon = str((self.ending_wp.lon + self.starting_wp.lon) / 2)
+        url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={self.api_key}&units=metric"
+        url = ("https://api.openweathermap.org/data/2.5/forecast?lat={"+lat+"}&lon={"+lon+"}&appid={" + self.api_key + "&units=metric")
+        print(url)
+        response = requests.get(url)
+        json_str = json.loads(response.text)
+
+        print(json_str)
+
+    def round_time(self, dt=None, roundTo=60):
+        """Round a datetime object to any time lapse in seconds
+        dt : datetime.datetime object, default now.
+        roundTo : Closest number of seconds to round to, default 1 minute.
+        Author: Thierry Husson 2012 - Use it as you want but don't blame me.
+        """
+        if dt == None: dt = datetime.datetime.now()
+        seconds = (dt.replace(tzinfo=None) - dt.min).seconds
+        rounding = (seconds + roundTo / 2) // roundTo * roundTo
+        return dt + datetime.timedelta(0, rounding - seconds, -dt.microsecond)
+
     def calc_wind(self, time, windspeed = None, winddirection = None):
         url = ("https://api.tomorrow.io/v4/weather/forecast?location=" + str((self.ending_wp.lat + self.starting_wp.lat) / 2) +
                "%2C%20" + str((self.ending_wp.lon + self.starting_wp.lon) / 2) + "&timesteps=hourly&apikey=CmIKizbzjlLBf8XngqoIAU271bBYNZbk")
+        print(f"timepreround: {time}")
+        time = self.round_time(time, roundTo=60*60)
+        print(f"timepostround: {time}")
         headers = {
             "accept": "application/json",
             "accept-encoding": "deflate, gzip, br"
@@ -69,7 +96,7 @@ class Leg:
                 for x in json_str["timelines"]["hourly"]:
                     if x["time"] == "2025-" + str(time.month).zfill(2) + "-" + str(time.day).zfill(2) + "T" + str(time.hour).zfill(2) + ":00:00Z":
                         print("Found weather")
-                        self.time_start = x["time"]
+                        self.weather_time = x["time"]
                         self.wind_dir = x["values"]["windDirection"]
                         self.wind_speed = x["values"]["windSpeed"] * 1.943844
             except KeyError:
@@ -104,7 +131,7 @@ class Leg:
         return {'Starting WP': self.starting_wp.name,
                'Ending WP': self.ending_wp.name,
                'Distance (NM)': self.distance,
-               'Time start': self.time_start,
+               'Weather time': self.weather_time,
                'Wind Direction (deg)': self.wind_dir,
                'Wind Speed (kn)': self.wind_speed,
                'True course (deg)': self.tc,

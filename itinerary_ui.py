@@ -35,7 +35,7 @@ while True:
             icao = input("ICAO code: ")
             it1.add_airport(icao, airport_list, start=False)
         elif wp_choice == 3:
-            it1.add_waypoint(float(input("lat: ")), float(input("lon: ")), name=input("name: "))
+            it1.add_waypoint(float(input("lat: ")), float(input("lon: ")), name=input("name: "), alt=int(input("alt: ")))
     elif choice == 2:
         it1.swap_waypoints(int(input("First index to swap with: ")))
     elif choice == 3:
