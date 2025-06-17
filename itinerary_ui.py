@@ -22,6 +22,7 @@ while True:
           "4 - write legs\n" +
           "5 - Save waypoints\n" +
           "6 - Load waypoints\n" +
+          "7 - Show map\n" +
           "0 - exit")
 
     choice = int(input())
@@ -47,6 +48,8 @@ while True:
         it1.save_waypoints("wp.csv")
     elif choice == 6:
         it1.load_waypoints("wp.csv")
+    elif choice == 7:
+        it1.show_map()
     elif choice == 0:
         break
 
