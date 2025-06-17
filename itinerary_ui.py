@@ -2,17 +2,15 @@ from itinerary import itinerary
 import pandas as pd
 from data.extraction import extraction
 
+# airports = {'lat': [45.63954, 45.4580, 44.22639],
+#             'lon': [-74.37112, -73.7497, -76.59667]}
+#
+# apd = pd.DataFrame(airports)
+# apd.index = ['CSE4', 'CYUL', 'KYGK']
 
-airports = {'lat': [45.63954, 45.4580, 44.22639],
-            'lon': [-74.37112, -73.7497, -76.59667]}
+airport_list = extraction.get_airports("data/ressources/pdf/cfs_qc")
+print(airport_list)
 
-apd = pd.DataFrame(airports)
-apd.index = ['CSE4', 'CYUL', 'KYGK']
-
-#airport_list = extraction.get_airports()
-#print(airport_list)
-
-print(apd)
 it1 = itinerary.Itinerary()
 
 
@@ -32,10 +30,10 @@ while True:
                               "3 - waypoint\n"))
         if wp_choice == 1:
             icao = input("ICAO code: ")
-            it1.add_airport(icao, apd, start = True)
+            it1.add_airport(icao, airport_list, start = True)
         elif wp_choice == 2:
             icao = input("ICAO code: ")
-            it1.add_airport(icao, apd, start=False)
+            it1.add_airport(icao, airport_list, start=False)
         elif wp_choice == 3:
             it1.add_waypoint(float(input("lat: ")), float(input("lon: ")), name=input("name: "))
     elif choice == 2:
