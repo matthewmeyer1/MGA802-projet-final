@@ -31,11 +31,11 @@ class Itinerary:
                 self.wp.append(Waypoint(float(data[1]), float(data[2]), name=data[0]))
 
     def add_airport(self, icao, ap_list, start = True):
-        lat, lon, name = airport_data(icao, ap_list)
+        lat, lon, name, alt = airport_data(icao, ap_list)
         if start:
-            self.add_waypoint(lat, lon, name, wp_index = 0)
+            self.add_waypoint(lat, lon, name, alt, wp_index = 0)
         else:
-            self.add_waypoint(lat, lon, name)
+            self.add_waypoint(lat, lon, name, alt)
 
 
     def add_waypoint(self, lat, long, name="", alt=0, wp_index=None):
