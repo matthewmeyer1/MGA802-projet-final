@@ -57,16 +57,16 @@ class Itinerary:
         wp_pd = pd.DataFrame([t.__dict__ for t in self.wp])
         print(wp_pd)
 
-    def write_legs(self):
-        self.create_legs()
+    def write_legs(self, plane):
+        self.create_legs(plane)
         leg_pd = pd.DataFrame([s.to_dict() for s in self.legs])
         pd.set_option("display.max_columns", None)
         print(leg_pd)
 
-    def create_legs(self):
+    def create_legs(self, plane):
         leg_list = []
         for i in range(len(self.wp) - 1):
-            leg_list.append(Leg(self.wp[i], self.wp[i + 1], tas=100))
+            leg_list.append(Leg(self.wp[i], self.wp[i + 1], tas=plane.cruise_tas, rpm=plane.cruise_rpm))
             if i == 0:
                 leg_list[i].calc_wind(self.start_time)
             else:
@@ -78,9 +78,8 @@ class Itinerary:
             else:
                 leg_list[i].calc_time(prev_time = leg_list[i - 1].time_tot)
 
-            leg_list[i].calc_fuel_burn(6.7)
-            tank_capacity = 25
-            if leg_list[i].fuel_burn_total > tank_capacity:
+            leg_list[i].calc_fuel_burn(plane.burn_rate)
+            if leg_list[i].fuel_burn_total > plane.fuel_cap:
                 print(self.wp[i+1].lat, self.wp[i+1].lon)
                 self.add_waypoint(33, 55, wp_index = i + 1, name="emergency_wp")
                 print("Not enough gas !!!! crash imminent!!!")
