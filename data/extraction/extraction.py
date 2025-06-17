@@ -1,14 +1,16 @@
 import pymupdf # imports the pymupdf library
-import re
 import pandas as pd
+import re
+import os
 
 
 def dms_to_decimal(dms):
-    deg = int(dms[1:4])
-    min = int(dms[4:7])
+    dms_cleaned = (re.findall("[0-9]+", dms))
+    deg = int(dms_cleaned[0])
+    min = int(dms_cleaned[1])
     try:
-        sec = int(dms[7:9])
-    except ValueError:
+        sec = int(dms_cleaned[2])
+    except IndexError:
         sec = 0
     return round(deg + min/60 + sec/3600,4)
 
@@ -22,19 +24,22 @@ def decimal_to_dms(decimal):
 
 
 def pdf_to_text(pdf_path):
-    doc = pymupdf.open(f"{pdf_path}.pdf") # open a document
+    doc = pymupdf.open(f"{pdf_path}") # open a document
     text = []
     for page in doc: # iterate the document pages
         text.append(str(page.get_text())) # get plain text encoded as UTF-8
     "".join(text)
-    # print(text)
+    print(text)
     return str(text)
 
 
 def extract_airport_info(text):
-    info = re.findall(".nC[A-Z][A-Z0-9]{2}.nREF.nN[0-9 ]{2,8} W[0-9 ]{2,8}", text)
-    alt = re.findall(r"UTC-[0-9() \\n]+Elev [0-9]+", text)
+    info = re.findall(r"\\nC[A-Z][A-Z0-9]{2}\\nREF\\nN[0-9\\n ]{2,8} W[0-9 ]{2,9}", text)
+    alt = re.findall(r"UTC-[0-9()/ \\n\u00BD]+Elev [0-9]+", text)
     alt.pop(-1) # Suppresion du dernier élément de la liste
+
+    print(len(info), info)
+    print(len(alt), alt)
 
     lon = ["A"] * len(info)
     lat = ["A"] * len(info)
@@ -42,6 +47,8 @@ def extract_airport_info(text):
 
     for i in range(len(info)):
         airport_name[i] = info[i][2:6]
+
+        print(info[i])
 
         try:
             lat[i] = dms_to_decimal(re.search("N[0-9 ]{5,8}", info[i]).group())
@@ -62,13 +69,30 @@ def extract_airport_info(text):
 
     return apdf
 
+
 def get_airports(file_path):
     text = pdf_to_text(file_path)
     apdf = extract_airport_info(text)
 
     return apdf
 
-# get_airports("../ressources/pdf/cfs_qc")
+
+def convert_cfs(): # https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
+    pdf_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'ressources', 'pdf'))
+    pdf_files = [f for f in os.listdir(pdf_dir) if f.startswith('cfs_')]
+
+    for pdf in pdf_files:
+        print(pdf)
+        df = get_airports(f"../ressources/pdf/{pdf}")
+
+        #pandas.DataFrame.to_csv(df)
+
+    return
+
+
+#get_airports("../ressources/pdf/cfs_bc-260-280.pdf")
+convert_cfs()
+
 
 # print(len(aeroport_name), aeroport_name)
 # print(len(longitude), longitude)
