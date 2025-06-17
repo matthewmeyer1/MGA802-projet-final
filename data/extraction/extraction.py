@@ -27,7 +27,7 @@ def pdf_to_text(pdf_path):
     for page in doc: # iterate the document pages
         text.append(str(page.get_text())) # get plain text encoded as UTF-8
     "".join(text)
-    print(text)
+    # print(text)
     return str(text)
 
 
@@ -68,7 +68,7 @@ def get_airports(file_path):
 
     return apdf
 
-get_airports("../ressources/pdf/cfs_qc")
+# get_airports("../ressources/pdf/cfs_qc")
 
 # print(len(aeroport_name), aeroport_name)
 # print(len(longitude), longitude)
