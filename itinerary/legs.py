@@ -65,12 +65,15 @@ class Leg:
         else:
             response = requests.get(url, headers=headers)
             json_str = json.loads(response.text)
-            for x in json_str["timelines"]["hourly"]:
-                if x["time"] == "2025-" + str(time.month).zfill(2) + "-" + str(time.day).zfill(2) + "T" + str(time.hour).zfill(2) + ":00:00Z":
-                    print("Found weather")
-                    self.time_start = x["time"]
-                    self.wind_dir = x["values"]["windDirection"]
-                    self.wind_speed = x["values"]["windSpeed"] * 1.943844
+            try:
+                for x in json_str["timelines"]["hourly"]:
+                    if x["time"] == "2025-" + str(time.month).zfill(2) + "-" + str(time.day).zfill(2) + "T" + str(time.hour).zfill(2) + ":00:00Z":
+                        print("Found weather")
+                        self.time_start = x["time"]
+                        self.wind_dir = x["values"]["windDirection"]
+                        self.wind_speed = x["values"]["windSpeed"] * 1.943844
+            except KeyError:
+                print(json_str)
 
     def calc_th(self):
         self.wca = math.degrees(math.asin(self.wind_speed / self.tas * math.sin(math.radians(self.tc - (180 + self.wind_dir)))))

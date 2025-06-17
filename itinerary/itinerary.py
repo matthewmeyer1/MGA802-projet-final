@@ -13,7 +13,6 @@ class Itinerary:
         self.start_time = self.get_start_time()
 
 
-
     def save_waypoints(self, filename):
         with open(filename, 'w') as f:
             for w in self.wp:
@@ -68,7 +67,7 @@ class Itinerary:
         leg_list = []
         for i in range(len(self.wp) - 1):
             leg_list.append(Leg(self.wp[i], self.wp[i + 1], tas=100))
-            leg_list[i].calc_wind(self.start_time)
+            #leg_list[i].calc_wind(self.start_time)
             leg_list[i].calc_speeds()
 
             if i == 0:
@@ -77,6 +76,11 @@ class Itinerary:
                 leg_list[i].calc_time(prev_time = leg_list[i - 1].time_tot)
 
             leg_list[i].calc_fuel_burn(6.7)
+            tank_capacity = 25
+            if leg_list[i].fuel_burn_total > tank_capacity:
+                print(self.wp[i+1].lat, self.wp[i+1].lon)
+                self.add_waypoint(33, 55, wp_index = i + 1, name="emergency_wp")
+                print("Not enough gas !!!! crash imminent!!!")
 
         self.legs = leg_list
 
