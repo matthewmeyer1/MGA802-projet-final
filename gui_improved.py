@@ -9,6 +9,7 @@ import math
 from datetime import datetime
 
 
+
 class AirportDatabase:
     """Gestionnaire de la base de données d'aéroports"""
 
@@ -1564,7 +1565,7 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
             except Exception as e:
                 messagebox.showerror("Erreur", f"Erreur lors de la génération PDF:\n{e}")
 
-    def _prepare_flight_data(self) -> Dict[str, Any]:
+    def _prepare_flight_data(self) -> Dict[str, any]:
         """Préparer les données de vol pour le générateur"""
         return {
             'aircraft_id': self.aircraft_entries.get('registration', tk.Entry()).get() or 'N/A',
@@ -1584,7 +1585,7 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
             'flight_following': 'Recommended'
         }
 
-    def _prepare_legs_data(self) -> List[Dict[str, Any]]:
+    def _prepare_legs_data(self) -> List[Dict[str, any]]:
         """Préparer les données des legs pour le générateur"""
         if not hasattr(self, 'calculated_itinerary') or not self.calculated_itinerary:
             return []
