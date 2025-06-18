@@ -28,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Antoine" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,9 +49,6 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2yNH724HuAlmXoatURJQ3mAMmln" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,10 +57,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.extraction.executor": "Run",
-    "Python.extraction_avions.executor": "Run",
-    "Python.itinerary.executor": "Run",
     "Python.itinerary_ui.executor": "Run",
-    "Python.legs.executor": "Run",
     "Python.testing.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -125,13 +119,13 @@
       <option name="project" value="LOCAL" />
       <updated>1750019565951</updated>
     </task>
-    <task id="LOCAL-00005" summary="Add functionality of extraction in main">
+    <task id="LOCAL-00005" summary="Ajout de l'altitude dans le dataframe">
       <option name="closed" value="true" />
-      <created>1750117185206</created>
+      <created>1750127453442</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1750117185206</updated>
+      <updated>1750127453442</updated>
     </task>
     <task id="LOCAL-00006" summary="update gitignore">
       <option name="closed" value="true" />
@@ -150,6 +144,7 @@
       <updated>1750187111637</updated>
     </task>
     <option name="localTasksCounter" value="8" />
+
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,5 +172,6 @@
         <watch expression="len(table_vals)" language="Python" />
       </configuration>
     </watches-manager>
+
   </component>
 </project>

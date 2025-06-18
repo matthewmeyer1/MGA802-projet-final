@@ -4,6 +4,8 @@ from .legs import Leg
 from .data_retrieval import airport_data
 import datetime
 import pytz
+import folium
+import numpy as np
 import time
 
 class Itinerary:
@@ -99,3 +101,33 @@ class Itinerary:
         dt = tz.localize(dt)
         dt = dt.astimezone(pytz.utc)
         return dt
+
+    def show_map(self):
+        borne = np.zeros((2,2))
+        lat = []
+        lon = []
+        for i in range(len(self.wp)):
+            lat.append(self.wp[i].lat)
+            lon.append(self.wp[i].lon)
+
+        borne[0,0] = min(lat)
+        borne[0,1] = min(lon)
+        borne[1,0] = max(lat)
+        borne[1,1] = max(lon)
+        map_center = [np.mean(borne[:,0]),np.mean(borne[:,1])]
+        my_map = folium.Map(
+            location = map_center,
+            zoom_start = 4,
+            tiles='OpenStreetMap',
+        )
+        for y in self.wp:
+            folium.Marker(location = [y.lat,y.lon],
+                          popup=f"<b>{y.name}</b><br>"
+            ).add_to(my_map)
+
+        my_map.fit_bounds([[borne[0,0],borne[0,1]],[borne[1,0],borne[1,1]]])
+
+
+        my_map.save('my_map.html')
+
+        return

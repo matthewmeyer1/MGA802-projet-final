@@ -78,14 +78,48 @@ plane_list = []
 while True:
     print("\n1 - Aircraft menu\n" +
           "2 - Waypoint menu\n" +
-          "0 - exit")
+
     main_menu_choice = int(input())
 
     if main_menu_choice == 1:
         ac_menu(plane_list)
     elif main_menu_choice == 2:
         wp_menu(it1, plane_list)
+          print("\n1 - add_waypoint\n" +
+          "2 - reorder waypoints\n" +
+          "3 - delete waypoints\n" +
+          "4 - write legs\n" +
+          "5 - Save waypoints\n" +
+          "6 - Load waypoints\n" +
+          "7 - Show map\n" +
+          "0 - exit")
     else:
+    choice = int(input())
+    if choice == 1:
+        wp_choice = int(input("1 - Starting airport\n" +
+                              "2 - Ending airport\n" +
+                              "3 - waypoint\n"))
+        if wp_choice == 1:
+            icao = input("ICAO code: ")
+            it1.add_airport(icao, airport_list, start = True)
+        elif wp_choice == 2:
+            icao = input("ICAO code: ")
+            it1.add_airport(icao, airport_list, start=False)
+        elif wp_choice == 3:
+            it1.add_waypoint(float(input("lat: ")), float(input("lon: ")), name=input("name: "), alt=int(input("alt: ")))
+    elif choice == 2:
+        it1.swap_waypoints(int(input("First index to swap with: ")))
+    elif choice == 3:
+        it1.remove_waypoint(int(input("Index to remove: ")))
+    elif choice == 4:
+        it1.write_legs()
+    elif choice == 5:
+        it1.save_waypoints("wp.csv")
+    elif choice == 6:
+        it1.load_waypoints("wp.csv")
+    elif choice == 7:
+        it1.show_map()
+    elif choice == 0:
         break
 
 
