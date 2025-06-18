@@ -77,20 +77,24 @@ def get_airports(file_path):
     return apdf
 
 
-def convert_cfs(): # https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
+def convert_cfs():
     pdf_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'ressources', 'pdf'))
-    pdf_files = [f for f in os.listdir(pdf_dir) if f.startswith('cfs_')]
+    pdf_files = [f for f in os.listdir(pdf_dir) if f.startswith('cfs_') and f.endswith('.pdf')]
 
     for pdf in pdf_files:
         print(pdf)
-        df = get_airports(f"../ressources/pdf/{pdf}")
+        df = get_airports(os.path.join(pdf_dir, pdf))
 
-        #pandas.DataFrame.to_csv(df)
+        # Build the output CSV path
+        csv_filename = pdf.replace('.pdf', '.csv')
+        csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'ressources', 'csv', csv_filename))
+
+        # Save the DataFrame
+        df.to_csv(csv_path, index=True)
 
     return
 
 
-#get_airports("../ressources/pdf/cfs_bc-260-280.pdf")
 convert_cfs()
 
 
