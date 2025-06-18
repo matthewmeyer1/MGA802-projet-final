@@ -10,7 +10,7 @@ import python_weather
 
 class Leg:
 
-    def __init__(self, starting_wp, ending_wp, name="", tas=0):
+    def __init__(self, starting_wp, ending_wp, name="", tas=0, rpm = 0):
         self.api_key = '864fd677527caa715ebc702abe76c1ff'
         self.starting_wp = starting_wp
         self.ending_wp = ending_wp
@@ -28,6 +28,7 @@ class Leg:
         self.time_tot = 0
         self.fuel_burn_leg = 0
         self.fuel_burn_total = 0
+        self.rpm = rpm
 
 
         if name=="":
@@ -130,6 +131,7 @@ class Leg:
     def to_dict(self):
         return {'Starting WP': self.starting_wp.name,
                'Ending WP': self.ending_wp.name,
+               'RPM': self.rpm,
                'Distance (NM)': self.distance,
                'Weather time': self.weather_time,
                'Wind Direction (deg)': self.wind_dir,
