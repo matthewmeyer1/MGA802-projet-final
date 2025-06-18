@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="export feature v1">
-      <change afterPath="$PROJECT_DIR$/data/ressources/csv/airports.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui_improved.py" afterDir="false" />
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="gui incorporation">
+      <change afterPath="$PROJECT_DIR$/gui_itinerary.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_plan_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/output/flight_plan_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itinerary_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/itinerary_ui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_usage.py" beforeDir="false" afterPath="$PROJECT_DIR$/sample_usage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfr_export/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/output/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui_improved.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui_improved.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/flight_plan_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/output/flight_plan_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_usage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/__init__.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +57,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.extraction.executor": "Run",
     "Python.gui_improved.executor": "Run",
+    "Python.gui_itinerary.executor": "Run",
     "Python.itinerary_ui.executor": "Run",
     "Python.legs.executor": "Run",
     "Python.main.executor": "Run",
@@ -151,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750187111637</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="gui incorporation">
+      <option name="closed" value="true" />
+      <created>1750210451087</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1750210451087</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +178,8 @@
     <MESSAGE value="Add functionality of extraction in main" />
     <MESSAGE value="update gitignore" />
     <MESSAGE value="lil change" />
-    <option name="LAST_COMMIT_MESSAGE" value="lil change" />
+    <MESSAGE value="gui incorporation" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui incorporation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -823,6 +823,8 @@ class VFRPlannerGUI:
 
         ttk.Button(button_frame, text="🧮 Calculer itinéraire complet",
                    command=self.calculate_full_route).pack(side='left', padx=5)
+        ttk.Button(button_frame, text="🔧 Diagnostic imports",
+                   command=self.diagnose_import_issues).pack(side='left', padx=5)
         ttk.Button(button_frame, text="📊 Générer plan Excel",
                    command=self.generate_excel_plan).pack(side='left', padx=5)
         ttk.Button(button_frame, text="📄 Générer plan PDF",
@@ -1140,45 +1142,44 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
         self.status_var.set("Carte de l'itinéraire ouverte")
 
     def calculate_full_route(self):
-        """Calculer l'itinéraire complet avec vos classes existantes"""
+        """Calculer l'itinéraire complet avec classes GUI-compatibles"""
         if len(self.waypoints) < 2:
             messagebox.showwarning("Attention", "Au moins 2 waypoints requis")
             return
 
         try:
-            # Importer vos classes existantes
-            import sys
-            import os
+            # Utiliser les classes GUI-compatibles au lieu des originales
+            from gui_itinerary import GuiItinerary, create_itinerary_from_gui
 
-            # Ajouter le chemin de votre projet au sys.path si nécessaire
-            project_root = os.path.dirname(os.path.abspath(__file__))
-            if project_root not in sys.path:
-                sys.path.append(project_root)
+            # Préparer les paramètres depuis l'interface
+            aircraft_params = {
+                'tas': float(self.aircraft_entries.get('cruise_speed', tk.Entry()).get() or 110),
+                'fuel_burn': float(self.aircraft_entries.get('fuel_burn', tk.Entry()).get() or 7.5)
+            }
 
-            from itinerary.itinerary import Itinerary
-            from itinerary.waypoints import Waypoint
-            from itinerary.legs import Leg
+            flight_params = {
+                'date': self.flight_entries.get('date', tk.Entry()).get(),
+                'time': self.flight_entries.get('departure_time', tk.Entry()).get()
+            }
 
-            # Créer l'itinéraire avec vos classes
-            it = Itinerary()
+            # Clé API Tomorrow.io (vous pouvez la mettre dans l'interface ou utiliser une par défaut)
+            api_key = "CmIKizbzjlLBf8XngqoIAU271bBYNZbk"  # Votre clé existante
 
-            # Ajouter tous les waypoints de l'interface à votre itinéraire
-            for wp in self.waypoints:
-                it.add_waypoint(wp['lat'], wp['lon'], wp['name'])
+            # Créer l'itinéraire avec les nouvelles classes
+            self.status_var.set("Calcul en cours...")
+            self.root.update()
 
-            # Récupérer les paramètres de l'avion depuis l'interface
-            try:
-                tas = float(self.aircraft_entries.get('cruise_speed', tk.Entry()).get() or 110)
-                fuel_burn_rate = float(self.aircraft_entries.get('fuel_burn', tk.Entry()).get() or 7.5)
-            except ValueError:
-                tas = 110
-                fuel_burn_rate = 7.5
-                messagebox.showwarning("Attention", "Valeurs par défaut utilisées pour TAS et consommation")
+            itinerary = create_itinerary_from_gui(
+                waypoints=self.waypoints,
+                aircraft_params=aircraft_params,
+                flight_params=flight_params,
+                api_key=api_key
+            )
 
-            # Créer les legs avec votre logique existante
-            it.create_legs()
+            # Obtenir le résumé
+            summary = itinerary.get_summary()
 
-            # Construire le texte du plan de vol avec vos vraies données
+            # Construire le texte du plan de vol
             plan_text = "PLAN DE VOL VFR - CALCUL AVEC MÉTÉO RÉELLE\n"
             plan_text += "=" * 70 + "\n\n"
 
@@ -1186,88 +1187,189 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
             aircraft_id = self.aircraft_entries.get('registration', tk.Entry()).get() or "N/A"
             aircraft_type = self.aircraft_entries.get('aircraft_type', tk.Entry()).get() or "N/A"
             pilot_name = self.flight_entries.get('pilot_name', tk.Entry()).get() or "N/A"
-            date = self.flight_entries.get('date', tk.Entry()).get() or "N/A"
-            departure_time = self.flight_entries.get('departure_time', tk.Entry()).get() or "N/A"
+            date = flight_params['date'] or "N/A"
+            departure_time = flight_params['time'] or "N/A"
 
             plan_text += f"Avion: {aircraft_id} ({aircraft_type})\n"
             plan_text += f"Pilote: {pilot_name}\n"
             plan_text += f"Date: {date}\n"
             plan_text += f"Heure de départ: {departure_time}\n"
-            plan_text += f"Vitesse vraie: {tas} kn\n"
-            plan_text += f"Consommation: {fuel_burn_rate} GPH\n\n"
+            plan_text += f"Vitesse vraie: {aircraft_params['tas']} kn\n"
+            plan_text += f"Consommation: {aircraft_params['fuel_burn']} GPH\n\n"
 
-            # En-tête du tableau des legs (utilisant vos vraies données)
+            # En-tête du tableau des legs
             plan_text += "LEG  FROM     TO       DIST   TC   TH   MH  WIND_DIR WIND_SPD  GS  TIME  FUEL_LEG FUEL_TOT\n"
             plan_text += "-" * 85 + "\n"
 
-            # Afficher chaque leg calculé par vos classes
-            for i, leg in enumerate(it.legs):
-                leg_dict = leg.to_dict()  # Utilise votre méthode to_dict() existante
+            # Afficher chaque leg calculé
+            for i, leg in enumerate(itinerary.legs):
+                leg_dict = leg.to_dict()
 
                 plan_text += f"{i + 1:2d}   {leg_dict['Starting WP'][:7]:7s} {leg_dict['Ending WP'][:7]:7s} "
                 plan_text += f"{leg_dict['Distance (NM)']:6.1f} {leg_dict['True course (deg)']:3.0f}  "
                 plan_text += f"{leg_dict['True heading (deg)']:3.0f}  {leg_dict['Magnetic heading (deg)']:3.0f}  "
-                plan_text += f"{leg_dict['Wind Direction (deg)']:7.0f}  {leg_dict['Wind Speed (kn)']:7.0f}  "
+                plan_text += f"{leg_dict['Wind Direction (deg)']:7.0f}  {leg_dict['Wind Speed (kn)']:7.1f}  "
                 plan_text += f"{leg_dict['Groundspeed (kn)']:3.0f} {leg_dict['Leg time (min)']:5.0f} "
                 plan_text += f"{leg_dict['Fuel burn leg (gal)']:7.1f}  {leg_dict['Fuel burn tot (gal)']:7.1f}\n"
 
-            # Totaux calculés par vos classes
-            if it.legs:
-                last_leg = it.legs[-1].to_dict()
-                total_distance = sum(leg.distance for leg in it.legs)
-                total_time = last_leg['Total time (min)']
-                total_fuel = last_leg['Fuel burn tot (gal)']
+                # Afficher erreurs météo s'il y en a
+                if hasattr(leg, 'weather_error') and leg.weather_error:
+                    plan_text += f"     ⚠️ Météo: {leg.weather_error}\n"
 
-                plan_text += "-" * 85 + "\n"
-                plan_text += f"TOTAUX:             {total_distance:6.1f}                              "
-                plan_text += f"    {total_time:5.0f} {total_fuel:16.1f}\n\n"
+            # Totaux calculés
+            total_distance = summary['total_distance']
+            total_time = summary['total_time']
+            total_fuel = summary['total_fuel']
 
-                # Informations supplémentaires
-                reserve_time = float(self.flight_entries.get('reserve_time', tk.Entry()).get() or 45)
-                reserve_fuel = reserve_time * fuel_burn_rate / 60
-                total_fuel_required = total_fuel + reserve_fuel
+            plan_text += "-" * 85 + "\n"
+            plan_text += f"TOTAUX:             {total_distance:6.1f}                              "
+            plan_text += f"    {total_time:5.0f} {total_fuel:16.1f}\n\n"
 
-                plan_text += f"Temps total de vol: {total_time / 60:.1f} heures ({total_time:.0f} minutes)\n"
-                plan_text += f"Carburant de route: {total_fuel:.1f} gallons\n"
-                plan_text += f"Carburant de réserve: {reserve_fuel:.1f} gallons ({reserve_time:.0f} min)\n"
-                plan_text += f"Carburant total requis: {total_fuel_required:.1f} gallons\n"
-                plan_text += f"Distance totale: {total_distance:.1f} NM\n"
+            # Informations supplémentaires
+            reserve_time = float(self.flight_entries.get('reserve_time', tk.Entry()).get() or 45)
+            reserve_fuel = reserve_time * aircraft_params['fuel_burn'] / 60
+            total_fuel_required = total_fuel + reserve_fuel
 
-                # Vérification capacité carburant
-                try:
-                    fuel_capacity = float(self.aircraft_entries.get('fuel_capacity', tk.Entry()).get())
-                    if total_fuel_required > fuel_capacity:
-                        plan_text += f"\n⚠️  ATTENTION: Carburant requis ({total_fuel_required:.1f} gal) "
-                        plan_text += f"dépasse la capacité ({fuel_capacity:.1f} gal)!\n"
-                        plan_text += "   Ajoutez des arrêts de ravitaillement.\n"
-                except (ValueError, AttributeError):
-                    plan_text += f"\n💡 Vérifiez que le carburant requis ne dépasse pas la capacité de votre avion.\n"
+            plan_text += f"Temps total de vol: {total_time / 60:.1f} heures ({total_time:.0f} minutes)\n"
+            plan_text += f"Carburant de route: {total_fuel:.1f} gallons\n"
+            plan_text += f"Carburant de réserve: {reserve_fuel:.1f} gallons ({reserve_time:.0f} min)\n"
+            plan_text += f"Carburant total requis: {total_fuel_required:.1f} gallons\n"
+            plan_text += f"Distance totale: {total_distance:.1f} NM\n"
 
-                plan_text += f"\n📊 Données météo obtenues de Tomorrow.io API\n"
-                plan_text += f"🧭 Déclinaison magnétique calculée\n"
-                plan_text += f"⏰ Heures de départ calculées pour chaque segment\n"
+            # Vérification capacité carburant
+            try:
+                fuel_capacity = float(self.aircraft_entries.get('fuel_capacity', tk.Entry()).get())
+                if total_fuel_required > fuel_capacity:
+                    plan_text += f"\n⚠️  ATTENTION: Carburant requis ({total_fuel_required:.1f} gal) "
+                    plan_text += f"dépasse la capacité ({fuel_capacity:.1f} gal)!\n"
+                    plan_text += "   Ajoutez des arrêts de ravitaillement.\n"
+                else:
+                    plan_text += f"\n✅ Carburant suffisant (capacité: {fuel_capacity:.1f} gal)\n"
+            except (ValueError, AttributeError):
+                plan_text += f"\n💡 Vérifiez que le carburant requis ne dépasse pas la capacité de votre avion.\n"
+
+            plan_text += f"\n📊 Données météo: Tomorrow.io API (si disponible)\n"
+            plan_text += f"🧭 Déclinaison magnétique: Calculée ou approximée\n"
+            plan_text += f"⏰ Heures: Calculées automatiquement\n"
+            plan_text += f"🛩️ Navigation: Correction de vent appliquée\n"
 
             # Afficher dans l'interface
             self.plan_text.delete('1.0', tk.END)
             self.plan_text.insert('1.0', plan_text)
-            self.status_var.set(f"Itinéraire calculé: {len(it.legs)} segments, {total_time:.0f} min")
+            self.status_var.set(f"✅ Itinéraire calculé: {len(itinerary.legs)} segments, {total_time:.0f} min")
 
             # Stocker l'itinéraire calculé pour la génération de documents
-            self.calculated_itinerary = it
+            self.calculated_itinerary = itinerary
 
         except ImportError as e:
-            messagebox.showerror("Erreur d'import",
-                                 f"Impossible d'importer vos classes:\n{e}\n\n"
-                                 "Vérifiez que les fichiers sont dans le bon répertoire:\n"
-                                 "- itinerary/itinerary.py\n"
-                                 "- itinerary/waypoints.py\n"
-                                 "- itinerary/legs.py")
-        except Exception as e:
-            messagebox.showerror("Erreur de calcul",
-                                 f"Erreur lors du calcul de l'itinéraire:\n{e}\n\n"
-                                 "Vérifiez vos données d'entrée et la connexion API météo.")
-            # En cas d'erreur, afficher au moins les calculs de base
+            messagebox.showerror("Classes GUI manquantes",
+                                 f"Les classes GUI-compatibles sont requises.\n\n"
+                                 f"Erreur: {e}\n\n"
+                                 "Solutions:\n"
+                                 "1. Sauvegardez le code 'Classes GUI-compatibles' comme 'gui_itinerary.py'\n"
+                                 "2. Ou utilisez les calculs de base")
             self.calculate_basic_route()
+
+        except Exception as e:
+            error_msg = str(e)
+            if "tomorrow.io" in error_msg.lower() or "api" in error_msg.lower():
+                messagebox.showwarning("Erreur API météo",
+                                       f"Problème avec l'API météo:\n{e}\n\n"
+                                       "Le calcul continue avec vent par défaut.")
+                # Continuer le calcul même en cas d'erreur météo
+                try:
+                    self.calculate_basic_route()
+                except:
+                    pass
+            else:
+                messagebox.showerror("Erreur de calcul",
+                                     f"Erreur lors du calcul:\n{e}\n\n"
+                                     "Vérifiez vos données d'entrée.")
+                self.calculate_basic_route()
+
+    def check_dependencies(self):
+        """Vérifier les dépendances requises"""
+        required_modules = [
+            'geopy',
+            'requests',
+            'geomag',
+            'datetime',
+            'pytz'
+        ]
+
+        missing = []
+        for module in required_modules:
+            try:
+                __import__(module)
+            except ImportError:
+                missing.append(module)
+
+        return missing
+
+    def install_dependencies(self, dependencies):
+        """Tenter d'installer les dépendances manquantes"""
+        import subprocess
+        import sys
+
+        for dep in dependencies:
+            try:
+                # Mappings pour les noms de packages pip
+                pip_names = {
+                    'geopy': 'geopy',
+                    'geomag': 'geomag',
+                    'requests': 'requests',
+                    'pytz': 'pytz'
+                }
+
+                pip_name = pip_names.get(dep, dep)
+                subprocess.check_call([sys.executable, '-m', 'pip', 'install', pip_name])
+                messagebox.showinfo("Installation", f"Module '{dep}' installé avec succès!")
+
+            except subprocess.CalledProcessError:
+                messagebox.showerror("Erreur d'installation",
+                                     f"Impossible d'installer '{dep}' automatiquement.\n"
+                                     f"Installez manuellement: pip install {pip_name}")
+
+    def diagnose_import_issues(self):
+        """Diagnostiquer les problèmes d'import"""
+        diagnostic = "🔍 DIAGNOSTIC DES IMPORTS:\n\n"
+
+        # Vérifier la structure des fichiers
+        import os
+
+        files_to_check = [
+            "itinerary/__init__.py",
+            "itinerary/itinerary.py",
+            "itinerary/waypoints.py",
+            "itinerary/legs.py"
+        ]
+
+        diagnostic += "📁 Structure des fichiers:\n"
+        for file_path in files_to_check:
+            if os.path.exists(file_path):
+                diagnostic += f"✅ {file_path} - Trouvé\n"
+            else:
+                diagnostic += f"❌ {file_path} - MANQUANT\n"
+
+        diagnostic += "\n🐍 Modules Python:\n"
+        modules_to_check = ['geopy', 'requests', 'geomag', 'pytz', 'python_weather']
+
+        for module in modules_to_check:
+            try:
+                __import__(module)
+                diagnostic += f"✅ {module} - Installé\n"
+            except ImportError:
+                diagnostic += f"❌ {module} - MANQUANT\n"
+
+        diagnostic += "\n💡 SOLUTIONS:\n"
+        diagnostic += "1. Installez les modules manquants:\n"
+        diagnostic += "   pip install geopy requests geomag pytz\n\n"
+        diagnostic += "2. Vérifiez la structure de vos fichiers\n\n"
+        diagnostic += "3. Si vous utilisez python_weather, installez-le:\n"
+        diagnostic += "   pip install python-weather\n\n"
+        diagnostic += "4. Ou modifiez votre code pour utiliser seulement Tomorrow.io"
+
+        messagebox.showinfo("Diagnostic des imports", diagnostic)
 
     def calculate_basic_route(self):
         """Calculs basiques sans vos classes (fallback)"""
@@ -1340,24 +1442,175 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
         self.status_var.set("Calculs basiques effectués")
 
     def generate_excel_plan(self):
-        """Générer plan Excel"""
+        """Générer plan Excel avec le vrai générateur"""
+        if not hasattr(self, 'calculated_itinerary') or not self.calculated_itinerary:
+            messagebox.showwarning("Attention", "Calculez d'abord l'itinéraire complet")
+            return
+
         filename = filedialog.asksaveasfilename(
             defaultextension=".xlsx",
-            filetypes=[("Excel files", "*.xlsx")]
+            filetypes=[("Excel files", "*.xlsx")],
+            title="Sauvegarder le plan de vol Excel"
         )
+
         if filename:
-            # Ici, intégrer votre FlightPlanGenerator
-            messagebox.showinfo("Succès", f"Plan Excel généré: {filename}")
+            try:
+                # Importer le générateur
+                from flight_plan_generator import FlightPlanGenerator
+
+                # Préparer les données de vol
+                flight_data = self._prepare_flight_data()
+                legs_data = self._prepare_legs_data()
+
+                # Générer le fichier Excel
+                generator = FlightPlanGenerator()
+                generator.generate_excel_plan(flight_data, legs_data, filename)
+
+                messagebox.showinfo("Succès", f"Plan Excel généré avec succès !\n\nFichier: {filename}")
+                self.status_var.set(f"Plan Excel sauvegardé: {filename}")
+
+                # Demander si l'utilisateur veut ouvrir le fichier
+                if messagebox.askyesno("Ouvrir le fichier", "Voulez-vous ouvrir le fichier Excel ?"):
+                    import os
+                    import subprocess
+                    import sys
+
+                    if sys.platform.startswith('win'):
+                        os.startfile(filename)
+                    elif sys.platform.startswith('darwin'):
+                        subprocess.call(['open', filename])
+                    else:
+                        subprocess.call(['xdg-open', filename])
+
+            except ImportError:
+                messagebox.showerror("Module manquant",
+                                     "Le générateur de plan de vol n'est pas trouvé.\n\n"
+                                     "Assurez-vous que 'flight_plan_generator.py' est présent.")
+            except Exception as e:
+                messagebox.showerror("Erreur", f"Erreur lors de la génération Excel:\n{e}")
 
     def generate_pdf_plan(self):
-        """Générer plan PDF"""
+        """Générer plan PDF avec le vrai générateur"""
+        if not hasattr(self, 'calculated_itinerary') or not self.calculated_itinerary:
+            messagebox.showwarning("Attention", "Calculez d'abord l'itinéraire complet")
+            return
+
         filename = filedialog.asksaveasfilename(
             defaultextension=".pdf",
-            filetypes=[("PDF files", "*.pdf")]
+            filetypes=[("PDF files", "*.pdf")],
+            title="Sauvegarder le plan de vol PDF"
         )
+
         if filename:
-            # Ici, intégrer votre FlightPlanGenerator
-            messagebox.showinfo("Succès", f"Plan PDF généré: {filename}")
+            try:
+                # Importer le générateur
+                from flight_plan_generator import FlightPlanGenerator
+
+                # Préparer les données de vol
+                flight_data = self._prepare_flight_data()
+                legs_data = self._prepare_legs_data()
+
+                # Générer le fichier PDF
+                generator = FlightPlanGenerator()
+                generator.generate_pdf_plan(flight_data, legs_data, filename)
+
+                messagebox.showinfo("Succès", f"Plan PDF généré avec succès !\n\nFichier: {filename}")
+                self.status_var.set(f"Plan PDF sauvegardé: {filename}")
+
+                # Demander si l'utilisateur veut ouvrir le fichier
+                if messagebox.askyesno("Ouvrir le fichier", "Voulez-vous ouvrir le fichier PDF ?"):
+                    import os
+                    import subprocess
+                    import sys
+
+                    if sys.platform.startswith('win'):
+                        os.startfile(filename)
+                    elif sys.platform.startswith('darwin'):
+                        subprocess.call(['open', filename])
+                    else:
+                        subprocess.call(['xdg-open', filename])
+
+            except ImportError:
+                messagebox.showerror("Module manquant",
+                                     "Le générateur de plan de vol n'est pas trouvé.\n\n"
+                                     "Assurez-vous que 'flight_plan_generator.py' est présent.")
+            except Exception as e:
+                messagebox.showerror("Erreur", f"Erreur lors de la génération PDF:\n{e}")
+
+    def _prepare_flight_data(self) -> Dict[str, any]:
+        """Préparer les données de vol pour le générateur"""
+        return {
+            'aircraft_id': self.aircraft_entries.get('registration', tk.Entry()).get() or 'N/A',
+            'aircraft_type': self.aircraft_entries.get('aircraft_type', tk.Entry()).get() or 'N/A',
+            'tas': float(self.aircraft_entries.get('cruise_speed', tk.Entry()).get() or 110),
+            'departure': self.departure_airport['icao'] if self.departure_airport else 'N/A',
+            'destination': self.destination_airport['icao'] if self.destination_airport else 'N/A',
+            'date': self.flight_entries.get('date', tk.Entry()).get() or 'N/A',
+            'etd': self.flight_entries.get('departure_time', tk.Entry()).get() or 'N/A',
+            'pilot': self.flight_entries.get('pilot_name', tk.Entry()).get() or 'N/A',
+            'fuel_capacity': float(self.aircraft_entries.get('fuel_capacity', tk.Entry()).get() or 0),
+            'fuel_burn': float(self.aircraft_entries.get('fuel_burn', tk.Entry()).get() or 7.5),
+            'reserve_fuel': float(self.flight_entries.get('reserve_time', tk.Entry()).get() or 45),
+            'alternate': 'N/A',  # Vous pouvez ajouter un champ pour ça
+            'weather_brief': f"Obtained via Tomorrow.io API",
+            'notam_check': 'Required',
+            'flight_following': 'Recommended'
+        }
+
+    def _prepare_legs_data(self) -> List[Dict[str, any]]:
+        """Préparer les données des legs pour le générateur"""
+        if not hasattr(self, 'calculated_itinerary') or not self.calculated_itinerary:
+            return []
+
+        legs_data = []
+        for i, leg in enumerate(self.calculated_itinerary.legs):
+            leg_dict = leg.to_dict()
+
+            # Calculer ETA
+            if i == 0:
+                # Premier leg: utiliser heure de départ
+                etd_str = self.flight_entries.get('departure_time', tk.Entry()).get() or '10:00'
+                try:
+                    etd_hour, etd_min = map(int, etd_str.split(':'))
+                    eta_minutes = etd_min + leg_dict['Leg time (min)']
+                    eta_hour = etd_hour + (eta_minutes // 60)
+                    eta_min = eta_minutes % 60
+                    eta = f"{eta_hour:02d}:{eta_min:02d}"
+                except:
+                    eta = "N/A"
+            else:
+                # Legs suivants: ajouter temps cumulé
+                try:
+                    total_time = leg_dict['Total time (min)']
+                    etd_str = self.flight_entries.get('departure_time', tk.Entry()).get() or '10:00'
+                    etd_hour, etd_min = map(int, etd_str.split(':'))
+                    eta_minutes = etd_min + total_time
+                    eta_hour = etd_hour + (eta_minutes // 60)
+                    eta_min = int(eta_minutes % 60)
+                    eta = f"{eta_hour:02d}:{eta_min:02d}"
+                except:
+                    eta = "N/A"
+
+            leg_data = {
+                'from': leg_dict['Starting WP'],
+                'to': leg_dict['Ending WP'],
+                'distance': leg_dict['Distance (NM)'],
+                'true_course': leg_dict['True course (deg)'],
+                'true_heading': leg_dict['True heading (deg)'],
+                'mag_heading': leg_dict['Magnetic heading (deg)'],
+                'wind_dir': leg_dict['Wind Direction (deg)'],
+                'wind_speed': leg_dict['Wind Speed (kn)'],
+                'ground_speed': leg_dict['Groundspeed (kn)'],
+                'leg_time': leg_dict['Leg time (min)'],
+                'total_time': leg_dict['Total time (min)'],
+                'fuel_leg': leg_dict['Fuel burn leg (gal)'],
+                'fuel_total': leg_dict['Fuel burn tot (gal)'],
+                'eta': eta,
+                'remarks': f"Wind: {leg_dict['Wind Direction (deg)']}°/{leg_dict['Wind Speed (kn)']}kn"
+            }
+            legs_data.append(leg_data)
+
+        return legs_data
 
     def new_flight_plan(self):
         """Nouveau plan de vol"""
