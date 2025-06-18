@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Ajout de l'altitude dans le dataframe" />
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="lil change">
+      <change afterPath="$PROJECT_DIR$/data/ressources/csv/kpo606.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/itinerary/aircraft.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/itinerary/plane_logic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/itinerary.py" beforeDir="false" afterPath="$PROJECT_DIR$/itinerary/itinerary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/legs.py" beforeDir="false" afterPath="$PROJECT_DIR$/itinerary/legs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/itinerary_ui.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,12 +61,13 @@
     "Python.testing.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/antoi/OneDrive/Desktop/ETS/Session 12/MGA802/Projet Final/data/extraction"
+    "git-widget-placeholder": "matthew",
+    "last_opened_file_path": "C:/Users/matth/PycharmProjects/MGA802-projet-final/data/ressources/csv"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\matth\PycharmProjects\MGA802-projet-final\data\ressources\csv" />
       <recent name="C:\Users\antoi\OneDrive\Desktop\ETS\Session 12\MGA802\Projet Final\data\extraction" />
       <recent name="C:\Users\antoi\OneDrive\Desktop\ETS\Session 12\MGA802\Projet Final\data\ressources" />
     </key>
@@ -118,7 +127,24 @@
       <option name="project" value="LOCAL" />
       <updated>1750127453442</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update gitignore">
+      <option name="closed" value="true" />
+      <created>1750117549080</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1750117549080</updated>
+    </task>
+    <task id="LOCAL-00007" summary="lil change">
+      <option name="closed" value="true" />
+      <created>1750187111636</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1750187111637</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,7 +161,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project structure" />
     <MESSAGE value="Ajout fonction extraction de d'information des pdf vers des listes pythons" />
-    <MESSAGE value="Ajout de l'altitude dans le dataframe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de l'altitude dans le dataframe" />
+    <MESSAGE value="Add functionality of extraction in main" />
+    <MESSAGE value="update gitignore" />
+    <MESSAGE value="lil change" />
+    <option name="LAST_COMMIT_MESSAGE" value="lil change" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="len(table_vals)" language="Python" />
+      </configuration>
+    </watches-manager>
+
   </component>
 </project>
