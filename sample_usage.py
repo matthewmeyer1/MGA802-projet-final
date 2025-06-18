@@ -9,7 +9,7 @@ votre structure de code existante.
 import datetime
 import pandas as pd
 from itinerary.itinerary import Itinerary
-from flight_plan_export import FlightPlanExporter, export_flight_plan
+from output.flight_plan_generator import FlightPlanExporter, export_flight_plan
 
 
 def create_sample_flight():
@@ -198,7 +198,7 @@ INSTALLATION_INSTRUCTIONS = """
 1. Installer les dépendances requises:
    pip install pandas openpyxl
 
-2. Placer le fichier flight_plan_export.py dans votre projet
+2. Placer le fichier flight_plan_generator.py dans votre projet
 
 3. Importer et utiliser:
    from flight_plan_export import FlightPlanExporter
@@ -211,9 +211,9 @@ votre_projet/
 │   ├── legs.py
 │   ├── waypoints.py
 │   └── data_retrieval.py
-├── flight_plan_export.py      # Nouveau module
+├── flight_plan_generator.py      # Nouveau module
 ├── example_usage.py           # Ce fichier d'exemple
-└── main.py                    # Votre programme principal
+└── gui_improved.py                    # Votre programme principal
 
 === Fonctionnalités du module ===
 

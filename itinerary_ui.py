@@ -77,7 +77,7 @@ def wp_menu(it1, plane_list):
 plane_list = []
 while True:
     print("\n1 - Aircraft menu\n" +
-          "2 - Waypoint menu\n" +
+          "2 - Waypoint menu\n")
 
     main_menu_choice = int(input())
 
