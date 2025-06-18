@@ -6,15 +6,13 @@ import datetime
 import pytz
 import folium
 import numpy as np
-
-
+import time
 
 class Itinerary:
     def __init__(self):
         self.wp = []
         self.legs = []
         self.start_time = self.get_start_time()
-
 
 
     def save_waypoints(self, filename):
@@ -35,18 +33,18 @@ class Itinerary:
                 self.wp.append(Waypoint(float(data[1]), float(data[2]), name=data[0]))
 
     def add_airport(self, icao, ap_list, start = True):
-        lat, lon, name = airport_data(icao, ap_list)
+        lat, lon, name, alt = airport_data(icao, ap_list)
         if start:
-            self.add_waypoint(lat, lon, name, wp_index = 0)
+            self.add_waypoint(lat, lon, name, alt, wp_index = 0)
         else:
-            self.add_waypoint(lat, lon, name)
+            self.add_waypoint(lat, lon, name, alt)
 
 
-    def add_waypoint(self, lat, long, name="", wp_index=None):
+    def add_waypoint(self, lat, long, name="", alt=0, wp_index=None):
         if wp_index is None:
-            self.wp.append(Waypoint(lat, long, name))
+            self.wp.append(Waypoint(lat, long, name, alt))
         else:
-            self.wp.insert(wp_index, Waypoint(lat, long, name))
+            self.wp.insert(wp_index, Waypoint(lat, long, name, alt))
 
 
     def remove_waypoint(self, index):
@@ -71,7 +69,10 @@ class Itinerary:
         leg_list = []
         for i in range(len(self.wp) - 1):
             leg_list.append(Leg(self.wp[i], self.wp[i + 1], tas=100))
-            leg_list[i].calc_wind(self.start_time)
+            if i == 0:
+                leg_list[i].calc_wind(self.start_time)
+            else:
+                leg_list[i].calc_wind(self.start_time + datetime.timedelta(minutes=leg_list[i - 1].time_tot))
             leg_list[i].calc_speeds()
 
             if i == 0:
@@ -80,6 +81,13 @@ class Itinerary:
                 leg_list[i].calc_time(prev_time = leg_list[i - 1].time_tot)
 
             leg_list[i].calc_fuel_burn(6.7)
+            tank_capacity = 25
+            if leg_list[i].fuel_burn_total > tank_capacity:
+                print(self.wp[i+1].lat, self.wp[i+1].lon)
+                self.add_waypoint(33, 55, wp_index = i + 1, name="emergency_wp")
+                print("Not enough gas !!!! crash imminent!!!")
+
+            time.sleep(0.5)
 
         self.legs = leg_list
 
