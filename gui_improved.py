@@ -6,6 +6,7 @@ import webbrowser
 import os
 from typing import List, Dict, Optional, Tuple
 import math
+from datetime import datetime
 
 
 class AirportDatabase:
@@ -399,11 +400,37 @@ class VFRPlannerGUI:
 
         file_menu = tk.Menu(menubar, tearoff=0)
         menubar.add_cascade(label="Fichier", menu=file_menu)
-        file_menu.add_command(label="Nouveau plan", command=self.new_flight_plan)
-        file_menu.add_command(label="Charger", command=self.load_flight_plan)
-        file_menu.add_command(label="Sauvegarder", command=self.save_flight_plan)
+        file_menu.add_command(label="📄 Nouveau plan", command=self.new_flight_plan, accelerator="Ctrl+N")
         file_menu.add_separator()
-        file_menu.add_command(label="Quitter", command=self.root.quit)
+        file_menu.add_command(label="📁 Ouvrir plan...", command=self.load_flight_plan, accelerator="Ctrl+O")
+        file_menu.add_command(label="💾 Sauvegarder plan...", command=self.save_flight_plan, accelerator="Ctrl+S")
+        file_menu.add_separator()
+        file_menu.add_command(label="📊 Exporter plan Excel...", command=self.generate_excel_plan)
+        file_menu.add_command(label="📄 Exporter plan PDF...", command=self.generate_pdf_plan)
+        file_menu.add_command(label="📝 Exporter résumé...", command=self.export_flight_plan_summary)
+        file_menu.add_separator()
+        file_menu.add_command(label="❌ Quitter", command=self.root.quit, accelerator="Ctrl+Q")
+
+        # Menu outils
+        tools_menu = tk.Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Outils", menu=tools_menu)
+        tools_menu.add_command(label="🔧 Diagnostic imports", command=self.diagnose_import_issues)
+        tools_menu.add_command(label="🔍 Test CSE4", command=self.test_cse4_search)
+        tools_menu.add_command(label="🔄 Réinitialiser filtres", command=self.reset_airport_filters)
+        tools_menu.add_separator()
+        tools_menu.add_command(label="🗺️ Carte interactive", command=self.show_interactive_map)
+
+        # Menu aide
+        help_menu = tk.Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Aide", menu=help_menu)
+        help_menu.add_command(label="📖 Guide d'utilisation", command=self.show_usage_guide)
+        help_menu.add_command(label="ℹ️ À propos", command=self.show_about)
+
+        # Raccourcis clavier
+        self.root.bind('<Control-n>', lambda e: self.new_flight_plan())
+        self.root.bind('<Control-o>', lambda e: self.load_flight_plan())
+        self.root.bind('<Control-s>', lambda e: self.save_flight_plan())
+        self.root.bind('<Control-q>', lambda e: self.root.quit())
 
         # Notebook pour les onglets
         notebook = ttk.Notebook(self.root)
@@ -1537,7 +1564,7 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
             except Exception as e:
                 messagebox.showerror("Erreur", f"Erreur lors de la génération PDF:\n{e}")
 
-    def _prepare_flight_data(self) -> Dict[str, any]:
+    def _prepare_flight_data(self) -> Dict[str, Any]:
         """Préparer les données de vol pour le générateur"""
         return {
             'aircraft_id': self.aircraft_entries.get('registration', tk.Entry()).get() or 'N/A',
@@ -1557,7 +1584,7 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
             'flight_following': 'Recommended'
         }
 
-    def _prepare_legs_data(self) -> List[Dict[str, any]]:
+    def _prepare_legs_data(self) -> List[Dict[str, Any]]:
         """Préparer les données des legs pour le générateur"""
         if not hasattr(self, 'calculated_itinerary') or not self.calculated_itinerary:
             return []
@@ -1614,9 +1641,21 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
 
     def new_flight_plan(self):
         """Nouveau plan de vol"""
+        # Confirmer avant de perdre le travail en cours
+        if self.waypoints or any(
+                entry.get() for entry in list(self.aircraft_entries.values()) + list(self.flight_entries.values())):
+            if not messagebox.askyesno("Nouveau plan",
+                                       "Créer un nouveau plan effacera le travail en cours.\n\nContinuer ?"):
+                return
+
         # Réinitialiser tout
         for entry in list(self.aircraft_entries.values()) + list(self.flight_entries.values()):
             entry.delete(0, tk.END)
+
+        # Remettre les valeurs par défaut
+        self.flight_entries['reserve_time'].insert(0, "45")
+        self.aircraft_entries['cruise_speed'].insert(0, "110")
+        self.aircraft_entries['fuel_burn'].insert(0, "7.5")
 
         self.departure_search.clear()
         self.destination_search.clear()
@@ -1630,26 +1669,371 @@ Utilisez l'onglet 'Plan de vol' pour des calculs détaillés avec météo.
         self.plan_text.delete('1.0', tk.END)
         self.waypoint_detail_text.delete('1.0', tk.END)
 
+        # Effacer l'itinéraire calculé
+        if hasattr(self, 'calculated_itinerary'):
+            delattr(self, 'calculated_itinerary')
+
         self.status_var.set("Nouveau plan de vol créé")
 
-    def load_flight_plan(self):
-        """Charger un plan de vol"""
-        filename = filedialog.askopenfilename(
-            filetypes=[("JSON files", "*.json"), ("All files", "*.*")]
-        )
-        if filename:
-            # Ici, implémenter le chargement
-            messagebox.showinfo("Info", "Fonctionnalité de chargement à implémenter")
-
     def save_flight_plan(self):
-        """Sauvegarder le plan de vol"""
+        """Sauvegarder le plan de vol complet en format JSON"""
         filename = filedialog.asksaveasfilename(
             defaultextension=".json",
-            filetypes=[("JSON files", "*.json")]
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+            title="Sauvegarder le plan de vol"
         )
+
         if filename:
-            # Ici, implémenter la sauvegarde
-            messagebox.showinfo("Info", "Fonctionnalité de sauvegarde à implémenter")
+            try:
+                # Collecter toutes les données de l'interface
+                flight_plan_data = {
+                    "metadata": {
+                        "version": "1.0",
+                        "created": datetime.now().isoformat(),
+                        "generator": "VFR Flight Planner - MGA802"
+                    },
+
+                    "aircraft_info": {
+                        key: entry.get() for key, entry in self.aircraft_entries.items()
+                    },
+
+                    "flight_info": {
+                        key: entry.get() for key, entry in self.flight_entries.items()
+                    },
+
+                    "departure_airport": self.departure_airport,
+                    "destination_airport": self.destination_airport,
+
+                    "waypoints": self.waypoints,
+
+                    "calculated_itinerary": None  # On sauvegarde les résultats s'ils existent
+                }
+
+                # Sauvegarder l'itinéraire calculé s'il existe
+                if hasattr(self, 'calculated_itinerary') and self.calculated_itinerary:
+                    try:
+                        # Extraire les données essentielles de l'itinéraire
+                        summary = self.calculated_itinerary.get_summary()
+                        legs_data = []
+
+                        for leg in self.calculated_itinerary.legs:
+                            leg_dict = leg.to_dict()
+                            legs_data.append(leg_dict)
+
+                        flight_plan_data["calculated_itinerary"] = {
+                            "summary": summary,
+                            "legs": legs_data,
+                            "calculation_time": datetime.now().isoformat()
+                        }
+                    except Exception as e:
+                        print(f"Avertissement: Impossible de sauvegarder l'itinéraire calculé: {e}")
+
+                # Sauvegarder en JSON avec indentation pour lisibilité
+                import json
+                with open(filename, 'w', encoding='utf-8') as f:
+                    json.dump(flight_plan_data, f, indent=2, ensure_ascii=False)
+
+                messagebox.showinfo("Sauvegarde réussie",
+                                    f"Plan de vol sauvegardé avec succès !\n\nFichier: {filename}")
+                self.status_var.set(f"Plan sauvegardé: {filename}")
+
+            except Exception as e:
+                messagebox.showerror("Erreur de sauvegarde",
+                                     f"Impossible de sauvegarder le plan de vol:\n{e}")
+
+    def load_flight_plan(self):
+        """Charger un plan de vol depuis un fichier JSON"""
+        filename = filedialog.askopenfilename(
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+            title="Charger un plan de vol"
+        )
+
+        if filename:
+            try:
+                # Confirmer avant de perdre le travail en cours
+                if self.waypoints or any(entry.get() for entry in
+                                         list(self.aircraft_entries.values()) + list(self.flight_entries.values())):
+                    if not messagebox.askyesno("Charger plan",
+                                               "Charger un plan effacera le travail en cours.\n\nContinuer ?"):
+                        return
+
+                # Charger le fichier JSON
+                import json
+                with open(filename, 'r', encoding='utf-8') as f:
+                    flight_plan_data = json.load(f)
+
+                # Vérifier la version et la structure
+                if "metadata" not in flight_plan_data:
+                    if not messagebox.askyesno("Format ancien",
+                                               "Ce fichier semble être dans un format ancien.\n\nEssayer de le charger quand même ?"):
+                        return
+
+                # Effacer l'interface actuelle
+                self.new_flight_plan()
+
+                # Restaurer les informations de l'avion
+                if "aircraft_info" in flight_plan_data:
+                    for key, value in flight_plan_data["aircraft_info"].items():
+                        if key in self.aircraft_entries and value:
+                            self.aircraft_entries[key].insert(0, str(value))
+
+                # Restaurer les informations de vol
+                if "flight_info" in flight_plan_data:
+                    for key, value in flight_plan_data["flight_info"].items():
+                        if key in self.flight_entries and value:
+                            self.flight_entries[key].insert(0, str(value))
+
+                # Restaurer les aéroports de départ et d'arrivée
+                if flight_plan_data.get("departure_airport"):
+                    self.departure_airport = flight_plan_data["departure_airport"]
+                    self.departure_search.selected_airport = self.departure_airport
+                    self.departure_search.search_var.set(self.departure_airport.get('display', ''))
+                    self.departure_search.info_label.config(
+                        text=f"Lat: {self.departure_airport.get('lat', 0):.4f}, "
+                             f"Lon: {self.departure_airport.get('lon', 0):.4f}, "
+                             f"Type: {self.departure_airport.get('type', 'N/A')}"
+                    )
+
+                if flight_plan_data.get("destination_airport"):
+                    self.destination_airport = flight_plan_data["destination_airport"]
+                    self.destination_search.selected_airport = self.destination_airport
+                    self.destination_search.search_var.set(self.destination_airport.get('display', ''))
+                    self.destination_search.info_label.config(
+                        text=f"Lat: {self.destination_airport.get('lat', 0):.4f}, "
+                             f"Lon: {self.destination_airport.get('lon', 0):.4f}, "
+                             f"Type: {self.destination_airport.get('type', 'N/A')}"
+                    )
+
+                # Mettre à jour les informations de vol si les deux aéroports sont chargés
+                if self.departure_airport and self.destination_airport:
+                    self.update_flight_info()
+
+                # Restaurer les waypoints
+                if "waypoints" in flight_plan_data:
+                    self.waypoints = flight_plan_data["waypoints"]
+                    self.update_waypoint_list()
+
+                # Restaurer l'itinéraire calculé s'il existe
+                if flight_plan_data.get("calculated_itinerary"):
+                    try:
+                        calc_data = flight_plan_data["calculated_itinerary"]
+
+                        # Afficher un résumé de l'itinéraire calculé précédemment
+                        summary = calc_data.get("summary", {})
+                        legs = calc_data.get("legs", [])
+                        calc_time = calc_data.get("calculation_time", "")
+
+                        plan_text = "PLAN DE VOL CHARGÉ (calculé précédemment)\n"
+                        plan_text += "=" * 60 + "\n\n"
+                        plan_text += f"Calculé le: {calc_time}\n"
+                        plan_text += f"Distance totale: {summary.get('total_distance', 0):.1f} NM\n"
+                        plan_text += f"Temps total: {summary.get('total_time', 0):.0f} minutes\n"
+                        plan_text += f"Carburant total: {summary.get('total_fuel', 0):.1f} gallons\n\n"
+
+                        plan_text += "LEGS:\n"
+                        plan_text += "-" * 40 + "\n"
+                        for i, leg in enumerate(legs, 1):
+                            plan_text += f"{i}. {leg.get('Starting WP', '')} → {leg.get('Ending WP', '')} "
+                            plan_text += f"({leg.get('Distance (NM)', 0):.1f} NM, {leg.get('Leg time (min)', 0):.0f} min)\n"
+
+                        plan_text += "\n⚠️ ATTENTION: Ces calculs peuvent être obsolètes.\n"
+                        plan_text += "Recalculez l'itinéraire pour obtenir des données météo actuelles."
+
+                        self.plan_text.delete('1.0', tk.END)
+                        self.plan_text.insert('1.0', plan_text)
+
+                    except Exception as e:
+                        print(f"Impossible de restaurer l'itinéraire calculé: {e}")
+
+                # Extraire le nom du fichier pour l'affichage
+                import os
+                file_basename = os.path.basename(filename)
+
+                # Afficher les informations de chargement
+                metadata = flight_plan_data.get("metadata", {})
+                created_date = metadata.get("created", "")
+
+                info_message = f"Plan de vol chargé avec succès !\n\n"
+                info_message += f"Fichier: {file_basename}\n"
+                if created_date:
+                    info_message += f"Créé le: {created_date}\n"
+                info_message += f"Waypoints: {len(self.waypoints)}\n"
+
+                if self.departure_airport and self.destination_airport:
+                    info_message += f"Route: {self.departure_airport.get('icao', '')} → {self.destination_airport.get('icao', '')}"
+
+                messagebox.showinfo("Chargement réussi", info_message)
+                self.status_var.set(f"Plan chargé: {file_basename}")
+
+            except json.JSONDecodeError as e:
+                messagebox.showerror("Erreur de format",
+                                     f"Le fichier n'est pas un JSON valide:\n{e}")
+            except Exception as e:
+                messagebox.showerror("Erreur de chargement",
+                                     f"Impossible de charger le plan de vol:\n{e}")
+
+    def export_flight_plan_summary(self):
+        """Exporter un résumé du plan de vol en format texte"""
+        if not self.waypoints:
+            messagebox.showwarning("Attention", "Aucun waypoint défini")
+            return
+
+        filename = filedialog.asksaveasfilename(
+            defaultextension=".txt",
+            filetypes=[("Text files", "*.txt"), ("All files", "*.*")],
+            title="Exporter résumé du plan de vol"
+        )
+
+        if filename:
+            try:
+                # Générer le résumé textuel
+                summary_text = "RÉSUMÉ DU PLAN DE VOL VFR\n"
+                summary_text += "=" * 50 + "\n\n"
+                summary_text += f"Généré le: {datetime.now().strftime('%Y-%m-%d à %H:%M')}\n\n"
+
+                # Informations de base
+                aircraft_id = self.aircraft_entries.get('registration', tk.Entry()).get() or 'N/A'
+                aircraft_type = self.aircraft_entries.get('aircraft_type', tk.Entry()).get() or 'N/A'
+                pilot_name = self.flight_entries.get('pilot_name', tk.Entry()).get() or 'N/A'
+
+                summary_text += f"Avion: {aircraft_id} ({aircraft_type})\n"
+                summary_text += f"Pilote: {pilot_name}\n"
+                summary_text += f"Date: {self.flight_entries.get('date', tk.Entry()).get() or 'N/A'}\n"
+                summary_text += f"Heure: {self.flight_entries.get('departure_time', tk.Entry()).get() or 'N/A'}\n\n"
+
+                # Route
+                if self.departure_airport and self.destination_airport:
+                    summary_text += f"Départ: {self.departure_airport.get('icao', '')} - {self.departure_airport.get('name', '')}\n"
+                    summary_text += f"Arrivée: {self.destination_airport.get('icao', '')} - {self.destination_airport.get('name', '')}\n\n"
+
+                # Waypoints
+                summary_text += "WAYPOINTS:\n"
+                summary_text += "-" * 20 + "\n"
+                for i, wp in enumerate(self.waypoints, 1):
+                    summary_text += f"{i}. {wp['name']} ({wp['lat']:.4f}, {wp['lon']:.4f})\n"
+
+                # Itinéraire calculé si disponible
+                if hasattr(self, 'calculated_itinerary') and self.calculated_itinerary:
+                    try:
+                        summary = self.calculated_itinerary.get_summary()
+                        summary_text += f"\nCALCULS:\n"
+                        summary_text += f"-" * 20 + "\n"
+                        summary_text += f"Distance: {summary.get('total_distance', 0):.1f} NM\n"
+                        summary_text += f"Temps: {summary.get('total_time', 0) / 60:.1f} heures\n"
+                        summary_text += f"Carburant: {summary.get('total_fuel', 0):.1f} gal\n"
+                    except:
+                        pass
+
+                summary_text += f"\n\nFin du résumé\n"
+
+                # Sauvegarder
+                with open(filename, 'w', encoding='utf-8') as f:
+                    f.write(summary_text)
+
+                messagebox.showinfo("Export réussi",
+                                    f"Résumé exporté avec succès !\n\nFichier: {filename}")
+
+            except Exception as e:
+                messagebox.showerror("Erreur d'export",
+                                     f"Impossible d'exporter le résumé:\n{e}")
+
+    def show_usage_guide(self):
+        """Afficher le guide d'utilisation"""
+        guide_text = """GUIDE D'UTILISATION - OUTIL VFR
+================================
+
+📋 WORKFLOW RECOMMANDÉ:
+
+1. ONGLET AVION:
+   • Remplir immatriculation, type d'avion
+   • Vitesse de croisière (ex: 110 kn)
+   • Consommation (ex: 7.5 GPH)
+   • Capacité carburant (ex: 40 gal)
+
+2. ONGLET AÉROPORTS:
+   • Configurer filtres (pays, types)
+   • Rechercher aéroport départ (ex: CYUL)
+   • Rechercher aéroport arrivée (ex: CYQB)
+   • Cliquer "Ajouter à l'itinéraire"
+
+3. ONGLET ITINÉRAIRE:
+   • Ajouter waypoints intermédiaires si besoin
+   • Réorganiser l'ordre des waypoints
+
+4. ONGLET PLAN DE VOL:
+   • Cliquer "Calculer itinéraire complet"
+   • Générer plan Excel ou PDF
+
+🔍 RECHERCHE D'AÉROPORTS:
+• Par code ICAO: CYUL, CYQB
+• Par code IATA: YUL, YQB  
+• Par code local: CSE4, CAM4
+• Par nom: Montreal, Quebec
+• Par ville: Toronto, Calgary
+
+💾 SAUVEGARDE:
+• Fichier → Sauvegarder plan
+• Format JSON lisible
+• Inclut tous paramètres et calculs
+
+🔧 DÉPANNAGE:
+• Menu Outils → Diagnostic imports
+• Vérifier connexion internet (météo)
+• CSE4 pas trouvé? → Test CSE4
+
+📊 CODES COULEUR:
+🔵 = Code ICAO officiel
+🟡 = Code IATA  
+🟢 = Code local/GPS"""
+
+        # Créer fenêtre de guide
+        guide_window = tk.Toplevel(self.root)
+        guide_window.title("Guide d'utilisation")
+        guide_window.geometry("600x500")
+        guide_window.transient(self.root)
+
+        text_widget = tk.Text(guide_window, wrap='word', padx=10, pady=10)
+        scrollbar = ttk.Scrollbar(guide_window, orient='vertical', command=text_widget.yview)
+        text_widget.configure(yscrollcommand=scrollbar.set)
+
+        text_widget.pack(side='left', fill='both', expand=True)
+        scrollbar.pack(side='right', fill='y')
+
+        text_widget.insert('1.0', guide_text)
+        text_widget.config(state='disabled')  # Lecture seule
+
+    def show_about(self):
+        """Afficher les informations À propos"""
+        about_text = """OUTIL DE PLANIFICATION DE VOL VFR
+Version 1.0
+
+Projet MGA802 - Introduction à la programmation avec Python
+École de technologie supérieure (ÉTS)
+
+ÉQUIPE DE DÉVELOPPEMENT:
+• Antoine Gingras
+• Matthew Meyer  
+• Richard Nguekam
+• Gabriel Wong-Lapierre
+
+FONCTIONNALITÉS:
+✈️ Planification complète de vols VFR
+🗺️ Base de données de 83,000+ aéroports
+🌤️ Intégration météo en temps réel
+📊 Génération plans Excel et PDF
+🧭 Calculs de navigation précis
+💾 Sauvegarde/chargement de plans
+
+TECHNOLOGIES UTILISÉES:
+• Python 3.x avec Tkinter
+• API Tomorrow.io pour météo
+• OpenPyXL et ReportLab pour exports
+• Folium pour cartes interactives
+• Pandas pour gestion de données
+
+Juin 2025 - ÉTS Montréal"""
+
+        messagebox.showinfo("À propos", about_text)
 
 
 class CustomWaypointDialog:
