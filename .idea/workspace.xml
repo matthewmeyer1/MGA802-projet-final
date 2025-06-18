@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="improved gui">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="improved gui" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,12 +31,12 @@
     &quot;assignee&quot;: &quot;Antoine-ggg&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/matthewmeyer1/MGA802-projet-final.git",
-    "accountId": "c35c38e7-2647-423c-8eb0-2d87a3b946fb"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/matthewmeyer1/MGA802-projet-final.git&quot;,
+    &quot;accountId&quot;: &quot;c35c38e7-2647-423c-8eb0-2d87a3b946fb&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -59,7 +57,7 @@
     "Python.testing.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "guiv1",
     "last_opened_file_path": "C:/Users/gabri/PycharmProjects/MGA802-projet-final/data/ressources/csv"
   }
 }]]></component>
