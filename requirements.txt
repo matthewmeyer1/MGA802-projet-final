@@ -1,0 +1,37 @@
+# Dépendances pour VFR Planner
+# Projet MGA802-01
+
+# Interface graphique
+tkinter-dnd2>=0.3.0
+
+# Manipulation de données
+pandas>=1.5.0
+numpy>=1.21.0
+
+# Calculs géographiques et navigation
+geopy>=2.3.0
+geomag>=0.9.2
+pytz>=2022.1
+
+# API météo
+requests>=2.28.0
+
+# Export Excel
+openpyxl>=3.0.10
+xlsxwriter>=3.0.3
+
+# Export PDF
+reportlab>=3.6.12
+
+# Cartes interactives
+folium>=0.14.0
+
+# Traitement de fichiers
+PyPDF2>=3.0.1
+
+# Interface améliorée (optionnel)
+customtkinter>=5.0.0
+
+# Développement et tests
+pytest>=7.0.0
+pytest-cov>=4.0.0
