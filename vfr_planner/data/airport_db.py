@@ -183,13 +183,13 @@ class AirportDatabase:
 
         # Recherche dans toutes les colonnes pertinentes
         mask = (
-                self.filtered_airports['icao_code'].str.contains(query, na=False) |
-                self.filtered_airports['iata_code'].str.contains(query, na=False) |
-                self.filtered_airports['ident'].str.contains(query, na=False) |
-                self.filtered_airports['local_code'].str.contains(query, na=False) |
-                self.filtered_airports['gps_code'].str.contains(query, na=False) |
-                self.filtered_airports['name'].str.upper().str.contains(query, na=False) |
-                self.filtered_airports['municipality'].str.upper().str.contains(query, na=False)
+                self.filtered_airports['icao_code'].str.match(query, na=False) |
+                self.filtered_airports['iata_code'].str.match(query, na=False) |
+                self.filtered_airports['ident'].str.match(query, na=False) |
+                self.filtered_airports['local_code'].str.match(query, na=False) |
+                self.filtered_airports['gps_code'].str.match(query, na=False) |
+                self.filtered_airports['name'].str.upper().str.match(query, na=False) |
+                self.filtered_airports['municipality'].str.upper().str.match(query, na=False)
         )
 
         results = self.filtered_airports[mask].head(max_results)
