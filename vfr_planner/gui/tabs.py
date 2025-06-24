@@ -21,6 +21,9 @@ from ..models.aircraft import Aircraft, AIRCRAFT_PRESETS
 from ..models.itinerary import create_itinerary_from_gui
 from ..calculations.navigation import calculate_distance, calculate_bearing
 
+# Clé API météo intégrée
+WEATHER_API_KEY = "CmIKizbzjlLBf8XngqoIAU271bBYNZbk"
+
 
 class AircraftTab(ttk.Frame):
     """Onglet pour les informations d'aéronef"""
@@ -630,19 +633,21 @@ class PlanTab(ttk.Frame):
         main_frame.pack(fill='both', expand=True, padx=10, pady=10)
 
         # Configuration et boutons
-        config_frame = ttk.LabelFrame(main_frame, text="Configuration", padding=10)
+        config_frame = ttk.LabelFrame(main_frame, text="Configuration météo", padding=10)
         config_frame.pack(fill='x', pady=5)
 
-        # Clé API
-        ttk.Label(config_frame, text="Clé API Tomorrow.io:").grid(row=0, column=0, sticky='w', padx=5, pady=3)
-        self.api_key_var = tk.StringVar()
-        api_entry = ttk.Entry(config_frame, textvariable=self.api_key_var, width=40, show="*")
-        api_entry.grid(row=0, column=1, padx=5, pady=3, sticky='ew')
+        # Info sur l'API intégrée
+        api_info = ttk.Label(config_frame,
+                            text="✅ API météo Tomorrow.io configurée automatiquement",
+                            foreground='green')
+        api_info.pack(pady=5)
 
-        ttk.Button(config_frame, text="Test API",
-                  command=self.test_api).grid(row=0, column=2, padx=5, pady=3)
+        # Boutons de configuration/test
+        button_config_frame = ttk.Frame(config_frame)
+        button_config_frame.pack(fill='x', pady=5)
 
-        config_frame.grid_columnconfigure(1, weight=1)
+        ttk.Button(button_config_frame, text="🧪 Tester API météo",
+                  command=self.test_api).pack(side='left', padx=5)
 
         # Boutons de génération
         button_frame = ttk.Frame(main_frame)
@@ -678,18 +683,13 @@ class PlanTab(ttk.Frame):
 
     def test_api(self):
         """Tester la clé API météo"""
-        api_key = self.api_key_var.get().strip()
-        if not api_key:
-            messagebox.showwarning("Attention", "Saisissez une clé API")
-            return
-
         try:
             from ..calculations.weather import WeatherService
             from ..models.waypoint import Waypoint
             import datetime
 
             # Test avec un point connu
-            weather_service = WeatherService(api_key)
+            weather_service = WeatherService(WEATHER_API_KEY)
             test_waypoint = Waypoint(45.458, -73.749, "CYUL")  # Montréal
 
             weather_data = weather_service.get_weather_for_point(
@@ -702,7 +702,7 @@ class PlanTab(ttk.Frame):
             # API fonctionne
             self.main_window.status_bar.set_api_status(True, True)
             messagebox.showinfo("Succès",
-                              f"API fonctionnelle!\n\n"
+                              f"API météo fonctionnelle!\n\n"
                               f"Test à Montréal:\n"
                               f"Vent: {weather_data['wind_direction']:.0f}°/{weather_data['wind_speed']:.0f}kn\n"
                               f"Température: {weather_data['temperature']:.0f}°C")
@@ -739,17 +739,15 @@ class PlanTab(ttk.Frame):
                 'reserve_time': float(flight_data.get('reserve_time', 45))
             }
 
-            api_key = self.api_key_var.get().strip() or None
-
-            # Calculer l'itinéraire
+            # Calculer l'itinéraire avec clé API intégrée
             self.main_window.status_bar.set_status("Calcul en cours...")
-            self.main_window.update()
+            self.main_window.root.update()  # CORRECTION: utiliser root.update()
 
             itinerary = create_itinerary_from_gui(
                 waypoints=waypoints,
                 aircraft_params=aircraft_params,
                 flight_params=flight_params,
-                api_key=api_key
+                api_key=WEATHER_API_KEY  # Utiliser la clé API intégrée
             )
 
             # Stocker pour l'export
@@ -819,7 +817,7 @@ class PlanTab(ttk.Frame):
             plan_text += f"⚠️ CARBURANT INSUFFISANT (déficit: {-fuel_analysis['remaining']:.1f} gal)\n"
             plan_text += "   Ajoutez des arrêts de ravitaillement!\n"
 
-        plan_text += f"\n📊 Météo: Tomorrow.io API\n"
+        plan_text += f"\n📊 Météo: Tomorrow.io API (intégrée)\n"
         plan_text += f"🧭 Navigation: Calculs précis avec vent\n"
 
         # Afficher
