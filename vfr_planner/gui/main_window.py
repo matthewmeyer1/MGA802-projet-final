@@ -7,7 +7,7 @@ from tkinter import ttk, messagebox, filedialog
 import json
 import os
 
-from .tabs import AircraftTab, AirportsTab, RouteTab, PlanTab
+from .tabs import AircraftTab, AirportsTab, RouteTab, PlanTab, WEATHER_API_KEY
 from .widgets import StatusBarWidget
 from ..data.airport_db import AirportDatabase
 from .. import __version__, __author__
@@ -154,16 +154,15 @@ class VFRPlannerGUI:
 
     def update_status_bar(self):
         """Mettre à jour la barre d'état"""
-        # Statut API
-        api_key = self.plan_tab.api_key_var.get().strip() if hasattr(self.plan_tab, 'api_key_var') else ""
-        self.status_bar.set_api_status(bool(api_key))
+        # Statut API - toujours configurée maintenant
+        self.status_bar.set_api_status(True, True)
 
         # Nombre d'aéroports
         stats = self.airport_db.get_filter_stats()
         self.status_bar.set_airports_count(stats['filtered'])
 
         # Message par défaut
-        self.status_bar.set_status("Prêt - Configurez votre aéronef et sélectionnez vos aéroports")
+        self.status_bar.set_status("Prêt - API météo configurée automatiquement")
 
     def on_tab_changed(self, event):
         """Appelé quand l'onglet change"""
@@ -320,7 +319,7 @@ class VFRPlannerGUI:
             'departure_airport': self.airports_tab.departure_airport,
             'destination_airport': self.airports_tab.destination_airport,
             'waypoints': self.route_tab.get_waypoints(),
-            'api_key': self.plan_tab.api_key_var.get() if hasattr(self.plan_tab, 'api_key_var') else "",
+            'api_configured': True,  # Toujours configurée maintenant
             'saved_at': tk._default_root.tk.call('clock', 'format',
                                                tk._default_root.tk.call('clock', 'seconds'),
                                                '-format', '%Y-%m-%d %H:%M:%S')
@@ -360,11 +359,6 @@ class VFRPlannerGUI:
                 self.route_tab.waypoints = waypoints
                 if hasattr(self.route_tab, 'update_waypoint_list'):
                     self.route_tab.update_waypoint_list()
-
-            # Charger clé API
-            api_key = project_data.get('api_key', '')
-            if hasattr(self.plan_tab, 'api_key_var'):
-                self.plan_tab.api_key_var.set(api_key)
 
             # Mettre à jour les affichages
             if hasattr(self.airports_tab, 'update_flight_info'):
@@ -414,12 +408,8 @@ class VFRPlannerGUI:
             from ..models.waypoint import Waypoint
             import datetime
 
-            api_key = self.plan_tab.api_key_var.get().strip()
-            if not api_key:
-                messagebox.showwarning("Attention", "Configurez d'abord votre clé API météo")
-                return
-
-            weather_service = WeatherService(api_key)
+            # Utiliser la clé API intégrée
+            weather_service = WeatherService(WEATHER_API_KEY)
 
             # Analyser la météo pour la route
             wp_objects = [Waypoint(wp['lat'], wp['lon'], wp['name']) for wp in waypoints]
@@ -500,6 +490,9 @@ Base de données:
 - Aéroports chargés: {len(self.airport_db)}
 - Fichier CSV: {"✅" if self.airport_db.csv_path else "❌"}
 
+Configuration:
+- API météo: ✅ Tomorrow.io (intégrée)
+
 Modules requis:
 """
         # Vérifier les modules
@@ -546,7 +539,7 @@ Modules requis:
    - Vérifiez les détails de chaque point
 
 4. CALCUL ET EXPORT DU PLAN
-   - Configurez votre clé API Tomorrow.io pour la météo
+   - L'API météo Tomorrow.io est déjà configurée
    - Calculez l'itinéraire complet avec vent
    - Exportez en Excel ou PDF
 
@@ -610,7 +603,7 @@ Projet MGA802-01 - École Polytechnique de Montréal
 Fonctionnalités:
 • Base de données d'aéroports complète
 • Calculs de navigation précis avec vent
-• Intégration API météo (Tomorrow.io)
+• Intégration API météo (Tomorrow.io) automatique
 • Export Excel et PDF professionnel
 • Cartes interactives
 • Interface intuitive
