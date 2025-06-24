@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Cleanup first pass, debug necessaire">
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Ajout d'avions et menu avion">
+      <change afterPath="$PROJECT_DIR$/vfr_planner/calculations/aeroport_refuel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfr_planner/gui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/gui/main_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/data/airport_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/data/airport_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/models/itinerary.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/models/itinerary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/models/leg.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/models/leg.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="matthew" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,8 +39,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/matthewmeyer1/MGA802-projet-final&quot;,
-    &quot;accountId&quot;: &quot;7835d7b9-eee2-428a-ae9a-f25bc81e6c54&quot;
+    &quot;url&quot;: &quot;https://github.com/matthewmeyer1/MGA802-projet-final.git&quot;,
+    &quot;accountId&quot;: &quot;17898e08-7fb1-42f0-8556-25642ee0817a&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -54,136 +57,36 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.aeroport_refuel.executor": "Run",
     "Python.extraction.executor": "Run",
     "Python.gui_improved.executor": "Run",
+    "Python.gui_itinerary.executor": "Run",
     "Python.itinerary_ui.executor": "Run",
+    "Python.legs.executor": "Run",
     "Python.main.executor": "Run",
-    "Python.navigation.executor": "Run",
     "Python.testing.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "gwl__structure__cleanup",
-    "last_opened_file_path": "C:/Users/antoi/OneDrive/Desktop/ETS/Session 12/MGA802/Projet Final/data/extraction",
-    "run.code.analysis.last.selected.profile": "aDefault"
+    "git-widget-placeholder": "aeroports__alternatifs",
+    "last_opened_file_path": "C:/Users/gabri/PycharmProjects/MGA802-projet-final/data/ressources/csv"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gabri\PycharmProjects\MGA802-projet-final\data\ressources\csv" />
+      <recent name="C:\Users\matth\PycharmProjects\MGA802-projet-final\data\ressources\csv" />
       <recent name="C:\Users\antoi\OneDrive\Desktop\ETS\Session 12\MGA802\Projet Final\data\extraction" />
       <recent name="C:\Users\antoi\OneDrive\Desktop\ETS\Session 12\MGA802\Projet Final\data\ressources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\gabri\PycharmProjects\MGA802-projet-final\vfr_planner\data" />
+      <recent name="C:\Users\gabri\PycharmProjects\MGA802-projet-final" />
+      <recent name="C:\Users\gabri\PycharmProjects\MGA802-projet-final\vfr_export" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="Projet Final" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="Projet Final" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <module name="Projet Final" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <module name="Projet Final" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Autodetect">
-      <module name="Projet Final" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <module name="Projet Final" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-dfff61a61320-9cdd278e9d02-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.25410.159" />
+        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
       </set>
     </attachedChunks>
   </component>
@@ -235,23 +138,39 @@
       <option name="project" value="LOCAL" />
       <updated>1750127453442</updated>
     </task>
-    <task id="LOCAL-00006" summary="Ajout du module closest_airport, reinitialisation du module testing (module de test de segment de code)">
+    <task id="LOCAL-00006" summary="update gitignore">
       <option name="closed" value="true" />
-      <created>1750132537308</created>
+      <created>1750117549080</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1750132537308</updated>
+      <updated>1750117549080</updated>
     </task>
-    <task id="LOCAL-00007" summary="Cleanup first pass, debug necessaire">
+    <task id="LOCAL-00007" summary="lil change">
       <option name="closed" value="true" />
-      <created>1750741571798</created>
+      <created>1750187111636</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1750741571798</updated>
+      <updated>1750187111637</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="gui incorporation">
+      <option name="closed" value="true" />
+      <created>1750210451087</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1750210451087</updated>
+    </task>
+    <task id="LOCAL-00009" summary="improved gui">
+      <option name="closed" value="true" />
+      <created>1750211935733</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750211935733</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,9 +187,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project structure" />
     <MESSAGE value="Ajout fonction extraction de d'information des pdf vers des listes pythons" />
-    <MESSAGE value="Ajout de l'altitude dans le dataframe" />
-    <MESSAGE value="Ajout du module closest_airport, reinitialisation du module testing (module de test de segment de code)" />
-    <MESSAGE value="Cleanup first pass, debug necessaire" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup first pass, debug necessaire" />
+    <MESSAGE value="Add functionality of extraction in main" />
+    <MESSAGE value="update gitignore" />
+    <MESSAGE value="lil change" />
+    <MESSAGE value="gui incorporation" />
+    <MESSAGE value="improved gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved gui" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="len(table_vals)" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

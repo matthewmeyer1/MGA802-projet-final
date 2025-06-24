@@ -8,9 +8,9 @@ from typing import Dict, Any, Optional
 from dataclasses import dataclass, field
 
 from .waypoint import Waypoint
+from .. import calculations
 from ..calculations.navigation import NavigationCalculator
 from ..calculations.weather import WeatherService
-
 
 @dataclass
 class Leg:
@@ -182,7 +182,7 @@ class Leg:
     def calculate_all(self, start_time: datetime.datetime,
                       previous_total_time: float = 0,
                       previous_total_fuel: float = 0,
-                      fuel_burn_rate: float = 7.5,
+                      fuel_burn_rate: float = 6.7,
                       api_key: Optional[str] = None,
                       manual_wind_speed: Optional[float] = None,
                       manual_wind_direction: Optional[float] = None):
