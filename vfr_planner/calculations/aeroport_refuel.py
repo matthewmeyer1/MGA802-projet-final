@@ -13,7 +13,7 @@ def aeroport_proche(leg, aircraft):
 
     lat_end_wp = end_wp.lat
     lon_end_wp = end_wp.lon
-    fuel_start_leg = leg.fuel_burn_total - leg.fuel_burn_leg
+    fuel_start_leg = leg.fuel_left + leg.fuel_burn_leg
 
     reserve_fuel = (45 / 60) * aircraft.fuel_burn
     autonomy_from_start_wp = (aircraft.fuel_capacity - (fuel_start_leg + reserve_fuel)) / aircraft.fuel_burn * aircraft.cruise_speed
@@ -34,4 +34,4 @@ def aeroport_proche(leg, aircraft):
         wp = Waypoint(ap_lat, ap_lon, name=a['icao'])
         return wp, leg1, leg2
 
-    return None, None
+    return None, None, None

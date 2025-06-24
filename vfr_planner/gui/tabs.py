@@ -785,7 +785,7 @@ class PlanTab(ttk.Frame):
         plan_text += f"Consommation: {aircraft_data.get('fuel_burn', 'N/A')} GPH\n\n"
 
         # En-tête tableau
-        plan_text += "LEG  FROM     TO       DIST   TC   MH  WIND     GS  TIME  FUEL_LEG FUEL_TOT\n"
+        plan_text += "LEG  FROM     TO       DIST   TC   MH  WIND     GS  TIME  FUEL_LEG FUEL_TOT FUEL_LEFT\n"
         plan_text += "-" * 75 + "\n"
 
         # Legs
@@ -796,7 +796,8 @@ class PlanTab(ttk.Frame):
             plan_text += f"{leg_dict['Distance (NM)']:6.1f} {leg_dict['True course (deg)']:3.0f}  "
             plan_text += f"{leg_dict['Magnetic heading (deg)']:3.0f} {leg_dict['Wind Direction (deg)']:3.0f}°/{leg_dict['Wind Speed (kn)']:2.0f}kn "
             plan_text += f"{leg_dict['Groundspeed (kn)']:3.0f} {leg_dict['Leg time (min)']:4.0f} "
-            plan_text += f"{leg_dict['Fuel burn leg (gal)']:7.1f}  {leg_dict['Fuel burn tot (gal)']:7.1f}\n"
+            plan_text += f"{leg_dict['Fuel burn leg (gal)']:7.1f}  {leg_dict['Fuel burn tot (gal)']:7.1f}"
+            plan_text += f"{leg_dict['Fuel left (gal)']:7.1f}\n"
 
         # Totaux
         plan_text += "-" * 75 + "\n"

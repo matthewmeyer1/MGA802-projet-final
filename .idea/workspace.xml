@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Ajout d'avions et menu avion">
-      <change afterPath="$PROJECT_DIR$/vfr_planner/calculations/aeroport_refuel.py" afterDir="false" />
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfr_planner/data/airport_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/data/airport_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/calculations/aeroport_refuel.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/calculations/aeroport_refuel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/gui/tabs.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/gui/tabs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vfr_planner/models/itinerary.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/models/itinerary.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vfr_planner/models/leg.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/models/leg.py" afterDir="false" />
     </list>
@@ -170,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750211935733</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche">
+      <option name="closed" value="true" />
+      <created>1750780754694</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750780754694</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,7 +200,8 @@
     <MESSAGE value="lil change" />
     <MESSAGE value="gui incorporation" />
     <MESSAGE value="improved gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved gui" />
+    <MESSAGE value="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
