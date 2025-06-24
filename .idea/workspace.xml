@@ -5,8 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Bugfix pour que les fonctions regex fonctionne pour tous les fichiers pdf">
+      <change afterPath="$PROJECT_DIR$/vfr_planner/calculations/weather.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/data/airport_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/data/extraction/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/data/extraction/extraction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/export/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/export/excel_export.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/export/pdf_export.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/gui/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/gui/main_window.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/gui/tabs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/gui/widgets.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/models/aircraft.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/models/itinerary.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/models/leg.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/models/waypoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfr_planner/utils/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/extraction/extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/extraction/extraction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/extraction/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/extraction/extraction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/extraction/extraction_avions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/extraction/testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/calculations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/find Aerodrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/csv/airports.csv" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/data/airports.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/csv/cfs_alb_man_sask.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/csv/cfs_atl.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/csv/cfs_ont.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/csv/cfs_qc.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/csv/cfs_terr.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/csv/csv" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/calculations/navigation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/csv/kpo606.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/pdf/POH-Cessna-172S.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/pdf/POH-cc18.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/pdf/POH-cessna-182.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/pdf/cfs_alb_man_sask.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/pdf/cfs_atl.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/pdf/cfs_ont.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/pdf/cfs_qc.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ressources/pdf/cfs_terr.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/trouver_aeroport_proche.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_plan_generator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui_improved.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui_itinerary.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/aircraft.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/closest_airport.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/data_retrieval.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/itinerary.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/legs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/plane_logic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary/waypoints.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itinerary_ui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,26 +100,35 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2yNH724HuAlmXoatURJQ3mAMmln" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.extraction.executor&quot;: &quot;Run&quot;,
-    &quot;Python.itinerary_ui.executor&quot;: &quot;Run&quot;,
-    &quot;Python.testing.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/antoi/OneDrive/Desktop/ETS/Session 12/MGA802/Projet Final/data/extraction&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.extraction.executor": "Run",
+    "Python.gui_improved.executor": "Run",
+    "Python.itinerary_ui.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.testing.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "gwl__structure__cleanup",
+    "last_opened_file_path": "C:/Users/antoi/OneDrive/Desktop/ETS/Session 12/MGA802/Projet Final/data/extraction",
+    "run.code.analysis.last.selected.profile": "aDefault"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\antoi\OneDrive\Desktop\ETS\Session 12\MGA802\Projet Final\data\extraction" />
       <recent name="C:\Users\antoi\OneDrive\Desktop\ETS\Session 12\MGA802\Projet Final\data\ressources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gabri\PycharmProjects\MGA802-projet-final\vfr_planner\data" />
     </key>
   </component>
   <component name="RunManager">
