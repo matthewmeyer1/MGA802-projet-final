@@ -10,6 +10,7 @@ import os
 from typing import Dict, List, Any, Optional
 
 from .widgets import AirportSearchWidget, CustomWaypointDialog, add_tooltip
+
 try:
     from .widgets import FilterPanel
 except ImportError:
@@ -59,12 +60,12 @@ class AircraftTab(ttk.Frame):
         ttk.Label(preset_frame, text="Sélectionner un aéronef:").grid(row=0, column=0, sticky='w', padx=5, pady=3)
         self.preset_var = tk.StringVar()
         preset_combo = ttk.Combobox(preset_frame, textvariable=self.preset_var,
-                                   values=list(AIRCRAFT_PRESETS.keys()), state="readonly")
+                                    values=list(AIRCRAFT_PRESETS.keys()), state="readonly")
         preset_combo.grid(row=0, column=1, padx=5, pady=3, sticky='ew')
         preset_combo.bind('<<ComboboxSelected>>', self.on_preset_selected)
 
         ttk.Button(preset_frame, text="Charger",
-                  command=self.load_preset).grid(row=0, column=2, padx=5, pady=3)
+                   command=self.load_preset).grid(row=0, column=2, padx=5, pady=3)
 
         preset_frame.grid_columnconfigure(1, weight=1)
 
@@ -126,11 +127,11 @@ class AircraftTab(ttk.Frame):
         button_frame.pack(fill='x', padx=10, pady=10)
 
         ttk.Button(button_frame, text="💾 Sauvegarder profil",
-                  command=self.save_aircraft_profile).pack(side='left', padx=5)
+                   command=self.save_aircraft_profile).pack(side='left', padx=5)
         ttk.Button(button_frame, text="📁 Charger profil",
-                  command=self.load_aircraft_profile).pack(side='left', padx=5)
+                   command=self.load_aircraft_profile).pack(side='left', padx=5)
         ttk.Button(button_frame, text="🔄 Réinitialiser",
-                  command=self.clear_all).pack(side='left', padx=5)
+                   command=self.clear_all).pack(side='left', padx=5)
 
         canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
@@ -229,9 +230,9 @@ class AirportsTab(ttk.Frame):
         try:
             # Instructions
             instructions = ttk.Label(self,
-                                    text="Recherchez vos aéroports par code ou nom. "
-                                         "🔵=ICAO, 🟡=IATA, 🟢=Local/GPS",
-                                    wraplength=600, justify='left')
+                                     text="Recherchez vos aéroports par code ou nom. "
+                                          "🔵=ICAO, 🟡=IATA, 🟢=Local/GPS",
+                                     wraplength=600, justify='left')
             instructions.pack(pady=5, padx=10)
 
             # Frame principal
@@ -241,7 +242,7 @@ class AirportsTab(ttk.Frame):
             # Panneau de filtres (gauche)
             if FilterPanel:
                 self.filter_panel = FilterPanel(main_frame, self.main_window.airport_db,
-                                               self.on_filters_updated)
+                                                self.on_filters_updated)
                 self.filter_panel.pack(side='left', fill='y', padx=(0, 5))
             else:
                 # Panneau de filtres simplifié si FilterPanel n'est pas disponible
@@ -259,7 +260,7 @@ class AirportsTab(ttk.Frame):
             departure_frame.pack(fill='x', pady=5)
 
             self.departure_search = AirportSearchWidget(departure_frame,
-                                                       self.main_window.airport_db, "Départ:")
+                                                        self.main_window.airport_db, "Départ:")
             self.departure_search.pack(fill='x')
             self.departure_search.set_callback(self.on_departure_selected)
 
@@ -268,7 +269,7 @@ class AirportsTab(ttk.Frame):
             destination_frame.pack(fill='x', pady=5)
 
             self.destination_search = AirportSearchWidget(destination_frame,
-                                                         self.main_window.airport_db, "Arrivée:")
+                                                          self.main_window.airport_db, "Arrivée:")
             self.destination_search.pack(fill='x')
             self.destination_search.set_callback(self.on_destination_selected)
 
@@ -277,11 +278,11 @@ class AirportsTab(ttk.Frame):
             button_frame.pack(fill='x', pady=10)
 
             ttk.Button(button_frame, text="🔄 Inverser",
-                      command=self.swap_airports).pack(side='left', padx=5)
+                       command=self.swap_airports).pack(side='left', padx=5)
             ttk.Button(button_frame, text="📍 Ajouter à l'itinéraire",
-                      command=self.add_to_route).pack(side='left', padx=5)
+                       command=self.add_to_route).pack(side='left', padx=5)
             ttk.Button(button_frame, text="🗺️ Voir sur carte",
-                      command=self.show_on_map).pack(side='left', padx=5)
+                       command=self.show_on_map).pack(side='left', padx=5)
 
             # Informations de vol
             info_frame = ttk.LabelFrame(selection_frame, text="Informations de vol", padding=10)
@@ -385,7 +386,7 @@ Utilisez 'Plan de vol' pour calculs détaillés avec météo.
     def swap_airports(self):
         """Inverser les aéroports de départ et d'arrivée"""
         if (self.departure_airport and self.destination_airport and
-            self.departure_search and self.destination_search):
+                self.departure_search and self.destination_search):
 
             # Échanger
             temp = self.departure_airport
@@ -511,13 +512,13 @@ class RouteTab(ttk.Frame):
         wp_button_frame.pack(fill='x', pady=5)
 
         ttk.Button(wp_button_frame, text="➕ Ajouter",
-                  command=self.add_custom_waypoint).pack(side='left', padx=2)
+                   command=self.add_custom_waypoint).pack(side='left', padx=2)
         ttk.Button(wp_button_frame, text="🗑️ Supprimer",
-                  command=self.remove_waypoint).pack(side='left', padx=2)
+                   command=self.remove_waypoint).pack(side='left', padx=2)
         ttk.Button(wp_button_frame, text="⬆️ Monter",
-                  command=self.move_waypoint_up).pack(side='left', padx=2)
+                   command=self.move_waypoint_up).pack(side='left', padx=2)
         ttk.Button(wp_button_frame, text="⬇️ Descendre",
-                  command=self.move_waypoint_down).pack(side='left', padx=2)
+                   command=self.move_waypoint_down).pack(side='left', padx=2)
 
         # Panneau droit - Détails du waypoint
         right_frame = ttk.Frame(main_frame)
@@ -617,7 +618,7 @@ class RouteTab(ttk.Frame):
 
 
 class PlanTab(ttk.Frame):
-    """Onglet pour le plan de vol final"""
+    """Onglet pour le plan de vol final avec timing météo corrigé"""
 
     def __init__(self, parent, main_window):
         super().__init__(parent)
@@ -638,8 +639,8 @@ class PlanTab(ttk.Frame):
 
         # Info sur l'API intégrée
         api_info = ttk.Label(config_frame,
-                            text="✅ API météo Tomorrow.io configurée automatiquement",
-                            foreground='green')
+                             text="✅ API météo Tomorrow.io configurée automatiquement",
+                             foreground='green')
         api_info.pack(pady=5)
 
         # Boutons de configuration/test
@@ -647,20 +648,20 @@ class PlanTab(ttk.Frame):
         button_config_frame.pack(fill='x', pady=5)
 
         ttk.Button(button_config_frame, text="🧪 Tester API météo",
-                  command=self.test_api).pack(side='left', padx=5)
+                   command=self.test_api).pack(side='left', padx=5)
 
         # Boutons de génération
         button_frame = ttk.Frame(main_frame)
         button_frame.pack(fill='x', pady=5)
 
         ttk.Button(button_frame, text="🧮 Calculer itinéraire",
-                  command=self.calculate_route).pack(side='left', padx=5)
+                   command=self.calculate_route).pack(side='left', padx=5)
         ttk.Button(button_frame, text="📊 Export Excel",
-                  command=self.export_excel).pack(side='left', padx=5)
+                   command=self.export_excel).pack(side='left', padx=5)
         ttk.Button(button_frame, text="📄 Export PDF",
-                  command=self.export_pdf).pack(side='left', padx=5)
+                   command=self.export_pdf).pack(side='left', padx=5)
         ttk.Button(button_frame, text="🗺️ Carte interactive",
-                  command=self.show_map).pack(side='left', padx=5)
+                   command=self.show_map).pack(side='left', padx=5)
 
         # Zone d'affichage du plan
         plan_frame = ttk.LabelFrame(main_frame, text="Plan de vol", padding=10)
@@ -702,17 +703,17 @@ class PlanTab(ttk.Frame):
             # API fonctionne
             self.main_window.status_bar.set_api_status(True, True)
             messagebox.showinfo("Succès",
-                              f"API météo fonctionnelle!\n\n"
-                              f"Test à Montréal:\n"
-                              f"Vent: {weather_data['wind_direction']:.0f}°/{weather_data['wind_speed']:.0f}kn\n"
-                              f"Température: {weather_data['temperature']:.0f}°C")
+                                f"API météo fonctionnelle!\n\n"
+                                f"Test à Montréal:\n"
+                                f"Vent: {weather_data['wind_direction']:.0f}°/{weather_data['wind_speed']:.0f}kn\n"
+                                f"Température: {weather_data['temperature']:.0f}°C")
 
         except Exception as e:
             self.main_window.status_bar.set_api_status(True, False)
             messagebox.showerror("Erreur API", f"Test échoué:\n{e}")
 
     def calculate_route(self):
-        """Calculer l'itinéraire complet"""
+        """Calculer l'itinéraire complet avec timing météo corrigé"""
         # Vérifier les prérequis
         waypoints = self.main_window.route_tab.get_waypoints()
         if len(waypoints) < 2:
@@ -720,9 +721,12 @@ class PlanTab(ttk.Frame):
             return
 
         try:
-            # Préparer les données
+            # Préparer les données aéronef
             aircraft_data = self.main_window.aircraft_tab.get_aircraft_data()
             flight_data = self.main_window.aircraft_tab.get_flight_data()
+
+            print(f"🛩️ Données aéronef: {aircraft_data}")
+            print(f"✈️ Données vol: {flight_data}")
 
             aircraft_params = {
                 'tas': float(aircraft_data.get('cruise_speed', 110)),
@@ -732,81 +736,146 @@ class PlanTab(ttk.Frame):
                 'aircraft_type': aircraft_data.get('aircraft_type', '')
             }
 
+            # CORRECTION: Inclure date et heure de départ dans flight_params
             flight_params = {
                 'date': flight_data.get('date', ''),
-                'time': flight_data.get('departure_time', ''),
+                'departure_time': flight_data.get('departure_time', ''),  # Utilise 'departure_time' au lieu de 'time'
                 'pilot_name': flight_data.get('pilot_name', ''),
-                'reserve_time': float(flight_data.get('reserve_time', 45))
+                'reserve_time': float(flight_data.get('reserve_time', 45)),
+                'passengers': flight_data.get('passengers', ''),
+                'baggage_weight': flight_data.get('baggage_weight', ''),
+                'pilot_license': flight_data.get('pilot_license', '')
             }
 
-            # Calculer l'itinéraire avec clé API intégrée
-            self.main_window.status_bar.set_status("Calcul en cours...")
-            self.main_window.root.update()  # CORRECTION: utiliser root.update()
+            print(f"📅 Flight params avec timing: {flight_params}")
+
+            # Vérifier que nous avons au moins une date et heure
+            if not flight_params['date'] and not flight_params['departure_time']:
+                print("⚠️ Pas de date/heure spécifiée, utilisation valeurs par défaut")
+                from datetime import datetime
+                today = datetime.now()
+                flight_params['date'] = today.strftime('%Y-%m-%d')
+                flight_params['departure_time'] = '10:00'
+                print(f"📅 Valeurs par défaut: {flight_params['date']} à {flight_params['departure_time']}")
+
+            # Calculer l'itinéraire avec clé API intégrée et timing corrigé
+            self.main_window.status_bar.set_status("Calcul en cours avec météo temps réel...")
+            self.main_window.root.update()
 
             itinerary = create_itinerary_from_gui(
                 waypoints=waypoints,
                 aircraft_params=aircraft_params,
-                flight_params=flight_params,
-                api_key=WEATHER_API_KEY  # Utiliser la clé API intégrée
+                flight_params=flight_params,  # Contient maintenant date et departure_time
+                api_key=WEATHER_API_KEY
             )
 
             # Stocker pour l'export
             self.calculated_itinerary = itinerary
 
-            # Afficher le résultat
-            self.display_itinerary(itinerary)
+            # Afficher le résultat avec info timing
+            self.display_itinerary_with_timing(itinerary)
 
             summary = itinerary.get_summary()
+
+            # Calculer heure d'arrivée
+            if itinerary.start_time and summary['total_time']:
+                import datetime
+                eta = itinerary.start_time + datetime.timedelta(minutes=summary['total_time'])
+                eta_local = eta.strftime('%H:%M')
+                timing_info = f"Départ: {itinerary.start_time.strftime('%H:%M')} UTC, Arrivée: {eta_local}"
+            else:
+                timing_info = "Timing non disponible"
+
             self.main_window.status_bar.set_status(
-                f"✅ Calculé: {len(itinerary.legs)} segments, {summary['total_time']:.0f} min"
+                f"✅ Calculé: {len(itinerary.legs)} segments, {summary['total_time']:.0f} min - {timing_info}"
             )
 
         except Exception as e:
+            print(f"❌ Erreur calcul: {e}")
+            import traceback
+            traceback.print_exc()
             messagebox.showerror("Erreur", f"Erreur lors du calcul:\n{e}")
             self.main_window.status_bar.set_status("Erreur de calcul")
 
-    def display_itinerary(self, itinerary):
-        """Afficher l'itinéraire calculé"""
+    def display_itinerary_with_timing(self, itinerary):
+        """Afficher l'itinéraire calculé avec informations de timing détaillées"""
         summary = itinerary.get_summary()
         fuel_analysis = itinerary.get_fuel_analysis()
 
-        plan_text = "PLAN DE VOL VFR - CALCUL COMPLET\n"
-        plan_text += "=" * 70 + "\n\n"
+        plan_text = "PLAN DE VOL VFR - CALCUL AVEC TIMING MÉTÉO CORRIGÉ\n"
+        plan_text += "=" * 80 + "\n\n"
 
-        # Informations générales
+        # Informations générales avec timing
         aircraft_data = self.main_window.aircraft_tab.get_aircraft_data()
         flight_data = self.main_window.aircraft_tab.get_flight_data()
 
         plan_text += f"Avion: {aircraft_data.get('registration', 'N/A')} ({aircraft_data.get('aircraft_type', 'N/A')})\n"
         plan_text += f"Pilote: {flight_data.get('pilot_name', 'N/A')}\n"
         plan_text += f"Date: {flight_data.get('date', 'N/A')}\n"
-        plan_text += f"Heure: {flight_data.get('departure_time', 'N/A')}\n"
+        plan_text += f"Heure départ: {flight_data.get('departure_time', 'N/A')}\n"
+
+        # Afficher le timing de départ calculé
+        if itinerary.start_time:
+            plan_text += f"Heure départ UTC: {itinerary.start_time.strftime('%Y-%m-%d %H:%M')} UTC\n"
+
+            # Calculer heure d'arrivée
+            if summary['total_time']:
+                import datetime
+                eta_utc = itinerary.start_time + datetime.timedelta(minutes=summary['total_time'])
+                plan_text += f"Heure arrivée UTC: {eta_utc.strftime('%H:%M')} UTC\n"
+
         plan_text += f"TAS: {aircraft_data.get('cruise_speed', 'N/A')} kn\n"
         plan_text += f"Consommation: {aircraft_data.get('fuel_burn', 'N/A')} GPH\n\n"
 
-        # En-tête tableau
-        plan_text += "LEG  FROM     TO       DIST   TC   MH  WIND     GS  TIME  FUEL_LEG FUEL_TOT FUEL_LEFT\n"
-        plan_text += "-" * 75 + "\n"
+        # En-tête tableau avec colonnes timing
+        plan_text += "LEG FROM     TO       DIST  TC  MH  WIND      GS  TIME  FUEL_LEG FUEL_TOT FUEL_LEFT  MÉTÉO_HEURE\n"
+        plan_text += "-" * 95 + "\n"
 
-        # Legs
+        # Legs avec info timing météo
         for i, leg in enumerate(itinerary.legs):
             leg_dict = leg.to_dict()
 
-            plan_text += f"{i+1:2d}   {leg_dict['Starting WP'][:7]:7s} {leg_dict['Ending WP'][:7]:7s} "
-            plan_text += f"{leg_dict['Distance (NM)']:6.1f} {leg_dict['True course (deg)']:3.0f}  "
+            plan_text += f"{i + 1:2d}  {leg_dict['Starting WP'][:7]:7s} {leg_dict['Ending WP'][:7]:7s} "
+            plan_text += f"{leg_dict['Distance (NM)']:5.1f} {leg_dict['True course (deg)']:3.0f} "
             plan_text += f"{leg_dict['Magnetic heading (deg)']:3.0f} {leg_dict['Wind Direction (deg)']:3.0f}°/{leg_dict['Wind Speed (kn)']:2.0f}kn "
             plan_text += f"{leg_dict['Groundspeed (kn)']:3.0f} {leg_dict['Leg time (min)']:4.0f} "
-            plan_text += f"{leg_dict['Fuel burn leg (gal)']:7.1f}  {leg_dict['Fuel burn tot (gal)']:7.1f}"
-            plan_text += f"{leg_dict['Fuel left (gal)']:7.1f}\n"
+            plan_text += f"{leg_dict['Fuel burn leg (gal)']:7.1f} {leg_dict['Fuel burn tot (gal)']:7.1f} "
+            plan_text += f"{leg_dict['Fuel left (gal)']:8.1f}  "
+
+            # Ajouter info timing météo
+            weather_time = leg_dict.get('Time weather', 'N/A')
+            if weather_time and weather_time != 'N/A':
+                plan_text += f"{weather_time[:5]}"  # Afficher HH:MM seulement
+            else:
+                plan_text += "N/A  "
+
+            plan_text += "\n"
 
         # Totaux
-        plan_text += "-" * 75 + "\n"
-        plan_text += f"TOTAUX:             {summary['total_distance']:6.1f}                    "
+        plan_text += "-" * 95 + "\n"
+        plan_text += f"TOTAUX:              {summary['total_distance']:5.1f}                   "
         plan_text += f"{summary['total_time']:4.0f} {summary['total_fuel']:16.1f}\n\n"
 
+        # Section timing détaillée
+        plan_text += f"INFORMATIONS DE TIMING:\n"
+        if itinerary.start_time:
+            plan_text += f"Heure départ configurée: {itinerary.start_time.strftime('%Y-%m-%d %H:%M UTC')}\n"
+
+            # Afficher timing de chaque leg
+            current_time = itinerary.start_time
+            plan_text += f"\nTiming des segments:\n"
+            for i, leg in enumerate(itinerary.legs):
+                leg_dict = leg.to_dict()
+                eta = current_time + datetime.timedelta(minutes=leg_dict['Leg time (min)'])
+                plan_text += f"  Leg {i + 1}: {current_time.strftime('%H:%M')} → {eta.strftime('%H:%M')} "
+                plan_text += f"(météo au milieu: {leg_dict.get('Time weather', 'N/A')[:5]})\n"
+                current_time = eta
+        else:
+            plan_text += f"Timing non configuré\n"
+
         # Analyse carburant
-        plan_text += f"ANALYSE CARBURANT:\n"
-        plan_text += f"Temps total: {summary['total_time']/60:.1f}h ({summary['total_time']:.0f} min)\n"
+        plan_text += f"\nANALYSE CARBURANT:\n"
+        plan_text += f"Temps total: {summary['total_time'] / 60:.1f}h ({summary['total_time']:.0f} min)\n"
         plan_text += f"Carburant route: {fuel_analysis['route_fuel']:.1f} gal\n"
         plan_text += f"Carburant réserve: {fuel_analysis['reserve_fuel']:.1f} gal\n"
         plan_text += f"Total requis: {fuel_analysis['total_required']:.1f} gal\n"
@@ -818,12 +887,17 @@ class PlanTab(ttk.Frame):
             plan_text += f"⚠️ CARBURANT INSUFFISANT (déficit: {-fuel_analysis['remaining']:.1f} gal)\n"
             plan_text += "   Ajoutez des arrêts de ravitaillement!\n"
 
-        plan_text += f"\n📊 Météo: Tomorrow.io API (intégrée)\n"
+        plan_text += f"\n📊 Météo: Tomorrow.io API (timing corrigé - météo au milieu des legs)\n"
         plan_text += f"🧭 Navigation: Calculs précis avec vent\n"
+        plan_text += f"🕐 Timing: Heure utilisateur respectée, météo interpolée\n"
 
         # Afficher
         self.plan_text.delete('1.0', tk.END)
         self.plan_text.insert('1.0', plan_text)
+
+    def display_itinerary(self, itinerary):
+        """Afficher l'itinéraire calculé (méthode legacy)"""
+        self.display_itinerary_with_timing(itinerary)
 
     def export_excel(self):
         """Exporter vers Excel"""
@@ -889,13 +963,13 @@ class PlanTab(ttk.Frame):
 
             # Ajouter waypoints
             for i, wp in enumerate(waypoints):
-                color = 'green' if i == 0 else 'red' if i == len(waypoints)-1 else 'blue'
-                icon = 'play' if i == 0 else 'stop' if i == len(waypoints)-1 else 'info-sign'
+                color = 'green' if i == 0 else 'red' if i == len(waypoints) - 1 else 'blue'
+                icon = 'play' if i == 0 else 'stop' if i == len(waypoints) - 1 else 'info-sign'
 
                 folium.Marker(
                     [wp['lat'], wp['lon']],
-                    popup=f"WP{i+1}: {wp['name']}",
-                    tooltip=f"#{i+1}: {wp['name']}",
+                    popup=f"WP{i + 1}: {wp['name']}",
+                    tooltip=f"#{i + 1}: {wp['name']}",
                     icon=folium.Icon(color=color, icon=icon)
                 ).add_to(m)
 
