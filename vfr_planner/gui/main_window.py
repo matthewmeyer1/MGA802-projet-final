@@ -397,7 +397,7 @@ class VFRPlannerGUI:
         self.plan_tab.calculate_route()
 
     def check_weather(self):
-        """Vérifier la météo"""
+        """Vérifier la météo avec timing correct basé sur les informations de vol"""
         waypoints = self.route_tab.get_waypoints()
         if not waypoints:
             messagebox.showwarning("Attention", "Aucun waypoint défini")
@@ -407,62 +407,193 @@ class VFRPlannerGUI:
             from ..calculations.weather import WeatherService
             from ..models.waypoint import Waypoint
             import datetime
+            import pytz
 
             # Utiliser la clé API intégrée
             weather_service = WeatherService(WEATHER_API_KEY)
 
-            # Analyser la météo pour la route
+            # Récupérer les informations de vol pour le timing correct
+            flight_data = self.aircraft_tab.get_flight_data()
+            aircraft_data = self.aircraft_tab.get_aircraft_data()
+
+            print(f"🌤️ Vérification météo avec timing vol:")
+            print(f"   Flight data: {flight_data}")
+
+            # Calculer l'heure de départ réelle
+            date_str = flight_data.get('date', '')
+            time_str = flight_data.get('departure_time', '')
+
+            if date_str and time_str:
+                # Utiliser les données de vol
+                try:
+                    # Parser la date et l'heure
+                    year, month, day = map(int, date_str.split('-'))
+                    hour, minute = map(int, time_str.split(':'))
+
+                    # Créer datetime avec timezone
+                    tz = pytz.timezone("America/Montreal")
+                    dt = datetime.datetime(year, month, day, hour, minute)
+                    dt = tz.localize(dt)
+                    start_time = dt.astimezone(pytz.utc)
+
+                    print(f"   Heure départ configurée: {start_time.strftime('%Y-%m-%d %H:%M UTC')}")
+
+                except Exception as e:
+                    print(f"   ⚠️ Erreur parsing date/heure: {e}, utilisation heure actuelle")
+                    start_time = datetime.datetime.now(pytz.utc)
+            else:
+                print(f"   ⚠️ Pas de date/heure configurée, utilisation heure actuelle")
+                start_time = datetime.datetime.now(pytz.utc)
+
+            # Récupérer la vitesse de croisière pour des calculs précis
+            try:
+                cruise_speed = float(aircraft_data.get('cruise_speed', 110))
+            except (ValueError, TypeError):
+                cruise_speed = 110
+
+            print(f"   Vitesse croisière: {cruise_speed} kn")
+
+            # Convertir waypoints en objets Waypoint
             wp_objects = [Waypoint(wp['lat'], wp['lon'], wp['name']) for wp in waypoints]
-            analysis = weather_service.analyze_weather_for_route(wp_objects, datetime.datetime.now())
+
+            # Choisir la méthode d'analyse selon la disponibilité de l'itinéraire calculé
+            if hasattr(self.plan_tab, 'calculated_itinerary') and self.plan_tab.calculated_itinerary:
+                print("   📊 Utilisation itinéraire calculé pour analyse précise")
+                analysis = weather_service.analyze_weather_for_itinerary(self.plan_tab.calculated_itinerary)
+            else:
+                print("   📊 Utilisation analyse basique avec calculs de distance")
+                analysis = weather_service.analyze_weather_for_route(wp_objects, start_time, cruise_speed)
 
             if 'error' in analysis:
                 raise Exception(analysis['error'])
 
             # Afficher les résultats
-            self.show_weather_analysis(analysis)
+            self.show_weather_analysis(analysis, weather_service)
 
         except Exception as e:
             messagebox.showerror("Erreur météo", f"Erreur lors de l'analyse météo:\n{e}")
 
-    def show_weather_analysis(self, analysis):
-        """Afficher l'analyse météo dans une fenêtre"""
+    def show_weather_analysis(self, analysis, weather_service):
+        """Afficher l'analyse météo dans une fenêtre avec timing détaillé"""
         weather_window = tk.Toplevel(self.root)
-        weather_window.title("Analyse météorologique")
-        weather_window.geometry("600x500")
+        weather_window.title("Analyse météorologique avec timing de vol")
+        weather_window.geometry("700x600")
 
         # Zone de texte avec scrollbar
         text_frame = ttk.Frame(weather_window)
         text_frame.pack(fill='both', expand=True, padx=10, pady=10)
 
-        weather_text = tk.Text(text_frame, wrap='word')
+        weather_text = tk.Text(text_frame, wrap='word', font=('Courier', 10))
         weather_text.pack(side='left', fill='both', expand=True)
 
         scrollbar = ttk.Scrollbar(text_frame, orient='vertical', command=weather_text.yview)
         scrollbar.pack(side='right', fill='y')
         weather_text.configure(yscrollcommand=scrollbar.set)
 
-        # Formater le contenu
+        # Formater le contenu avec timing détaillé
         content = "ANALYSE MÉTÉOROLOGIQUE DE LA ROUTE\n"
-        content += "=" * 50 + "\n\n"
+        content += "=" * 60 + "\n\n"
+
+        # Informations de timing
+        if 'flight_start_time' in analysis:
+            start_time = analysis['flight_start_time']
+            content += f"🕐 Heure de départ: {start_time}\n"
+
+        if 'aircraft_speed' in analysis:
+            content += f"✈️ Vitesse de croisière: {analysis['aircraft_speed']} kn\n"
+
+        if 'method' in analysis:
+            method_desc = "Itinéraire calculé (timing précis)" if analysis['method'] == 'calculated_itinerary' else "Calculs de distance"
+            content += f"📊 Méthode: {method_desc}\n"
+
+        content += f"📅 Analyse générée: {analysis['generated_at'][:19]}\n\n"
+
+        # Résumé de vol si disponible
+        if 'analysis' in analysis and 'flight_summary' in analysis['analysis']:
+            summary = analysis['analysis']['flight_summary']
+            content += "RÉSUMÉ DU VOL:\n"
+            content += f"Temps total: {summary['total_time_minutes']:.0f} minutes ({summary['total_time_minutes']/60:.1f}h)\n"
+            content += f"Distance totale: {summary['total_distance_nm']:.1f} NM\n"
+            content += f"Départ: {summary['departure_time']}\n"
+            content += f"Arrivée estimée: {summary['arrival_time']}\n\n"
+
+        # Détails par waypoint
+        content += "MÉTÉO PAR WAYPOINT:\n"
+        content += "-" * 60 + "\n"
+
+        for i, wp_weather in enumerate(analysis['route_weather']):
+            content += f"\n{i+1}. Waypoint: {wp_weather['waypoint']}\n"
+            content += f"   Heure: {wp_weather['time']}\n"
+
+            if 'leg_info' in wp_weather:
+                content += f"   Info: {wp_weather['leg_info']}\n"
+
+            weather = wp_weather['weather']
+            content += f"   Vent: {weather['wind_direction']:.0f}°/{weather['wind_speed']:.0f} kn\n"
+            content += f"   Température: {weather['temperature']:.0f}°C\n"
+            content += f"   Visibilité: {weather['visibility']:.1f} km\n"
+            content += f"   Couverture nuageuse: {weather['cloud_cover']:.0f}%\n"
+            content += f"   Précipitations: {weather['precipitation']:.1f} mm/h\n"
+
+        # Analyse des tendances
+        if 'analysis' in analysis and analysis['analysis']:
+            content += f"\n" + "=" * 60 + "\n"
+            content += "ANALYSE DES TENDANCES:\n\n"
+            anal = analysis['analysis']
+
+            content += f"VENT:\n"
+            if 'wind_speed' in anal:
+                ws = anal['wind_speed']
+                content += f"  Vitesse: min {ws['min']:.0f}kn, max {ws['max']:.0f}kn, moy {ws['avg']:.0f}kn\n"
+            if 'wind_direction' in anal:
+                wd = anal['wind_direction']
+                content += f"  Direction moyenne: {wd['avg']:.0f}°\n"
+                content += f"  Variation: {wd['variation']:.0f}°\n"
+
+            if 'visibility' in anal:
+                vis = anal['visibility']
+                content += f"\nVISIBILITÉ:\n"
+                content += f"  Minimale: {vis['min']:.1f} km\n"
+                content += f"  Moyenne: {vis['avg']:.1f} km\n"
+
+            if 'precipitation' in anal:
+                precip = anal['precipitation']
+                content += f"\nPRÉCIPITATIONS:\n"
+                content += f"  Maximum: {precip['max']:.1f} mm/h\n"
+                content += f"  Total route: {precip['total']:.1f} mm/h\n"
+
+            # Alertes météo
+            if 'alerts' in anal and anal['alerts']:
+                content += f"\n⚠️ ALERTES MÉTÉO:\n"
+                for alert in anal['alerts']:
+                    content += f"  • {alert}\n"
+            else:
+                content += f"\n✅ Aucune alerte météo\n"
+
+        # Recommandations VFR
+        content += f"\n" + "=" * 60 + "\n"
+        content += "RECOMMANDATIONS VFR:\n\n"
+
+        # Vérifier les conditions VFR pour chaque point
+        suitable_points = 0
+        total_points = len(analysis['route_weather'])
 
         for wp_weather in analysis['route_weather']:
-            content += f"Waypoint: {wp_weather['waypoint']} à {wp_weather['time']}\n"
             weather = wp_weather['weather']
-            content += f"  Vent: {weather['wind_direction']:.0f}°/{weather['wind_speed']:.0f}kn\n"
-            content += f"  Température: {weather['temperature']:.0f}°C\n"
-            content += f"  Visibilité: {weather['visibility']:.1f}km\n"
-            content += f"  Précipitations: {weather['precipitation']:.1f}mm/h\n\n"
+            suitable, reasons = weather_service.is_weather_suitable_for_vfr(weather)
+            if suitable:
+                suitable_points += 1
 
-        if 'analysis' in analysis and analysis['analysis']:
-            content += "RÉSUMÉ:\n"
-            anal = analysis['analysis']
-            content += f"Vent moyen: {anal['wind_speed']['avg']:.0f}kn\n"
-            content += f"Visibilité minimale: {anal['visibility']['min']:.1f}km\n"
+        content += f"Points avec conditions VFR: {suitable_points}/{total_points}\n"
 
-            if anal['alerts']:
-                content += "\nALERTES:\n"
-                for alert in anal['alerts']:
-                    content += f"⚠️ {alert}\n"
+        if suitable_points == total_points:
+            content += "✅ Conditions favorables au VFR sur toute la route\n"
+        elif suitable_points >= total_points * 0.8:
+            content += "⚠️ Conditions généralement bonnes, vérifier points problématiques\n"
+        else:
+            content += "❌ Conditions difficiles, vol VFR non recommandé\n"
+
+        content += f"\nNote: Cette analyse utilise {'les temps de vol calculés' if 'method' in analysis and analysis['method'] == 'calculated_itinerary' else 'des estimations de temps de vol'}"
 
         weather_text.insert('1.0', content)
         weather_text.configure(state='disabled')
