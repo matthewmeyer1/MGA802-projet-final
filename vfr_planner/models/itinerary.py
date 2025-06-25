@@ -10,7 +10,7 @@ from typing import List, Dict, Any, Optional
 from .waypoint import Waypoint
 from .leg import Leg
 from .aircraft import Aircraft
-
+from ..calculations.aeroport_refuel import aeroport_proche
 
 class Itinerary:
     """Modèle de données pour un itinéraire de vol complet"""
@@ -145,10 +145,12 @@ class Itinerary:
                 # Calculer tous les paramètres
                 previous_total_time = self.legs[-1].time_tot if self.legs else 0
                 previous_total_fuel = self.legs[-1].fuel_burn_total if self.legs else 0
+                previous_fuel = self.legs[-1].fuel_left if self.legs else self.aircraft.fuel_capacity
 
                 leg.calculate_all(
                     start_time=current_time,
                     previous_total_time=previous_total_time,
+                    previous_fuel_left=previous_fuel,
                     previous_total_fuel=previous_total_fuel,
                     fuel_burn_rate=self.aircraft.fuel_burn,
                     api_key=self.api_key
@@ -157,7 +159,49 @@ class Itinerary:
                 # Avancer l'heure pour le prochain segment
                 current_time += datetime.timedelta(minutes=leg.time_leg)
 
-            self.legs.append(leg)
+            reserve_fuel = (45 / 60) * self.aircraft.fuel_burn
+            if leg.fuel_left - reserve_fuel < 0:
+                print(f"Not enough fuel, need to stop after {leg}")
+                added_wp, leg1, leg2 = aeroport_proche(leg, self.aircraft)
+
+                if not leg1 is None:
+                    #self.add_waypoint(added_wp, index = i + 1)
+                    # Calculer tous les paramètres
+                    previous_total_time = self.legs[-1].time_tot if self.legs else 0
+                    previous_total_fuel = self.legs[-1].fuel_burn_total if self.legs else 0
+                    previous_fuel = self.legs[-1].fuel_left if self.legs else self.aircraft.fuel_capacity
+
+                    leg1.calculate_all(
+                        start_time=current_time,
+                        previous_total_time=previous_total_time,
+                        previous_fuel_left=previous_fuel,
+                        previous_total_fuel=previous_total_fuel,
+                        fuel_burn_rate=self.aircraft.fuel_burn,
+                        api_key=self.api_key
+                    )
+
+                    self.legs.append(leg1)
+                    leg1.fuel_left = self.aircraft.fuel_capacity
+                    # Calculer tous les paramètres
+                    previous_total_time = self.legs[-1].time_tot if self.legs else 0
+                    previous_total_fuel = self.legs[-1].fuel_burn_total if self.legs else 0
+                    previous_fuel = self.legs[-1].fuel_left if self.legs else self.aircraft.fuel_capacity
+
+                    leg2.calculate_all(
+                        start_time=current_time,
+                        previous_total_time=previous_total_time,
+                        previous_fuel_left=previous_fuel,
+                        previous_total_fuel=previous_total_fuel,
+                        fuel_burn_rate=self.aircraft.fuel_burn,
+                        api_key=self.api_key
+                    )
+
+
+                    self.legs.append(leg2)
+                else:
+                    self.legs.append(leg)
+            else:
+                self.legs.append(leg)
 
     def recalculate_all(self):
         """Recalculer tous les segments avec les paramètres actuels"""
@@ -357,6 +401,7 @@ class Itinerary:
                 'total_time': leg_dict['Total time (min)'],
                 'fuel_leg': leg_dict['Fuel burn leg (gal)'],
                 'fuel_total': leg_dict['Fuel burn tot (gal)'],
+                'fuel_left': leg_dict['Fuel left (gal)'],
                 'eta': eta_str,
                 'remarks': f"Wind: {leg_dict['Wind Direction (deg)']}°/{leg_dict['Wind Speed (kn)']}kn"
             }

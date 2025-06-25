@@ -8,9 +8,9 @@ from typing import Dict, Any, Optional
 from dataclasses import dataclass, field
 
 from .waypoint import Waypoint
+from .. import calculations
 from ..calculations.navigation import NavigationCalculator
 from ..calculations.weather import WeatherService
-
 
 @dataclass
 class Leg:
@@ -34,6 +34,7 @@ class Leg:
     time_tot: float = field(init=False, default=0.0)  # Temps total cumulé en minutes
     fuel_burn_leg: float = field(init=False, default=0.0)  # Carburant segment en gallons
     fuel_burn_total: float = field(init=False, default=0.0)  # Carburant total cumulé en gallons
+    fuel_left: float = field(init=False, default=0.0)
 
     # Métadonnées
     time_start: Optional[str] = field(init=False, default=None)  # Heure de début
@@ -168,7 +169,7 @@ class Leg:
 
         self.time_tot = self.time_leg + previous_total_time
 
-    def calculate_fuel_burn(self, fuel_burn_rate: float, previous_total_fuel: float = 0):
+    def calculate_fuel_burn(self, fuel_burn_rate: float, previous_total_fuel: float = 0, previous_fuel_left: float=0):
         """
         Calculer la consommation de carburant
 
@@ -176,13 +177,16 @@ class Leg:
             fuel_burn_rate: Taux de consommation en GPH
             previous_total_fuel: Carburant total cumulé des segments précédents en gallons
         """
+
         self.fuel_burn_leg = (self.time_leg / 60) * fuel_burn_rate
         self.fuel_burn_total = self.fuel_burn_leg + previous_total_fuel
+        self.fuel_left = previous_fuel_left - self.fuel_burn_leg
 
     def calculate_all(self, start_time: datetime.datetime,
                       previous_total_time: float = 0,
                       previous_total_fuel: float = 0,
-                      fuel_burn_rate: float = 7.5,
+                      fuel_burn_rate: float = 6.7,
+                      previous_fuel_left: float = 0,
                       api_key: Optional[str] = None,
                       manual_wind_speed: Optional[float] = None,
                       manual_wind_direction: Optional[float] = None):
@@ -193,6 +197,7 @@ class Leg:
             start_time: Heure de début
             previous_total_time: Temps cumulé des segments précédents
             previous_total_fuel: Carburant cumulé des segments précédents
+            previouse_fuel_left: Carburant restant dans la tank
             fuel_burn_rate: Taux de consommation en GPH
             api_key: Clé API météo
             manual_wind_speed: Vent manuel (knots)
@@ -208,7 +213,7 @@ class Leg:
         self.calculate_times(previous_total_time)
 
         # 4. Calculer carburant
-        self.calculate_fuel_burn(fuel_burn_rate, previous_total_fuel)
+        self.calculate_fuel_burn(fuel_burn_rate, previous_total_fuel, previous_fuel_left)
 
     def to_dict(self) -> Dict[str, Any]:
         """Convertir en dictionnaire pour affichage et export"""
@@ -229,6 +234,7 @@ class Leg:
             'Total time (min)': round(self.time_tot, 0),
             'Fuel burn leg (gal)': round(self.fuel_burn_leg, 1),
             'Fuel burn tot (gal)': round(self.fuel_burn_total, 1),
+            'Fuel left (gal)': round(self.fuel_left, 1),
             'Weather error': self.weather_error
         }
 
