@@ -352,10 +352,10 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## Équipe de développement
 
-- **Antoine Gingras** - Architecture et interface
-- **Matthew Meyer** - Calculs de navigation  
-- **Richard Nguekam** - Base de données et extraction
-- **Gabriel Wong-Lapierre** - Export et documentation
+- **Antoine Gingras**
+- **Matthew Meyer**
+- **Richard Nguekam**
+- **Gabriel Wong-Lapierre**
 
 ## Remerciements
 
