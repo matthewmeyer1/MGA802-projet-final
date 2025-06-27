@@ -1,5 +1,5 @@
-Projet Final
-============
+Planificateur de vol VFR
+=====================
 
 .. toctree::
    :maxdepth: 4

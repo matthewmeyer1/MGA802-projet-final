@@ -9,7 +9,22 @@ import math
 
 @dataclass
 class Waypoint:
-    """Modèle de données pour un point de navigation (waypoint)"""
+    """
+    Modèle de données pour un point de navigation (waypoint).
+
+    :param lat: Latitude en degrés décimaux
+    :type lat: float
+    :param lon: Longitude en degrés décimaux
+    :type lon: float
+    :param name: Nom/identifiant du waypoint, par défaut ""
+    :type name: str
+    :param alt: Altitude en pieds (optionnel), par défaut 0.0
+    :type alt: float
+    :param waypoint_type: Type du waypoint ('airport', 'custom', 'fix', etc.), par défaut "custom"
+    :type waypoint_type: str
+    :param info: Informations supplémentaires, par défaut None
+    :type info: Optional[Dict[str, Any]]
+    """
 
     lat: float  # Latitude en degrés décimaux
     lon: float  # Longitude en degrés décimaux
@@ -19,7 +34,11 @@ class Waypoint:
     info: Optional[Dict[str, Any]] = None  # Informations supplémentaires
 
     def __post_init__(self):
-        """Validation après initialisation"""
+        """
+        Validation après initialisation.
+
+        :raises ValueError: Si latitude ou longitude sont hors limites valides.
+        """
         if not (-90 <= self.lat <= 90):
             raise ValueError(f"Latitude invalide: {self.lat}. Doit être entre -90 et 90.")
         if not (-180 <= self.lon <= 180):
@@ -31,7 +50,14 @@ class Waypoint:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'Waypoint':
-        """Créer un Waypoint depuis un dictionnaire"""
+        """
+        Créer un Waypoint depuis un dictionnaire.
+
+        :param data: Dictionnaire contenant les données du waypoint
+        :type data: Dict[str, Any]
+        :return: Instance Waypoint
+        :rtype: Waypoint
+        """
         return cls(
             lat=float(data['lat']),
             lon=float(data['lon']),
@@ -43,7 +69,14 @@ class Waypoint:
 
     @classmethod
     def from_airport(cls, airport_data: Dict[str, Any]) -> 'Waypoint':
-        """Créer un Waypoint depuis des données d'aéroport"""
+        """
+        Créer un Waypoint depuis des données d'aéroport.
+
+        :param airport_data: Données d'aéroport (lat, lon, icao, elevation, etc.)
+        :type airport_data: Dict[str, Any]
+        :return: Instance Waypoint de type 'airport'
+        :rtype: Waypoint
+        """
         return cls(
             lat=airport_data['lat'],
             lon=airport_data['lon'],
@@ -54,7 +87,12 @@ class Waypoint:
         )
 
     def to_dict(self) -> Dict[str, Any]:
-        """Convertir en dictionnaire"""
+        """
+        Convertir le waypoint en dictionnaire.
+
+        :return: Dictionnaire représentant le waypoint
+        :rtype: Dict[str, Any]
+        """
         return {
             'name': self.name,
             'lat': self.lat,
@@ -66,25 +104,23 @@ class Waypoint:
 
     def distance_to(self, other: 'Waypoint') -> float:
         """
-        Calculer la distance vers un autre waypoint (formule haversine)
+        Calculer la distance vers un autre waypoint (formule haversine).
 
-        Args:
-            other: Autre waypoint
-
-        Returns:
-            Distance en milles nautiques
+        :param other: Autre waypoint cible
+        :type other: Waypoint
+        :return: Distance en milles nautiques
+        :rtype: float
         """
         return self._haversine_distance(self.lat, self.lon, other.lat, other.lon)
 
     def bearing_to(self, other: 'Waypoint') -> float:
         """
-        Calculer le cap vers un autre waypoint
+        Calculer le cap (bearing) vers un autre waypoint.
 
-        Args:
-            other: Autre waypoint
-
-        Returns:
-            Cap en degrés (0-360)
+        :param other: Autre waypoint cible
+        :type other: Waypoint
+        :return: Cap en degrés (0-360)
+        :rtype: float
         """
         lat1_rad = math.radians(self.lat)
         lat2_rad = math.radians(other.lat)
@@ -102,14 +138,18 @@ class Waypoint:
     @staticmethod
     def _haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
         """
-        Calculer distance haversine en milles nautiques
+        Calculer la distance haversine entre deux points géographiques.
 
-        Args:
-            lat1, lon1: Coordonnées du premier point
-            lat2, lon2: Coordonnées du second point
-
-        Returns:
-            Distance en milles nautiques
+        :param lat1: Latitude du premier point en degrés décimaux
+        :type lat1: float
+        :param lon1: Longitude du premier point en degrés décimaux
+        :type lon1: float
+        :param lat2: Latitude du second point en degrés décimaux
+        :type lat2: float
+        :param lon2: Longitude du second point en degrés décimaux
+        :type lon2: float
+        :return: Distance entre les deux points en milles nautiques
+        :rtype: float
         """
         R = 6371.0  # Rayon terrestre en km
 
@@ -132,7 +172,12 @@ class Waypoint:
         return distance_km / 1.852  # Conversion km -> milles nautiques
 
     def get_display_name(self) -> str:
-        """Obtenir le nom d'affichage du waypoint"""
+        """
+        Obtenir le nom d'affichage du waypoint.
+
+        :return: Nom ou coordonnées formatées
+        :rtype: str
+        """
         if self.name:
             return self.name
         else:
@@ -140,13 +185,12 @@ class Waypoint:
 
     def get_coordinates_string(self, format_type: str = "decimal") -> str:
         """
-        Obtenir les coordonnées sous forme de chaîne
+        Obtenir les coordonnées sous forme de chaîne formatée.
 
-        Args:
-            format_type: 'decimal', 'dms' (degrés-minutes-secondes), ou 'dm' (degrés-minutes)
-
-        Returns:
-            Chaîne formatée des coordonnées
+        :param format_type: Format de sortie ('decimal', 'dms', 'dm')
+        :type format_type: str
+        :return: Chaîne formatée des coordonnées
+        :rtype: str
         """
         if format_type == "decimal":
             return f"{self.lat:.6f}°N, {abs(self.lon):.6f}°W"
@@ -158,7 +202,16 @@ class Waypoint:
             return f"{self.lat:.6f}, {self.lon:.6f}"
 
     def _to_dms(self, coord: float, coord_type: str) -> str:
-        """Convertir en degrés-minutes-secondes"""
+        """
+        Convertir une coordonnée en degrés-minutes-secondes (DMS).
+
+        :param coord: Coordonnée en degrés décimaux
+        :type coord: float
+        :param coord_type: 'lat' ou 'lon' pour déterminer l'hémisphère
+        :type coord_type: str
+        :return: Coordonnée en format DMS
+        :rtype: str
+        """
         is_positive = coord >= 0
         coord = abs(coord)
 
@@ -175,7 +228,16 @@ class Waypoint:
         return f"{degrees:02d}°{minutes:02d}'{seconds:04.1f}\"{hemisphere}"
 
     def _to_dm(self, coord: float, coord_type: str) -> str:
-        """Convertir en degrés-minutes"""
+        """
+        Convertir une coordonnée en degrés-minutes (DM).
+
+        :param coord: Coordonnée en degrés décimaux
+        :type coord: float
+        :param coord_type: 'lat' ou 'lon' pour déterminer l'hémisphère
+        :type coord_type: str
+        :return: Coordonnée en format DM
+        :rtype: str
+        """
         is_positive = coord >= 0
         coord = abs(coord)
 
@@ -190,23 +252,52 @@ class Waypoint:
         return f"{degrees:02d}°{minutes:06.3f}'{hemisphere}"
 
     def is_airport(self) -> bool:
-        """Vérifier si le waypoint est un aéroport"""
+        """
+        Vérifier si le waypoint est un aéroport.
+
+        :return: True si c'est un aéroport, False sinon
+        :rtype: bool
+        """
         return self.waypoint_type == 'airport'
 
     def get_airport_info(self) -> Optional[Dict[str, Any]]:
-        """Obtenir les informations d'aéroport si disponibles"""
+        """
+        Obtenir les informations d'aéroport si disponibles.
+
+        :return: Dictionnaire d'informations d'aéroport ou None
+        :rtype: Optional[Dict[str, Any]]
+        """
         if self.is_airport() and self.info:
             return self.info
         return None
 
     def __str__(self) -> str:
+        """
+        Représentation en chaîne.
+
+        :return: Nom d'affichage et coordonnées
+        :rtype: str
+        """
         return f"{self.get_display_name()} ({self.lat:.4f}, {self.lon:.4f})"
 
     def __repr__(self) -> str:
+        """
+        Représentation officielle.
+
+        :return: Chaîne descriptive du waypoint
+        :rtype: str
+        """
         return f"Waypoint(name='{self.name}', lat={self.lat}, lon={self.lon})"
 
     def __eq__(self, other) -> bool:
-        """Égalité basée sur les coordonnées (tolérance de 0.0001°)"""
+        """
+        Comparaison d'égalité basée sur la proximité des coordonnées.
+
+        :param other: Objet à comparer
+        :type other: Any
+        :return: True si égaux (tolérance 0.0001°), False sinon
+        :rtype: bool
+        """
         if not isinstance(other, Waypoint):
             return False
 
@@ -216,28 +307,45 @@ class Waypoint:
         return lat_diff < 0.0001 and lon_diff < 0.0001
 
     def __hash__(self) -> int:
-        """Hash basé sur les coordonnées arrondies"""
+        """
+        Hash basé sur les coordonnées arrondies.
+
+        :return: Valeur de hash
+        :rtype: int
+        """
         return hash((round(self.lat, 4), round(self.lon, 4)))
 
 
 # Fonctions utilitaires pour créer des waypoints
 
 def create_waypoint_from_coordinates(lat: float, lon: float, name: str = "") -> Waypoint:
-    """Créer un waypoint à partir de coordonnées"""
+    """
+    Créer un waypoint à partir de coordonnées décimales.
+
+    :param lat: Latitude en degrés décimaux
+    :type lat: float
+    :param lon: Longitude en degrés décimaux
+    :type lon: float
+    :param name: Nom du waypoint, par défaut ""
+    :type name: str
+    :return: Instance Waypoint
+    :rtype: Waypoint
+    """
     return Waypoint(lat=lat, lon=lon, name=name)
 
 
 def create_waypoint_from_dms(lat_dms: str, lon_dms: str, name: str = "") -> Waypoint:
     """
-    Créer un waypoint à partir de coordonnées DMS
+    Créer un waypoint à partir de coordonnées en format degrés-minutes-secondes (DMS).
 
-    Args:
-        lat_dms: Latitude en format DMS (ex: "45°27'30\"N")
-        lon_dms: Longitude en format DMS (ex: "73°44'54\"W")
-        name: Nom du waypoint
-
-    Returns:
-        Nouveau waypoint
+    :param lat_dms: Latitude en format DMS (ex: "45°27'30\"N")
+    :type lat_dms: str
+    :param lon_dms: Longitude en format DMS (ex: "73°44'54\"W")
+    :type lon_dms: str
+    :param name: Nom du waypoint, par défaut ""
+    :type name: str
+    :return: Instance Waypoint
+    :rtype: Waypoint
     """
     lat = _parse_dms(lat_dms)
     lon = _parse_dms(lon_dms)
@@ -245,7 +353,15 @@ def create_waypoint_from_dms(lat_dms: str, lon_dms: str, name: str = "") -> Wayp
 
 
 def _parse_dms(dms_str: str) -> float:
-    """Parser une chaîne DMS en degrés décimaux"""
+    """
+    Parser une chaîne DMS en degrés décimaux.
+
+    :param dms_str: Chaîne DMS (ex: "45°27'30\"N")
+    :type dms_str: str
+    :return: Valeur en degrés décimaux
+    :rtype: float
+    :raises ValueError: Si le format DMS est invalide
+    """
     import re
 
     # Pattern pour extraire degrés, minutes, secondes et hémisphère

@@ -1,566 +1,918 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="./">
+<html lang="fr" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>vfr_planner.gui package &#8212; VFR Planner  documentation</title>
+    <title>Paquet gui &#8212; Documentation VFR Flight Planner </title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
     <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=d1a510d7"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="vfr_planner.models package" href="vfr_planner.models.html" />
-    <link rel="prev" title="vfr_planner.export package" href="vfr_planner.export.html" /> 
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Paquet models" href="vfr_planner.models.html" />
+    <link rel="prev" title="Paquet export" href="vfr_planner.export.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>VFR Planner  documentation</span></a></h1>
-        <h2 class="heading"><span>vfr_planner.gui package</span></h2>
+          <span>Documentation VFR Flight Planner </span></a></h1>
+        <h2 class="heading"><span>Paquet gui</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="Top">
       
         <p>
-        «&#160;&#160;<a href="vfr_planner.export.html">vfr_planner.export package</a>
+        «&#160;&#160;<a href="vfr_planner.export.html">Paquet <em>export</em></a>
         &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
+        <a class="uplink" href="index.html">Contenu</a>
         &#160;&#160;::&#160;&#160;
-        <a href="vfr_planner.models.html">vfr_planner.models package</a>&#160;&#160;»
+        <a href="vfr_planner.models.html">Paquet <em>models</em></a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content" role="main">
         
         
-  <section id="vfr-planner-gui-package">
-<h1>vfr_planner.gui package<a class="headerlink" href="#vfr-planner-gui-package" title="Link to this heading">¶</a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+  <section id="paquet-gui">
+<h1>Paquet <em>gui</em><a class="headerlink" href="#paquet-gui" title="Lien vers cette rubrique">¶</a></h1>
+<section id="sous-module">
+<h2><strong>Sous-module</strong><a class="headerlink" href="#sous-module" title="Lien vers cette rubrique">¶</a></h2>
 </section>
 <section id="module-vfr_planner.gui.main_window">
-<span id="vfr-planner-gui-main-window-module"></span><h2>vfr_planner.gui.main_window module<a class="headerlink" href="#module-vfr_planner.gui.main_window" title="Link to this heading">¶</a></h2>
+<span id="module-main-window"></span><h2>Module <em>main_window</em><a class="headerlink" href="#module-vfr_planner.gui.main_window" title="Lien vers cette rubrique">¶</a></h2>
 <p>Fenêtre principale de l’application VFR Planner</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.main_window.</span></span><span class="sig-name descname"><span class="pre">VFRPlannerGUI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Fenêtre principale de l’application VFR Planner</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.main_window.</span></span><span class="sig-name descname"><span class="pre">VFRPlannerGUI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Fenêtre principale de l’application VFR Planner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>root</strong> (<em>tkinter.Tk</em>) – Fenêtre racine Tkinter utilisée comme conteneur principal de l’interface graphique.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.calculate_route">
-<span class="sig-name descname"><span class="pre">calculate_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.calculate_route" title="Link to this definition">¶</a></dt>
-<dd><p>Calculer l’itinéraire</p>
+<span class="sig-name descname"><span class="pre">calculate_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.calculate_route" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Calcule automatiquement l’itinéraire de vol.</p>
+<p>Appelle la méthode de calcul définie dans l’onglet <cite>plan_tab</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.check_weather">
-<span class="sig-name descname"><span class="pre">check_weather</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.check_weather" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier la météo avec timing correct basé sur les informations de vol</p>
+<span class="sig-name descname"><span class="pre">check_weather</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.check_weather" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Vérifie les conditions météo le long de l’itinéraire de vol.</p>
+<p>Utilise les informations de vol (date, heure, vitesse) pour déterminer
+le moment exact de passage sur chaque waypoint et fait appel à l’API météo
+via <cite>WeatherService</cite>. Affiche les résultats dans une interface dédiée.</p>
+<p>En cas d’erreur, affiche un message à l’utilisateur.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.copy_plan">
-<span class="sig-name descname"><span class="pre">copy_plan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.copy_plan" title="Link to this definition">¶</a></dt>
-<dd><p>Copier le plan de vol dans le presse-papier</p>
+<span class="sig-name descname"><span class="pre">copy_plan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.copy_plan" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Copie le contenu du plan de vol dans le presse-papier.</p>
+<p>Si aucun plan n’est défini, affiche un message d’avertissement.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.create_menu">
-<span class="sig-name descname"><span class="pre">create_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.create_menu" title="Link to this definition">¶</a></dt>
-<dd><p>Créer la barre de menu</p>
+<span class="sig-name descname"><span class="pre">create_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.create_menu" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Crée la barre de menu principale de l’application.</p>
+<p>Cette méthode configure les menus suivants :
+- Fichier : opérations sur les projets (nouveau, ouvrir, sauvegarder, exporter, quitter)
+- Édition : actions générales et préférences
+- Outils : fonctions utilitaires (calculs, météo, carte, diagnostics)
+- Aide : accès au guide, raccourcis et à propos</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets principaux</p>
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.create_widgets" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Crée et affiche les widgets principaux de l’application.</p>
+<p>Cette méthode instancie les onglets de navigation (aéronef, aéroports, itinéraire, plan de vol),
+ainsi que la barre d’état. En cas d’erreur lors de la création, une interface minimale est affichée.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.export_excel">
-<span class="sig-name descname"><span class="pre">export_excel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.export_excel" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter vers Excel</p>
+<span class="sig-name descname"><span class="pre">export_excel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.export_excel" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Exporte le plan de vol au format Excel.</p>
+<p>Utilise la méthode d’exportation définie dans l’onglet <cite>plan_tab</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.export_pdf">
-<span class="sig-name descname"><span class="pre">export_pdf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.export_pdf" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter vers PDF</p>
+<span class="sig-name descname"><span class="pre">export_pdf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.export_pdf" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Exporte le plan de vol au format PDF.</p>
+<p>Utilise la méthode d’exportation définie dans l’onglet <cite>plan_tab</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.get_project_data">
-<span class="sig-name descname"><span class="pre">get_project_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.get_project_data" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les données du projet pour sauvegarde</p>
+<span class="sig-name descname"><span class="pre">get_project_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.get_project_data" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Extrait les données actuelles du projet pour les sauvegarder dans un fichier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant les données du projet.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.load_project_data">
-<span class="sig-name descname"><span class="pre">load_project_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.load_project_data" title="Link to this definition">¶</a></dt>
-<dd><p>Charger les données d’un projet</p>
+<span class="sig-name descname"><span class="pre">load_project_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.load_project_data" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Charge les données d’un projet dans les différents onglets de l’interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>project_data</strong> (<em>dict</em>) – Dictionnaire contenant les données du projet à charger.</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.mark_saved">
-<span class="sig-name descname"><span class="pre">mark_saved</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.mark_saved" title="Link to this definition">¶</a></dt>
-<dd><p>Marquer le projet comme sauvegardé</p>
+<span class="sig-name descname"><span class="pre">mark_saved</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.mark_saved" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Marque le projet comme sauvegardé.</p>
+<p>Retire l’astérisque du titre de la fenêtre si présent.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.mark_unsaved">
-<span class="sig-name descname"><span class="pre">mark_unsaved</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.mark_unsaved" title="Link to this definition">¶</a></dt>
-<dd><p>Marquer le projet comme modifié</p>
+<span class="sig-name descname"><span class="pre">mark_unsaved</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.mark_unsaved" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Marque le projet comme ayant des modifications non sauvegardées.</p>
+<p>Ajoute un astérisque au titre de la fenêtre si ce n’est pas déjà fait.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.new_project">
-<span class="sig-name descname"><span class="pre">new_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.new_project" title="Link to this definition">¶</a></dt>
-<dd><p>Créer un nouveau projet</p>
+<span class="sig-name descname"><span class="pre">new_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.new_project" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Crée un nouveau projet en réinitialisant tous les onglets.</p>
+<p>Affiche une boîte de dialogue pour sauvegarder les modifications en cours si nécessaire.
+Réinitialise les widgets des onglets Aéronef, Aéroports, Itinéraire et Plan de vol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.on_closing">
-<span class="sig-name descname"><span class="pre">on_closing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.on_closing" title="Link to this definition">¶</a></dt>
-<dd><p>Gérer la fermeture de l’application</p>
+<span class="sig-name descname"><span class="pre">on_closing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.on_closing" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Gère la fermeture de l’application.</p>
+<p>Si des modifications non sauvegardées existent, demande à l’utilisateur
+s’il souhaite sauvegarder avant de quitter. Peut annuler la fermeture.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.on_tab_changed">
-<span class="sig-name descname"><span class="pre">on_tab_changed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.on_tab_changed" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand l’onglet change</p>
+<span class="sig-name descname"><span class="pre">on_tab_changed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.on_tab_changed" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Appelé lorsque l’utilisateur change d’onglet dans l’application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>tkinter.Event</em>) – Événement Tkinter déclenché par le changement d’onglet.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.open_project">
-<span class="sig-name descname"><span class="pre">open_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.open_project" title="Link to this definition">¶</a></dt>
-<dd><p>Ouvrir un projet</p>
+<span class="sig-name descname"><span class="pre">open_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.open_project" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Ouvre un projet existant depuis un fichier .vfr ou .json.</p>
+<p>Affiche une boîte de dialogue de confirmation si des modifications non sauvegardées existent.
+Charge les données du projet sélectionné et met à jour l’interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.save_project">
-<span class="sig-name descname"><span class="pre">save_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.save_project" title="Link to this definition">¶</a></dt>
-<dd><p>Sauvegarder le projet</p>
+<span class="sig-name descname"><span class="pre">save_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.save_project" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Sauvegarde le projet courant.</p>
+<p>Si un fichier de projet est déjà associé, il est écrasé.
+Sinon, déclenche une demande de nouveau nom de fichier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True si la sauvegarde a réussi, False sinon.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.save_project_as">
-<span class="sig-name descname"><span class="pre">save_project_as</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.save_project_as" title="Link to this definition">¶</a></dt>
-<dd><p>Sauvegarder le projet sous un nouveau nom</p>
+<span class="sig-name descname"><span class="pre">save_project_as</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.save_project_as" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Sauvegarde le projet sous un nouveau nom choisi par l’utilisateur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True si la sauvegarde a réussi, False sinon.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.save_project_to_file">
-<span class="sig-name descname"><span class="pre">save_project_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.save_project_to_file" title="Link to this definition">¶</a></dt>
-<dd><p>Sauvegarder vers un fichier spécifique</p>
+<span class="sig-name descname"><span class="pre">save_project_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.save_project_to_file" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Sauvegarde les données du projet dans un fichier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Chemin du fichier dans lequel enregistrer les données du projet.</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>True si la sauvegarde a réussi, False sinon.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.setup_bindings">
-<span class="sig-name descname"><span class="pre">setup_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.setup_bindings" title="Link to this definition">¶</a></dt>
-<dd><p>Configurer les raccourcis clavier</p>
+<span class="sig-name descname"><span class="pre">setup_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.setup_bindings" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Configure les raccourcis clavier et les événements de l’application.</p>
+<p>Cette méthode associe des combinaisons de touches à des actions comme
+créer un nouveau projet, ouvrir, sauvegarder, copier, etc.,
+ainsi que le changement d’onglet pour détecter les modifications.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.setup_window">
-<span class="sig-name descname"><span class="pre">setup_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.setup_window" title="Link to this definition">¶</a></dt>
-<dd><p>Configurer la fenêtre principale</p>
+<span class="sig-name descname"><span class="pre">setup_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.setup_window" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Configure les propriétés de la fenêtre principale.</p>
+<p>Définie le titre, la taille minimale, l’icône (si disponible),
+et la procédure à exécuter lors de la fermeture de la fenêtre.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.show_about">
-<span class="sig-name descname"><span class="pre">show_about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_about" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les informations sur l’application</p>
+<span class="sig-name descname"><span class="pre">show_about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_about" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Affiche une boîte de dialogue « À propos » avec les informations de version
+et description du logiciel.</p>
+<p>Montre la version, auteurs, fonctionnalités principales et informations légales.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.show_interactive_map">
-<span class="sig-name descname"><span class="pre">show_interactive_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_interactive_map" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher la carte interactive</p>
+<span class="sig-name descname"><span class="pre">show_interactive_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_interactive_map" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Affiche la carte interactive du plan de vol.</p>
+<p>Délègue l’affichage à la méthode <cite>show_map</cite> de l’onglet plan de vol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.show_preferences">
-<span class="sig-name descname"><span class="pre">show_preferences</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_preferences" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les préférences</p>
+<span class="sig-name descname"><span class="pre">show_preferences</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_preferences" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Affiche une boîte de dialogue de préférences.</p>
+<p>Actuellement, cette fonctionnalité n’est pas encore implémentée.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.show_shortcuts">
-<span class="sig-name descname"><span class="pre">show_shortcuts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_shortcuts" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les raccourcis clavier</p>
+<span class="sig-name descname"><span class="pre">show_shortcuts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_shortcuts" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Affiche une boîte de dialogue listant les raccourcis clavier disponibles.</p>
+<p>Cette fenêtre liste les raccourcis pour les actions communes dans l’application,
+incluant fichier, édition, outils et navigation.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.show_user_guide">
-<span class="sig-name descname"><span class="pre">show_user_guide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_user_guide" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher le guide d’utilisation</p>
+<span class="sig-name descname"><span class="pre">show_user_guide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_user_guide" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Affiche une fenêtre contenant le guide d’utilisation de VFR Planner.</p>
+<p>La fenêtre présente les étapes principales pour configurer l’aéronef,
+sélectionner les aéroports, planifier l’itinéraire, calculer et exporter
+le plan de vol, ainsi que les raccourcis clavier utiles.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.show_weather_analysis">
-<span class="sig-name descname"><span class="pre">show_weather_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weather_service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_weather_analysis" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher l’analyse météo dans une fenêtre avec timing détaillé</p>
+<span class="sig-name descname"><span class="pre">show_weather_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weather_service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.show_weather_analysis" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Afficher l’analyse météo dans une fenêtre avec timing détaillé.</p>
+<p>Ouvre une nouvelle fenêtre affichant un rapport complet sur les conditions
+météo le long de la route de vol, incluant un résumé de vol, détails par waypoint,
+analyse des tendances météo et recommandations VFR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis</strong> – dict contenant les données d’analyse météo et timing</p></li>
+<li><p><strong>weather_service</strong> – instance du service météo, utilisée pour vérifier les conditions VFR</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.system_diagnostic">
-<span class="sig-name descname"><span class="pre">system_diagnostic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.system_diagnostic" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher un diagnostic du système</p>
+<span class="sig-name descname"><span class="pre">system_diagnostic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.system_diagnostic" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Affiche un diagnostic du système dans une boîte d’information.</p>
+<p>Montre les versions de Python, Tkinter, VFR Planner, la présence des modules requis,
+le nombre d’aéroports chargés, la configuration API météo, etc.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.test_weather_api">
-<span class="sig-name descname"><span class="pre">test_weather_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.test_weather_api" title="Link to this definition">¶</a></dt>
-<dd><p>Tester l’API météo</p>
+<span class="sig-name descname"><span class="pre">test_weather_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.test_weather_api" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Lance un test de l’API météo intégrée.</p>
+<p>Appelle la méthode de test API météo depuis l’onglet plan de vol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.main_window.VFRPlannerGUI.update_status_bar">
-<span class="sig-name descname"><span class="pre">update_status_bar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.update_status_bar" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour la barre d’état</p>
+<span class="sig-name descname"><span class="pre">update_status_bar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.main_window.VFRPlannerGUI.update_status_bar" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Met à jour le contenu de la barre d’état.</p>
+<p>Affiche l’état de la connexion à l’API météo, le nombre d’aéroports visibles,
+et un message de statut par défaut.</p>
 </dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-vfr_planner.gui.tabs">
-<span id="vfr-planner-gui-tabs-module"></span><h2>vfr_planner.gui.tabs module<a class="headerlink" href="#module-vfr_planner.gui.tabs" title="Link to this heading">¶</a></h2>
+<span id="module-tabs"></span><h2>Module <em>tabs</em><a class="headerlink" href="#module-vfr_planner.gui.tabs" title="Lien vers cette rubrique">¶</a></h2>
 <p>Onglets de l’interface graphique</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.tabs.</span></span><span class="sig-name descname"><span class="pre">AircraftTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.tabs.</span></span><span class="sig-name descname"><span class="pre">AircraftTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
 <p>Onglet pour les informations d’aéronef</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.clear_all">
-<span class="sig-name descname"><span class="pre">clear_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.clear_all" title="Link to this definition">¶</a></dt>
-<dd><p>Effacer tous les champs</p>
+<span class="sig-name descname"><span class="pre">clear_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.clear_all" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Effacer tous les champs de saisie.</p>
+<p>Vide tous les champs des informations d’aéronef et de vol,
+puis réinitialise les valeurs par défaut.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets de l’onglet</p>
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.create_widgets" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Créer les widgets de l’onglet.</p>
+<p>Configure les différentes sections :
+- Sélection d’aéronef prédéfini
+- Informations de l’aéronef
+- Informations du vol
+- Boutons de gestion (sauvegarder, charger, réinitialiser)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.get_aircraft_data">
-<span class="sig-name descname"><span class="pre">get_aircraft_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.get_aircraft_data" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les données d’aéronef</p>
+<span class="sig-name descname"><span class="pre">get_aircraft_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.get_aircraft_data" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Obtenir les données d’aéronef.</p>
+<p>Parcourt tous les champs d’entrée de l’aéronef et retourne
+un dictionnaire avec les clés correspondantes et leurs valeurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire des données d’aéronef.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.get_flight_data">
-<span class="sig-name descname"><span class="pre">get_flight_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.get_flight_data" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les données de vol</p>
+<span class="sig-name descname"><span class="pre">get_flight_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.get_flight_data" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Obtenir les données de vol.</p>
+<p>Parcourt tous les champs d’entrée du vol et retourne
+un dictionnaire avec les clés correspondantes et leurs valeurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire des données de vol.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.load_aircraft_profile">
-<span class="sig-name descname"><span class="pre">load_aircraft_profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.load_aircraft_profile" title="Link to this definition">¶</a></dt>
-<dd><p>Charger un profil d’aéronef</p>
+<span class="sig-name descname"><span class="pre">load_aircraft_profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.load_aircraft_profile" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Charger un profil d’aéronef.</p>
+<p>Fonctionnalité placeholder pour charger un profil,
+affiche un message d’information pour l’instant.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.load_preset">
-<span class="sig-name descname"><span class="pre">load_preset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.load_preset" title="Link to this definition">¶</a></dt>
-<dd><p>Charger un aéronef prédéfini</p>
+<span class="sig-name descname"><span class="pre">load_preset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.load_preset" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Charger un aéronef prédéfini.</p>
+<p>Récupère le preset sélectionné et remplit les champs du formulaire
+avec les valeurs correspondantes. Met à jour la barre de statut
+avec le nom de l’aéronef chargé.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.on_preset_selected">
-<span class="sig-name descname"><span class="pre">on_preset_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.on_preset_selected" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand un aéronef prédéfini est sélectionné</p>
+<span class="sig-name descname"><span class="pre">on_preset_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.on_preset_selected" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Appelé quand un aéronef prédéfini est sélectionné dans la liste déroulante.</p>
+<p>Met à jour les champs du formulaire avec les données du preset sélectionné.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> – Événement tkinter (optionnel)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.save_aircraft_profile">
-<span class="sig-name descname"><span class="pre">save_aircraft_profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.save_aircraft_profile" title="Link to this definition">¶</a></dt>
-<dd><p>Sauvegarder le profil d’aéronef</p>
+<span class="sig-name descname"><span class="pre">save_aircraft_profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.save_aircraft_profile" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Sauvegarder le profil d’aéronef.</p>
+<p>Fonctionnalité placeholder pour sauvegarder un profil,
+affiche un message d’information pour l’instant.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AircraftTab.setup_defaults">
-<span class="sig-name descname"><span class="pre">setup_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.setup_defaults" title="Link to this definition">¶</a></dt>
-<dd><p>Configurer les valeurs par défaut</p>
+<span class="sig-name descname"><span class="pre">setup_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AircraftTab.setup_defaults" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Configurer les valeurs par défaut pour certains champs de saisie.</p>
+<ul class="simple">
+<li><p>Temps de réserve à 45 minutes</p></li>
+<li><p>Vitesse de croisière à 110 kn</p></li>
+<li><p>Consommation à 7.5 GPH</p></li>
+<li><p>Capacité du réservoir à 40 gallons</p></li>
+</ul>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.tabs.</span></span><span class="sig-name descname"><span class="pre">AirportsTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.tabs.</span></span><span class="sig-name descname"><span class="pre">AirportsTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
 <p>Onglet pour la sélection d’aéroports</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab.add_to_route">
-<span class="sig-name descname"><span class="pre">add_to_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.add_to_route" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter les aéroports à l’itinéraire</p>
+<span class="sig-name descname"><span class="pre">add_to_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.add_to_route" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Ajoute les aéroports de départ et d’arrivée à l’itinéraire.</p>
+<p>Affiche un avertissement si les aéroports ne sont pas sélectionnés.
+Met à jour l’onglet itinéraire et la barre de statut.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets de l’onglet</p>
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.create_widgets" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Créer les widgets de l’onglet.</p>
+<p>Initialise les différents panneaux, zones de recherche,
+boutons d’action et la zone d’informations de vol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab.on_departure_selected">
-<span class="sig-name descname"><span class="pre">on_departure_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.on_departure_selected" title="Link to this definition">¶</a></dt>
-<dd><p>Callback pour sélection aéroport de départ</p>
+<span class="sig-name descname"><span class="pre">on_departure_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.on_departure_selected" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Callback appelé lors de la sélection de l’aéroport de départ.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>airport</strong> – dict contenant les données de l’aéroport sélectionné</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab.on_destination_selected">
-<span class="sig-name descname"><span class="pre">on_destination_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.on_destination_selected" title="Link to this definition">¶</a></dt>
-<dd><p>Callback pour sélection aéroport d’arrivée</p>
+<span class="sig-name descname"><span class="pre">on_destination_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.on_destination_selected" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Callback appelé lors de la sélection de l’aéroport d’arrivée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>airport</strong> – dict contenant les données de l’aéroport sélectionné</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab.on_filters_updated">
-<span class="sig-name descname"><span class="pre">on_filters_updated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.on_filters_updated" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand les filtres sont mis à jour</p>
+<span class="sig-name descname"><span class="pre">on_filters_updated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.on_filters_updated" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Appelé quand les filtres sont mis à jour.</p>
+<p>Réinitialise les recherches actuelles et met à jour la barre de statut
+avec le nombre d’aéroports filtrés.</p>
+<p>En cas d’erreur, affiche un message dans la console.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab.show_on_map">
-<span class="sig-name descname"><span class="pre">show_on_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.show_on_map" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les aéroports sur une carte</p>
+<span class="sig-name descname"><span class="pre">show_on_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.show_on_map" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Affiche les aéroports de départ et d’arrivée sur une carte interactive.</p>
+<p>Génère une carte Folium centrée entre les deux aéroports,
+avec marqueurs et ligne directe.
+Ouvre la carte dans le navigateur par défaut.
+Affiche un avertissement si les aéroports ne sont pas sélectionnés.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab.swap_airports">
-<span class="sig-name descname"><span class="pre">swap_airports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.swap_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Inverser les aéroports de départ et d’arrivée</p>
+<span class="sig-name descname"><span class="pre">swap_airports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.swap_airports" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Inverse les aéroports de départ et d’arrivée.</p>
+<p>Met à jour les champs de sélection et rafraîchit les informations de vol.
+Affiche un avertissement si les deux aéroports ne sont pas sélectionnés.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.AirportsTab.update_flight_info">
-<span class="sig-name descname"><span class="pre">update_flight_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.update_flight_info" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour les informations de vol</p>
+<span class="sig-name descname"><span class="pre">update_flight_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.AirportsTab.update_flight_info" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Met à jour les informations de vol affichées.</p>
+<p>Calcule la distance, le cap magnétique, et estime le temps de vol
+en fonction de la vitesse de croisière.
+Met à jour la zone de texte avec ces informations.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.tabs.</span></span><span class="sig-name descname"><span class="pre">PlanTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.tabs.</span></span><span class="sig-name descname"><span class="pre">PlanTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
 <p>Onglet pour le plan de vol final avec timing météo corrigé</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab.calculate_route">
-<span class="sig-name descname"><span class="pre">calculate_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.calculate_route" title="Link to this definition">¶</a></dt>
-<dd><p>Calculer l’itinéraire complet avec timing météo corrigé</p>
+<span class="sig-name descname"><span class="pre">calculate_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.calculate_route" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Calculer l’itinéraire complet avec timing météo corrigé.</p>
+<p>Cette méthode récupère les waypoints, les données de l’aéronef et du vol,
+puis appelle la fonction <cite>create_itinerary_from_gui</cite> avec la clé API météo.
+Elle affiche ensuite le plan de vol détaillé avec les informations de timing
+et met à jour la barre de statut.</p>
+<p>Affiche une alerte si moins de 2 waypoints sont présents.
+Gère les exceptions en affichant un message d’erreur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.create_widgets" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.create_widgets" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Créer les widgets de l’onglet</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab.display_itinerary">
-<span class="sig-name descname"><span class="pre">display_itinerary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.display_itinerary" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher l’itinéraire calculé (méthode legacy)</p>
+<span class="sig-name descname"><span class="pre">display_itinerary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.display_itinerary" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Afficher l’itinéraire calculé (méthode legacy).</p>
+<p>Cette méthode appelle simplement <cite>display_itinerary_with_timing</cite> pour afficher
+l’itinéraire avec les informations de timing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>itinerary</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary" title="vfr_planner.models.itinerary.Itinerary"><em>Itinerary</em></a>) – Objet représentant l’itinéraire calculé.</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab.display_itinerary_with_timing">
-<span class="sig-name descname"><span class="pre">display_itinerary_with_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.display_itinerary_with_timing" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher l’itinéraire calculé avec informations de timing détaillées</p>
+<span class="sig-name descname"><span class="pre">display_itinerary_with_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.display_itinerary_with_timing" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Afficher l’itinéraire calculé avec informations de timing détaillées.</p>
+<p>Affiche dans le widget texte un plan de vol formaté avec :
+- détails avion et pilote,
+- heure de départ et arrivée (UTC),
+- tableau détaillé des legs avec timing météo,
+- analyse carburant complète,
+- notes sur la météo et la navigation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>itinerary</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary" title="vfr_planner.models.itinerary.Itinerary"><em>Itinerary</em></a>) – objet contenant les données de l’itinéraire calculé</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab.export_excel">
-<span class="sig-name descname"><span class="pre">export_excel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.export_excel" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter vers Excel</p>
+<span class="sig-name descname"><span class="pre">export_excel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.export_excel" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Exporter l’itinéraire calculé vers un fichier Excel.</p>
+<p>Ouvre une boîte de dialogue pour choisir le fichier de destination.
+Utilise la fonction <cite>export_to_excel</cite> pour créer le fichier Excel.
+Affiche un message d’erreur si aucun itinéraire n’a été calculé
+ou si une erreur survient lors de l’export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab.export_pdf">
-<span class="sig-name descname"><span class="pre">export_pdf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.export_pdf" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter vers PDF</p>
+<span class="sig-name descname"><span class="pre">export_pdf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.export_pdf" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Exporter l’itinéraire calculé vers un fichier PDF.</p>
+<p>Ouvre une boîte de dialogue pour choisir le fichier de destination.
+Utilise la fonction <cite>export_to_pdf</cite> pour créer le fichier PDF.
+Affiche un message d’erreur si aucun itinéraire n’a été calculé
+ou si une erreur survient lors de l’export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab.show_map">
-<span class="sig-name descname"><span class="pre">show_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.show_map" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher la carte interactive</p>
+<span class="sig-name descname"><span class="pre">show_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.show_map" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Afficher la carte interactive du plan de vol.</p>
+<p>Récupère les waypoints de l’itinéraire, crée une carte centrée,
+ajoute des marqueurs pour chaque waypoint et trace la route entre eux.
+Sauvegarde la carte en HTML et l’ouvre dans le navigateur par défaut.</p>
+<p>Affiche un avertissement si aucun waypoint n’est défini
+et un message d’erreur en cas de problème lors de la création de la carte.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.PlanTab.test_api">
-<span class="sig-name descname"><span class="pre">test_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.test_api" title="Link to this definition">¶</a></dt>
-<dd><p>Tester la clé API météo</p>
+<span class="sig-name descname"><span class="pre">test_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.PlanTab.test_api" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Tester la clé API météo Tomorrow.io.</p>
+<p>Cette méthode effectue un test simple en demandant la météo à un point fixe (Montréal)
+et affiche un message indiquant si la clé API est valide ou non.</p>
+<p>Affiche un message d’erreur en cas d’échec.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Lève<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – si la récupération météo retourne une erreur</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.tabs.</span></span><span class="sig-name descname"><span class="pre">RouteTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.tabs.</span></span><span class="sig-name descname"><span class="pre">RouteTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
 <p>Onglet pour l’itinéraire détaillé</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.add_airport_waypoint">
-<span class="sig-name descname"><span class="pre">add_airport_waypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.add_airport_waypoint" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter un aéroport comme waypoint</p>
+<span class="sig-name descname"><span class="pre">add_airport_waypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.add_airport_waypoint" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Ajouter un aéroport comme waypoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>airport</strong> – dictionnaire contenant les informations de l’aéroport</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.add_custom_waypoint">
-<span class="sig-name descname"><span class="pre">add_custom_waypoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.add_custom_waypoint" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter un waypoint personnalisé</p>
+<span class="sig-name descname"><span class="pre">add_custom_waypoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.add_custom_waypoint" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Ajouter un waypoint personnalisé via une boîte de dialogue.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.clear_waypoints">
-<span class="sig-name descname"><span class="pre">clear_waypoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.clear_waypoints" title="Link to this definition">¶</a></dt>
-<dd><p>Effacer tous les waypoints</p>
+<span class="sig-name descname"><span class="pre">clear_waypoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.clear_waypoints" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Effacer tous les waypoints de la liste.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.create_widgets" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.create_widgets" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Créer les widgets de l’onglet</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.get_waypoints">
-<span class="sig-name descname"><span class="pre">get_waypoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.get_waypoints" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la liste des waypoints</p>
+<span class="sig-name descname"><span class="pre">get_waypoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.get_waypoints" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Obtenir la liste des waypoints actuels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>copie de la liste des waypoints</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.move_waypoint_down">
-<span class="sig-name descname"><span class="pre">move_waypoint_down</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.move_waypoint_down" title="Link to this definition">¶</a></dt>
-<dd><p>Déplacer waypoint vers le bas</p>
+<span class="sig-name descname"><span class="pre">move_waypoint_down</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.move_waypoint_down" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Déplacer le waypoint sélectionné vers le bas dans la liste.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.move_waypoint_up">
-<span class="sig-name descname"><span class="pre">move_waypoint_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.move_waypoint_up" title="Link to this definition">¶</a></dt>
-<dd><p>Déplacer waypoint vers le haut</p>
+<span class="sig-name descname"><span class="pre">move_waypoint_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.move_waypoint_up" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Déplacer le waypoint sélectionné vers le haut dans la liste.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.on_waypoint_select">
-<span class="sig-name descname"><span class="pre">on_waypoint_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.on_waypoint_select" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les détails du waypoint sélectionné</p>
+<span class="sig-name descname"><span class="pre">on_waypoint_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.on_waypoint_select" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Afficher les détails du waypoint sélectionné dans le panneau droit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> – événement Tkinter lié à la sélection dans la liste</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.remove_waypoint">
-<span class="sig-name descname"><span class="pre">remove_waypoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.remove_waypoint" title="Link to this definition">¶</a></dt>
-<dd><p>Supprimer le waypoint sélectionné</p>
+<span class="sig-name descname"><span class="pre">remove_waypoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.remove_waypoint" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Supprimer le waypoint sélectionné dans la liste.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.tabs.RouteTab.update_waypoint_list">
-<span class="sig-name descname"><span class="pre">update_waypoint_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.update_waypoint_list" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour l’affichage des waypoints</p>
+<span class="sig-name descname"><span class="pre">update_waypoint_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.tabs.RouteTab.update_waypoint_list" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Mettre à jour l’affichage des waypoints dans la liste.</p>
 </dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-vfr_planner.gui.widgets">
-<span id="vfr-planner-gui-widgets-module"></span><h2>vfr_planner.gui.widgets module<a class="headerlink" href="#module-vfr_planner.gui.widgets" title="Link to this heading">¶</a></h2>
+<span id="module-widgets"></span><h2>Module <em>widgets</em><a class="headerlink" href="#module-vfr_planner.gui.widgets" title="Lien vers cette rubrique">¶</a></h2>
 <p>Widgets personnalisés pour l’interface graphique</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.AirportSearchWidget">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">AirportSearchWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Aéroport:'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
-<p>Widget de recherche d’aéroports avec autocomplete</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">AirportSearchWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Aéroport:'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
+<p>Widget de recherche d’aéroports avec fonction d’autocomplétion.</p>
+<p>Permet à l’utilisateur de rechercher un aéroport par code ou nom,
+affiche une liste déroulante des résultats correspondants,
+et affiche les informations sommaires de l’aéroport sélectionné.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> – widget parent</p></li>
+<li><p><strong>airport_db</strong> – instance de AirportDatabase pour les recherches</p></li>
+<li><p><strong>label_text</strong> – texte du label associé au champ de recherche (par défaut « Aéroport: »)</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.AirportSearchWidget.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.clear" title="Link to this definition">¶</a></dt>
-<dd><p>Effacer la sélection</p>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.clear" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Efface la sélection courante et réinitialise le widget.</p>
+<p>Réinitialise le champ de recherche, supprime la sélection d’aéroport,
+efface le texte d’information et masque la liste des résultats.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.AirportSearchWidget.get_selected_airport">
-<span class="sig-name descname"><span class="pre">get_selected_airport</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.get_selected_airport" title="Link to this definition">¶</a></dt>
-<dd><p>Retourner l’aéroport sélectionné</p>
+<span class="sig-name descname"><span class="pre">get_selected_airport</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.get_selected_airport" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Retourne l’aéroport actuellement sélectionné.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Un dictionnaire contenant les informations de l’aéroport sélectionné,
+ou None si aucun aéroport n’est sélectionné.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict or None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.AirportSearchWidget.on_search_change">
-<span class="sig-name descname"><span class="pre">on_search_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.on_search_change" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand le texte de recherche change</p>
+<span class="sig-name descname"><span class="pre">on_search_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.on_search_change" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Callback appelé à chaque changement du texte dans le champ de recherche.</p>
+<p>Lance une recherche dans la base d’aéroports avec le texte actuel
+si la longueur est &gt;= 2 caractères, et affiche les résultats
+dans une liste déroulante.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> – arguments optionnels liés au trace de la StringVar</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.AirportSearchWidget.on_select">
-<span class="sig-name descname"><span class="pre">on_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.on_select" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand un aéroport est sélectionné</p>
+<span class="sig-name descname"><span class="pre">on_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.on_select" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Callback appelé lors de la sélection d’un élément dans la liste des résultats.</p>
+<p>Récupère l’aéroport sélectionné, met à jour le champ de recherche
+avec le nom complet et affiche des informations sommaires
+(latitude, longitude, type).</p>
+<p>Si un callback utilisateur est défini, l’appelle avec
+l’aéroport sélectionné en argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> – événement de sélection de la listbox</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.AirportSearchWidget.set_airport">
-<span class="sig-name descname"><span class="pre">set_airport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.set_airport" title="Link to this definition">¶</a></dt>
-<dd><p>Définir l’aéroport sélectionné</p>
+<span class="sig-name descname"><span class="pre">set_airport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.set_airport" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Définit l’aéroport sélectionné dans le widget.</p>
+<p>Met à jour le champ de recherche et l’affichage d’information
+avec les données de l’aéroport donné.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>airport</strong> (<em>dict</em>) – Dictionnaire contenant les informations de l’aéroport,
+avec au minimum les clés “display”, “lat”, “lon” et
+optionnellement “type”.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.AirportSearchWidget.set_callback">
-<span class="sig-name descname"><span class="pre">set_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.set_callback" title="Link to this definition">¶</a></dt>
-<dd><p>Définir une fonction de callback pour la sélection</p>
+<span class="sig-name descname"><span class="pre">set_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.AirportSearchWidget.set_callback" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Définir une fonction callback appelée lors de la sélection d’un aéroport.</p>
+<p>La fonction doit accepter un argument : le dictionnaire de l’aéroport sélectionné.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>callback</strong> – fonction à appeler avec l’aéroport sélectionné</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.CustomWaypointDialog">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">CustomWaypointDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.CustomWaypointDialog" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Dialogue pour ajouter un waypoint personnalisé</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">CustomWaypointDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.CustomWaypointDialog" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Dialogue pour ajouter un waypoint personnalisé.</p>
+<p>Permet à l’utilisateur d’ajouter un waypoint soit via des coordonnées personnalisées,
+soit en sélectionnant un aéroport depuis une base de données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result</strong> (<em>dict</em><em> or </em><em>None</em>) – Contient le waypoint créé après validation, ou None si annulé.</p></li>
+<li><p><strong>airport_db</strong> (<a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><em>AirportDatabase</em></a>) – Base de données des aéroports utilisée pour la recherche.</p></li>
+<li><p><strong>dialog</strong> (<em>tk.Toplevel</em>) – La fenêtre de dialogue principale.</p></li>
+<li><p><strong>type_var</strong> (<em>tk.StringVar</em>) – Variable contrôlant le type de waypoint (“custom” ou “airport”).</p></li>
+<li><p><strong>coord_frame</strong> (<em>ttk.LabelFrame</em>) – Conteneur pour les entrées de coordonnées personnalisées.</p></li>
+<li><p><strong>airport_frame</strong> (<em>ttk.LabelFrame</em>) – Conteneur pour la recherche d’aéroport.</p></li>
+<li><p><strong>airport_search</strong> (<a class="reference internal" href="#vfr_planner.gui.widgets.AirportSearchWidget" title="vfr_planner.gui.widgets.AirportSearchWidget"><em>AirportSearchWidget</em></a>) – Widget de recherche d’aéroport intégré.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.CustomWaypointDialog.cancel_clicked">
-<span class="sig-name descname"><span class="pre">cancel_clicked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.CustomWaypointDialog.cancel_clicked" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">cancel_clicked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.CustomWaypointDialog.cancel_clicked" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Ferme le dialogue sans enregistrer de résultat.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.CustomWaypointDialog.ok_clicked">
-<span class="sig-name descname"><span class="pre">ok_clicked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.CustomWaypointDialog.ok_clicked" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">ok_clicked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.CustomWaypointDialog.ok_clicked" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Valide les données saisies et ferme le dialogue.</p>
+<ul class="simple">
+<li><p>Vérifie la validité des coordonnées si le type est “custom”.</p></li>
+<li><p>Vérifie qu’un aéroport est sélectionné si le type est “airport”.</p></li>
+<li><p>En cas de validation réussie, stocke les informations dans <cite>self.result</cite>.</p></li>
+<li><p>Affiche un message d’erreur en cas de problème et empêche la fermeture.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Lève<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – Si les coordonnées saisies ne sont pas convertibles en float.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.CustomWaypointDialog.on_type_change">
-<span class="sig-name descname"><span class="pre">on_type_change</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.CustomWaypointDialog.on_type_change" title="Link to this definition">¶</a></dt>
-<dd><p>Changer l’interface selon le type sélectionné</p>
+<span class="sig-name descname"><span class="pre">on_type_change</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.CustomWaypointDialog.on_type_change" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Met à jour l’interface en fonction du type de waypoint sélectionné.</p>
+<p>Affiche les champs de coordonnées personnalisées si “custom” est sélectionné,
+sinon affiche le widget de recherche d’aéroport.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.FilterPanel">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">FilterPanel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Labelframe</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">FilterPanel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Labelframe</span></code></p>
 <p>Panneau de filtres pour les aéroports</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.FilterPanel.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel.create_widgets" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel.create_widgets" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Créer les widgets du panneau</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.FilterPanel.reset_filters">
-<span class="sig-name descname"><span class="pre">reset_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel.reset_filters" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">reset_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel.reset_filters" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Réinitialiser tous les filtres</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.FilterPanel.setup_defaults">
-<span class="sig-name descname"><span class="pre">setup_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel.setup_defaults" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">setup_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel.setup_defaults" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Configurer les valeurs par défaut</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.FilterPanel.update_filters">
-<span class="sig-name descname"><span class="pre">update_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel.update_filters" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.FilterPanel.update_filters" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Mettre à jour les filtres</p>
 </dd></dl>
 
@@ -568,18 +920,18 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.InfoTooltip">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">InfoTooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.InfoTooltip" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">InfoTooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.InfoTooltip" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Tooltip d’information pour les widgets</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.InfoTooltip.hide_tooltip">
-<span class="sig-name descname"><span class="pre">hide_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.InfoTooltip.hide_tooltip" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">hide_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.InfoTooltip.hide_tooltip" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Cacher le tooltip</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.InfoTooltip.show_tooltip">
-<span class="sig-name descname"><span class="pre">show_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.InfoTooltip.show_tooltip" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">show_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.InfoTooltip.show_tooltip" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Afficher le tooltip</p>
 </dd></dl>
 
@@ -587,664 +939,101 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.ProgressDialog">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">ProgressDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Traitement</span> <span class="pre">en</span> <span class="pre">cours'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Dialogue de progression pour les opérations longues</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">ProgressDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Traitement</span> <span class="pre">en</span> <span class="pre">cours'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Dialogue modal affichant une barre de progression pour les opérations longues.</p>
+<p>Fournit un retour visuel à l’utilisateur pendant une tâche
+pouvant prendre un certain temps, avec possibilité d’annulation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.ProgressDialog.cancel">
-<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog.cancel" title="Link to this definition">¶</a></dt>
-<dd><p>Marquer comme annulé</p>
+<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog.cancel" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Indique que l’utilisateur a annulé l’opération.</p>
+<p>Met à jour le statut interne pour signaler une annulation.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.ProgressDialog.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog.close" title="Link to this definition">¶</a></dt>
-<dd><p>Fermer le dialogue</p>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog.close" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Ferme le dialogue et arrête la barre de progression.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.ProgressDialog.is_cancelled">
-<span class="sig-name descname"><span class="pre">is_cancelled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog.is_cancelled" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier si l’opération a été annulée</p>
+<span class="sig-name descname"><span class="pre">is_cancelled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog.is_cancelled" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Indique si l’opération a été annulée par l’utilisateur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True si annulé, False sinon.</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.ProgressDialog.set_message">
-<span class="sig-name descname"><span class="pre">set_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog.set_message" title="Link to this definition">¶</a></dt>
-<dd><p>Changer le message affiché</p>
+<span class="sig-name descname"><span class="pre">set_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.ProgressDialog.set_message" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Met à jour le message affiché dans le dialogue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – Texte à afficher à l’utilisateur.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.StatusBarWidget">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">StatusBarWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.StatusBarWidget" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
-<p>Barre d’état avec indicateurs</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">StatusBarWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.StatusBarWidget" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
+<p>Barre d’état affichant des messages et indicateurs.</p>
+<p>Fournit une interface visuelle pour afficher :
+- un message de statut principal,
+- le statut de connexion à l’API météo,
+- le nombre d’aéroports chargés.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.StatusBarWidget.set_airports_count">
-<span class="sig-name descname"><span class="pre">set_airports_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.StatusBarWidget.set_airports_count" title="Link to this definition">¶</a></dt>
-<dd><p>Définir le nombre d’aéroports</p>
+<span class="sig-name descname"><span class="pre">set_airports_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.StatusBarWidget.set_airports_count" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Met à jour le nombre d’aéroports affiché.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>count</strong> (<em>int</em>) – Nombre total d’aéroports chargés.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.StatusBarWidget.set_api_status">
-<span class="sig-name descname"><span class="pre">set_api_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configured</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.StatusBarWidget.set_api_status" title="Link to this definition">¶</a></dt>
-<dd><p>Définir le statut de l’API</p>
+<span class="sig-name descname"><span class="pre">set_api_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configured</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.StatusBarWidget.set_api_status" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Met à jour l’indicateur du statut de l’API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>configured</strong> (<em>bool</em>) – Indique si l’API est configurée.</p></li>
+<li><p><strong>working</strong> (<em>bool</em><em>, </em><em>optional</em>) – Indique si l’API fonctionne correctement (par défaut False).</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.StatusBarWidget.set_status">
-<span class="sig-name descname"><span class="pre">set_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.StatusBarWidget.set_status" title="Link to this definition">¶</a></dt>
-<dd><p>Définir le message de statut</p>
+<span class="sig-name descname"><span class="pre">set_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.StatusBarWidget.set_status" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Met à jour le message principal de statut.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – Texte à afficher dans la barre d’état.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.gui.widgets.add_tooltip">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">add_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.add_tooltip" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter un tooltip à un widget</p>
-</dd></dl>
-
-</section>
-<section id="module-vfr_planner.gui">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vfr_planner.gui" title="Link to this heading">¶</a></h2>
-<p>Interface graphique pour VFR Planner</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">AircraftTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AircraftTab" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
-<p>Onglet pour les informations d’aéronef</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.clear_all">
-<span class="sig-name descname"><span class="pre">clear_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.clear_all" title="Link to this definition">¶</a></dt>
-<dd><p>Effacer tous les champs</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets de l’onglet</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.get_aircraft_data">
-<span class="sig-name descname"><span class="pre">get_aircraft_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.get_aircraft_data" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les données d’aéronef</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.get_flight_data">
-<span class="sig-name descname"><span class="pre">get_flight_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.get_flight_data" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les données de vol</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.load_aircraft_profile">
-<span class="sig-name descname"><span class="pre">load_aircraft_profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.load_aircraft_profile" title="Link to this definition">¶</a></dt>
-<dd><p>Charger un profil d’aéronef</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.load_preset">
-<span class="sig-name descname"><span class="pre">load_preset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.load_preset" title="Link to this definition">¶</a></dt>
-<dd><p>Charger un aéronef prédéfini</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.on_preset_selected">
-<span class="sig-name descname"><span class="pre">on_preset_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.on_preset_selected" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand un aéronef prédéfini est sélectionné</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.save_aircraft_profile">
-<span class="sig-name descname"><span class="pre">save_aircraft_profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.save_aircraft_profile" title="Link to this definition">¶</a></dt>
-<dd><p>Sauvegarder le profil d’aéronef</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AircraftTab.setup_defaults">
-<span class="sig-name descname"><span class="pre">setup_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AircraftTab.setup_defaults" title="Link to this definition">¶</a></dt>
-<dd><p>Configurer les valeurs par défaut</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportSearchWidget">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">AirportSearchWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Aéroport:'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportSearchWidget" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
-<p>Widget de recherche d’aéroports avec autocomplete</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportSearchWidget.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportSearchWidget.clear" title="Link to this definition">¶</a></dt>
-<dd><p>Effacer la sélection</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportSearchWidget.get_selected_airport">
-<span class="sig-name descname"><span class="pre">get_selected_airport</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportSearchWidget.get_selected_airport" title="Link to this definition">¶</a></dt>
-<dd><p>Retourner l’aéroport sélectionné</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportSearchWidget.on_search_change">
-<span class="sig-name descname"><span class="pre">on_search_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportSearchWidget.on_search_change" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand le texte de recherche change</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportSearchWidget.on_select">
-<span class="sig-name descname"><span class="pre">on_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportSearchWidget.on_select" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand un aéroport est sélectionné</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportSearchWidget.set_airport">
-<span class="sig-name descname"><span class="pre">set_airport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportSearchWidget.set_airport" title="Link to this definition">¶</a></dt>
-<dd><p>Définir l’aéroport sélectionné</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportSearchWidget.set_callback">
-<span class="sig-name descname"><span class="pre">set_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportSearchWidget.set_callback" title="Link to this definition">¶</a></dt>
-<dd><p>Définir une fonction de callback pour la sélection</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">AirportsTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
-<p>Onglet pour la sélection d’aéroports</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab.add_to_route">
-<span class="sig-name descname"><span class="pre">add_to_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab.add_to_route" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter les aéroports à l’itinéraire</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets de l’onglet</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab.on_departure_selected">
-<span class="sig-name descname"><span class="pre">on_departure_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab.on_departure_selected" title="Link to this definition">¶</a></dt>
-<dd><p>Callback pour sélection aéroport de départ</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab.on_destination_selected">
-<span class="sig-name descname"><span class="pre">on_destination_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab.on_destination_selected" title="Link to this definition">¶</a></dt>
-<dd><p>Callback pour sélection aéroport d’arrivée</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab.on_filters_updated">
-<span class="sig-name descname"><span class="pre">on_filters_updated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab.on_filters_updated" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand les filtres sont mis à jour</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab.show_on_map">
-<span class="sig-name descname"><span class="pre">show_on_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab.show_on_map" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les aéroports sur une carte</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab.swap_airports">
-<span class="sig-name descname"><span class="pre">swap_airports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab.swap_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Inverser les aéroports de départ et d’arrivée</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.AirportsTab.update_flight_info">
-<span class="sig-name descname"><span class="pre">update_flight_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.AirportsTab.update_flight_info" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour les informations de vol</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.CustomWaypointDialog">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">CustomWaypointDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.CustomWaypointDialog" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Dialogue pour ajouter un waypoint personnalisé</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.CustomWaypointDialog.cancel_clicked">
-<span class="sig-name descname"><span class="pre">cancel_clicked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.CustomWaypointDialog.cancel_clicked" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.CustomWaypointDialog.ok_clicked">
-<span class="sig-name descname"><span class="pre">ok_clicked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.CustomWaypointDialog.ok_clicked" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.CustomWaypointDialog.on_type_change">
-<span class="sig-name descname"><span class="pre">on_type_change</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.CustomWaypointDialog.on_type_change" title="Link to this definition">¶</a></dt>
-<dd><p>Changer l’interface selon le type sélectionné</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.FilterPanel">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">FilterPanel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airport_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase" title="vfr_planner.data.airport_db.AirportDatabase"><span class="pre">AirportDatabase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.FilterPanel" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Labelframe</span></code></p>
-<p>Panneau de filtres pour les aéroports</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.FilterPanel.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.FilterPanel.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets du panneau</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.FilterPanel.reset_filters">
-<span class="sig-name descname"><span class="pre">reset_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.FilterPanel.reset_filters" title="Link to this definition">¶</a></dt>
-<dd><p>Réinitialiser tous les filtres</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.FilterPanel.setup_defaults">
-<span class="sig-name descname"><span class="pre">setup_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.FilterPanel.setup_defaults" title="Link to this definition">¶</a></dt>
-<dd><p>Configurer les valeurs par défaut</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.FilterPanel.update_filters">
-<span class="sig-name descname"><span class="pre">update_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.FilterPanel.update_filters" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour les filtres</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.InfoTooltip">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">InfoTooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.InfoTooltip" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Tooltip d’information pour les widgets</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.InfoTooltip.hide_tooltip">
-<span class="sig-name descname"><span class="pre">hide_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.InfoTooltip.hide_tooltip" title="Link to this definition">¶</a></dt>
-<dd><p>Cacher le tooltip</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.InfoTooltip.show_tooltip">
-<span class="sig-name descname"><span class="pre">show_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.InfoTooltip.show_tooltip" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher le tooltip</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">PlanTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
-<p>Onglet pour le plan de vol final avec timing météo corrigé</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab.calculate_route">
-<span class="sig-name descname"><span class="pre">calculate_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab.calculate_route" title="Link to this definition">¶</a></dt>
-<dd><p>Calculer l’itinéraire complet avec timing météo corrigé</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets de l’onglet</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab.display_itinerary">
-<span class="sig-name descname"><span class="pre">display_itinerary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab.display_itinerary" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher l’itinéraire calculé (méthode legacy)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab.display_itinerary_with_timing">
-<span class="sig-name descname"><span class="pre">display_itinerary_with_timing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab.display_itinerary_with_timing" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher l’itinéraire calculé avec informations de timing détaillées</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab.export_excel">
-<span class="sig-name descname"><span class="pre">export_excel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab.export_excel" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter vers Excel</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab.export_pdf">
-<span class="sig-name descname"><span class="pre">export_pdf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab.export_pdf" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter vers PDF</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab.show_map">
-<span class="sig-name descname"><span class="pre">show_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab.show_map" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher la carte interactive</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.PlanTab.test_api">
-<span class="sig-name descname"><span class="pre">test_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.PlanTab.test_api" title="Link to this definition">¶</a></dt>
-<dd><p>Tester la clé API météo</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.ProgressDialog">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">ProgressDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Traitement</span> <span class="pre">en</span> <span class="pre">cours'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.ProgressDialog" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Dialogue de progression pour les opérations longues</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.ProgressDialog.cancel">
-<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.ProgressDialog.cancel" title="Link to this definition">¶</a></dt>
-<dd><p>Marquer comme annulé</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.ProgressDialog.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.ProgressDialog.close" title="Link to this definition">¶</a></dt>
-<dd><p>Fermer le dialogue</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.ProgressDialog.is_cancelled">
-<span class="sig-name descname"><span class="pre">is_cancelled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#vfr_planner.gui.ProgressDialog.is_cancelled" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier si l’opération a été annulée</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.ProgressDialog.set_message">
-<span class="sig-name descname"><span class="pre">set_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.ProgressDialog.set_message" title="Link to this definition">¶</a></dt>
-<dd><p>Changer le message affiché</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">RouteTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
-<p>Onglet pour l’itinéraire détaillé</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.add_airport_waypoint">
-<span class="sig-name descname"><span class="pre">add_airport_waypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.add_airport_waypoint" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter un aéroport comme waypoint</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.add_custom_waypoint">
-<span class="sig-name descname"><span class="pre">add_custom_waypoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.add_custom_waypoint" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter un waypoint personnalisé</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.clear_waypoints">
-<span class="sig-name descname"><span class="pre">clear_waypoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.clear_waypoints" title="Link to this definition">¶</a></dt>
-<dd><p>Effacer tous les waypoints</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets de l’onglet</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.get_waypoints">
-<span class="sig-name descname"><span class="pre">get_waypoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.gui.RouteTab.get_waypoints" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la liste des waypoints</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.move_waypoint_down">
-<span class="sig-name descname"><span class="pre">move_waypoint_down</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.move_waypoint_down" title="Link to this definition">¶</a></dt>
-<dd><p>Déplacer waypoint vers le bas</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.move_waypoint_up">
-<span class="sig-name descname"><span class="pre">move_waypoint_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.move_waypoint_up" title="Link to this definition">¶</a></dt>
-<dd><p>Déplacer waypoint vers le haut</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.on_waypoint_select">
-<span class="sig-name descname"><span class="pre">on_waypoint_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.on_waypoint_select" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les détails du waypoint sélectionné</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.remove_waypoint">
-<span class="sig-name descname"><span class="pre">remove_waypoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.remove_waypoint" title="Link to this definition">¶</a></dt>
-<dd><p>Supprimer le waypoint sélectionné</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.RouteTab.update_waypoint_list">
-<span class="sig-name descname"><span class="pre">update_waypoint_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.RouteTab.update_waypoint_list" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour l’affichage des waypoints</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.StatusBarWidget">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">StatusBarWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.StatusBarWidget" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></p>
-<p>Barre d’état avec indicateurs</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.StatusBarWidget.set_airports_count">
-<span class="sig-name descname"><span class="pre">set_airports_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.StatusBarWidget.set_airports_count" title="Link to this definition">¶</a></dt>
-<dd><p>Définir le nombre d’aéroports</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.StatusBarWidget.set_api_status">
-<span class="sig-name descname"><span class="pre">set_api_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configured</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.StatusBarWidget.set_api_status" title="Link to this definition">¶</a></dt>
-<dd><p>Définir le statut de l’API</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.StatusBarWidget.set_status">
-<span class="sig-name descname"><span class="pre">set_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.StatusBarWidget.set_status" title="Link to this definition">¶</a></dt>
-<dd><p>Définir le message de statut</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">VFRPlannerGUI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Fenêtre principale de l’application VFR Planner</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.calculate_route">
-<span class="sig-name descname"><span class="pre">calculate_route</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.calculate_route" title="Link to this definition">¶</a></dt>
-<dd><p>Calculer l’itinéraire</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.check_weather">
-<span class="sig-name descname"><span class="pre">check_weather</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.check_weather" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier la météo avec timing correct basé sur les informations de vol</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.copy_plan">
-<span class="sig-name descname"><span class="pre">copy_plan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.copy_plan" title="Link to this definition">¶</a></dt>
-<dd><p>Copier le plan de vol dans le presse-papier</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.create_menu">
-<span class="sig-name descname"><span class="pre">create_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.create_menu" title="Link to this definition">¶</a></dt>
-<dd><p>Créer la barre de menu</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.create_widgets">
-<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.create_widgets" title="Link to this definition">¶</a></dt>
-<dd><p>Créer les widgets principaux</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.export_excel">
-<span class="sig-name descname"><span class="pre">export_excel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.export_excel" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter vers Excel</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.export_pdf">
-<span class="sig-name descname"><span class="pre">export_pdf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.export_pdf" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter vers PDF</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.get_project_data">
-<span class="sig-name descname"><span class="pre">get_project_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.get_project_data" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les données du projet pour sauvegarde</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.load_project_data">
-<span class="sig-name descname"><span class="pre">load_project_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.load_project_data" title="Link to this definition">¶</a></dt>
-<dd><p>Charger les données d’un projet</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.mark_saved">
-<span class="sig-name descname"><span class="pre">mark_saved</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.mark_saved" title="Link to this definition">¶</a></dt>
-<dd><p>Marquer le projet comme sauvegardé</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.mark_unsaved">
-<span class="sig-name descname"><span class="pre">mark_unsaved</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.mark_unsaved" title="Link to this definition">¶</a></dt>
-<dd><p>Marquer le projet comme modifié</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.new_project">
-<span class="sig-name descname"><span class="pre">new_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.new_project" title="Link to this definition">¶</a></dt>
-<dd><p>Créer un nouveau projet</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.on_closing">
-<span class="sig-name descname"><span class="pre">on_closing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.on_closing" title="Link to this definition">¶</a></dt>
-<dd><p>Gérer la fermeture de l’application</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.on_tab_changed">
-<span class="sig-name descname"><span class="pre">on_tab_changed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.on_tab_changed" title="Link to this definition">¶</a></dt>
-<dd><p>Appelé quand l’onglet change</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.open_project">
-<span class="sig-name descname"><span class="pre">open_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.open_project" title="Link to this definition">¶</a></dt>
-<dd><p>Ouvrir un projet</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.save_project">
-<span class="sig-name descname"><span class="pre">save_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.save_project" title="Link to this definition">¶</a></dt>
-<dd><p>Sauvegarder le projet</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.save_project_as">
-<span class="sig-name descname"><span class="pre">save_project_as</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.save_project_as" title="Link to this definition">¶</a></dt>
-<dd><p>Sauvegarder le projet sous un nouveau nom</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.save_project_to_file">
-<span class="sig-name descname"><span class="pre">save_project_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.save_project_to_file" title="Link to this definition">¶</a></dt>
-<dd><p>Sauvegarder vers un fichier spécifique</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.setup_bindings">
-<span class="sig-name descname"><span class="pre">setup_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.setup_bindings" title="Link to this definition">¶</a></dt>
-<dd><p>Configurer les raccourcis clavier</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.setup_window">
-<span class="sig-name descname"><span class="pre">setup_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.setup_window" title="Link to this definition">¶</a></dt>
-<dd><p>Configurer la fenêtre principale</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.show_about">
-<span class="sig-name descname"><span class="pre">show_about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.show_about" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les informations sur l’application</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.show_interactive_map">
-<span class="sig-name descname"><span class="pre">show_interactive_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.show_interactive_map" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher la carte interactive</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.show_preferences">
-<span class="sig-name descname"><span class="pre">show_preferences</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.show_preferences" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les préférences</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.show_shortcuts">
-<span class="sig-name descname"><span class="pre">show_shortcuts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.show_shortcuts" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher les raccourcis clavier</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.show_user_guide">
-<span class="sig-name descname"><span class="pre">show_user_guide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.show_user_guide" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher le guide d’utilisation</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.show_weather_analysis">
-<span class="sig-name descname"><span class="pre">show_weather_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weather_service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.show_weather_analysis" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher l’analyse météo dans une fenêtre avec timing détaillé</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.system_diagnostic">
-<span class="sig-name descname"><span class="pre">system_diagnostic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.system_diagnostic" title="Link to this definition">¶</a></dt>
-<dd><p>Afficher un diagnostic du système</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.test_weather_api">
-<span class="sig-name descname"><span class="pre">test_weather_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.test_weather_api" title="Link to this definition">¶</a></dt>
-<dd><p>Tester l’API météo</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.gui.VFRPlannerGUI.update_status_bar">
-<span class="sig-name descname"><span class="pre">update_status_bar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.VFRPlannerGUI.update_status_bar" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour la barre d’état</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="vfr_planner.gui.add_tooltip">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.</span></span><span class="sig-name descname"><span class="pre">add_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.add_tooltip" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.gui.widgets.</span></span><span class="sig-name descname"><span class="pre">add_tooltip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.gui.widgets.add_tooltip" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Ajouter un tooltip à un widget</p>
 </dd></dl>
 
@@ -1256,11 +1045,11 @@
       <div class="bottomnav" role="navigation" aria-label="Bottom">
       
         <p>
-        «&#160;&#160;<a href="vfr_planner.export.html">vfr_planner.export package</a>
+        «&#160;&#160;<a href="vfr_planner.export.html">Paquet <em>export</em></a>
         &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
+        <a class="uplink" href="index.html">Contenu</a>
         &#160;&#160;::&#160;&#160;
-        <a href="vfr_planner.models.html">vfr_planner.models package</a>&#160;&#160;»
+        <a href="vfr_planner.models.html">Paquet <em>models</em></a>&#160;&#160;»
         </p>
 
       </div>
@@ -1277,7 +1066,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE..
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     </div>
   </body>
 </html>

@@ -14,9 +14,20 @@ from .. import __version__, __author__
 
 
 class VFRPlannerGUI:
-    """Fenêtre principale de l'application VFR Planner"""
+    """
+    Fenêtre principale de l'application VFR Planner.
+
+    :param root: Fenêtre racine Tkinter utilisée comme conteneur principal de l'interface graphique.
+    :type root: tkinter.Tk
+    """
 
     def __init__(self, root):
+        """
+        Initialise l'interface graphique de VFR Planner.
+
+        Cette méthode configure la fenêtre principale, initialise la base de données d'aéroports,
+        crée les widgets de l'interface et configure les événements nécessaires.
+        """
         self.root = root
         self.setup_window()
 
@@ -36,7 +47,12 @@ class VFRPlannerGUI:
         self.update_status_bar()
 
     def setup_window(self):
-        """Configurer la fenêtre principale"""
+        """
+        Configure les propriétés de la fenêtre principale.
+
+        Définie le titre, la taille minimale, l'icône (si disponible),
+        et la procédure à exécuter lors de la fermeture de la fenêtre.
+        """
         self.root.title(f"VFR Planner v{__version__}")
         self.root.geometry("1200x800")
         self.root.minsize(1000, 600)
@@ -54,7 +70,15 @@ class VFRPlannerGUI:
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
     def create_menu(self):
-        """Créer la barre de menu"""
+        """
+        Crée la barre de menu principale de l'application.
+
+        Cette méthode configure les menus suivants :
+        - Fichier : opérations sur les projets (nouveau, ouvrir, sauvegarder, exporter, quitter)
+        - Édition : actions générales et préférences
+        - Outils : fonctions utilitaires (calculs, météo, carte, diagnostics)
+        - Aide : accès au guide, raccourcis et à propos
+        """
         menubar = tk.Menu(self.root)
         self.root.config(menu=menubar)
 
@@ -96,7 +120,12 @@ class VFRPlannerGUI:
         help_menu.add_command(label="À propos", command=self.show_about)
 
     def create_widgets(self):
-        """Créer les widgets principaux"""
+        """
+        Crée et affiche les widgets principaux de l'application.
+
+        Cette méthode instancie les onglets de navigation (aéronef, aéroports, itinéraire, plan de vol),
+        ainsi que la barre d'état. En cas d'erreur lors de la création, une interface minimale est affichée.
+        """
         try:
             # Notebook pour les onglets
             self.notebook = ttk.Notebook(self.root)
@@ -139,7 +168,13 @@ class VFRPlannerGUI:
             self.status_bar.set_status(f"Erreur: {e}")
 
     def setup_bindings(self):
-        """Configurer les raccourcis clavier"""
+        """
+        Configure les raccourcis clavier et les événements de l'application.
+
+        Cette méthode associe des combinaisons de touches à des actions comme
+        créer un nouveau projet, ouvrir, sauvegarder, copier, etc.,
+        ainsi que le changement d'onglet pour détecter les modifications.
+        """
         self.root.bind('<Control-n>', lambda e: self.new_project())
         self.root.bind('<Control-o>', lambda e: self.open_project())
         self.root.bind('<Control-s>', lambda e: self.save_project())
@@ -153,7 +188,12 @@ class VFRPlannerGUI:
         self.notebook.bind('<<NotebookTabChanged>>', self.on_tab_changed)
 
     def update_status_bar(self):
-        """Mettre à jour la barre d'état"""
+        """
+        Met à jour le contenu de la barre d'état.
+
+        Affiche l'état de la connexion à l'API météo, le nombre d'aéroports visibles,
+        et un message de statut par défaut.
+        """
         # Statut API - toujours configurée maintenant
         self.status_bar.set_api_status(True, True)
 
@@ -165,7 +205,12 @@ class VFRPlannerGUI:
         self.status_bar.set_status("Prêt - API météo configurée automatiquement")
 
     def on_tab_changed(self, event):
-        """Appelé quand l'onglet change"""
+        """
+        Appelé lorsque l'utilisateur change d'onglet dans l'application.
+
+        :param event: Événement Tkinter déclenché par le changement d'onglet.
+        :type event: tkinter.Event
+        """
         # Mettre à jour selon l'onglet actuel
         current_tab = self.notebook.index(self.notebook.select())
 
@@ -179,7 +224,11 @@ class VFRPlannerGUI:
             self.status_bar.set_status("Calculez et exportez votre plan de vol")
 
     def mark_unsaved(self):
-        """Marquer le projet comme modifié"""
+        """
+        Marque le projet comme ayant des modifications non sauvegardées.
+
+        Ajoute un astérisque au titre de la fenêtre si ce n'est pas déjà fait.
+        """
         if not self.unsaved_changes:
             self.unsaved_changes = True
             title = self.root.title()
@@ -187,7 +236,11 @@ class VFRPlannerGUI:
                 self.root.title(title + " *")
 
     def mark_saved(self):
-        """Marquer le projet comme sauvegardé"""
+        """
+        Marque le projet comme sauvegardé.
+
+        Retire l'astérisque du titre de la fenêtre si présent.
+        """
         self.unsaved_changes = False
         title = self.root.title()
         if title.endswith(" *"):
@@ -195,7 +248,12 @@ class VFRPlannerGUI:
 
     # Actions du menu Fichier
     def new_project(self):
-        """Créer un nouveau projet"""
+        """
+        Crée un nouveau projet en réinitialisant tous les onglets.
+
+        Affiche une boîte de dialogue pour sauvegarder les modifications en cours si nécessaire.
+        Réinitialise les widgets des onglets Aéronef, Aéroports, Itinéraire et Plan de vol.
+        """
         if self.unsaved_changes:
             result = messagebox.askyesnocancel(
                 "Nouveau projet",
@@ -238,7 +296,14 @@ class VFRPlannerGUI:
             self.status_bar.set_status("Erreur lors de la création du nouveau projet")
 
     def open_project(self):
-        """Ouvrir un projet"""
+        """
+        Ouvre un projet existant depuis un fichier .vfr ou .json.
+
+        Affiche une boîte de dialogue de confirmation si des modifications non sauvegardées existent.
+        Charge les données du projet sélectionné et met à jour l'interface.
+
+        :return: None
+        """
         if self.unsaved_changes:
             result = messagebox.askyesnocancel(
                 "Ouvrir projet",
@@ -272,14 +337,27 @@ class VFRPlannerGUI:
                 messagebox.showerror("Erreur", f"Erreur lors de l'ouverture:\n{e}")
 
     def save_project(self):
-        """Sauvegarder le projet"""
+        """
+        Sauvegarde le projet courant.
+
+        Si un fichier de projet est déjà associé, il est écrasé.
+        Sinon, déclenche une demande de nouveau nom de fichier.
+
+        :return: True si la sauvegarde a réussi, False sinon.
+        :rtype: bool
+        """
         if self.current_project_file:
             return self.save_project_to_file(self.current_project_file)
         else:
             return self.save_project_as()
 
     def save_project_as(self):
-        """Sauvegarder le projet sous un nouveau nom"""
+        """
+        Sauvegarde le projet sous un nouveau nom choisi par l'utilisateur.
+
+        :return: True si la sauvegarde a réussi, False sinon.
+        :rtype: bool
+        """
         filename = filedialog.asksaveasfilename(
             title="Sauvegarder le projet VFR",
             defaultextension=".vfr",
@@ -291,7 +369,14 @@ class VFRPlannerGUI:
         return False
 
     def save_project_to_file(self, filename):
-        """Sauvegarder vers un fichier spécifique"""
+        """
+        Sauvegarde les données du projet dans un fichier.
+
+        :param filename: Chemin du fichier dans lequel enregistrer les données du projet.
+        :type filename: str
+        :return: True si la sauvegarde a réussi, False sinon.
+        :rtype: bool
+        """
         try:
             project_data = self.get_project_data()
 
@@ -311,7 +396,12 @@ class VFRPlannerGUI:
             return False
 
     def get_project_data(self):
-        """Obtenir les données du projet pour sauvegarde"""
+        """
+        Extrait les données actuelles du projet pour les sauvegarder dans un fichier.
+
+        :return: Dictionnaire contenant les données du projet.
+        :rtype: dict
+        """
         return {
             'version': __version__,
             'aircraft': self.aircraft_tab.get_aircraft_data(),
@@ -321,12 +411,18 @@ class VFRPlannerGUI:
             'waypoints': self.route_tab.get_waypoints(),
             'api_configured': True,  # Toujours configurée maintenant
             'saved_at': tk._default_root.tk.call('clock', 'format',
-                                               tk._default_root.tk.call('clock', 'seconds'),
-                                               '-format', '%Y-%m-%d %H:%M:%S')
+                                                 tk._default_root.tk.call('clock', 'seconds'),
+                                                 '-format', '%Y-%m-%d %H:%M:%S')
         }
 
     def load_project_data(self, project_data):
-        """Charger les données d'un projet"""
+        """
+        Charge les données d’un projet dans les différents onglets de l’interface.
+
+        :param project_data: Dictionnaire contenant les données du projet à charger.
+        :type project_data: dict
+        :return: None
+        """
         try:
             # Charger aéronef
             aircraft_data = project_data.get('aircraft', {})
@@ -345,11 +441,13 @@ class VFRPlannerGUI:
                     entry.insert(0, str(value))
 
             # Charger aéroports avec vérifications
-            if project_data.get('departure_airport') and hasattr(self.airports_tab, 'departure_search') and self.airports_tab.departure_search:
+            if project_data.get('departure_airport') and hasattr(self.airports_tab,
+                                                                 'departure_search') and self.airports_tab.departure_search:
                 self.airports_tab.departure_airport = project_data['departure_airport']
                 self.airports_tab.departure_search.set_airport(project_data['departure_airport'])
 
-            if project_data.get('destination_airport') and hasattr(self.airports_tab, 'destination_search') and self.airports_tab.destination_search:
+            if project_data.get('destination_airport') and hasattr(self.airports_tab,
+                                                                   'destination_search') and self.airports_tab.destination_search:
                 self.airports_tab.destination_airport = project_data['destination_airport']
                 self.airports_tab.destination_search.set_airport(project_data['destination_airport'])
 
@@ -370,15 +468,27 @@ class VFRPlannerGUI:
             messagebox.showerror("Erreur", f"Erreur lors du chargement:\n{e}")
 
     def export_excel(self):
-        """Exporter vers Excel"""
+        """
+        Exporte le plan de vol au format Excel.
+
+        Utilise la méthode d’exportation définie dans l’onglet `plan_tab`.
+        """
         self.plan_tab.export_excel()
 
     def export_pdf(self):
-        """Exporter vers PDF"""
+        """
+        Exporte le plan de vol au format PDF.
+
+        Utilise la méthode d’exportation définie dans l’onglet `plan_tab`.
+        """
         self.plan_tab.export_pdf()
 
     def copy_plan(self):
-        """Copier le plan de vol dans le presse-papier"""
+        """
+        Copie le contenu du plan de vol dans le presse-papier.
+
+        Si aucun plan n’est défini, affiche un message d’avertissement.
+        """
         plan_content = self.plan_tab.plan_text.get('1.0', tk.END)
         if plan_content.strip():
             self.root.clipboard_clear()
@@ -388,16 +498,32 @@ class VFRPlannerGUI:
             messagebox.showwarning("Attention", "Aucun plan de vol à copier")
 
     def show_preferences(self):
-        """Afficher les préférences"""
+        """
+        Affiche une boîte de dialogue de préférences.
+
+        Actuellement, cette fonctionnalité n’est pas encore implémentée.
+        """
         messagebox.showinfo("Préférences", "Fonctionnalité à implémenter")
 
     # Actions du menu Outils
     def calculate_route(self):
-        """Calculer l'itinéraire"""
+        """
+        Calcule automatiquement l'itinéraire de vol.
+
+        Appelle la méthode de calcul définie dans l’onglet `plan_tab`.
+        """
         self.plan_tab.calculate_route()
 
     def check_weather(self):
-        """Vérifier la météo avec timing correct basé sur les informations de vol"""
+        """
+        Vérifie les conditions météo le long de l'itinéraire de vol.
+
+        Utilise les informations de vol (date, heure, vitesse) pour déterminer
+        le moment exact de passage sur chaque waypoint et fait appel à l’API météo
+        via `WeatherService`. Affiche les résultats dans une interface dédiée.
+
+        En cas d'erreur, affiche un message à l'utilisateur.
+        """
         waypoints = self.route_tab.get_waypoints()
         if not waypoints:
             messagebox.showwarning("Attention", "Aucun waypoint défini")
@@ -474,7 +600,16 @@ class VFRPlannerGUI:
             messagebox.showerror("Erreur météo", f"Erreur lors de l'analyse météo:\n{e}")
 
     def show_weather_analysis(self, analysis, weather_service):
-        """Afficher l'analyse météo dans une fenêtre avec timing détaillé"""
+        """
+        Afficher l'analyse météo dans une fenêtre avec timing détaillé.
+
+        Ouvre une nouvelle fenêtre affichant un rapport complet sur les conditions
+        météo le long de la route de vol, incluant un résumé de vol, détails par waypoint,
+        analyse des tendances météo et recommandations VFR.
+
+        :param analysis: dict contenant les données d’analyse météo et timing
+        :param weather_service: instance du service météo, utilisée pour vérifier les conditions VFR
+        """
         weather_window = tk.Toplevel(self.root)
         weather_window.title("Analyse météorologique avec timing de vol")
         weather_window.geometry("700x600")
@@ -599,11 +734,20 @@ class VFRPlannerGUI:
         weather_text.configure(state='disabled')
 
     def show_interactive_map(self):
-        """Afficher la carte interactive"""
+        """
+        Affiche la carte interactive du plan de vol.
+
+        Délègue l'affichage à la méthode `show_map` de l'onglet plan de vol.
+        """
         self.plan_tab.show_map()
 
     def system_diagnostic(self):
-        """Afficher un diagnostic du système"""
+        """
+        Affiche un diagnostic du système dans une boîte d'information.
+
+        Montre les versions de Python, Tkinter, VFR Planner, la présence des modules requis,
+        le nombre d’aéroports chargés, la configuration API météo, etc.
+        """
         import sys
         import platform
 
@@ -647,12 +791,22 @@ Modules requis:
         messagebox.showinfo("Diagnostic système", diagnostic)
 
     def test_weather_api(self):
-        """Tester l'API météo"""
+        """
+        Lance un test de l'API météo intégrée.
+
+        Appelle la méthode de test API météo depuis l'onglet plan de vol.
+        """
         self.plan_tab.test_api()
 
     # Actions du menu Aide
     def show_user_guide(self):
-        """Afficher le guide d'utilisation"""
+        """
+        Affiche une fenêtre contenant le guide d'utilisation de VFR Planner.
+
+        La fenêtre présente les étapes principales pour configurer l'aéronef,
+        sélectionner les aéroports, planifier l'itinéraire, calculer et exporter
+        le plan de vol, ainsi que les raccourcis clavier utiles.
+        """
         guide_text = """GUIDE D'UTILISATION VFR PLANNER
 
 1. CONFIGURATION DE L'AÉRONEF
@@ -694,7 +848,12 @@ SUPPORT: Consultez la documentation complète sur GitHub
         text_widget.configure(state='disabled')
 
     def show_shortcuts(self):
-        """Afficher les raccourcis clavier"""
+        """
+        Affiche une boîte de dialogue listant les raccourcis clavier disponibles.
+
+        Cette fenêtre liste les raccourcis pour les actions communes dans l'application,
+        incluant fichier, édition, outils et navigation.
+        """
         shortcuts = """RACCOURCIS CLAVIER VFR PLANNER
 
 Fichier:
@@ -719,7 +878,12 @@ Ctrl+Tab       Changer d'onglet
         messagebox.showinfo("Raccourcis clavier", shortcuts)
 
     def show_about(self):
-        """Afficher les informations sur l'application"""
+        """
+        Affiche une boîte de dialogue "À propos" avec les informations de version
+        et description du logiciel.
+
+        Montre la version, auteurs, fonctionnalités principales et informations légales.
+        """
         about_text = f"""VFR PLANNER
 
 Version: {__version__}
@@ -729,7 +893,7 @@ Outil de planification de vol VFR avec calculs automatiques
 de navigation, intégration météo et génération de plans
 de vol professionnels.
 
-Projet MGA802-01 - École Polytechnique de Montréal
+Projet MGA802-01 - École de Technologie Supérieur
 
 Fonctionnalités:
 • Base de données d'aéroports complète
@@ -744,7 +908,12 @@ Fonctionnalités:
         messagebox.showinfo("À propos de VFR Planner", about_text)
 
     def on_closing(self):
-        """Gérer la fermeture de l'application"""
+        """
+        Gère la fermeture de l'application.
+
+        Si des modifications non sauvegardées existent, demande à l'utilisateur
+        s'il souhaite sauvegarder avant de quitter. Peut annuler la fermeture.
+        """
         if self.unsaved_changes:
             result = messagebox.askyesnocancel(
                 "Fermeture",

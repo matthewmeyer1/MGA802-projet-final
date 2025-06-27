@@ -1,10 +1,10 @@
-vfr\_planner.gui package
+Paquet *gui*
 ========================
 
-Submodules
-----------
+**Sous-module**
+---------------------
 
-vfr\_planner.gui.main\_window module
+Module *main\_window*
 ------------------------------------
 
 .. automodule:: vfr_planner.gui.main_window
@@ -12,7 +12,7 @@ vfr\_planner.gui.main\_window module
    :show-inheritance:
    :undoc-members:
 
-vfr\_planner.gui.tabs module
+Module *tabs*
 ----------------------------
 
 .. automodule:: vfr_planner.gui.tabs
@@ -20,18 +20,10 @@ vfr\_planner.gui.tabs module
    :show-inheritance:
    :undoc-members:
 
-vfr\_planner.gui.widgets module
+Module *widgets*
 -------------------------------
 
 .. automodule:: vfr_planner.gui.widgets
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-Module contents
----------------
-
-.. automodule:: vfr_planner.gui
    :members:
    :show-inheritance:
    :undoc-members:

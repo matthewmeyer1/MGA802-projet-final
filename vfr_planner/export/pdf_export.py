@@ -15,12 +15,15 @@ from typing import List, Dict, Any
 def export_to_pdf(flight_data: Dict[str, Any], legs_data: List[Dict],
                  filename: str = "flight_plan.pdf"):
     """
-    Exporter un plan de vol vers PDF
+    Exporter un plan de vol vers un fichier PDF.
 
-    Args:
-        flight_data: Données générales du vol
-        legs_data: Données des segments de vol
-        filename: Nom du fichier de sortie
+    :param flight_data: Données générales du vol.
+    :type flight_data: Dict[str, Any]
+    :param legs_data: Liste des segments du vol.
+    :type legs_data: List[Dict]
+    :param filename: Nom du fichier PDF de sortie.
+    :type filename: str
+    :raises Exception: En cas d'erreur lors de la génération du PDF.
     """
     try:
         # Configuration du document
@@ -212,12 +215,15 @@ def export_to_pdf(flight_data: Dict[str, Any], legs_data: List[Dict],
 def create_simple_pdf_export(flight_data: Dict[str, Any], legs_data: List[Dict],
                            filename: str = "simple_flight_plan.pdf"):
     """
-    Créer un export PDF simplifié
+    Créer un export PDF simplifié d’un plan de vol VFR.
 
-    Args:
-        flight_data: Données du vol
-        legs_data: Données des segments
-        filename: Nom du fichier
+    :param flight_data: Dictionnaire contenant les données générales du vol (ex. immatriculation, pilote, date, départ, arrivée).
+    :type flight_data: Dict[str, Any]
+    :param legs_data: Liste de dictionnaires, chaque dictionnaire contenant les données d’un segment de vol (ex. point de départ, destination, distance, cap, temps, ETA).
+    :type legs_data: List[Dict]
+    :param filename: Nom du fichier PDF à générer.
+    :type filename: str
+    :raises Exception: En cas d'erreur lors de la création ou de la sauvegarde du PDF.
     """
     try:
         doc = SimpleDocTemplate(filename, pagesize=A4)
@@ -294,13 +300,20 @@ def create_flight_briefing_pdf(flight_data: Dict[str, Any], legs_data: List[Dict
                               weather_data: Dict[str, Any] = None,
                               filename: str = "flight_briefing.pdf"):
     """
-    Créer un briefing de vol complet en PDF
+    Créer un briefing de vol VFR complet au format PDF.
 
-    Args:
-        flight_data: Données du vol
-        legs_data: Données des segments
-        weather_data: Données météo (optionnel)
-        filename: Nom du fichier
+    Ce document comprend un résumé exécutif, une liste de vérification pré-vol,
+    ainsi qu'un export détaillé du plan de vol.
+
+    :param flight_data: Données générales du vol (immatriculation, pilote, date, départ, destination, etc.).
+    :type flight_data: Dict[str, Any]
+    :param legs_data: Liste des segments de vol avec leurs données (distance, temps, carburant, ETA, etc.).
+    :type legs_data: List[Dict]
+    :param weather_data: Données météorologiques facultatives pour inclusion dans le briefing.
+    :type weather_data: Dict[str, Any], optional
+    :param filename: Nom du fichier PDF à générer.
+    :type filename: str
+    :raises Exception: En cas d’erreur lors de la génération du PDF.
     """
     try:
         doc = SimpleDocTemplate(filename, pagesize=letter)

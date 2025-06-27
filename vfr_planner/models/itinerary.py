@@ -25,16 +25,22 @@ class Itinerary:
         self.flight_info: Dict[str, Any] = {}
 
     def set_aircraft(self, aircraft: Aircraft):
-        """Définir l'aéronef"""
+        """
+        Définir l'aéronef utilisé pour l'itinéraire.
+
+        :param aircraft: Instance d'aéronef à associer
+        :type aircraft: Aircraft
+        """
         self.aircraft = aircraft
 
     def set_start_time_from_flight_info(self, flight_info: Dict[str, Any], timezone_str: str = "America/Montreal"):
         """
-        Définir l'heure de départ à partir des informations de vol de l'utilisateur
+        Définir l'heure de départ à partir d'un dictionnaire d'informations de vol.
 
-        Args:
-            flight_info: Dictionnaire contenant 'date' et 'departure_time'
-            timezone_str: Fuseau horaire
+        :param flight_info: Dictionnaire contenant les champs ``date`` (YYYY-MM-DD) et ``departure_time`` (HH:MM ou HH)
+        :type flight_info: dict
+        :param timezone_str: Nom du fuseau horaire (ex: ``America/Montreal``)
+        :type timezone_str: str
         """
         try:
             date_str = flight_info.get('date', '')
@@ -90,22 +96,34 @@ class Itinerary:
 
     def set_start_time(self, date_str: str, time_str: str, timezone_str: str = "America/Montreal"):
         """
-        Définir l'heure de départ (méthode legacy - utilisez set_start_time_from_flight_info)
+        Définir l'heure de départ manuellement (ancienne méthode).
 
-        Args:
-            date_str: Date au format YYYY-MM-DD
-            time_str: Heure au format HH:MM
-            timezone_str: Fuseau horaire
+        :param date_str: Date au format ``YYYY-MM-DD``
+        :type date_str: str
+        :param time_str: Heure au format ``HH:MM`` ou ``HH``
+        :type time_str: str
+        :param timezone_str: Fuseau horaire (par défaut ``America/Montreal``)
+        :type timezone_str: str
         """
         flight_info = {'date': date_str, 'departure_time': time_str}
         self.set_start_time_from_flight_info(flight_info, timezone_str)
 
     def set_api_key(self, api_key: str):
-        """Définir la clé API météo"""
+        """
+        Définir la clé API météo.
+
+        :param api_key: Clé API pour les requêtes météo
+        :type api_key: str
+        """
         self.api_key = api_key
 
     def set_flight_info(self, info: Dict[str, Any]):
-        """Définir les informations de vol"""
+        """
+        Définir les informations de vol.
+
+        :param info: Dictionnaire contenant les infos de vol, par exemple ``date``, ``departure_time``, ``pilot_name``, etc.
+        :type info: dict
+        """
         self.flight_info.update(info)
         # Automatiquement mettre à jour l'heure de départ si les infos sont présentes
         if 'date' in info or 'departure_time' in info:
@@ -113,11 +131,12 @@ class Itinerary:
 
     def add_waypoint(self, waypoint: Waypoint, index: Optional[int] = None):
         """
-        Ajouter un waypoint
+        Ajouter un waypoint à l'itinéraire.
 
-        Args:
-            waypoint: Waypoint à ajouter
-            index: Position d'insertion (None = à la fin)
+        :param waypoint: Waypoint à ajouter
+        :type waypoint: Waypoint
+        :param index: Position d'insertion (None = à la fin)
+        :type index: int | None
         """
         if index is None:
             self.waypoints.append(waypoint)
@@ -126,28 +145,60 @@ class Itinerary:
 
     def add_waypoint_from_coords(self, lat: float, lon: float, name: str = "",
                                  index: Optional[int] = None):
-        """Ajouter un waypoint depuis des coordonnées"""
+        """
+        Ajouter un waypoint depuis ses coordonnées.
+
+        :param lat: Latitude en degrés
+        :type lat: float
+        :param lon: Longitude en degrés
+        :type lon: float
+        :param name: Nom du waypoint
+        :type name: str
+        :param index: Position d'insertion
+        :type index: int | None
+        """
         waypoint = Waypoint(lat=lat, lon=lon, name=name)
         self.add_waypoint(waypoint, index)
 
     def add_waypoint_from_airport(self, airport_data: Dict[str, Any],
                                   index: Optional[int] = None):
-        """Ajouter un waypoint depuis des données d'aéroport"""
+        """
+        Ajouter un waypoint à partir d’un aéroport.
+
+        :param airport_data: Données de l’aéroport (doit contenir au moins ``lat`` et ``lon``)
+        :type airport_data: dict
+        :param index: Position d’insertion
+        :type index: int | None
+        """
         waypoint = Waypoint.from_airport(airport_data)
         self.add_waypoint(waypoint, index)
 
     def remove_waypoint(self, index: int):
-        """Supprimer un waypoint par index"""
+        """
+        Supprimer un waypoint par son index.
+
+        :param index: Index du waypoint à supprimer
+        :type index: int
+        """
         if 0 <= index < len(self.waypoints):
             self.waypoints.pop(index)
 
     def clear_waypoints(self):
-        """Supprimer tous les waypoints"""
+        """
+        Supprimer tous les waypoints et segments associés.
+        """
         self.waypoints.clear()
         self.legs.clear()
 
     def move_waypoint(self, from_index: int, to_index: int):
-        """Déplacer un waypoint"""
+        """
+        Déplacer un waypoint d’une position à une autre.
+
+        :param from_index: Position d’origine
+        :type from_index: int
+        :param to_index: Position de destination
+        :type to_index: int
+        """
         if (0 <= from_index < len(self.waypoints) and
                 0 <= to_index < len(self.waypoints)):
             waypoint = self.waypoints.pop(from_index)
@@ -155,10 +206,11 @@ class Itinerary:
 
     def create_legs(self, recalculate: bool = True):
         """
-        Créer les segments de vol entre les waypoints avec timing météo corrigé
+        Créer les segments de vol entre les waypoints, avec calcul météo.
 
-        Args:
-            recalculate: Recalculer tous les paramètres de vol
+        :param recalculate: Si True, recalculer tous les paramètres de vol.
+        :type recalculate: bool
+        :raises ValueError: Si moins de deux waypoints sont définis ou si aucun aéronef n’est défini.
         """
         if len(self.waypoints) < 2:
             raise ValueError("Au moins 2 waypoints requis pour créer des segments")
@@ -265,24 +317,41 @@ class Itinerary:
         print(f"\n✅ {len(self.legs)} segments créés avec timing météo corrigé")
 
     def recalculate_all(self):
-        """Recalculer tous les segments avec les paramètres actuels"""
+        """
+        Recalculer tous les segments avec les paramètres actuels.
+        """
         if self.legs:
             self.create_legs(recalculate=True)
 
     def get_departure_airport(self) -> Optional[Waypoint]:
-        """Obtenir l'aéroport de départ"""
+        """
+        Obtenir le waypoint de départ s’il s’agit d’un aéroport.
+
+        :return: Waypoint ou None
+        :rtype: Waypoint | None
+        """
         if self.waypoints and self.waypoints[0].is_airport():
             return self.waypoints[0]
         return None
 
     def get_destination_airport(self) -> Optional[Waypoint]:
-        """Obtenir l'aéroport de destination"""
+        """
+        Obtenir le waypoint de destination s’il s’agit d’un aéroport.
+
+        :return: Waypoint ou None
+        :rtype: Waypoint | None
+        """
         if self.waypoints and self.waypoints[-1].is_airport():
             return self.waypoints[-1]
         return None
 
     def get_summary(self) -> Dict[str, Any]:
-        """Obtenir un résumé de l'itinéraire"""
+        """
+        Résumé général de l’itinéraire (distance, temps, carburant, etc.)
+
+        :return: Dictionnaire résumant l’itinéraire
+        :rtype: dict
+        """
         if not self.legs:
             return {
                 'total_distance': 0,
@@ -310,13 +379,12 @@ class Itinerary:
 
     def get_fuel_analysis(self, reserve_minutes: float = 45) -> Dict[str, Any]:
         """
-        Analyser les besoins en carburant
+        Analyser les besoins en carburant pour l'itinéraire.
 
-        Args:
-            reserve_minutes: Réserve de carburant en minutes
-
-        Returns:
-            Analyse du carburant
+        :param reserve_minutes: Durée de réserve en minutes
+        :type reserve_minutes: float
+        :return: Dictionnaire avec les données d’analyse de carburant
+        :rtype: dict
         """
         summary = self.get_summary()
 
@@ -338,12 +406,24 @@ class Itinerary:
         }
 
     def needs_fuel_stops(self, reserve_minutes: float = 45) -> bool:
-        """Vérifier si des arrêts carburant sont nécessaires"""
+        """
+        Vérifier si des arrêts pour ravitaillement sont nécessaires.
+
+        :param reserve_minutes: Durée de réserve en minutes
+        :type reserve_minutes: float
+        :return: True si des arrêts sont requis
+        :rtype: bool
+        """
         fuel_analysis = self.get_fuel_analysis(reserve_minutes)
         return not fuel_analysis.get('is_sufficient', False)
 
     def to_dataframe(self) -> pd.DataFrame:
-        """Convertir les segments en DataFrame pandas"""
+        """
+        Convertir les segments en DataFrame pandas.
+
+        :return: Un DataFrame avec les données de chaque segment
+        :rtype: pandas.DataFrame
+        """
         if not self.legs:
             return pd.DataFrame()
 
@@ -351,7 +431,12 @@ class Itinerary:
         return pd.DataFrame(data)
 
     def to_dict(self) -> Dict[str, Any]:
-        """Convertir l'itinéraire complet en dictionnaire"""
+        """
+        Convertir l’itinéraire en dictionnaire sérialisable.
+
+        :return: Dictionnaire représentant l’itinéraire
+        :rtype: dict
+        """
         return {
             'waypoints': [wp.to_dict() for wp in self.waypoints],
             'legs': [leg.to_dict() for leg in self.legs],
@@ -363,7 +448,14 @@ class Itinerary:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'Itinerary':
-        """Créer un Itinerary depuis un dictionnaire"""
+        """
+        Créer un objet ``Itinerary`` à partir d’un dictionnaire.
+
+        :param data: Dictionnaire contenant les données de l’itinéraire
+        :type data: dict
+        :return: Instance d’Itinerary
+        :rtype: Itinerary
+        """
         itinerary = cls()
 
         # Charger aircraft si disponible
@@ -391,13 +483,12 @@ class Itinerary:
 
     def get_eta_for_waypoint(self, waypoint_index: int) -> Optional[datetime.datetime]:
         """
-        Obtenir l'ETA pour un waypoint spécifique
+        Obtenir l’heure estimée d’arrivée (ETA) pour un waypoint donné.
 
-        Args:
-            waypoint_index: Index du waypoint
-
-        Returns:
-            ETA ou None si impossible à calculer
+        :param waypoint_index: Index du waypoint
+        :type waypoint_index: int
+        :return: Heure ETA ou None
+        :rtype: datetime.datetime | None
         """
         if not self.start_time or waypoint_index <= 0:
             return self.start_time
@@ -415,10 +506,10 @@ class Itinerary:
 
     def get_flight_plan_data(self) -> Dict[str, Any]:
         """
-        Obtenir les données formatées pour la génération de plan de vol
+        Obtenir les données formatées pour le plan de vol.
 
-        Returns:
-            Données formatées pour l'export
+        :return: Dictionnaire avec les données principales et les segments
+        :rtype: Tuple[dict, list]
         """
         summary = self.get_summary()
         fuel_analysis = self.get_fuel_analysis()
@@ -472,15 +563,32 @@ class Itinerary:
         return flight_data, legs_data
 
     def __len__(self) -> int:
-        """Nombre de waypoints"""
+        """
+        Retourne le nombre de waypoints.
+
+        :return: Nombre de waypoints
+        :rtype: int
+        """
         return len(self.waypoints)
 
     def __str__(self) -> str:
+        """
+        Retourne un résumé textuel de l’itinéraire.
+
+        :return: Chaîne formatée
+        :rtype: str
+        """
         summary = self.get_summary()
         return (f"Itinéraire: {summary['departure']} → {summary['destination']} "
                 f"({summary['total_distance']:.1f}NM, {summary['total_time']:.0f}min)")
 
     def __repr__(self) -> str:
+        """
+        Représentation officielle de l’itinéraire.
+
+        :return: Représentation développeur
+        :rtype: str
+        """
         return f"Itinerary(waypoints={len(self.waypoints)}, legs={len(self.legs)})"
 
 
@@ -489,16 +597,20 @@ class Itinerary:
 def create_itinerary_from_gui(waypoints: List[Dict], aircraft_params: Dict,
                               flight_params: Dict, api_key: str = None) -> Itinerary:
     """
-    Créer un itinéraire depuis les données de l'interface GUI avec timing corrigé
+    Créer un itinéraire depuis les données de l'interface GUI avec correction météorologique.
 
-    Args:
-        waypoints: Liste de {'name': str, 'lat': float, 'lon': float}
-        aircraft_params: {'tas': float, 'fuel_burn': float, etc.}
-        flight_params: {'date': str, 'departure_time': str, etc.}
-        api_key: Clé API météo
+    :param waypoints: Liste de waypoints sous forme de dictionnaires contenant les clés :
+                      ``'name'``, ``'lat'``, ``'lon'`` et éventuellement ``'type'``, ``'info'``
+    :type waypoints: list[dict]
+    :param aircraft_params: Paramètres de l'aéronef, ex : ``{'tas': float, 'fuel_burn': float, ...}``
+    :type aircraft_params: dict
+    :param flight_params: Paramètres de vol, ex : ``{'date': str, 'departure_time': str, ...}``
+    :type flight_params: dict
+    :param api_key: Clé API pour la météo (optionnel)
+    :type api_key: str | None
 
-    Returns:
-        Itinéraire configuré avec timing météo corrigé
+    :return: Itinéraire complet avec timing et météo calculés
+    :rtype: Itinerary
     """
     print(f"🔧 Création itinéraire GUI avec flight_params: {flight_params}")
 

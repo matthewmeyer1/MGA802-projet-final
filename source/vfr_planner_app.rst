@@ -1,5 +1,5 @@
-vfr\_planner\_app module
-========================
+Module *Application VFR Planner*
+==============================
 
 .. automodule:: vfr_planner_app
    :members:

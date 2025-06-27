@@ -28,7 +28,7 @@ author = 'Matthew Mayer, Gabriel Wong-Lapierre, Antoine Gingras, Richard Nguekam
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ["sphinx.ext.autodoc"]
-
+language = 'fr'
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 

@@ -20,7 +20,11 @@ class Aircraft:
     equipment: str = ""  # Équipements (GPS, Transponder, etc.)
 
     def __post_init__(self):
-        """Validation après initialisation"""
+        """
+        Validation après initialisation.
+
+        :raises ValueError: Si la vitesse de croisière, la consommation ou la capacité de carburant sont négatives ou nulles.
+        """
         if self.cruise_speed <= 0:
             raise ValueError("La vitesse de croisière doit être positive")
         if self.fuel_burn <= 0:
@@ -30,7 +34,14 @@ class Aircraft:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'Aircraft':
-        """Créer un Aircraft depuis un dictionnaire"""
+        """
+        Créer un objet Aircraft à partir d’un dictionnaire.
+
+        :param data: Dictionnaire contenant les informations de l’aéronef.
+        :type data: dict
+        :return: Une instance de Aircraft remplie avec les données du dictionnaire.
+        :rtype: Aircraft
+        """
         return cls(
             registration=data.get('registration', ''),
             aircraft_type=data.get('aircraft_type', ''),
@@ -43,7 +54,12 @@ class Aircraft:
         )
 
     def to_dict(self) -> Dict[str, Any]:
-        """Convertir en dictionnaire"""
+        """
+        Convertir l’aéronef en dictionnaire.
+
+        :return: Un dictionnaire représentant les attributs de l’objet Aircraft.
+        :rtype: dict
+        """
         return {
             'registration': self.registration,
             'aircraft_type': self.aircraft_type,
@@ -57,13 +73,12 @@ class Aircraft:
 
     def calculate_endurance(self, reserve_minutes: float = 45) -> float:
         """
-        Calculer l'endurance en minutes
+        Calcule l'endurance totale de l'aéronef en minutes, en tenant compte d'une réserve de carburant.
 
-        Args:
-            reserve_minutes: Réserve de carburant en minutes
-
-        Returns:
-            Endurance totale en minutes
+        :param reserve_minutes: Réserve de carburant en minutes à conserver (par défaut : 45).
+        :type reserve_minutes: float
+        :return: Endurance disponible en minutes après déduction de la réserve.
+        :rtype: float
         """
         if self.fuel_burn <= 0:
             return 0
@@ -73,23 +88,36 @@ class Aircraft:
 
     def calculate_range(self, reserve_minutes: float = 45) -> float:
         """
-        Calculer la portée en milles nautiques
+        Calcule la portée maximale en milles nautiques (NM), en tenant compte d'une réserve de carburant.
 
-        Args:
-            reserve_minutes: Réserve de carburant en minutes
-
-        Returns:
-            Portée en NM
+        :param reserve_minutes: Réserve de carburant en minutes à conserver (par défaut : 45).
+        :type reserve_minutes: float
+        :return: Portée maximale estimée en milles nautiques.
+        :rtype: float
         """
         endurance_hours = self.calculate_endurance(reserve_minutes) / 60
         return endurance_hours * self.cruise_speed
 
     def is_valid_weight(self, payload: float) -> bool:
-        """Vérifier si la charge utile est valide"""
+        """
+        Vérifie si la charge utile donnée est valide.
+
+        :param payload: Charge utile en livres.
+        :type payload: float
+        :return: ``True`` si la charge est dans les limites autorisées, sinon ``False``.
+        :rtype: bool
+        """
         return 0 <= payload <= self.max_payload
 
     def get_display_name(self) -> str:
-        """Obtenir le nom d'affichage"""
+        """
+        Retourne le nom d'affichage de l'aéronef.
+
+        Combine l'immatriculation et le type si disponibles, ou indique que l'aéronef est non spécifié.
+
+        :return: Chaîne représentant l’aéronef.
+        :rtype: str
+        """
         if self.registration and self.aircraft_type:
             return f"{self.registration} ({self.aircraft_type})"
         elif self.registration:
@@ -100,9 +128,21 @@ class Aircraft:
             return "Aéronef non spécifié"
 
     def __str__(self) -> str:
+        """
+        Retourne une représentation lisible de l'aéronef.
+
+        :return: Nom d’affichage.
+        :rtype: str
+        """
         return self.get_display_name()
 
     def __repr__(self) -> str:
+        """
+        Retourne une représentation technique de l’objet Aircraft.
+
+        :return: Représentation textuelle.
+        :rtype: str
+        """
         return f"Aircraft(registration='{self.registration}', type='{self.aircraft_type}')"
 
 
@@ -143,17 +183,21 @@ AIRCRAFT_PRESETS = {
 
 def get_aircraft_preset(aircraft_type: str) -> Optional[Aircraft]:
     """
-    Obtenir un aéronef prédéfini
+    Obtenir un aéronef prédéfini selon son identifiant.
 
-    Args:
-        aircraft_type: Type d'aéronef ('C172', 'PA28', 'C152')
-
-    Returns:
-        Aircraft prédéfini ou None si non trouvé
+    :param aircraft_type: Type d'aéronef (ex. ``'C172'``, ``'PA28'``, ``'C152'``).
+    :type aircraft_type: str
+    :return: L’objet Aircraft correspondant ou ``None`` si non trouvé.
+    :rtype: Optional[Aircraft]
     """
     return AIRCRAFT_PRESETS.get(aircraft_type.upper())
 
 
 def list_aircraft_presets() -> list:
-    """Lister tous les aéronefs prédéfinis disponibles"""
+    """
+    Lister les identifiants des aéronefs prédéfinis disponibles.
+
+    :return: Liste des clés disponibles dans ``AIRCRAFT_PRESETS``.
+    :rtype: list
+    """
     return list(AIRCRAFT_PRESETS.keys())

@@ -11,12 +11,19 @@ from typing import List, Dict, Any
 def export_to_excel(flight_data: Dict[str, Any], legs_data: List[Dict],
                    filename: str = "flight_plan.xlsx"):
     """
-    Exporter un plan de vol vers Excel
+    Exporter un plan de vol vers Excel.
 
-    Args:
-        flight_data: Données générales du vol
-        legs_data: Données des segments de vol
-        filename: Nom du fichier de sortie
+    :param flight_data: Dictionnaire contenant les données générales du vol,
+                        par exemple immatriculation, type d'aéronef, vitesse,
+                        consommation, départ, destination, date, pilote, etc.
+    :type flight_data: Dict[str, Any]
+    :param legs_data: Liste de dictionnaires représentant les segments du vol,
+                      chaque dictionnaire contient les clés comme 'from', 'to',
+                      'distance', 'true_course', 'fuel_leg', 'eta', etc.
+    :type legs_data: List[Dict[str, Any]]
+    :param filename: Nom du fichier Excel de sortie.
+    :type filename: str
+    :raises Exception: En cas d'erreur lors de la génération ou sauvegarde du fichier Excel.
     """
     try:
         # Créer workbook
@@ -223,12 +230,15 @@ def export_to_excel(flight_data: Dict[str, Any], legs_data: List[Dict],
 def create_simple_excel_export(flight_data: Dict[str, Any], legs_data: List[Dict],
                               filename: str = "simple_flight_plan.xlsx"):
     """
-    Créer un export Excel simplifié sans formatage complexe
+    Créer un export Excel simplifié sans formatage complexe.
 
-    Args:
-        flight_data: Données du vol
-        legs_data: Données des segments
-        filename: Nom du fichier
+    :param flight_data: Données du vol.
+    :type flight_data: Dict[str, Any]
+    :param legs_data: Données des segments.
+    :type legs_data: List[Dict]
+    :param filename: Nom du fichier.
+    :type filename: str
+    :raises Exception: En cas d'erreur lors de l'export Excel.
     """
     try:
         wb = openpyxl.Workbook()
@@ -269,28 +279,47 @@ def create_simple_excel_export(flight_data: Dict[str, Any], legs_data: List[Dict
 
 # Fonctions utilitaires
 def format_time(minutes: float) -> str:
-    """Formater le temps en heures:minutes"""
+    """
+    Formater le temps en heures:minutes.
+
+    :param minutes: Durée en minutes.
+    :type minutes: float
+    :return: Temps formaté en chaîne 'HH:MM'.
+    :rtype: str
+    """
     hours = int(minutes // 60)
     mins = int(minutes % 60)
     return f"{hours:02d}:{mins:02d}"
 
 
 def format_coordinates(lat: float, lon: float) -> str:
-    """Formater les coordonnées"""
+    """
+    Formater les coordonnées géographiques en degrés décimaux avec direction.
+
+    :param lat: Latitude.
+    :type lat: float
+    :param lon: Longitude.
+    :type lon: float
+    :return: Coordonnées formatées, par exemple '48.8566°N, 2.3522°E'.
+    :rtype: str
+    """
     lat_dir = "N" if lat >= 0 else "S"
     lon_dir = "E" if lon >= 0 else "W"
     return f"{abs(lat):.4f}°{lat_dir}, {abs(lon):.4f}°{lon_dir}"
 
 
 def add_flight_summary_sheet(wb: openpyxl.Workbook, flight_data: Dict[str, Any],
-                           legs_data: List[Dict]) -> None:
+                             legs_data: List[Dict]) -> None:
     """
-    Ajouter une feuille de résumé au workbook
+    Ajouter une feuille de résumé au workbook Excel.
 
-    Args:
-        wb: Workbook Excel
-        flight_data: Données du vol
-        legs_data: Données des segments
+    :param wb: Workbook Excel où ajouter la feuille.
+    :type wb: openpyxl.Workbook
+    :param flight_data: Données du vol.
+    :type flight_data: Dict[str, Any]
+    :param legs_data: Données des segments.
+    :type legs_data: List[Dict]
+    :return: None
     """
     ws = wb.create_sheet("Résumé")
 

@@ -1,81 +1,82 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="./">
+<html lang="fr" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>vfr_planner.calculations package &#8212; VFR Planner  documentation</title>
+    <title>Paquet calculations &#8212; Documentation VFR Flight Planner </title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
     <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=d1a510d7"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="vfr_planner.data package" href="vfr_planner.data.html" />
-    <link rel="prev" title="vfr_planner package" href="vfr_planner.html" /> 
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Paquet data" href="vfr_planner.data.html" />
+    <link rel="prev" title="Paquet planner" href="vfr_planner.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>VFR Planner  documentation</span></a></h1>
-        <h2 class="heading"><span>vfr_planner.calculations package</span></h2>
+          <span>Documentation VFR Flight Planner </span></a></h1>
+        <h2 class="heading"><span>Paquet calculations</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="Top">
       
         <p>
-        «&#160;&#160;<a href="vfr_planner.html">vfr_planner package</a>
+        «&#160;&#160;<a href="vfr_planner.html">Paquet <em>planner</em></a>
         &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
+        <a class="uplink" href="index.html">Contenu</a>
         &#160;&#160;::&#160;&#160;
-        <a href="vfr_planner.data.html">vfr_planner.data package</a>&#160;&#160;»
+        <a href="vfr_planner.data.html">Paquet <em>data</em></a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content" role="main">
         
         
-  <section id="vfr-planner-calculations-package">
-<h1>vfr_planner.calculations package<a class="headerlink" href="#vfr-planner-calculations-package" title="Link to this heading">¶</a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+  <section id="paquet-calculations">
+<h1>Paquet <em>calculations</em><a class="headerlink" href="#paquet-calculations" title="Lien vers cette rubrique">¶</a></h1>
+<section id="sous-module">
+<h2><strong>Sous-module</strong><a class="headerlink" href="#sous-module" title="Lien vers cette rubrique">¶</a></h2>
 </section>
 <section id="module-vfr_planner.calculations.aeroport_refuel">
-<span id="vfr-planner-calculations-aeroport-refuel-module"></span><h2>vfr_planner.calculations.aeroport_refuel module<a class="headerlink" href="#module-vfr_planner.calculations.aeroport_refuel" title="Link to this heading">¶</a></h2>
+<span id="module-aeroport-refuel"></span><h2>Module <em>aeroport_refuel</em><a class="headerlink" href="#module-vfr_planner.calculations.aeroport_refuel" title="Lien vers cette rubrique">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.aeroport_refuel.aeroport_proche">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.aeroport_refuel.</span></span><span class="sig-name descname"><span class="pre">aeroport_proche</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">leg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraft</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.aeroport_refuel.aeroport_proche" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.aeroport_refuel.</span></span><span class="sig-name descname"><span class="pre">aeroport_proche</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">leg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraft</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.aeroport_refuel.aeroport_proche" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Finds the closest airport.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>leg</strong> (<em>int</em>) – The first number.</p></li>
-<li><p><strong>aircraft</strong> (<em>int</em>) – The second number.</p></li>
+<li><p><strong>leg</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg" title="vfr_planner.models.leg.Leg"><em>Leg</em></a>) – Dernier le avant de manquer de carburant</p></li>
+<li><p><strong>aircraft</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft" title="vfr_planner.models.aircraft.Aircraft"><em>Aircraft</em></a>) – Propriété de l’avion</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le waypoint de l’aéroport le plus près, le premier leg pour se rendre à l’aéroport et un deuxième leg pour se rendre au prochain waypoint</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint">Waypoint</a>, <a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg" title="vfr_planner.models.leg.Leg">Leg</a>, <a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg" title="vfr_planner.models.leg.Leg">Leg</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 </section>
 <section id="module-vfr_planner.calculations.navigation">
-<span id="vfr-planner-calculations-navigation-module"></span><h2>vfr_planner.calculations.navigation module<a class="headerlink" href="#module-vfr_planner.calculations.navigation" title="Link to this heading">¶</a></h2>
+<span id="module-navigation"></span><h2>Module <em>navigation</em><a class="headerlink" href="#module-vfr_planner.calculations.navigation" title="Lien vers cette rubrique">¶</a></h2>
 <p>Calculs de navigation pour la planification VFR</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">NavigationCalculator</span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">NavigationCalculator</span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Calculateur pour les opérations de navigation aérienne</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.along_track_distance">
-<span class="sig-name descname"><span class="pre">along_track_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.along_track_distance" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">along_track_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.along_track_distance" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule la distance le long de la route jusqu’au point perpendiculaire.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ de la route (en degrés).</p></li>
 <li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ de la route (en degrés).</p></li>
@@ -85,10 +86,10 @@
 <li><p><strong>lon3</strong> (<em>float</em>) – Longitude du point de référence (en degrés).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Distance le long de la route en milles nautiques.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -96,20 +97,20 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.climb_distance">
-<span class="sig-name descname"><span class="pre">climb_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">altitude_gain_ft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">climb_rate_fpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.climb_distance" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">climb_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">altitude_gain_ft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">climb_rate_fpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.climb_distance" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule la distance de montée.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>altitude_gain_ft</strong> (<em>float</em>) – Gain d’altitude en pieds.</p></li>
 <li><p><strong>climb_rate_fpm</strong> (<em>float</em>) – Taux de montée en pieds par minute.</p></li>
 <li><p><strong>ground_speed_kn</strong> (<em>float</em>) – Vitesse sol en knots.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Distance de montée en milles nautiques.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -117,10 +118,10 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.cross_track_distance">
-<span class="sig-name descname"><span class="pre">cross_track_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.cross_track_distance" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">cross_track_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.cross_track_distance" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule la distance perpendiculaire d’un point à une route.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ de la route (en degrés).</p></li>
 <li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ de la route (en degrés).</p></li>
@@ -130,10 +131,10 @@
 <li><p><strong>lon3</strong> (<em>float</em>) – Longitude du point dont on veut la distance à la route (en degrés).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Distance perpendiculaire en milles nautiques (positive = à droite de la route, négative = à gauche).</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -141,20 +142,20 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.descent_distance">
-<span class="sig-name descname"><span class="pre">descent_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">altitude_loss_ft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descent_rate_fpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.descent_distance" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">descent_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">altitude_loss_ft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descent_rate_fpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.descent_distance" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule la distance de descente.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>altitude_loss_ft</strong> (<em>float</em>) – Perte d’altitude en pieds.</p></li>
 <li><p><strong>descent_rate_fpm</strong> (<em>float</em>) – Taux de descente en pieds par minute.</p></li>
 <li><p><strong>ground_speed_kn</strong> (<em>float</em>) – Vitesse sol en knots.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Distance de descente en milles nautiques.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -162,19 +163,19 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.fuel_consumption">
-<span class="sig-name descname"><span class="pre">fuel_consumption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">burn_rate_gph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.fuel_consumption" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fuel_consumption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">burn_rate_gph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.fuel_consumption" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule la consommation de carburant.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>time_minutes</strong> (<em>float</em>) – Temps de vol en minutes.</p></li>
 <li><p><strong>burn_rate_gph</strong> (<em>float</em>) – Taux de consommation en gallons par heure.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Consommation totale en gallons.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -182,10 +183,10 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.great_circle_bearing">
-<span class="sig-name descname"><span class="pre">great_circle_bearing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.great_circle_bearing" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">great_circle_bearing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.great_circle_bearing" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule le cap initial du grand cercle entre deux points.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ (en degrés).</p></li>
 <li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ (en degrés).</p></li>
@@ -193,10 +194,10 @@
 <li><p><strong>lon2</strong> (<em>float</em>) – Longitude du point d’arrivée (en degrés).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cap initial en degrés (0–360).</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -204,10 +205,10 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.haversine_distance">
-<span class="sig-name descname"><span class="pre">haversine_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.haversine_distance" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">haversine_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.haversine_distance" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule la distance haversine entre deux points.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lat1</strong> (<em>float</em>) – Latitude du premier point (en degrés).</p></li>
 <li><p><strong>lon1</strong> (<em>float</em>) – Longitude du premier point (en degrés).</p></li>
@@ -215,10 +216,10 @@
 <li><p><strong>lon2</strong> (<em>float</em>) – Longitude du second point (en degrés).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Distance entre les deux points en milles nautiques.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -226,10 +227,10 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.intermediate_point">
-<span class="sig-name descname"><span class="pre">intermediate_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.intermediate_point" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">intermediate_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.intermediate_point" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule un point intermédiaire sur une route.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ (en degrés).</p></li>
 <li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ (en degrés).</p></li>
@@ -238,10 +239,10 @@
 <li><p><strong>fraction</strong> (<em>float</em>) – Fraction de la route (0.0 = départ, 1.0 = arrivée).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Tuple contenant la latitude et la longitude du point intermédiaire (en degrés).</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tuple[float, float]</p>
 </dd>
 </dl>
@@ -249,19 +250,19 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.time_to_fly">
-<span class="sig-name descname"><span class="pre">time_to_fly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.time_to_fly" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">time_to_fly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.time_to_fly" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule le temps de vol.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>distance_nm</strong> (<em>float</em>) – Distance en milles nautiques.</p></li>
 <li><p><strong>ground_speed_kn</strong> (<em>float</em>) – Vitesse sol en knots.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Temps de vol en minutes.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -269,20 +270,20 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.true_to_magnetic_heading">
-<span class="sig-name descname"><span class="pre">true_to_magnetic_heading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_heading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.true_to_magnetic_heading" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">true_to_magnetic_heading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_heading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.true_to_magnetic_heading" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Convertit un cap vrai en cap magnétique.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>true_heading</strong> (<em>float</em>) – Cap vrai (en degrés).</p></li>
 <li><p><strong>lat</strong> (<em>float</em>) – Latitude (en degrés).</p></li>
 <li><p><strong>lon</strong> (<em>float</em>) – Longitude (en degrés).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cap magnétique (en degrés).</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -290,10 +291,10 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.NavigationCalculator.wind_correction_angle">
-<span class="sig-name descname"><span class="pre">wind_correction_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_course</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.wind_correction_angle" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">wind_correction_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_course</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.NavigationCalculator.wind_correction_angle" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule l’angle de correction de vent et la vitesse sol.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>true_course</strong> (<em>float</em>) – Cap vrai désiré (en degrés).</p></li>
 <li><p><strong>wind_direction</strong> (<em>float</em>) – Direction du vent (d’où il vient, en degrés).</p></li>
@@ -301,13 +302,13 @@
 <li><p><strong>tas</strong> (<em>float</em>) – Vitesse vraie de l’aéronef (en knots).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Un tuple contenant :
 - wca : Wind Correction Angle (en degrés),
 - true_heading : Cap vrai corrigé (en degrés),
 - ground_speed : Vitesse sol (en knots).</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tuple[float, float, float]</p>
 </dd>
 </dl>
@@ -317,10 +318,10 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.calculate_bearing">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">calculate_bearing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.calculate_bearing" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">calculate_bearing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.calculate_bearing" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule le cap initial (bearing) entre deux points géographiques.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ (en degrés).</p></li>
 <li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ (en degrés).</p></li>
@@ -328,10 +329,10 @@
 <li><p><strong>lon2</strong> (<em>float</em>) – Longitude du point d’arrivée (en degrés).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cap initial entre les deux points en degrés (0-360).</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -339,10 +340,10 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.calculate_distance">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.calculate_distance" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.calculate_distance" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule la distance entre deux points géographiques.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lat1</strong> (<em>float</em>) – Latitude du premier point (en degrés).</p></li>
 <li><p><strong>lon1</strong> (<em>float</em>) – Longitude du premier point (en degrés).</p></li>
@@ -350,10 +351,10 @@
 <li><p><strong>lon2</strong> (<em>float</em>) – Longitude du second point (en degrés).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Distance entre les deux points en milles nautiques.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -361,10 +362,10 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.calculate_wind_correction">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">calculate_wind_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_course</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.calculate_wind_correction" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">calculate_wind_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_course</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.calculate_wind_correction" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Calcule l’angle de correction de vent, le cap vrai corrigé et la vitesse sol.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>true_course</strong> (<em>float</em>) – Cap vrai désiré (en degrés).</p></li>
 <li><p><strong>wind_direction</strong> (<em>float</em>) – Direction du vent (d’où vient le vent, en degrés).</p></li>
@@ -372,13 +373,13 @@
 <li><p><strong>tas</strong> (<em>float</em>) – Vitesse vraie de l’aéronef (en knots).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Tuple contenant :
 - l’angle de correction de vent (WCA) en degrés,
 - le cap vrai corrigé en degrés,
 - la vitesse sol en knots.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tuple[float, float, float]</p>
 </dd>
 </dl>
@@ -386,20 +387,20 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.navigation.true_to_magnetic">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">true_to_magnetic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_heading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.true_to_magnetic" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.navigation.</span></span><span class="sig-name descname"><span class="pre">true_to_magnetic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_heading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.navigation.true_to_magnetic" title="Lien vers cette définition">¶</a></dt>
 <dd><p>Convertit un cap vrai en cap magnétique selon la position géographique.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>true_heading</strong> (<em>float</em>) – Cap vrai (en degrés).</p></li>
 <li><p><strong>lat</strong> (<em>float</em>) – Latitude du point (en degrés).</p></li>
 <li><p><strong>lon</strong> (<em>float</em>) – Longitude du point (en degrés).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Cap magnétique correspondant (en degrés).</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -407,592 +408,242 @@
 
 </section>
 <section id="module-vfr_planner.calculations.weather">
-<span id="vfr-planner-calculations-weather-module"></span><h2>vfr_planner.calculations.weather module<a class="headerlink" href="#module-vfr_planner.calculations.weather" title="Link to this heading">¶</a></h2>
+<span id="module-weather"></span><h2>Module <em>weather</em><a class="headerlink" href="#module-vfr_planner.calculations.weather" title="Lien vers cette rubrique">¶</a></h2>
 <p>Service météorologique pour la planification VFR</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">WeatherService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Service pour obtenir les données météorologiques</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">WeatherService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Service pour obtenir les données météorologiques à partir de Tomorrow.io</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>api_key</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – Clé API pour l’accès au service Tomorrow.io</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.analyze_weather_for_itinerary">
-<span class="sig-name descname"><span class="pre">analyze_weather_for_itinerary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.analyze_weather_for_itinerary" title="Link to this definition">¶</a></dt>
-<dd><p>Analyser la météo pour un itinéraire déjà calculé avec timing précis</p>
-<p>Cette méthode utilise les temps de vol précis de l’itinéraire calculé</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>itinerary: Objet Itinerary avec legs calculés</p>
+<span class="sig-name descname"><span class="pre">analyze_weather_for_itinerary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.analyze_weather_for_itinerary" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Analyser la météo pour un itinéraire déjà calculé, avec des timings précis.</p>
+<p>Cette méthode utilise les durées de vol précalculées dans les <cite>legs</cite> de l’objet <cite>Itinerary</cite>,
+et récupère les conditions météo à chaque point de l’itinéraire au moment estimé de passage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>itinerary</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary" title="vfr_planner.models.itinerary.Itinerary"><em>Itinerary</em></a>) – Objet contenant les waypoints, les legs (segments) et l’heure de départ</p>
 </dd>
-<dt>Returns:</dt><dd><p>Analyse météo détaillée avec timing exact</p>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire contenant les conditions météo par segment et une analyse globale</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.analyze_weather_for_route">
-<span class="sig-name descname"><span class="pre">analyze_weather_for_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraft_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">110</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.analyze_weather_for_route" title="Link to this definition">¶</a></dt>
-<dd><p>Analyser la météo pour un itinéraire complet avec timing réaliste</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoints: Liste des waypoints
-start_time: Heure de départ RÉELLE du vol
-aircraft_speed: Vitesse de croisière pour calculer les temps de vol</p>
+<span class="sig-name descname"><span class="pre">analyze_weather_for_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraft_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">110</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.analyze_weather_for_route" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Analyser la météo tout au long d’un itinéraire aérien en tenant compte du timing réel.</p>
+<p>Cette méthode calcule les horaires de passage aux différents waypoints en fonction de
+la vitesse de croisière, puis récupère la météo à chaque point en conséquence.
+Une synthèse météo est ensuite générée via <cite>_analyze_weather_trends</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoints</strong> (<em>list</em><em>[</em><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><em>Waypoint</em></a><em>]</em>) – Liste ordonnée des points de passage de la route</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure réelle de départ du vol</p></li>
+<li><p><strong>aircraft_speed</strong> (<em>float</em>) – Vitesse de croisière en nœuds (knots)</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Analyse météo de la route avec timing correct</p>
+<dt class="field-even">Lève<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur pendant le traitement météo de l’itinéraire</p>
+</dd>
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire avec les conditions météo détaillées par segment et une analyse globale</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.get_extended_forecast">
-<span class="sig-name descname"><span class="pre">get_extended_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_extended_forecast" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les prévisions étendues pour un point</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoint: Point de navigation
-days: Nombre de jours de prévision</p>
+<span class="sig-name descname"><span class="pre">get_extended_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_extended_forecast" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Obtenir les prévisions météorologiques étendues (par jour) pour un point.</p>
+<p>Cette méthode interroge l’API Tomorrow.io avec un pas de temps journalier,
+et retourne les prévisions pour le nombre de jours spécifié.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoint</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><em>Waypoint</em></a>) – Point géographique pour lequel obtenir les prévisions</p></li>
+<li><p><strong>days</strong> (<em>int</em>) – Nombre de jours de prévision (maximum 5 recommandé)</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Prévisions étendues</p>
+<dt class="field-even">Lève<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Si l’appel à l’API échoue ou les données sont invalides</p>
+</dd>
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant les prévisions journalières ou une erreur</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.get_weather_for_leg">
-<span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_for_leg" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un segment de vol avec timing précis</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>start_wp: Waypoint de départ
-end_wp: Waypoint d’arrivée
-start_time: Heure pour laquelle récupérer la météo (peut être milieu du leg)</p>
+<span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_for_leg" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Obtenir la météo pour un segment de vol avec un timing précis.</p>
+<p>La position utilisée est le centre géographique du segment entre <cite>start_wp</cite> et <cite>end_wp</cite>.
+Les résultats peuvent être mis en cache pour éviter des appels redondants à l’API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_wp</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><em>Waypoint</em></a>) – Waypoint de départ</p></li>
+<li><p><strong>end_wp</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><em>Waypoint</em></a>) – Waypoint d’arrivée</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure exacte pour laquelle récupérer les conditions météo</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Dictionnaire avec données météo</p>
+<dt class="field-even">Lève<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – Si la clé API n’est pas définie</p></li>
+<li><p><strong>Exception</strong> – En cas d’erreur lors de la récupération météo</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant les données météo, incluant la direction et la vitesse du vent</p>
+</dd>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.get_weather_for_point">
-<span class="sig-name descname"><span class="pre">get_weather_for_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_for_point" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un point spécifique</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoint: Point de navigation
-time: Heure désirée</p>
+<span class="sig-name descname"><span class="pre">get_weather_for_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_for_point" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Obtenir la météo pour un point spécifique à un instant donné.</p>
+<p>Cette méthode est un raccourci utilisant <cite>get_weather_for_leg</cite> avec le même point en départ et arrivée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoint</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><em>Waypoint</em></a>) – Point de navigation</p></li>
+<li><p><strong>time</strong> (<em>datetime.datetime</em>) – Heure pour laquelle la météo est demandée</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Données météo</p>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Données météo au point donné</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.get_weather_summary_text">
-<span class="sig-name descname"><span class="pre">get_weather_summary_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_summary_text" title="Link to this definition">¶</a></dt>
-<dd><p>Générer un résumé textuel de la météo</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>weather_data: Données météo</p>
+<span class="sig-name descname"><span class="pre">get_weather_summary_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_summary_text" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Générer un résumé textuel des conditions météo.</p>
+<p>Le résumé inclut la direction et la vitesse du vent, la température,
+la visibilité, ainsi que les précipitations si présentes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire des données météo</p>
 </dd>
-<dt>Returns:</dt><dd><p>Résumé textuel</p>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Chaîne de résumé textuel des conditions météo</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.is_weather_suitable_for_vfr">
-<span class="sig-name descname"><span class="pre">is_weather_suitable_for_vfr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.is_weather_suitable_for_vfr" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier si les conditions météo sont adaptées au VFR</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>weather_data: Données météo</p>
+<span class="sig-name descname"><span class="pre">is_weather_suitable_for_vfr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.is_weather_suitable_for_vfr" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Vérifier si les conditions météo sont compatibles avec un vol en VFR (Visual Flight Rules).</p>
+<p>Évalue la visibilité, la couverture nuageuse, les précipitations et le vent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données météo analysées</p>
 </dd>
-<dt>Returns:</dt><dd><p>Tuple (suitable, reasons)</p>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple (adapté, raisons), où “adapté” est un booléen et “raisons” une liste d’explications</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[bool, list]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.set_api_key">
-<span class="sig-name descname"><span class="pre">set_api_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.set_api_key" title="Link to this definition">¶</a></dt>
-<dd><p>Définir la clé API</p>
+<span class="sig-name descname"><span class="pre">set_api_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.set_api_key" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Définir ou mettre à jour la clé API utilisée pour accéder au service Tomorrow.io.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>api_key</strong> (<em>str</em>) – Nouvelle clé API</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.check_vfr_conditions">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">check_vfr_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.check_vfr_conditions" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier les conditions VFR</p>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">check_vfr_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.check_vfr_conditions" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Vérifier si les conditions météo sont favorables au vol à vue (VFR).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données météo</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple contenant un booléen (conditions favorables ou non)
+et une liste d’explications/alertes</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[bool, list]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.get_weather_for_leg">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.get_weather_for_leg" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un segment</p>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.get_weather_for_leg" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Obtenir les données météo pour un segment de vol entre deux waypoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_wp</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><em>Waypoint</em></a>) – Waypoint de départ</p></li>
+<li><p><strong>end_wp</strong> (<a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><em>Waypoint</em></a>) – Waypoint d’arrivée</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure à laquelle le segment est survolé</p></li>
+<li><p><strong>api_key</strong> (<em>str</em><em>, </em><em>optional</em>) – Clé API Tomorrow.io (optionnelle)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Données météo pour ce segment</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.get_weather_summary">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">get_weather_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.get_weather_summary" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir un résumé météo</p>
-</dd></dl>
-
-</section>
-<section id="module-vfr_planner.calculations">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vfr_planner.calculations" title="Link to this heading">¶</a></h2>
-<p>Calculs pour la navigation et la météorologie</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">NavigationCalculator</span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Calculateur pour les opérations de navigation aérienne</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.along_track_distance">
-<span class="sig-name descname"><span class="pre">along_track_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.along_track_distance" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule la distance le long de la route jusqu’au point perpendiculaire.</p>
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">get_weather_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.get_weather_summary" title="Lien vers cette définition">¶</a></dt>
+<dd><p>Générer un résumé textuel à partir des données météo.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ de la route (en degrés).</p></li>
-<li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ de la route (en degrés).</p></li>
-<li><p><strong>lat2</strong> (<em>float</em>) – Latitude du point d’arrivée de la route (en degrés).</p></li>
-<li><p><strong>lon2</strong> (<em>float</em>) – Longitude du point d’arrivée de la route (en degrés).</p></li>
-<li><p><strong>lat3</strong> (<em>float</em>) – Latitude du point de référence (en degrés).</p></li>
-<li><p><strong>lon3</strong> (<em>float</em>) – Longitude du point de référence (en degrés).</p></li>
-</ul>
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire contenant les données météo</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Distance le long de la route en milles nautiques.</p>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Résumé texte</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.climb_distance">
-<span class="sig-name descname"><span class="pre">climb_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">altitude_gain_ft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">climb_rate_fpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.climb_distance" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule la distance de montée.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>altitude_gain_ft</strong> (<em>float</em>) – Gain d’altitude en pieds.</p></li>
-<li><p><strong>climb_rate_fpm</strong> (<em>float</em>) – Taux de montée en pieds par minute.</p></li>
-<li><p><strong>ground_speed_kn</strong> (<em>float</em>) – Vitesse sol en knots.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Distance de montée en milles nautiques.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.cross_track_distance">
-<span class="sig-name descname"><span class="pre">cross_track_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.cross_track_distance" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule la distance perpendiculaire d’un point à une route.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ de la route (en degrés).</p></li>
-<li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ de la route (en degrés).</p></li>
-<li><p><strong>lat2</strong> (<em>float</em>) – Latitude du point d’arrivée de la route (en degrés).</p></li>
-<li><p><strong>lon2</strong> (<em>float</em>) – Longitude du point d’arrivée de la route (en degrés).</p></li>
-<li><p><strong>lat3</strong> (<em>float</em>) – Latitude du point dont on veut la distance à la route (en degrés).</p></li>
-<li><p><strong>lon3</strong> (<em>float</em>) – Longitude du point dont on veut la distance à la route (en degrés).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Distance perpendiculaire en milles nautiques (positive = à droite de la route, négative = à gauche).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.descent_distance">
-<span class="sig-name descname"><span class="pre">descent_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">altitude_loss_ft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descent_rate_fpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.descent_distance" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule la distance de descente.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>altitude_loss_ft</strong> (<em>float</em>) – Perte d’altitude en pieds.</p></li>
-<li><p><strong>descent_rate_fpm</strong> (<em>float</em>) – Taux de descente en pieds par minute.</p></li>
-<li><p><strong>ground_speed_kn</strong> (<em>float</em>) – Vitesse sol en knots.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Distance de descente en milles nautiques.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.fuel_consumption">
-<span class="sig-name descname"><span class="pre">fuel_consumption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">burn_rate_gph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.fuel_consumption" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule la consommation de carburant.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>time_minutes</strong> (<em>float</em>) – Temps de vol en minutes.</p></li>
-<li><p><strong>burn_rate_gph</strong> (<em>float</em>) – Taux de consommation en gallons par heure.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Consommation totale en gallons.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.great_circle_bearing">
-<span class="sig-name descname"><span class="pre">great_circle_bearing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.great_circle_bearing" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule le cap initial du grand cercle entre deux points.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ (en degrés).</p></li>
-<li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ (en degrés).</p></li>
-<li><p><strong>lat2</strong> (<em>float</em>) – Latitude du point d’arrivée (en degrés).</p></li>
-<li><p><strong>lon2</strong> (<em>float</em>) – Longitude du point d’arrivée (en degrés).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Cap initial en degrés (0–360).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.haversine_distance">
-<span class="sig-name descname"><span class="pre">haversine_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.haversine_distance" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule la distance haversine entre deux points.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> (<em>float</em>) – Latitude du premier point (en degrés).</p></li>
-<li><p><strong>lon1</strong> (<em>float</em>) – Longitude du premier point (en degrés).</p></li>
-<li><p><strong>lat2</strong> (<em>float</em>) – Latitude du second point (en degrés).</p></li>
-<li><p><strong>lon2</strong> (<em>float</em>) – Longitude du second point (en degrés).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Distance entre les deux points en milles nautiques.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.intermediate_point">
-<span class="sig-name descname"><span class="pre">intermediate_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.intermediate_point" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule un point intermédiaire sur une route.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ (en degrés).</p></li>
-<li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ (en degrés).</p></li>
-<li><p><strong>lat2</strong> (<em>float</em>) – Latitude du point d’arrivée (en degrés).</p></li>
-<li><p><strong>lon2</strong> (<em>float</em>) – Longitude du point d’arrivée (en degrés).</p></li>
-<li><p><strong>fraction</strong> (<em>float</em>) – Fraction de la route (0.0 = départ, 1.0 = arrivée).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Tuple contenant la latitude et la longitude du point intermédiaire (en degrés).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple[float, float]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.time_to_fly">
-<span class="sig-name descname"><span class="pre">time_to_fly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_speed_kn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.time_to_fly" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule le temps de vol.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>distance_nm</strong> (<em>float</em>) – Distance en milles nautiques.</p></li>
-<li><p><strong>ground_speed_kn</strong> (<em>float</em>) – Vitesse sol en knots.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Temps de vol en minutes.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.true_to_magnetic_heading">
-<span class="sig-name descname"><span class="pre">true_to_magnetic_heading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_heading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.true_to_magnetic_heading" title="Link to this definition">¶</a></dt>
-<dd><p>Convertit un cap vrai en cap magnétique.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>true_heading</strong> (<em>float</em>) – Cap vrai (en degrés).</p></li>
-<li><p><strong>lat</strong> (<em>float</em>) – Latitude (en degrés).</p></li>
-<li><p><strong>lon</strong> (<em>float</em>) – Longitude (en degrés).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Cap magnétique (en degrés).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.NavigationCalculator.wind_correction_angle">
-<span class="sig-name descname"><span class="pre">wind_correction_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_course</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.NavigationCalculator.wind_correction_angle" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule l’angle de correction de vent et la vitesse sol.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>true_course</strong> (<em>float</em>) – Cap vrai désiré (en degrés).</p></li>
-<li><p><strong>wind_direction</strong> (<em>float</em>) – Direction du vent (d’où il vient, en degrés).</p></li>
-<li><p><strong>wind_speed</strong> (<em>float</em>) – Vitesse du vent (en knots).</p></li>
-<li><p><strong>tas</strong> (<em>float</em>) – Vitesse vraie de l’aéronef (en knots).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Un tuple contenant :
-- wca : Wind Correction Angle (en degrés),
-- true_heading : Cap vrai corrigé (en degrés),
-- ground_speed : Vitesse sol (en knots).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple[float, float, float]</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">WeatherService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.WeatherService" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Service pour obtenir les données météorologiques</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.analyze_weather_for_itinerary">
-<span class="sig-name descname"><span class="pre">analyze_weather_for_itinerary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.analyze_weather_for_itinerary" title="Link to this definition">¶</a></dt>
-<dd><p>Analyser la météo pour un itinéraire déjà calculé avec timing précis</p>
-<p>Cette méthode utilise les temps de vol précis de l’itinéraire calculé</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>itinerary: Objet Itinerary avec legs calculés</p>
-</dd>
-<dt>Returns:</dt><dd><p>Analyse météo détaillée avec timing exact</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.analyze_weather_for_route">
-<span class="sig-name descname"><span class="pre">analyze_weather_for_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraft_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">110</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.analyze_weather_for_route" title="Link to this definition">¶</a></dt>
-<dd><p>Analyser la météo pour un itinéraire complet avec timing réaliste</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoints: Liste des waypoints
-start_time: Heure de départ RÉELLE du vol
-aircraft_speed: Vitesse de croisière pour calculer les temps de vol</p>
-</dd>
-<dt>Returns:</dt><dd><p>Analyse météo de la route avec timing correct</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.get_extended_forecast">
-<span class="sig-name descname"><span class="pre">get_extended_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.get_extended_forecast" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les prévisions étendues pour un point</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoint: Point de navigation
-days: Nombre de jours de prévision</p>
-</dd>
-<dt>Returns:</dt><dd><p>Prévisions étendues</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.get_weather_for_leg">
-<span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.get_weather_for_leg" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un segment de vol avec timing précis</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>start_wp: Waypoint de départ
-end_wp: Waypoint d’arrivée
-start_time: Heure pour laquelle récupérer la météo (peut être milieu du leg)</p>
-</dd>
-<dt>Returns:</dt><dd><p>Dictionnaire avec données météo</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.get_weather_for_point">
-<span class="sig-name descname"><span class="pre">get_weather_for_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.get_weather_for_point" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un point spécifique</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoint: Point de navigation
-time: Heure désirée</p>
-</dd>
-<dt>Returns:</dt><dd><p>Données météo</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.get_weather_summary_text">
-<span class="sig-name descname"><span class="pre">get_weather_summary_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.get_weather_summary_text" title="Link to this definition">¶</a></dt>
-<dd><p>Générer un résumé textuel de la météo</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>weather_data: Données météo</p>
-</dd>
-<dt>Returns:</dt><dd><p>Résumé textuel</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.is_weather_suitable_for_vfr">
-<span class="sig-name descname"><span class="pre">is_weather_suitable_for_vfr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.is_weather_suitable_for_vfr" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier si les conditions météo sont adaptées au VFR</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>weather_data: Données météo</p>
-</dd>
-<dt>Returns:</dt><dd><p>Tuple (suitable, reasons)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.set_api_key">
-<span class="sig-name descname"><span class="pre">set_api_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.set_api_key" title="Link to this definition">¶</a></dt>
-<dd><p>Définir la clé API</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="vfr_planner.calculations.calculate_bearing">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">calculate_bearing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.calculate_bearing" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule le cap initial (bearing) entre deux points géographiques.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> (<em>float</em>) – Latitude du point de départ (en degrés).</p></li>
-<li><p><strong>lon1</strong> (<em>float</em>) – Longitude du point de départ (en degrés).</p></li>
-<li><p><strong>lat2</strong> (<em>float</em>) – Latitude du point d’arrivée (en degrés).</p></li>
-<li><p><strong>lon2</strong> (<em>float</em>) – Longitude du point d’arrivée (en degrés).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Cap initial entre les deux points en degrés (0-360).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="vfr_planner.calculations.calculate_distance">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.calculate_distance" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule la distance entre deux points géographiques.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> (<em>float</em>) – Latitude du premier point (en degrés).</p></li>
-<li><p><strong>lon1</strong> (<em>float</em>) – Longitude du premier point (en degrés).</p></li>
-<li><p><strong>lat2</strong> (<em>float</em>) – Latitude du second point (en degrés).</p></li>
-<li><p><strong>lon2</strong> (<em>float</em>) – Longitude du second point (en degrés).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Distance entre les deux points en milles nautiques.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="vfr_planner.calculations.calculate_wind_correction">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">calculate_wind_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_course</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.calculate_wind_correction" title="Link to this definition">¶</a></dt>
-<dd><p>Calcule l’angle de correction de vent, le cap vrai corrigé et la vitesse sol.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>true_course</strong> (<em>float</em>) – Cap vrai désiré (en degrés).</p></li>
-<li><p><strong>wind_direction</strong> (<em>float</em>) – Direction du vent (d’où vient le vent, en degrés).</p></li>
-<li><p><strong>wind_speed</strong> (<em>float</em>) – Vitesse du vent (en knots).</p></li>
-<li><p><strong>tas</strong> (<em>float</em>) – Vitesse vraie de l’aéronef (en knots).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Tuple contenant :
-- l’angle de correction de vent (WCA) en degrés,
-- le cap vrai corrigé en degrés,
-- la vitesse sol en knots.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple[float, float, float]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="vfr_planner.calculations.check_vfr_conditions">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">check_vfr_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.check_vfr_conditions" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier les conditions VFR</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="vfr_planner.calculations.get_weather_for_leg">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.get_weather_for_leg" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un segment</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="vfr_planner.calculations.get_weather_summary">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">get_weather_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.get_weather_summary" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir un résumé météo</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="vfr_planner.calculations.true_to_magnetic">
-<span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">true_to_magnetic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_heading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vfr_planner.calculations.true_to_magnetic" title="Link to this definition">¶</a></dt>
-<dd><p>Convertit un cap vrai en cap magnétique selon la position géographique.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>true_heading</strong> (<em>float</em>) – Cap vrai (en degrés).</p></li>
-<li><p><strong>lat</strong> (<em>float</em>) – Latitude du point (en degrés).</p></li>
-<li><p><strong>lon</strong> (<em>float</em>) – Longitude du point (en degrés).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Cap magnétique correspondant (en degrés).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1005,11 +656,11 @@ time: Heure désirée</p>
       <div class="bottomnav" role="navigation" aria-label="Bottom">
       
         <p>
-        «&#160;&#160;<a href="vfr_planner.html">vfr_planner package</a>
+        «&#160;&#160;<a href="vfr_planner.html">Paquet <em>planner</em></a>
         &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
+        <a class="uplink" href="index.html">Contenu</a>
         &#160;&#160;::&#160;&#160;
-        <a href="vfr_planner.data.html">vfr_planner.data package</a>&#160;&#160;»
+        <a href="vfr_planner.data.html">Paquet <em>data</em></a>&#160;&#160;»
         </p>
 
       </div>
@@ -1026,7 +677,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE..
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     </div>
   </body>
 </html>
