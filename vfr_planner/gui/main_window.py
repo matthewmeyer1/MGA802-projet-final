@@ -886,14 +886,14 @@ Ctrl+Tab       Changer d'onglet
         """
         about_text = f"""VFR PLANNER
 
-Version: {__version__}
-Auteurs: {__author__}
+Version: 0.1
+Auteurs: Antoine Gingras, Matthew Meyer, Richard Nguekam, Gabriel Wong-Lapierre
 
 Outil de planification de vol VFR avec calculs automatiques
 de navigation, intégration météo et génération de plans
 de vol professionnels.
 
-Projet MGA802-01 - École de Technologie Supérieur
+Projet MGA802-01 - École de Technologie Supérieure
 
 Fonctionnalités:
 • Base de données d'aéroports complète
