@@ -9,33 +9,33 @@ Outil complet de planification de vol VFR avec calculs automatiques de navigatio
 **Projet de session MGA802** - École de technologie supérieure  
 **Équipe**: Antoine Gingras, Matthew Meyer, Richard Nguekam, Gabriel Wong-Lapierre
 
-## 🚀 Fonctionnalités
+## Fonctionnalités
 
-### ✈️ Planification de vol complète
+### Planification de vol complète
 - **Base de données d'aéroports**: Plus de 50,000 aéroports mondiaux
 - **Calculs de navigation précis**: Distance, cap, temps de vol avec correction de vent
 - **Intégration météorologique**: API Tomorrow.io pour données météo en temps réel
 - **Optimisation de carburant**: Calculs automatiques avec gestion des réserves
 
-### 🗺️ Interface intuitive
+### Interface intuitive
 - **Recherche d'aéroports intelligente**: Par code ICAO, IATA, nom ou localisation
 - **Planification interactive**: Ajout/modification de waypoints par glisser-déposer
 - **Cartes dynamiques**: Visualisation de l'itinéraire avec Folium
 - **Filtres avancés**: Par pays, type d'aéroport, équipements
 
-### 📊 Export professionnel
+### Export professionnel
 - **Plans Excel**: Formats conformes aux standards aéronautiques
 - **Documents PDF**: Plans de vol prêts à imprimer
 - **Cartes interactives**: Export HTML pour navigation
 - **Sauvegarde projet**: Format JSON pour reprendre le travail
 
-### 🔧 Calculs avancés
+### Calculs avancés
 - **Navigation orthodromique**: Calculs de grand cercle précis
 - **Correction de vent**: Angles et vitesses sol automatiques
 - **Déclinaison magnétique**: Conversion cap vrai/magnétique
 - **Analyse de carburant**: Vérification autonomie et réserves
 
-## 📁 Structure du projet
+## Structure du projet
 
 ```
 projet_vfr/
@@ -86,7 +86,7 @@ projet_vfr/
         └── constants.py        # Constantes de l'application
 ```
 
-## 🛠️ Installation
+## Installation
 
 ### Prérequis
 - Python 3.8 ou supérieur
@@ -134,7 +134,7 @@ pip install PyPDF2
 pip install pytest pytest-cov
 ```
 
-## 🚀 Utilisation
+## Utilisation
 
 ### Démarrage rapide
 
@@ -143,7 +143,7 @@ pip install pytest pytest-cov
    python main.py
    ```
 
-2. **Configurez votre aéronef** (Onglet ✈️ Aéronef):
+2. **Configurez votre aéronef** (Onglet Aéronef):
    - Sélectionnez un modèle prédéfini (C172, PA28, etc.)
    - Ou saisissez vos paramètres personnalisés
    - Remplissez les informations de vol
@@ -153,12 +153,12 @@ pip install pytest pytest-cov
    - Recherchez par code ICAO/IATA ou nom
    - Définissez départ et arrivée
 
-4. **Planifiez votre itinéraire** (Onglet 🗺️ Itinéraire):
+4. **Planifiez votre itinéraire** (Onglet Itinéraire):
    - Ajoutez des waypoints intermédiaires
    - Modifiez l'ordre si nécessaire
    - Vérifiez les détails de chaque point
 
-5. **Générez votre plan** (Onglet 📋 Plan de vol):
+5. **Générez votre plan** (Onglet Plan de vol):
    - Configurez votre clé API météo
    - Calculez l'itinéraire avec données météo
    - Exportez en Excel ou PDF
@@ -181,7 +181,7 @@ pip install pytest pytest-cov
 | `F9` | Carte interactive |
 | `Ctrl+Q` | Quitter |
 
-## 📝 Exemples d'utilisation
+## Exemples d'utilisation
 
 ### Exemple 1: Vol Montréal → Québec
 
@@ -234,7 +234,7 @@ print(f"Distance: {distance:.1f} NM")
 print(f"Cap: {bearing:.0f}°")
 ```
 
-## 🧪 Tests
+## Tests
 
 ```bash
 # Lancer tous les tests
@@ -247,7 +247,7 @@ pytest --cov=vfr_planner
 pytest tests/test_navigation.py
 ```
 
-## 📚 Documentation technique
+## Documentation technique
 
 ### Architecture modulaire
 
@@ -286,7 +286,7 @@ from vfr_planner.data import search_airports, get_airport_by_code
 from vfr_planner.export import export_to_excel, export_to_pdf
 ```
 
-## 🐛 Dépannage
+## Dépannage
 
 ### Problèmes courants
 
@@ -317,7 +317,7 @@ export VFR_DEBUG=1
 python main.py
 ```
 
-## 🤝 Contribution
+## Contribution
 
 ### Développement
 
@@ -346,18 +346,18 @@ footer (optionnel)
 
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
-## 📄 Licence
+## Licence
 
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## 👥 Équipe de développement
+## Équipe de développement
 
 - **Antoine Gingras** - Architecture et interface
 - **Matthew Meyer** - Calculs de navigation  
 - **Richard Nguekam** - Base de données et extraction
 - **Gabriel Wong-Lapierre** - Export et documentation
 
-## 🙏 Remerciements
+## Remerciements
 
 - **École de technologie supérieure** - Cadre académique
 - **NAV CANADA** - Documentation CFS
@@ -365,7 +365,7 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 - **OurAirports** - Base de données d'aéroports
 - **OpenSource Community** - Bibliothèques utilisées
 
-## 📞 Support
+## Support
 
 Pour des questions ou problèmes:
 
