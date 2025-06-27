@@ -374,10 +374,10 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE.md](LICENSE.md) pour pl
 
 ## Équipe de développement
 
-- **Antoine Gingras** - Développement interface et calculs
-- **Matthew Meyer** - Architecture et base de données
-- **Richard Nguekam** - Intégration météo et export
-- **Gabriel Wong-Lapierre** - Documentation et tests
+- **Antoine Gingras**
+- **Matthew Meyer**
+- **Richard Nguekam**
+- **Gabriel Wong-Lapierre**
 
 ## Remerciements
 
