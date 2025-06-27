@@ -15,7 +15,18 @@ from ..calculations.weather import WeatherService
 
 @dataclass
 class Leg:
-    """Modèle de données pour un segment de vol entre deux waypoints"""
+    """
+    Modèle de données pour un segment de vol entre deux waypoints.
+
+    :param starting_wp: Waypoint de départ
+    :type starting_wp: Waypoint
+    :param ending_wp: Waypoint d’arrivée
+    :type ending_wp: Waypoint
+    :param name: Nom du segment (optionnel)
+    :type name: str
+    :param tas: True Air Speed en knots (vitesse vraie)
+    :type tas: float
+    """
 
     starting_wp: Waypoint
     ending_wp: Waypoint
@@ -43,7 +54,14 @@ class Leg:
     weather_error: Optional[str] = field(init=False, default=None)  # Erreur météo
 
     def __post_init__(self):
-        """Initialisation après création - calculs de base"""
+        """
+        Initialisation après création - calculs de base.
+
+        Initialise le nom si vide, calcule la distance et le cap vrai,
+        initialise les caps et la vitesse air vraie sans vent.
+
+        :return: None
+        """
         if self.name == "":
             self.name = f"{self.starting_wp.name}-{self.ending_wp.name}"
 
@@ -57,11 +75,21 @@ class Leg:
         self.gs = self.tas
 
     def _calc_distance(self) -> float:
-        """Calculer distance en milles nautiques"""
+        """
+        Calculer la distance en milles nautiques entre les waypoints.
+
+        :return: Distance en NM.
+        :rtype: float
+        """
         return self.starting_wp.distance_to(self.ending_wp)
 
     def _calc_true_course(self) -> float:
-        """Calculer le cap vrai"""
+        """
+        Calculer le cap vrai entre les waypoints.
+
+        :return: Cap vrai en degrés.
+        :rtype: float
+        """
         return self.starting_wp.bearing_to(self.ending_wp)
 
     def calculate_wind_effects(self, start_time: datetime.datetime,
@@ -69,13 +97,17 @@ class Leg:
                                manual_wind_speed: Optional[float] = None,
                                manual_wind_direction: Optional[float] = None):
         """
-        Calculer les effets du vent
+        Calculer les effets du vent sur le segment.
 
-        Args:
-            start_time: Heure de début du segment
-            api_key: Clé API pour météo en ligne
-            manual_wind_speed: Vitesse du vent manuelle (knots)
-            manual_wind_direction: Direction du vent manuelle (degrés)
+        :param start_time: Heure de début du segment.
+        :type start_time: datetime.datetime
+        :param api_key: Clé API pour météo (optionnel).
+        :type api_key: Optional[str]
+        :param manual_wind_speed: Vitesse du vent manuelle en knots (optionnel).
+        :type manual_wind_speed: Optional[float]
+        :param manual_wind_direction: Direction du vent manuelle en degrés (optionnel).
+        :type manual_wind_direction: Optional[float]
+        :return: None
         """
         try:
             # Utiliser vent manuel si fourni
@@ -109,16 +141,17 @@ class Leg:
                                            manual_wind_speed: Optional[float] = None,
                                            manual_wind_direction: Optional[float] = None):
         """
-        NOUVEAU: Calculer les effets du vent au milieu du segment
+        Calculer les effets du vent au milieu du segment pour une meilleure précision.
 
-        Cette méthode fait une estimation initiale du temps de vol, puis récupère
-        la météo au milieu du segment pour des calculs plus précis.
-
-        Args:
-            leg_start_time: Heure de début du segment
-            api_key: Clé API pour météo en ligne
-            manual_wind_speed: Vitesse du vent manuelle (knots)
-            manual_wind_direction: Direction du vent manuelle (degrés)
+        :param leg_start_time: Heure de début du segment.
+        :type leg_start_time: datetime.datetime
+        :param api_key: Clé API pour météo (optionnel).
+        :type api_key: Optional[str]
+        :param manual_wind_speed: Vitesse du vent manuelle en knots (optionnel).
+        :type manual_wind_speed: Optional[float]
+        :param manual_wind_direction: Direction du vent manuelle en degrés (optionnel).
+        :type manual_wind_direction: Optional[float]
+        :return: None
         """
         try:
             # 1. Estimation initiale du temps de vol (sans vent)
@@ -160,7 +193,11 @@ class Leg:
             self._use_default_wind()
 
     def _use_default_wind(self):
-        """Utiliser des valeurs de vent par défaut"""
+        """
+        Utiliser des valeurs par défaut pour le vent en cas d'erreur.
+
+        :return: None
+        """
         self.wind_dir = 270  # Vent d'ouest
         self.wind_speed = 15  # 15 knots
         self.time_weather = "Default wind"
@@ -168,7 +205,11 @@ class Leg:
         self._calculate_wind_correction()
 
     def _calculate_wind_correction(self):
-        """Calculer les corrections de cap et vitesse dues au vent"""
+        """
+        Calculer les corrections de cap (WCA) et de vitesse (GS) dues au vent.
+
+        :return: None
+        """
         try:
             if self.wind_speed > 0 and self.tas > 0:
                 # Calcul WCA (Wind Correction Angle)
@@ -208,7 +249,11 @@ class Leg:
             self.gs = self.tas
 
     def calculate_magnetic_heading(self):
-        """Calculer le cap magnétique avec déclinaison"""
+        """
+        Calculer le cap magnétique avec déclinaison magnétique.
+
+        :return: None
+        """
         try:
             nav_calc = NavigationCalculator()
             self.mh = nav_calc.true_to_magnetic_heading(
@@ -224,10 +269,11 @@ class Leg:
 
     def calculate_times(self, previous_total_time: float = 0):
         """
-        Calculer les temps de vol
+        Calculer le temps du segment et le temps total cumulé.
 
-        Args:
-            previous_total_time: Temps total cumulé des segments précédents en minutes
+        :param previous_total_time: Temps total cumulé des segments précédents en minutes.
+        :type previous_total_time: float
+        :return: None
         """
         if self.gs > 0:
             self.time_leg = (self.distance / self.gs) * 60  # minutes
@@ -239,12 +285,15 @@ class Leg:
 
     def calculate_fuel_burn(self, fuel_burn_rate: float, previous_total_fuel: float = 0, previous_fuel_left: float=0):
         """
-        Calculer la consommation de carburant
+        Calculer la consommation de carburant pour le segment.
 
-        Args:
-            fuel_burn_rate: Taux de consommation en GPH
-            previous_total_fuel: Carburant total cumulé des segments précédents en gallons
-            previous_fuel_left: Carburant restant au début du leg
+        :param fuel_burn_rate: Taux de consommation en gallons par heure (GPH).
+        :type fuel_burn_rate: float
+        :param previous_total_fuel: Carburant total cumulé des segments précédents en gallons.
+        :type previous_total_fuel: float
+        :param previous_fuel_left: Carburant restant au début du segment en gallons.
+        :type previous_fuel_left: float
+        :return: None
         """
         self.fuel_burn_leg = (self.time_leg / 60) * fuel_burn_rate
         self.fuel_burn_total = self.fuel_burn_leg + previous_total_fuel
@@ -261,17 +310,25 @@ class Leg:
                       manual_wind_speed: Optional[float] = None,
                       manual_wind_direction: Optional[float] = None):
         """
-        Effectuer tous les calculs pour ce segment (méthode legacy)
+        Effectuer tous les calculs pour ce segment (méthode legacy).
 
-        Args:
-            start_time: Heure de début
-            previous_total_time: Temps cumulé des segments précédents
-            previous_total_fuel: Carburant cumulé des segments précédents
-            previous_fuel_left: Carburant restant dans la tank
-            fuel_burn_rate: Taux de consommation en GPH
-            api_key: Clé API météo
-            manual_wind_speed: Vent manuel (knots)
-            manual_wind_direction: Direction vent manuel (degrés)
+        :param start_time: Heure de début du segment.
+        :type start_time: datetime.datetime
+        :param previous_total_time: Temps total cumulé des segments précédents en minutes.
+        :type previous_total_time: float
+        :param previous_total_fuel: Carburant total cumulé des segments précédents en gallons.
+        :type previous_total_fuel: float
+        :param fuel_burn_rate: Taux de consommation en gallons par heure (GPH).
+        :type fuel_burn_rate: float
+        :param previous_fuel_left: Carburant restant au début du segment en gallons.
+        :type previous_fuel_left: float
+        :param api_key: Clé API météo (optionnel).
+        :type api_key: Optional[str]
+        :param manual_wind_speed: Vitesse vent manuelle en knots (optionnel).
+        :type manual_wind_speed: Optional[float]
+        :param manual_wind_direction: Direction vent manuelle en degrés (optionnel).
+        :type manual_wind_direction: Optional[float]
+        :return: None
         """
         # 1. Calculer vent et corrections (au début du leg)
         self.calculate_wind_effects(start_time, api_key, manual_wind_speed, manual_wind_direction)
@@ -294,19 +351,25 @@ class Leg:
                                   manual_wind_speed: Optional[float] = None,
                                   manual_wind_direction: Optional[float] = None):
         """
-        NOUVELLE MÉTHODE: Effectuer tous les calculs avec timing météo corrigé
+        Effectuer tous les calculs avec timing météo corrigé (météo au milieu du segment).
 
-        La météo est récupérée au milieu du segment pour plus de précision.
-
-        Args:
-            leg_start_time: Heure de début du leg
-            previous_total_time: Temps cumulé des segments précédents
-            previous_total_fuel: Carburant cumulé des segments précédents
-            previous_fuel_left: Carburant restant dans la tank
-            fuel_burn_rate: Taux de consommation en GPH
-            api_key: Clé API météo
-            manual_wind_speed: Vent manuel (knots)
-            manual_wind_direction: Direction vent manuel (degrés)
+        :param leg_start_time: Heure de début du segment.
+        :type leg_start_time: datetime.datetime
+        :param previous_total_time: Temps total cumulé des segments précédents en minutes.
+        :type previous_total_time: float
+        :param previous_total_fuel: Carburant total cumulé des segments précédents en gallons.
+        :type previous_total_fuel: float
+        :param fuel_burn_rate: Taux de consommation en gallons par heure (GPH).
+        :type fuel_burn_rate: float
+        :param previous_fuel_left: Carburant restant au début du segment en gallons.
+        :type previous_fuel_left: float
+        :param api_key: Clé API météo (optionnel).
+        :type api_key: Optional[str]
+        :param manual_wind_speed: Vitesse vent manuelle en knots (optionnel).
+        :type manual_wind_speed: Optional[float]
+        :param manual_wind_direction: Direction vent manuelle en degrés (optionnel).
+        :type manual_wind_direction: Optional[float]
+        :return: None
         """
         print(f"   🧮 Calculs pour {self.name}")
 
@@ -323,7 +386,12 @@ class Leg:
         self.calculate_fuel_burn(fuel_burn_rate, previous_total_fuel, previous_fuel_left)
 
     def to_dict(self) -> Dict[str, Any]:
-        """Convertir en dictionnaire pour affichage et export"""
+        """
+        Convertir le segment en dictionnaire pour affichage ou export.
+
+        :return: Dictionnaire contenant les données du segment.
+        :rtype: Dict[str, Any]
+        """
         return {
             'Starting WP': self.starting_wp.name,
             'Ending WP': self.ending_wp.name,
@@ -348,7 +416,14 @@ class Leg:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'Leg':
-        """Créer un Leg depuis un dictionnaire"""
+        """
+        Créer un objet Leg à partir d'un dictionnaire.
+
+        :param data: Dictionnaire avec les données du segment.
+        :type data: Dict[str, Any]
+        :return: Instance de Leg.
+        :rtype: Leg
+        """
         starting_wp = Waypoint.from_dict(data['starting_wp'])
         ending_wp = Waypoint.from_dict(data['ending_wp'])
 
@@ -383,36 +458,45 @@ class Leg:
 
     def get_eta(self, departure_time: datetime.datetime) -> datetime.datetime:
         """
-        Calculer l'ETA pour ce segment
+        Calculer l'heure d'arrivée estimée (ETA) pour ce segment.
 
-        Args:
-            departure_time: Heure de départ du vol
-
-        Returns:
-            Heure d'arrivée estimée pour ce segment
+        :param departure_time: Heure de départ du vol.
+        :type departure_time: datetime.datetime
+        :return: Heure d'arrivée estimée.
+        :rtype: datetime.datetime
         """
         return departure_time + datetime.timedelta(minutes=self.time_tot)
 
     def get_eta_string(self, departure_time: datetime.datetime, format_str: str = "%H:%M") -> str:
         """
-        Obtenir l'ETA sous forme de chaîne
+        Obtenir l'ETA sous forme formatée.
 
-        Args:
-            departure_time: Heure de départ du vol
-            format_str: Format d'affichage de l'heure
-
-        Returns:
-            ETA formatée
+        :param departure_time: Heure de départ du vol.
+        :type departure_time: datetime.datetime
+        :param format_str: Format de la chaîne de date/heure (optionnel).
+        :type format_str: str
+        :return: ETA formatée.
+        :rtype: str
         """
         eta = self.get_eta(departure_time)
         return eta.strftime(format_str)
 
     def has_weather_data(self) -> bool:
-        """Vérifier si des données météo sont disponibles"""
+        """
+        Vérifier si des données météo valides sont disponibles.
+
+        :return: True si les données météo sont valides, False sinon.
+        :rtype: bool
+        """
         return self.wind_speed > 0 and self.weather_error is None
 
     def get_wind_summary(self) -> str:
-        """Obtenir un résumé du vent"""
+        """
+        Obtenir un résumé du vent pour affichage.
+
+        :return: Chaîne décrivant la direction et la vitesse du vent, ou message d'erreur.
+        :rtype: str
+        """
         if self.has_weather_data():
             time_info = f" @ {self.time_weather}" if self.time_weather else ""
             return f"{self.wind_dir:03.0f}°/{self.wind_speed:.0f}kn{time_info}"
@@ -420,7 +504,13 @@ class Leg:
             return "Vent non disponible"
 
     def get_weather_timing_info(self) -> str:
-        """NOUVEAU: Obtenir les informations de timing météo"""
+        """
+        Obtenir les informations de timing météo.
+
+        :return: Chaîne indiquant l'heure de début du leg et l'heure de la météo,
+                 ou message si indisponible.
+        :rtype: str
+        """
         if self.time_start and self.time_weather:
             return f"Leg: {self.time_start} | Météo: {self.time_weather}"
         elif self.time_weather:
@@ -429,8 +519,22 @@ class Leg:
             return "Timing non disponible"
 
     def __str__(self) -> str:
+        """
+        Représentation en chaîne du segment.
+
+        Affiche le nom, la distance, le cap vrai, et résumé du vent s'il est disponible.
+
+        :return: Chaîne descriptive du segment.
+        :rtype: str
+        """
         wind_info = f" (Vent: {self.get_wind_summary()})" if self.has_weather_data() else ""
         return f"{self.name}: {self.distance:.1f}NM, {self.tc:.0f}°{wind_info}"
 
     def __repr__(self) -> str:
+        """
+        Représentation officielle du segment.
+
+        :return: Chaîne descriptive avec points de départ, d'arrivée et distance.
+        :rtype: str
+        """
         return f"Leg(from='{self.starting_wp.name}', to='{self.ending_wp.name}', distance={self.distance:.1f})"

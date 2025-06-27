@@ -45,11 +45,17 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.excel_export.add_flight_summary_sheet">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.excel_export.</span></span><span class="sig-name descname"><span class="pre">add_flight_summary_sheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Workbook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.export.excel_export.add_flight_summary_sheet" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter une feuille de résumé au workbook</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>wb: Workbook Excel
-flight_data: Données du vol
-legs_data: Données des segments</p>
+<dd><p>Ajouter une feuille de résumé au workbook Excel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wb</strong> (<em>openpyxl.Workbook</em>) – Workbook Excel où ajouter la feuille.</p></li>
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données du vol.</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Données des segments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -57,11 +63,17 @@ legs_data: Données des segments</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.excel_export.create_simple_excel_export">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.excel_export.</span></span><span class="sig-name descname"><span class="pre">create_simple_excel_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'simple_flight_plan.xlsx'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.excel_export.create_simple_excel_export" title="Link to this definition">¶</a></dt>
-<dd><p>Créer un export Excel simplifié sans formatage complexe</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données du vol
-legs_data: Données des segments
-filename: Nom du fichier</p>
+<dd><p>Créer un export Excel simplifié sans formatage complexe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données du vol.</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Données des segments.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de l’export Excel.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -69,11 +81,21 @@ filename: Nom du fichier</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.excel_export.export_to_excel">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.excel_export.</span></span><span class="sig-name descname"><span class="pre">export_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'flight_plan.xlsx'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.excel_export.export_to_excel" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter un plan de vol vers Excel</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données générales du vol
-legs_data: Données des segments de vol
-filename: Nom du fichier de sortie</p>
+<dd><p>Exporter un plan de vol vers Excel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire contenant les données générales du vol,
+par exemple immatriculation, type d’aéronef, vitesse,
+consommation, départ, destination, date, pilote, etc.</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>]</em>) – Liste de dictionnaires représentant les segments du vol,
+chaque dictionnaire contient les clés comme ‘from’, ‘to’,
+‘distance’, ‘true_course’, ‘fuel_leg’, ‘eta’, etc.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier Excel de sortie.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de la génération ou sauvegarde du fichier Excel.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -81,13 +103,38 @@ filename: Nom du fichier de sortie</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.excel_export.format_coordinates">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.excel_export.</span></span><span class="sig-name descname"><span class="pre">format_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.export.excel_export.format_coordinates" title="Link to this definition">¶</a></dt>
-<dd><p>Formater les coordonnées</p>
+<dd><p>Formater les coordonnées géographiques en degrés décimaux avec direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> (<em>float</em>) – Latitude.</p></li>
+<li><p><strong>lon</strong> (<em>float</em>) – Longitude.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Coordonnées formatées, par exemple ‘48.8566°N, 2.3522°E’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.excel_export.format_time">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.excel_export.</span></span><span class="sig-name descname"><span class="pre">format_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.export.excel_export.format_time" title="Link to this definition">¶</a></dt>
-<dd><p>Formater le temps en heures:minutes</p>
+<dd><p>Formater le temps en heures:minutes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>minutes</strong> (<em>float</em>) – Durée en minutes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Temps formaté en chaîne ‘HH:MM’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -116,12 +163,20 @@ filename: Nom du fichier de sortie</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.pdf_export.create_flight_briefing_pdf">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.pdf_export.</span></span><span class="sig-name descname"><span class="pre">create_flight_briefing_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'flight_briefing.pdf'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.pdf_export.create_flight_briefing_pdf" title="Link to this definition">¶</a></dt>
-<dd><p>Créer un briefing de vol complet en PDF</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données du vol
-legs_data: Données des segments
-weather_data: Données météo (optionnel)
-filename: Nom du fichier</p>
+<dd><p>Créer un briefing de vol VFR complet au format PDF.</p>
+<p>Ce document comprend un résumé exécutif, une liste de vérification pré-vol,
+ainsi qu’un export détaillé du plan de vol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données générales du vol (immatriculation, pilote, date, départ, destination, etc.).</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Liste des segments de vol avec leurs données (distance, temps, carburant, ETA, etc.).</p></li>
+<li><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – Données météorologiques facultatives pour inclusion dans le briefing.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier PDF à générer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de la génération du PDF.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -129,11 +184,17 @@ filename: Nom du fichier</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.pdf_export.create_simple_pdf_export">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.pdf_export.</span></span><span class="sig-name descname"><span class="pre">create_simple_pdf_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'simple_flight_plan.pdf'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.pdf_export.create_simple_pdf_export" title="Link to this definition">¶</a></dt>
-<dd><p>Créer un export PDF simplifié</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données du vol
-legs_data: Données des segments
-filename: Nom du fichier</p>
+<dd><p>Créer un export PDF simplifié d’un plan de vol VFR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire contenant les données générales du vol (ex. immatriculation, pilote, date, départ, arrivée).</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Liste de dictionnaires, chaque dictionnaire contenant les données d’un segment de vol (ex. point de départ, destination, distance, cap, temps, ETA).</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier PDF à générer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de la création ou de la sauvegarde du PDF.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -141,11 +202,17 @@ filename: Nom du fichier</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.pdf_export.export_to_pdf">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.pdf_export.</span></span><span class="sig-name descname"><span class="pre">export_to_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'flight_plan.pdf'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.pdf_export.export_to_pdf" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter un plan de vol vers PDF</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données générales du vol
-legs_data: Données des segments de vol
-filename: Nom du fichier de sortie</p>
+<dd><p>Exporter un plan de vol vers un fichier PDF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données générales du vol.</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Liste des segments du vol.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier PDF de sortie.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de la génération du PDF.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -176,11 +243,17 @@ filename: Nom du fichier de sortie</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.add_flight_summary_sheet">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.</span></span><span class="sig-name descname"><span class="pre">add_flight_summary_sheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Workbook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.export.add_flight_summary_sheet" title="Link to this definition">¶</a></dt>
-<dd><p>Ajouter une feuille de résumé au workbook</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>wb: Workbook Excel
-flight_data: Données du vol
-legs_data: Données des segments</p>
+<dd><p>Ajouter une feuille de résumé au workbook Excel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wb</strong> (<em>openpyxl.Workbook</em>) – Workbook Excel où ajouter la feuille.</p></li>
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données du vol.</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Données des segments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -188,12 +261,20 @@ legs_data: Données des segments</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.create_flight_briefing_pdf">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.</span></span><span class="sig-name descname"><span class="pre">create_flight_briefing_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'flight_briefing.pdf'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.create_flight_briefing_pdf" title="Link to this definition">¶</a></dt>
-<dd><p>Créer un briefing de vol complet en PDF</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données du vol
-legs_data: Données des segments
-weather_data: Données météo (optionnel)
-filename: Nom du fichier</p>
+<dd><p>Créer un briefing de vol VFR complet au format PDF.</p>
+<p>Ce document comprend un résumé exécutif, une liste de vérification pré-vol,
+ainsi qu’un export détaillé du plan de vol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données générales du vol (immatriculation, pilote, date, départ, destination, etc.).</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Liste des segments de vol avec leurs données (distance, temps, carburant, ETA, etc.).</p></li>
+<li><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – Données météorologiques facultatives pour inclusion dans le briefing.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier PDF à générer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de la génération du PDF.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -201,11 +282,17 @@ filename: Nom du fichier</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.create_simple_excel_export">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.</span></span><span class="sig-name descname"><span class="pre">create_simple_excel_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'simple_flight_plan.xlsx'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.create_simple_excel_export" title="Link to this definition">¶</a></dt>
-<dd><p>Créer un export Excel simplifié sans formatage complexe</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données du vol
-legs_data: Données des segments
-filename: Nom du fichier</p>
+<dd><p>Créer un export Excel simplifié sans formatage complexe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données du vol.</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Données des segments.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de l’export Excel.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -213,11 +300,17 @@ filename: Nom du fichier</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.create_simple_pdf_export">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.</span></span><span class="sig-name descname"><span class="pre">create_simple_pdf_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'simple_flight_plan.pdf'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.create_simple_pdf_export" title="Link to this definition">¶</a></dt>
-<dd><p>Créer un export PDF simplifié</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données du vol
-legs_data: Données des segments
-filename: Nom du fichier</p>
+<dd><p>Créer un export PDF simplifié d’un plan de vol VFR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire contenant les données générales du vol (ex. immatriculation, pilote, date, départ, arrivée).</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Liste de dictionnaires, chaque dictionnaire contenant les données d’un segment de vol (ex. point de départ, destination, distance, cap, temps, ETA).</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier PDF à générer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de la création ou de la sauvegarde du PDF.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -225,11 +318,21 @@ filename: Nom du fichier</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.export_to_excel">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.</span></span><span class="sig-name descname"><span class="pre">export_to_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'flight_plan.xlsx'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.export_to_excel" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter un plan de vol vers Excel</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données générales du vol
-legs_data: Données des segments de vol
-filename: Nom du fichier de sortie</p>
+<dd><p>Exporter un plan de vol vers Excel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire contenant les données générales du vol,
+par exemple immatriculation, type d’aéronef, vitesse,
+consommation, départ, destination, date, pilote, etc.</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>]</em>) – Liste de dictionnaires représentant les segments du vol,
+chaque dictionnaire contient les clés comme ‘from’, ‘to’,
+‘distance’, ‘true_course’, ‘fuel_leg’, ‘eta’, etc.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier Excel de sortie.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de la génération ou sauvegarde du fichier Excel.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -237,11 +340,17 @@ filename: Nom du fichier de sortie</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.export_to_pdf">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.</span></span><span class="sig-name descname"><span class="pre">export_to_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flight_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'flight_plan.pdf'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.export.export_to_pdf" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter un plan de vol vers PDF</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>flight_data: Données générales du vol
-legs_data: Données des segments de vol
-filename: Nom du fichier de sortie</p>
+<dd><p>Exporter un plan de vol vers un fichier PDF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flight_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données générales du vol.</p></li>
+<li><p><strong>legs_data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – Liste des segments du vol.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nom du fichier PDF de sortie.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur lors de la génération du PDF.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -249,13 +358,38 @@ filename: Nom du fichier de sortie</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.format_coordinates">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.</span></span><span class="sig-name descname"><span class="pre">format_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.export.format_coordinates" title="Link to this definition">¶</a></dt>
-<dd><p>Formater les coordonnées</p>
+<dd><p>Formater les coordonnées géographiques en degrés décimaux avec direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> (<em>float</em>) – Latitude.</p></li>
+<li><p><strong>lon</strong> (<em>float</em>) – Longitude.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Coordonnées formatées, par exemple ‘48.8566°N, 2.3522°E’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.export.format_time">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.export.</span></span><span class="sig-name descname"><span class="pre">format_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.export.format_time" title="Link to this definition">¶</a></dt>
-<dd><p>Formater le temps en heures:minutes</p>
+<dd><p>Formater le temps en heures:minutes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>minutes</strong> (<em>float</em>) – Durée en minutes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Temps formaté en chaîne ‘HH:MM’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

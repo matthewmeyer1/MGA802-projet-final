@@ -9,7 +9,7 @@ Welcome to the VFR Flight Planner documentation ! Below are listed the modules o
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
 
    modules

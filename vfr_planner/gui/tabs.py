@@ -30,6 +30,12 @@ class AircraftTab(ttk.Frame):
     """Onglet pour les informations d'aéronef"""
 
     def __init__(self, parent, main_window):
+        """
+        Initialise l'onglet AircraftTab.
+
+        :param parent: Le widget parent.
+        :param main_window: Référence à la fenêtre principale de l'application.
+        """
         super().__init__(parent)
         self.main_window = main_window
         self.aircraft_entries = {}
@@ -39,7 +45,15 @@ class AircraftTab(ttk.Frame):
         self.setup_defaults()
 
     def create_widgets(self):
-        """Créer les widgets de l'onglet"""
+        """
+        Créer les widgets de l'onglet.
+
+        Configure les différentes sections :
+        - Sélection d'aéronef prédéfini
+        - Informations de l'aéronef
+        - Informations du vol
+        - Boutons de gestion (sauvegarder, charger, réinitialiser)
+        """
         # Frame principal avec scroll
         canvas = tk.Canvas(self)
         scrollbar = ttk.Scrollbar(self, orient="vertical", command=canvas.yview)
@@ -137,19 +151,38 @@ class AircraftTab(ttk.Frame):
         scrollbar.pack(side="right", fill="y")
 
     def setup_defaults(self):
-        """Configurer les valeurs par défaut"""
+        """
+        Configurer les valeurs par défaut pour certains champs de saisie.
+
+        - Temps de réserve à 45 minutes
+        - Vitesse de croisière à 110 kn
+        - Consommation à 7.5 GPH
+        - Capacité du réservoir à 40 gallons
+        """
         self.flight_entries['reserve_time'].insert(0, "45")
         self.aircraft_entries['cruise_speed'].insert(0, "110")
         self.aircraft_entries['fuel_burn'].insert(0, "7.5")
         self.aircraft_entries['fuel_capacity'].insert(0, "40")
 
     def on_preset_selected(self, event=None):
-        """Appelé quand un aéronef prédéfini est sélectionné"""
+        """
+        Appelé quand un aéronef prédéfini est sélectionné dans la liste déroulante.
+
+        Met à jour les champs du formulaire avec les données du preset sélectionné.
+
+        :param event: Événement tkinter (optionnel)
+        """
         # Mise à jour en temps réel lors de la sélection
         self.load_preset()
 
     def load_preset(self):
-        """Charger un aéronef prédéfini"""
+        """
+        Charger un aéronef prédéfini.
+
+        Récupère le preset sélectionné et remplit les champs du formulaire
+        avec les valeurs correspondantes. Met à jour la barre de statut
+        avec le nom de l'aéronef chargé.
+        """
         preset_name = self.preset_var.get()
         if preset_name in AIRCRAFT_PRESETS:
             aircraft = AIRCRAFT_PRESETS[preset_name]
@@ -182,15 +215,34 @@ class AircraftTab(ttk.Frame):
             self.main_window.status_bar.set_status(f"Aéronef {preset_name} chargé")
 
     def get_aircraft_data(self) -> Dict[str, Any]:
-        """Obtenir les données d'aéronef"""
+        """
+        Obtenir les données d'aéronef.
+
+        Parcourt tous les champs d'entrée de l'aéronef et retourne
+        un dictionnaire avec les clés correspondantes et leurs valeurs.
+
+        :return: Dictionnaire des données d'aéronef.
+        """
         return {key: entry.get() for key, entry in self.aircraft_entries.items()}
 
     def get_flight_data(self) -> Dict[str, Any]:
-        """Obtenir les données de vol"""
+        """
+        Obtenir les données de vol.
+
+        Parcourt tous les champs d'entrée du vol et retourne
+        un dictionnaire avec les clés correspondantes et leurs valeurs.
+
+        :return: Dictionnaire des données de vol.
+        """
         return {key: entry.get() for key, entry in self.flight_entries.items()}
 
     def clear_all(self):
-        """Effacer tous les champs"""
+        """
+        Effacer tous les champs de saisie.
+
+        Vide tous les champs des informations d'aéronef et de vol,
+        puis réinitialise les valeurs par défaut.
+        """
         for entry in self.aircraft_entries.values():
             entry.delete(0, tk.END)
         for entry in self.flight_entries.values():
@@ -198,13 +250,21 @@ class AircraftTab(ttk.Frame):
         self.setup_defaults()
 
     def save_aircraft_profile(self):
-        """Sauvegarder le profil d'aéronef"""
-        # Placeholder pour future implémentation
+        """
+        Sauvegarder le profil d'aéronef.
+
+        Fonctionnalité placeholder pour sauvegarder un profil,
+        affiche un message d'information pour l'instant.
+        """
         messagebox.showinfo("Info", "Fonctionnalité de sauvegarde à implémenter")
 
     def load_aircraft_profile(self):
-        """Charger un profil d'aéronef"""
-        # Placeholder pour future implémentation
+        """
+        Charger un profil d'aéronef.
+
+        Fonctionnalité placeholder pour charger un profil,
+        affiche un message d'information pour l'instant.
+        """
         messagebox.showinfo("Info", "Fonctionnalité de chargement à implémenter")
 
 
@@ -212,6 +272,12 @@ class AirportsTab(ttk.Frame):
     """Onglet pour la sélection d'aéroports"""
 
     def __init__(self, parent, main_window):
+        """
+        Initialiser l'onglet de sélection d'aéroports.
+
+        :param parent: Widget parent
+        :param main_window: Référence vers la fenêtre principale
+        """
         super().__init__(parent)
         self.main_window = main_window
         self.departure_airport = None
@@ -226,7 +292,12 @@ class AirportsTab(ttk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        """Créer les widgets de l'onglet"""
+        """
+        Créer les widgets de l'onglet.
+
+        Initialise les différents panneaux, zones de recherche,
+        boutons d'action et la zone d'informations de vol.
+        """
         try:
             # Instructions
             instructions = ttk.Label(self,
@@ -299,7 +370,14 @@ class AirportsTab(ttk.Frame):
             self.flight_info_text = None
 
     def on_filters_updated(self):
-        """Appelé quand les filtres sont mis à jour"""
+        """
+        Appelé quand les filtres sont mis à jour.
+
+        Réinitialise les recherches actuelles et met à jour la barre de statut
+        avec le nombre d'aéroports filtrés.
+
+        En cas d'erreur, affiche un message dans la console.
+        """
         try:
             # Effacer les recherches en cours
             if self.departure_search:
@@ -315,19 +393,33 @@ class AirportsTab(ttk.Frame):
             print(f"Erreur mise à jour filtres: {e}")
 
     def on_departure_selected(self, airport):
-        """Callback pour sélection aéroport de départ"""
+        """
+        Callback appelé lors de la sélection de l'aéroport de départ.
+
+        :param airport: dict contenant les données de l'aéroport sélectionné
+        """
         self.departure_airport = airport
         self.update_flight_info()
         self.main_window.status_bar.set_status(f"Départ: {airport['icao']} - {airport['name']}")
 
     def on_destination_selected(self, airport):
-        """Callback pour sélection aéroport d'arrivée"""
+        """
+        Callback appelé lors de la sélection de l'aéroport d'arrivée.
+
+        :param airport: dict contenant les données de l'aéroport sélectionné
+        """
         self.destination_airport = airport
         self.update_flight_info()
         self.main_window.status_bar.set_status(f"Arrivée: {airport['icao']} - {airport['name']}")
 
     def update_flight_info(self):
-        """Mettre à jour les informations de vol"""
+        """
+        Met à jour les informations de vol affichées.
+
+        Calcule la distance, le cap magnétique, et estime le temps de vol
+        en fonction de la vitesse de croisière.
+        Met à jour la zone de texte avec ces informations.
+        """
         if not (self.departure_airport and self.destination_airport and self.flight_info_text):
             return
 
@@ -357,22 +449,22 @@ class AirportsTab(ttk.Frame):
 
             info_text = f"""INFORMATIONS DE VOL DIRECT
 
-Départ: {self.departure_airport['icao']} - {self.departure_airport['name']}
-        {self.departure_airport['city']}
-        {self.departure_airport['lat']:.4f}°N, {abs(self.departure_airport['lon']):.4f}°W
+    Départ: {self.departure_airport['icao']} - {self.departure_airport['name']}
+            {self.departure_airport['city']}
+            {self.departure_airport['lat']:.4f}°N, {abs(self.departure_airport['lon']):.4f}°W
 
-Arrivée: {self.destination_airport['icao']} - {self.destination_airport['name']}
-         {self.destination_airport['city']}
-         {self.destination_airport['lat']:.4f}°N, {abs(self.destination_airport['lon']):.4f}°W
+    Arrivée: {self.destination_airport['icao']} - {self.destination_airport['name']}
+             {self.destination_airport['city']}
+             {self.destination_airport['lat']:.4f}°N, {abs(self.destination_airport['lon']):.4f}°W
 
-Distance directe: {distance:.1f} NM
-Cap magnétique: {bearing:.0f}°
-Temps de vol estimé: {flight_time:.0f} min ({flight_time / 60:.1f}h)
-Vitesse de croisière: {cruise_speed} kn
+    Distance directe: {distance:.1f} NM
+    Cap magnétique: {bearing:.0f}°
+    Temps de vol estimé: {flight_time:.0f} min ({flight_time / 60:.1f}h)
+    Vitesse de croisière: {cruise_speed} kn
 
-Note: Calculs pour vol direct sans vent.
-Utilisez 'Plan de vol' pour calculs détaillés avec météo.
-"""
+    Note: Calculs pour vol direct sans vent.
+    Utilisez 'Plan de vol' pour calculs détaillés avec météo.
+    """
 
             self.flight_info_text.delete('1.0', tk.END)
             self.flight_info_text.insert('1.0', info_text)
@@ -384,7 +476,12 @@ Utilisez 'Plan de vol' pour calculs détaillés avec météo.
                 self.flight_info_text.insert('1.0', f"Erreur calcul: {e}")
 
     def swap_airports(self):
-        """Inverser les aéroports de départ et d'arrivée"""
+        """
+        Inverse les aéroports de départ et d'arrivée.
+
+        Met à jour les champs de sélection et rafraîchit les informations de vol.
+        Affiche un avertissement si les deux aéroports ne sont pas sélectionnés.
+        """
         if (self.departure_airport and self.destination_airport and
                 self.departure_search and self.destination_search):
 
@@ -404,7 +501,12 @@ Utilisez 'Plan de vol' pour calculs détaillés avec météo.
             messagebox.showwarning("Attention", "Sélectionnez d'abord les deux aéroports")
 
     def add_to_route(self):
-        """Ajouter les aéroports à l'itinéraire"""
+        """
+        Ajoute les aéroports de départ et d'arrivée à l'itinéraire.
+
+        Affiche un avertissement si les aéroports ne sont pas sélectionnés.
+        Met à jour l'onglet itinéraire et la barre de statut.
+        """
         if not (self.departure_airport and self.destination_airport):
             messagebox.showwarning("Attention", "Sélectionnez les aéroports de départ et d'arrivée")
             return
@@ -423,7 +525,14 @@ Utilisez 'Plan de vol' pour calculs détaillés avec météo.
             messagebox.showerror("Erreur", f"Erreur lors de l'ajout à l'itinéraire:\n{e}")
 
     def show_on_map(self):
-        """Afficher les aéroports sur une carte"""
+        """
+        Affiche les aéroports de départ et d'arrivée sur une carte interactive.
+
+        Génère une carte Folium centrée entre les deux aéroports,
+        avec marqueurs et ligne directe.
+        Ouvre la carte dans le navigateur par défaut.
+        Affiche un avertissement si les aéroports ne sont pas sélectionnés.
+        """
         if not (self.departure_airport and self.destination_airport):
             messagebox.showwarning("Attention", "Sélectionnez d'abord les aéroports")
             return
@@ -476,6 +585,12 @@ class RouteTab(ttk.Frame):
     """Onglet pour l'itinéraire détaillé"""
 
     def __init__(self, parent, main_window):
+        """
+        Initialiser l'onglet itinéraire.
+
+        :param parent: widget parent
+        :param main_window: fenêtre principale de l'application
+        """
         super().__init__(parent)
         self.main_window = main_window
         self.waypoints = []
@@ -531,7 +646,11 @@ class RouteTab(ttk.Frame):
         self.waypoint_detail_text.pack(fill='both', expand=True)
 
     def add_airport_waypoint(self, airport: Dict[str, Any]):
-        """Ajouter un aéroport comme waypoint"""
+        """
+        Ajouter un aéroport comme waypoint.
+
+        :param airport: dictionnaire contenant les informations de l'aéroport
+        """
         waypoint = {
             'name': airport['icao'],
             'lat': airport['lat'],
@@ -543,14 +662,18 @@ class RouteTab(ttk.Frame):
         self.update_waypoint_list()
 
     def add_custom_waypoint(self):
-        """Ajouter un waypoint personnalisé"""
+        """
+        Ajouter un waypoint personnalisé via une boîte de dialogue.
+        """
         dialog = CustomWaypointDialog(self, self.main_window.airport_db)
         if dialog.result:
             self.waypoints.append(dialog.result)
             self.update_waypoint_list()
 
     def remove_waypoint(self):
-        """Supprimer le waypoint sélectionné"""
+        """
+        Supprimer le waypoint sélectionné dans la liste.
+        """
         selection = self.waypoint_listbox.curselection()
         if selection:
             index = selection[0]
@@ -558,7 +681,9 @@ class RouteTab(ttk.Frame):
             self.update_waypoint_list()
 
     def move_waypoint_up(self):
-        """Déplacer waypoint vers le haut"""
+        """
+        Déplacer le waypoint sélectionné vers le haut dans la liste.
+        """
         selection = self.waypoint_listbox.curselection()
         if selection and selection[0] > 0:
             index = selection[0]
@@ -568,7 +693,9 @@ class RouteTab(ttk.Frame):
             self.waypoint_listbox.selection_set(index - 1)
 
     def move_waypoint_down(self):
-        """Déplacer waypoint vers le bas"""
+        """
+        Déplacer le waypoint sélectionné vers le bas dans la liste.
+        """
         selection = self.waypoint_listbox.curselection()
         if selection and selection[0] < len(self.waypoints) - 1:
             index = selection[0]
@@ -578,12 +705,16 @@ class RouteTab(ttk.Frame):
             self.waypoint_listbox.selection_set(index + 1)
 
     def clear_waypoints(self):
-        """Effacer tous les waypoints"""
+        """
+        Effacer tous les waypoints de la liste.
+        """
         self.waypoints.clear()
         self.update_waypoint_list()
 
     def update_waypoint_list(self):
-        """Mettre à jour l'affichage des waypoints"""
+        """
+        Mettre à jour l'affichage des waypoints dans la liste.
+        """
         self.waypoint_listbox.delete(0, tk.END)
         for i, wp in enumerate(self.waypoints):
             display_text = f"{i + 1}. {wp['name']} ({wp['lat']:.4f}, {wp['lon']:.4f})"
@@ -592,7 +723,11 @@ class RouteTab(ttk.Frame):
             self.waypoint_listbox.insert(tk.END, display_text)
 
     def on_waypoint_select(self, event):
-        """Afficher les détails du waypoint sélectionné"""
+        """
+        Afficher les détails du waypoint sélectionné dans le panneau droit.
+
+        :param event: événement Tkinter lié à la sélection dans la liste
+        """
         selection = self.waypoint_listbox.curselection()
         if selection:
             wp = self.waypoints[selection[0]]
@@ -613,7 +748,11 @@ class RouteTab(ttk.Frame):
             self.waypoint_detail_text.insert('1.0', details)
 
     def get_waypoints(self) -> List[Dict[str, Any]]:
-        """Obtenir la liste des waypoints"""
+        """
+        Obtenir la liste des waypoints actuels.
+
+        :return: copie de la liste des waypoints
+        """
         return self.waypoints.copy()
 
 
@@ -621,6 +760,12 @@ class PlanTab(ttk.Frame):
     """Onglet pour le plan de vol final avec timing météo corrigé"""
 
     def __init__(self, parent, main_window):
+        """
+        Initialiser l'onglet Plan de vol.
+
+        :param parent: widget parent
+        :param main_window: fenêtre principale de l'application
+        """
         super().__init__(parent)
         self.main_window = main_window
         self.calculated_itinerary = None
@@ -683,7 +828,16 @@ class PlanTab(ttk.Frame):
         self.plan_text.configure(xscrollcommand=plan_scrollbar_h.set)
 
     def test_api(self):
-        """Tester la clé API météo"""
+        """
+        Tester la clé API météo Tomorrow.io.
+
+        Cette méthode effectue un test simple en demandant la météo à un point fixe (Montréal)
+        et affiche un message indiquant si la clé API est valide ou non.
+
+        Affiche un message d'erreur en cas d'échec.
+
+        :raises Exception: si la récupération météo retourne une erreur
+        """
         try:
             from ..calculations.weather import WeatherService
             from ..models.waypoint import Waypoint
@@ -713,7 +867,19 @@ class PlanTab(ttk.Frame):
             messagebox.showerror("Erreur API", f"Test échoué:\n{e}")
 
     def calculate_route(self):
-        """Calculer l'itinéraire complet avec timing météo corrigé"""
+        """
+        Calculer l'itinéraire complet avec timing météo corrigé.
+
+        Cette méthode récupère les waypoints, les données de l'aéronef et du vol,
+        puis appelle la fonction `create_itinerary_from_gui` avec la clé API météo.
+        Elle affiche ensuite le plan de vol détaillé avec les informations de timing
+        et met à jour la barre de statut.
+
+        Affiche une alerte si moins de 2 waypoints sont présents.
+        Gère les exceptions en affichant un message d'erreur.
+
+        :return: None
+        """
         # Vérifier les prérequis
         waypoints = self.main_window.route_tab.get_waypoints()
         if len(waypoints) < 2:
@@ -798,7 +964,20 @@ class PlanTab(ttk.Frame):
             self.main_window.status_bar.set_status("Erreur de calcul")
 
     def display_itinerary_with_timing(self, itinerary):
-        """Afficher l'itinéraire calculé avec informations de timing détaillées"""
+        """
+        Afficher l'itinéraire calculé avec informations de timing détaillées.
+
+        Affiche dans le widget texte un plan de vol formaté avec :
+        - détails avion et pilote,
+        - heure de départ et arrivée (UTC),
+        - tableau détaillé des legs avec timing météo,
+        - analyse carburant complète,
+        - notes sur la météo et la navigation.
+
+        :param itinerary: objet contenant les données de l'itinéraire calculé
+        :type itinerary: Itinerary
+        :return: None
+        """
         summary = itinerary.get_summary()
         fuel_analysis = itinerary.get_fuel_analysis()
 
@@ -896,11 +1075,29 @@ class PlanTab(ttk.Frame):
         self.plan_text.insert('1.0', plan_text)
 
     def display_itinerary(self, itinerary):
-        """Afficher l'itinéraire calculé (méthode legacy)"""
+        """
+        Afficher l'itinéraire calculé (méthode legacy).
+
+        Cette méthode appelle simplement `display_itinerary_with_timing` pour afficher
+        l'itinéraire avec les informations de timing.
+
+        :param itinerary: Objet représentant l'itinéraire calculé.
+        :type itinerary: Itinerary
+        :return: None
+        """
         self.display_itinerary_with_timing(itinerary)
 
     def export_excel(self):
-        """Exporter vers Excel"""
+        """
+        Exporter l'itinéraire calculé vers un fichier Excel.
+
+        Ouvre une boîte de dialogue pour choisir le fichier de destination.
+        Utilise la fonction `export_to_excel` pour créer le fichier Excel.
+        Affiche un message d'erreur si aucun itinéraire n'a été calculé
+        ou si une erreur survient lors de l'export.
+
+        :return: None
+        """
         if not self.calculated_itinerary:
             messagebox.showwarning("Attention", "Calculez d'abord l'itinéraire")
             return
@@ -924,7 +1121,16 @@ class PlanTab(ttk.Frame):
                 messagebox.showerror("Erreur", f"Erreur export Excel:\n{e}")
 
     def export_pdf(self):
-        """Exporter vers PDF"""
+        """
+        Exporter l'itinéraire calculé vers un fichier PDF.
+
+        Ouvre une boîte de dialogue pour choisir le fichier de destination.
+        Utilise la fonction `export_to_pdf` pour créer le fichier PDF.
+        Affiche un message d'erreur si aucun itinéraire n'a été calculé
+        ou si une erreur survient lors de l'export.
+
+        :return: None
+        """
         if not self.calculated_itinerary:
             messagebox.showwarning("Attention", "Calculez d'abord l'itinéraire")
             return
@@ -948,7 +1154,18 @@ class PlanTab(ttk.Frame):
                 messagebox.showerror("Erreur", f"Erreur export PDF:\n{e}")
 
     def show_map(self):
-        """Afficher la carte interactive"""
+        """
+        Afficher la carte interactive du plan de vol.
+
+        Récupère les waypoints de l'itinéraire, crée une carte centrée,
+        ajoute des marqueurs pour chaque waypoint et trace la route entre eux.
+        Sauvegarde la carte en HTML et l'ouvre dans le navigateur par défaut.
+
+        Affiche un avertissement si aucun waypoint n'est défini
+        et un message d'erreur en cas de problème lors de la création de la carte.
+
+        :return: None
+        """
         waypoints = self.main_window.route_tab.get_waypoints()
         if not waypoints:
             messagebox.showwarning("Attention", "Aucun waypoint défini")

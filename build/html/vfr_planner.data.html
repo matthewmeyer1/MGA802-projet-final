@@ -59,19 +59,31 @@
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.data.airport_db.</span></span><span class="sig-name descname"><span class="pre">AirportDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Gestionnaire de la base de données d’aéroports</p>
+<p>Gestionnaire de la base de données d’aéroports.</p>
+<p>Permet de charger une base CSV d’aéroports ou d’utiliser un jeu de secours.
+Gère le nettoyage, les filtres (pays, types, codes ICAO/IATA), et fournit une liste d’aéroports exploitables
+pour les opérations de planification de vol.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.apply_filters">
 <span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.apply_filters" title="Link to this definition">¶</a></dt>
-<dd><p>Appliquer les filtres actuels</p>
+<dd><p>Appliquer les filtres actuels définis sur la base d’aéroports.</p>
+<p>Les filtres incluent :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">countries</span></code> : Liste de codes pays (ISO 3166-1 alpha-2) à inclure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">types</span></code> : Types d’aéroports à retenir (ex: <code class="docutils literal notranslate"><span class="pre">small_airport</span></code>, <code class="docutils literal notranslate"><span class="pre">large_airport</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icao_only</span></code> : Si vrai, ne garder que les aéroports avec un code ICAO</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iata_only</span></code> : Si vrai, ne garder que les aéroports avec un code IATA</p></li>
+</ul>
+<p>Met à jour l’attribut <code class="docutils literal notranslate"><span class="pre">filtered_airports</span></code>, un DataFrame avec colonne <code class="docutils literal notranslate"><span class="pre">display_name</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.export_filtered_airports">
 <span class="sig-name descname"><span class="pre">export_filtered_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.export_filtered_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter les aéroports filtrés vers un fichier CSV</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>filename: Nom du fichier de sortie</p>
+<dd><p>Exporter les aéroports filtrés vers un fichier CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Nom du fichier de sortie.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -79,11 +91,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_airport_by_code">
 <span class="sig-name descname"><span class="pre">get_airport_by_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_airport_by_code" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir un aéroport par code</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>code: Code d’aéroport (ICAO, IATA, ident, local, GPS)</p>
+<dd><p>Obtenir un aéroport via un code unique (ICAO, IATA, ident, local_code ou gps_code).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – Code d’aéroport recherché</p>
 </dd>
-<dt>Returns:</dt><dd><p>Dictionnaire d’aéroport ou None</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire représentant l’aéroport, ou None si aucun résultat</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Dict]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -91,11 +108,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_airports_by_type">
 <span class="sig-name descname"><span class="pre">get_airports_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_airports_by_type" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les aéroports par type</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>airport_type: Type d’aéroport</p>
+<dd><p>Obtenir la liste des aéroports correspondant à un type donné.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>airport_type</strong> (<em>str</em>) – Type d’aéroport à filtrer.</p>
 </dd>
-<dt>Returns:</dt><dd><p>Liste d’aéroports du type spécifié</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports du type spécifié sous forme de dictionnaires.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -103,13 +125,20 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_airports_near_point">
 <span class="sig-name descname"><span class="pre">get_airports_near_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_airports_near_point" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les aéroports près d’un point</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>lat: Latitude du point
-lon: Longitude du point
-radius_nm: Rayon de recherche en milles nautiques</p>
+<dd><p>Obtenir les aéroports situés dans un rayon donné autour d’un point géographique.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> (<em>float</em>) – Latitude du point de référence.</p></li>
+<li><p><strong>lon</strong> (<em>float</em>) – Longitude du point de référence.</p></li>
+<li><p><strong>radius_nm</strong> (<em>float</em><em>, </em><em>optional</em>) – Rayon de recherche en milles nautiques, par défaut 50.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Liste d’aéroports dans le rayon</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports sous forme de dictionnaires situés dans le rayon spécifié.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -117,48 +146,99 @@ radius_nm: Rayon de recherche en milles nautiques</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_available_countries">
 <span class="sig-name descname"><span class="pre">get_available_countries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_available_countries" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la liste des pays disponibles</p>
+<dd><p>Obtient la liste des pays disponibles dans le DataFrame des aéroports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste triée des codes pays ISO uniques.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_available_types">
 <span class="sig-name descname"><span class="pre">get_available_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_available_types" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la liste des types d’aéroports disponibles</p>
+<dd><p>Obtient la liste des types d’aéroports disponibles dans le DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste triée des types uniques d’aéroports.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_filter_stats">
 <span class="sig-name descname"><span class="pre">get_filter_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_filter_stats" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir des statistiques sur les filtres</p>
+<dd><p>Obtenir des statistiques sur les filtres appliqués aux aéroports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant le nombre total d’aéroports, le nombre filtré et le pourcentage filtré.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, int or float]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_statistics">
 <span class="sig-name descname"><span class="pre">get_statistics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_statistics" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir des statistiques détaillées sur la base de données</p>
+<dd><p>Obtenir des statistiques détaillées sur la base de données des aéroports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant diverses statistiques.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, int or dict]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.load_airports">
 <span class="sig-name descname"><span class="pre">load_airports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.load_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Charger la base de données d’aéroports</p>
+<dd><p>Charger la base de données d’aéroports depuis un fichier CSV ou créer des données de secours.</p>
+<p>Cette méthode tente de lire les données CSV, puis applique un nettoyage et des filtres par défaut :
+- Pays : CA, US
+- Types : non filtrés
+- ICAO/IATA : non filtrés</p>
+<p>En cas d’erreur de chargement, un jeu de 9 aéroports standards est utilisé.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.reset_filters">
 <span class="sig-name descname"><span class="pre">reset_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.reset_filters" title="Link to this definition">¶</a></dt>
-<dd><p>Réinitialiser tous les filtres</p>
+<dd><p>Réinitialise tous les filtres aux valeurs par défaut et applique ces filtres.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.search_airports">
 <span class="sig-name descname"><span class="pre">search_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.search_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Rechercher des aéroports</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>query: Terme de recherche
-max_results: Nombre max de résultats</p>
+<dd><p>Rechercher des aéroports dans la base filtrée.</p>
+<p>La recherche est insensible à la casse et porte sur plusieurs colonnes :
+codes ICAO, IATA, ident, local_code, gps_code, nom et municipalité.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – Terme de recherche (code ou texte)</p></li>
+<li><p><strong>max_results</strong> (<em>int</em>) – Nombre maximum de résultats à retourner</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Liste de dictionnaires d’aéroports</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports correspondants sous forme de dictionnaires</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -166,7 +246,17 @@ max_results: Nombre max de résultats</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.update_filters">
 <span class="sig-name descname"><span class="pre">update_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icao_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iata_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.update_filters" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour les filtres</p>
+<dd><p>Met à jour les filtres appliqués sur les aéroports et applique les nouveaux filtres.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>countries</strong> (<em>list</em><em> or </em><em>None</em>) – Liste des codes pays ISO à filtrer, defaults to None</p></li>
+<li><p><strong>types</strong> (<em>list</em><em> or </em><em>None</em>) – Liste des types d’aéroports à filtrer, defaults to None</p></li>
+<li><p><strong>icao_only</strong> (<em>bool</em><em> or </em><em>None</em>) – Filtrer uniquement les aéroports avec code ICAO, defaults to None</p></li>
+<li><p><strong>iata_only</strong> (<em>bool</em><em> or </em><em>None</em>) – Filtrer uniquement les aéroports avec code IATA, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -174,19 +264,59 @@ max_results: Nombre max de résultats</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.get_airport_by_code">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.data.airport_db.</span></span><span class="sig-name descname"><span class="pre">get_airport_by_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.get_airport_by_code" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir un aéroport par code</p>
+<dd><p>Obtenir un aéroport par son code ICAO ou IATA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – Code ICAO ou IATA de l’aéroport.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire contenant les informations de l’aéroport, ou None si non trouvé.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Dict]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.get_airports_near">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.data.airport_db.</span></span><span class="sig-name descname"><span class="pre">get_airports_near</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.get_airports_near" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les aéroports près d’un point</p>
+<dd><p>Obtenir la liste des aéroports proches d’un point géographique.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> (<em>float</em>) – Latitude du point.</p></li>
+<li><p><strong>lon</strong> (<em>float</em>) – Longitude du point.</p></li>
+<li><p><strong>radius_nm</strong> (<em>float</em><em>, </em><em>optional</em>) – Rayon de recherche en milles nautiques, par défaut 50.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports proches.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.data.airport_db.search_airports">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.data.airport_db.</span></span><span class="sig-name descname"><span class="pre">search_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.search_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Rechercher des aéroports</p>
+<dd><p>Rechercher des aéroports par chaîne de caractères.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – Terme de recherche.</p></li>
+<li><p><strong>max_results</strong> (<em>int</em><em>, </em><em>optional</em>) – Nombre maximum de résultats à retourner, par défaut 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports correspondant à la recherche.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -197,19 +327,31 @@ max_results: Nombre max de résultats</p>
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.data.</span></span><span class="sig-name descname"><span class="pre">AirportDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Gestionnaire de la base de données d’aéroports</p>
+<p>Gestionnaire de la base de données d’aéroports.</p>
+<p>Permet de charger une base CSV d’aéroports ou d’utiliser un jeu de secours.
+Gère le nettoyage, les filtres (pays, types, codes ICAO/IATA), et fournit une liste d’aéroports exploitables
+pour les opérations de planification de vol.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.apply_filters">
 <span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.apply_filters" title="Link to this definition">¶</a></dt>
-<dd><p>Appliquer les filtres actuels</p>
+<dd><p>Appliquer les filtres actuels définis sur la base d’aéroports.</p>
+<p>Les filtres incluent :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">countries</span></code> : Liste de codes pays (ISO 3166-1 alpha-2) à inclure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">types</span></code> : Types d’aéroports à retenir (ex: <code class="docutils literal notranslate"><span class="pre">small_airport</span></code>, <code class="docutils literal notranslate"><span class="pre">large_airport</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icao_only</span></code> : Si vrai, ne garder que les aéroports avec un code ICAO</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iata_only</span></code> : Si vrai, ne garder que les aéroports avec un code IATA</p></li>
+</ul>
+<p>Met à jour l’attribut <code class="docutils literal notranslate"><span class="pre">filtered_airports</span></code>, un DataFrame avec colonne <code class="docutils literal notranslate"><span class="pre">display_name</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.export_filtered_airports">
 <span class="sig-name descname"><span class="pre">export_filtered_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.export_filtered_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Exporter les aéroports filtrés vers un fichier CSV</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>filename: Nom du fichier de sortie</p>
+<dd><p>Exporter les aéroports filtrés vers un fichier CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Nom du fichier de sortie.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -217,11 +359,16 @@ max_results: Nombre max de résultats</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_airport_by_code">
 <span class="sig-name descname"><span class="pre">get_airport_by_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_airport_by_code" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir un aéroport par code</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>code: Code d’aéroport (ICAO, IATA, ident, local, GPS)</p>
+<dd><p>Obtenir un aéroport via un code unique (ICAO, IATA, ident, local_code ou gps_code).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – Code d’aéroport recherché</p>
 </dd>
-<dt>Returns:</dt><dd><p>Dictionnaire d’aéroport ou None</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire représentant l’aéroport, ou None si aucun résultat</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Dict]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -229,11 +376,16 @@ max_results: Nombre max de résultats</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_airports_by_type">
 <span class="sig-name descname"><span class="pre">get_airports_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_airports_by_type" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les aéroports par type</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>airport_type: Type d’aéroport</p>
+<dd><p>Obtenir la liste des aéroports correspondant à un type donné.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>airport_type</strong> (<em>str</em>) – Type d’aéroport à filtrer.</p>
 </dd>
-<dt>Returns:</dt><dd><p>Liste d’aéroports du type spécifié</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports du type spécifié sous forme de dictionnaires.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -241,13 +393,20 @@ max_results: Nombre max de résultats</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_airports_near_point">
 <span class="sig-name descname"><span class="pre">get_airports_near_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_airports_near_point" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les aéroports près d’un point</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>lat: Latitude du point
-lon: Longitude du point
-radius_nm: Rayon de recherche en milles nautiques</p>
+<dd><p>Obtenir les aéroports situés dans un rayon donné autour d’un point géographique.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> (<em>float</em>) – Latitude du point de référence.</p></li>
+<li><p><strong>lon</strong> (<em>float</em>) – Longitude du point de référence.</p></li>
+<li><p><strong>radius_nm</strong> (<em>float</em><em>, </em><em>optional</em>) – Rayon de recherche en milles nautiques, par défaut 50.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Liste d’aéroports dans le rayon</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports sous forme de dictionnaires situés dans le rayon spécifié.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -255,48 +414,99 @@ radius_nm: Rayon de recherche en milles nautiques</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_available_countries">
 <span class="sig-name descname"><span class="pre">get_available_countries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_available_countries" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la liste des pays disponibles</p>
+<dd><p>Obtient la liste des pays disponibles dans le DataFrame des aéroports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste triée des codes pays ISO uniques.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_available_types">
 <span class="sig-name descname"><span class="pre">get_available_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_available_types" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la liste des types d’aéroports disponibles</p>
+<dd><p>Obtient la liste des types d’aéroports disponibles dans le DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste triée des types uniques d’aéroports.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_filter_stats">
 <span class="sig-name descname"><span class="pre">get_filter_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_filter_stats" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir des statistiques sur les filtres</p>
+<dd><p>Obtenir des statistiques sur les filtres appliqués aux aéroports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant le nombre total d’aéroports, le nombre filtré et le pourcentage filtré.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, int or float]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_statistics">
 <span class="sig-name descname"><span class="pre">get_statistics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_statistics" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir des statistiques détaillées sur la base de données</p>
+<dd><p>Obtenir des statistiques détaillées sur la base de données des aéroports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant diverses statistiques.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, int or dict]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.load_airports">
 <span class="sig-name descname"><span class="pre">load_airports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.load_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Charger la base de données d’aéroports</p>
+<dd><p>Charger la base de données d’aéroports depuis un fichier CSV ou créer des données de secours.</p>
+<p>Cette méthode tente de lire les données CSV, puis applique un nettoyage et des filtres par défaut :
+- Pays : CA, US
+- Types : non filtrés
+- ICAO/IATA : non filtrés</p>
+<p>En cas d’erreur de chargement, un jeu de 9 aéroports standards est utilisé.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.reset_filters">
 <span class="sig-name descname"><span class="pre">reset_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.reset_filters" title="Link to this definition">¶</a></dt>
-<dd><p>Réinitialiser tous les filtres</p>
+<dd><p>Réinitialise tous les filtres aux valeurs par défaut et applique ces filtres.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.search_airports">
 <span class="sig-name descname"><span class="pre">search_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.search_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Rechercher des aéroports</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>query: Terme de recherche
-max_results: Nombre max de résultats</p>
+<dd><p>Rechercher des aéroports dans la base filtrée.</p>
+<p>La recherche est insensible à la casse et porte sur plusieurs colonnes :
+codes ICAO, IATA, ident, local_code, gps_code, nom et municipalité.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – Terme de recherche (code ou texte)</p></li>
+<li><p><strong>max_results</strong> (<em>int</em>) – Nombre maximum de résultats à retourner</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Liste de dictionnaires d’aéroports</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports correspondants sous forme de dictionnaires</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -304,7 +514,17 @@ max_results: Nombre max de résultats</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.update_filters">
 <span class="sig-name descname"><span class="pre">update_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icao_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iata_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.update_filters" title="Link to this definition">¶</a></dt>
-<dd><p>Mettre à jour les filtres</p>
+<dd><p>Met à jour les filtres appliqués sur les aéroports et applique les nouveaux filtres.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>countries</strong> (<em>list</em><em> or </em><em>None</em>) – Liste des codes pays ISO à filtrer, defaults to None</p></li>
+<li><p><strong>types</strong> (<em>list</em><em> or </em><em>None</em>) – Liste des types d’aéroports à filtrer, defaults to None</p></li>
+<li><p><strong>icao_only</strong> (<em>bool</em><em> or </em><em>None</em>) – Filtrer uniquement les aéroports avec code ICAO, defaults to None</p></li>
+<li><p><strong>iata_only</strong> (<em>bool</em><em> or </em><em>None</em>) – Filtrer uniquement les aéroports avec code IATA, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -312,19 +532,59 @@ max_results: Nombre max de résultats</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.data.get_airport_by_code">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.data.</span></span><span class="sig-name descname"><span class="pre">get_airport_by_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.data.get_airport_by_code" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir un aéroport par code</p>
+<dd><p>Obtenir un aéroport par son code ICAO ou IATA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – Code ICAO ou IATA de l’aéroport.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire contenant les informations de l’aéroport, ou None si non trouvé.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Dict]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.data.get_airports_near">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.data.</span></span><span class="sig-name descname"><span class="pre">get_airports_near</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.get_airports_near" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les aéroports près d’un point</p>
+<dd><p>Obtenir la liste des aéroports proches d’un point géographique.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> (<em>float</em>) – Latitude du point.</p></li>
+<li><p><strong>lon</strong> (<em>float</em>) – Longitude du point.</p></li>
+<li><p><strong>radius_nm</strong> (<em>float</em><em>, </em><em>optional</em>) – Rayon de recherche en milles nautiques, par défaut 50.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports proches.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.data.search_airports">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.data.</span></span><span class="sig-name descname"><span class="pre">search_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.search_airports" title="Link to this definition">¶</a></dt>
-<dd><p>Rechercher des aéroports</p>
+<dd><p>Rechercher des aéroports par chaîne de caractères.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – Terme de recherche.</p></li>
+<li><p><strong>max_results</strong> (<em>int</em><em>, </em><em>optional</em>) – Nombre maximum de résultats à retourner, par défaut 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste des aéroports correspondant à la recherche.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

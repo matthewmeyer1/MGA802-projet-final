@@ -10,9 +10,27 @@ from ..data.airport_db import AirportDatabase
 
 
 class AirportSearchWidget(ttk.Frame):
-    """Widget de recherche d'aéroports avec autocomplete"""
+    """
+    Widget de recherche d'aéroports avec fonction d'autocomplétion.
+
+    Permet à l'utilisateur de rechercher un aéroport par code ou nom,
+    affiche une liste déroulante des résultats correspondants,
+    et affiche les informations sommaires de l'aéroport sélectionné.
+
+    :param parent: widget parent
+    :param airport_db: instance de AirportDatabase pour les recherches
+    :param label_text: texte du label associé au champ de recherche (par défaut "Aéroport:")
+    """
+
 
     def __init__(self, parent, airport_db: AirportDatabase, label_text: str = "Aéroport:"):
+        """
+        Initialiser le widget de recherche.
+
+        :param parent: widget parent
+        :param airport_db: base de données d'aéroports pour les recherches
+        :param label_text: texte du label affiché au-dessus du champ de recherche
+        """
         super().__init__(parent)
         self.airport_db = airport_db
         self.selected_airport = None
@@ -51,7 +69,15 @@ class AirportSearchWidget(ttk.Frame):
         self.grid_columnconfigure(0, weight=1)
 
     def on_search_change(self, *args):
-        """Appelé quand le texte de recherche change"""
+        """
+        Callback appelé à chaque changement du texte dans le champ de recherche.
+
+        Lance une recherche dans la base d'aéroports avec le texte actuel
+        si la longueur est >= 2 caractères, et affiche les résultats
+        dans une liste déroulante.
+
+        :param args: arguments optionnels liés au trace de la StringVar
+        """
         query = self.search_var.get()
 
         if len(query) < 2:
@@ -72,7 +98,18 @@ class AirportSearchWidget(ttk.Frame):
             self.results_frame.grid_remove()
 
     def on_select(self, event):
-        """Appelé quand un aéroport est sélectionné"""
+        """
+        Callback appelé lors de la sélection d'un élément dans la liste des résultats.
+
+        Récupère l'aéroport sélectionné, met à jour le champ de recherche
+        avec le nom complet et affiche des informations sommaires
+        (latitude, longitude, type).
+
+        Si un callback utilisateur est défini, l'appelle avec
+        l'aéroport sélectionné en argument.
+
+        :param event: événement de sélection de la listbox
+        """
         selection = self.results_listbox.curselection()
         if not selection:
             return
@@ -97,23 +134,50 @@ class AirportSearchWidget(ttk.Frame):
                 self.callback(self.selected_airport)
 
     def set_callback(self, callback: Callable):
-        """Définir une fonction de callback pour la sélection"""
+        """
+        Définir une fonction callback appelée lors de la sélection d'un aéroport.
+
+        La fonction doit accepter un argument : le dictionnaire de l'aéroport sélectionné.
+
+        :param callback: fonction à appeler avec l'aéroport sélectionné
+        """
         self.callback = callback
 
     def get_selected_airport(self):
-        """Retourner l'aéroport sélectionné"""
+        """
+        Retourne l'aéroport actuellement sélectionné.
+
+        :returns: Un dictionnaire contenant les informations de l'aéroport sélectionné,
+                  ou None si aucun aéroport n'est sélectionné.
+        :rtype: dict or None
+        """
         return self.selected_airport
 
     def clear(self):
-        """Effacer la sélection"""
+        """
+        Efface la sélection courante et réinitialise le widget.
+
+        Réinitialise le champ de recherche, supprime la sélection d'aéroport,
+        efface le texte d'information et masque la liste des résultats.
+        """
         self.search_var.set("")
         self.selected_airport = None
         self.info_label.config(text="")
         self.results_frame.grid_remove()
 
     def set_airport(self, airport: Dict[str, Any]):
-        """Définir l'aéroport sélectionné"""
-        self.selected_airport = airport
+        """
+        Définit l'aéroport sélectionné dans le widget.
+
+        Met à jour le champ de recherche et l'affichage d'information
+        avec les données de l'aéroport donné.
+
+        :param airport: Dictionnaire contenant les informations de l'aéroport,
+                        avec au minimum les clés 'display', 'lat', 'lon' et
+                        optionnellement 'type'.
+        :type airport: dict
+        """
+        port = airport
         self.search_var.set(airport['display'])
         self.info_label.config(
             text=f"Lat: {airport['lat']:.4f}, "
@@ -123,9 +187,28 @@ class AirportSearchWidget(ttk.Frame):
 
 
 class CustomWaypointDialog:
-    """Dialogue pour ajouter un waypoint personnalisé"""
+    """
+    Dialogue pour ajouter un waypoint personnalisé.
+
+    Permet à l'utilisateur d'ajouter un waypoint soit via des coordonnées personnalisées,
+    soit en sélectionnant un aéroport depuis une base de données.
+
+    :ivar dict or None result: Contient le waypoint créé après validation, ou None si annulé.
+    :ivar AirportDatabase airport_db: Base de données des aéroports utilisée pour la recherche.
+    :ivar tk.Toplevel dialog: La fenêtre de dialogue principale.
+    :ivar tk.StringVar type_var: Variable contrôlant le type de waypoint ('custom' ou 'airport').
+    :ivar ttk.LabelFrame coord_frame: Conteneur pour les entrées de coordonnées personnalisées.
+    :ivar ttk.LabelFrame airport_frame: Conteneur pour la recherche d'aéroport.
+    :ivar AirportSearchWidget airport_search: Widget de recherche d'aéroport intégré.
+    """
 
     def __init__(self, parent, airport_db: AirportDatabase):
+        """
+        Initialise le dialogue d'ajout de waypoint.
+
+        :param tk.Widget parent: Le widget parent de la fenêtre de dialogue.
+        :param AirportDatabase airport_db: La base de données d'aéroports utilisée pour la recherche.
+        """
         self.result = None
         self.airport_db = airport_db
 
@@ -193,7 +276,12 @@ class CustomWaypointDialog:
         self.dialog.wait_window()
 
     def on_type_change(self):
-        """Changer l'interface selon le type sélectionné"""
+        """
+        Met à jour l'interface en fonction du type de waypoint sélectionné.
+
+        Affiche les champs de coordonnées personnalisées si 'custom' est sélectionné,
+        sinon affiche le widget de recherche d'aéroport.
+        """
         if self.type_var.get() == "custom":
             self.coord_frame.grid()
             self.airport_frame.grid_remove()
@@ -202,6 +290,16 @@ class CustomWaypointDialog:
             self.airport_frame.grid()
 
     def ok_clicked(self):
+        """
+        Valide les données saisies et ferme le dialogue.
+
+        - Vérifie la validité des coordonnées si le type est 'custom'.
+        - Vérifie qu'un aéroport est sélectionné si le type est 'airport'.
+        - En cas de validation réussie, stocke les informations dans `self.result`.
+        - Affiche un message d'erreur en cas de problème et empêche la fermeture.
+
+        :raises ValueError: Si les coordonnées saisies ne sont pas convertibles en float.
+        """
         try:
             if self.type_var.get() == "custom":
                 name = self.name_entry.get().strip()
@@ -245,13 +343,29 @@ class CustomWaypointDialog:
             messagebox.showerror("Erreur", "Coordonnées invalides")
 
     def cancel_clicked(self):
+        """
+        Ferme le dialogue sans enregistrer de résultat.
+        """
         self.dialog.destroy()
 
 
 class StatusBarWidget(ttk.Frame):
-    """Barre d'état avec indicateurs"""
+    """
+    Barre d'état affichant des messages et indicateurs.
+
+    Fournit une interface visuelle pour afficher :
+    - un message de statut principal,
+    - le statut de connexion à l'API météo,
+    - le nombre d'aéroports chargés.
+    """
 
     def __init__(self, parent):
+        """
+        Initialise la barre d'état.
+
+        :param parent: Widget parent.
+        :type parent: tk.Widget
+        """
         super().__init__(parent, relief='sunken', borderwidth=1)
 
         # Message principal
@@ -279,11 +393,23 @@ class StatusBarWidget(ttk.Frame):
         self.airports_label.pack(side='left', padx=5)
 
     def set_status(self, message: str):
-        """Définir le message de statut"""
+        """
+        Met à jour le message principal de statut.
+
+        :param message: Texte à afficher dans la barre d'état.
+        :type message: str
+        """
         self.status_var.set(message)
 
     def set_api_status(self, configured: bool, working: bool = False):
-        """Définir le statut de l'API"""
+        """
+        Met à jour l'indicateur du statut de l'API.
+
+        :param configured: Indique si l'API est configurée.
+        :type configured: bool
+        :param working: Indique si l'API fonctionne correctement (par défaut False).
+        :type working: bool, optional
+        """
         if not configured:
             self.api_var.set("API: Non configurée")
             self.api_label.config(foreground='orange')
@@ -295,14 +421,31 @@ class StatusBarWidget(ttk.Frame):
             self.api_label.config(foreground='blue')
 
     def set_airports_count(self, count: int):
-        """Définir le nombre d'aéroports"""
+        """
+        Met à jour le nombre d'aéroports affiché.
+
+        :param count: Nombre total d'aéroports chargés.
+        :type count: int
+        """
         self.airports_var.set(f"Aéroports: {count:,}")
 
 
 class ProgressDialog:
-    """Dialogue de progression pour les opérations longues"""
+    """
+    Dialogue modal affichant une barre de progression pour les opérations longues.
 
+    Fournit un retour visuel à l'utilisateur pendant une tâche
+    pouvant prendre un certain temps, avec possibilité d'annulation.
+    """
     def __init__(self, parent, title: str = "Traitement en cours"):
+        """
+        Initialise le dialogue de progression.
+
+        :param parent: Widget parent.
+        :type parent: tk.Widget
+        :param title: Titre de la fenêtre.
+        :type title: str, optional
+        """
         self.dialog = tk.Toplevel(parent)
         self.dialog.title(title)
         self.dialog.geometry("400x150")
@@ -336,21 +479,37 @@ class ProgressDialog:
         self.cancel_button.pack()
 
     def set_message(self, message: str):
-        """Changer le message affiché"""
+        """
+        Met à jour le message affiché dans le dialogue.
+
+        :param message: Texte à afficher à l'utilisateur.
+        :type message: str
+        """
         self.message_var.set(message)
         self.dialog.update()
 
     def cancel(self):
-        """Marquer comme annulé"""
+        """
+        Indique que l'utilisateur a annulé l'opération.
+
+        Met à jour le statut interne pour signaler une annulation.
+        """
         self.cancelled = True
 
     def close(self):
-        """Fermer le dialogue"""
+        """
+        Ferme le dialogue et arrête la barre de progression.
+        """
         self.progress.stop()
         self.dialog.destroy()
 
     def is_cancelled(self) -> bool:
-        """Vérifier si l'opération a été annulée"""
+        """
+        Indique si l'opération a été annulée par l'utilisateur.
+
+        :return: True si annulé, False sinon.
+        :rtype: bool
+        """
         return self.cancelled
 
 
