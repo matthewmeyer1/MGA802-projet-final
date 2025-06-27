@@ -38,13 +38,13 @@ Outil complet de planification de vol VFR avec calculs automatiques de navigatio
 ## Structure du projet
 
 ```
-projet_vfr/
+vfr_planner/
 │
 ├── main.py                      # Point d'entrée principal
 ├── requirements.txt             # Dépendances Python
 ├── README.md                    # Documentation (ce fichier)
 ├── airports.csv                 # Base de données d'aéroports
-├── wp.csv                      # Waypoints d'exemple
+├── LICENSE.md                   # Licence MIT
 │
 └── vfr_planner/                # Package principal
     ├── __init__.py             # Initialisation du package
@@ -59,16 +59,15 @@ projet_vfr/
     ├── calculations/           # Moteur de calculs
     │   ├── __init__.py
     │   ├── navigation.py       # Calculs de navigation
-    │   └── weather.py          # Service météorologique
+    │   ├── weather.py          # Service météorologique
+    │   └── aeroport_refuel.py  # Gestion arrêts carburant
     │
     ├── data/                   # Gestion des données
     │   ├── __init__.py
     │   ├── airport_db.py       # Base de données d'aéroports
-    │   ├── airports.csv        # Données d'aéroports (copie locale)
-    │   ├── extraction/         # Extraction de données CFS
-    │   │   ├── __init__.py
-    │   │   └── extraction.py
-    │   └── cfs/               # Stockage des PDFs CFS
+    │   └── extraction/         # Extraction de données CFS
+    │       ├── __init__.py
+    │       └── extraction.py
     │
     ├── gui/                    # Interface graphique
     │   ├── __init__.py
@@ -90,14 +89,14 @@ projet_vfr/
 
 ### Prérequis
 - Python 3.8 ou supérieur
-- Clé API Tomorrow.io (pour la météo)
+- L'API météo Tomorrow.io est préconfigurée
 
 ### Installation automatique
 
 ```bash
 # Cloner le projet
-git clone <repository-url>
-cd projet_vfr
+git clone https://github.com/matthewmeyer1/MGA802-projet-final.git
+cd MGA802-projet-final
 
 # Installer les dépendances
 pip install -r requirements.txt
@@ -148,7 +147,7 @@ pip install pytest pytest-cov
    - Ou saisissez vos paramètres personnalisés
    - Remplissez les informations de vol
 
-3. **Sélectionnez vos aéroports** (Onglet 🛫 Aéroports):
+3. **Sélectionnez vos aéroports** (Onglet Aéroports):
    - Utilisez les filtres pour affiner la recherche
    - Recherchez par code ICAO/IATA ou nom
    - Définissez départ et arrivée
@@ -159,27 +158,21 @@ pip install pytest pytest-cov
    - Vérifiez les détails de chaque point
 
 5. **Générez votre plan** (Onglet Plan de vol):
-   - Configurez votre clé API météo
+   - L'API météo est préconfigurée
    - Calculez l'itinéraire avec données météo
    - Exportez en Excel ou PDF
-
-### Configuration de l'API météo
-
-1. Obtenez une clé API gratuite sur [Tomorrow.io](https://www.tomorrow.io/weather-api/)
-2. Entrez la clé dans l'onglet "Plan de vol"
-3. Testez la connexion avec le bouton "Test API"
 
 ### Raccourcis clavier
 
 | Raccourci | Action |
 |-----------|--------|
-| `Ctrl+N` | Nouveau projet |
-| `Ctrl+O` | Ouvrir projet |
-| `Ctrl+S` | Sauvegarder |
-| `Ctrl+Shift+S` | Sauvegarder sous |
-| `F5` | Calculer itinéraire |
-| `F9` | Carte interactive |
-| `Ctrl+Q` | Quitter |
+| Ctrl+N | Nouveau projet |
+| Ctrl+O | Ouvrir projet |
+| Ctrl+S | Sauvegarder |
+| Ctrl+Shift+S | Sauvegarder sous |
+| F5 | Calculer itinéraire |
+| F9 | Carte interactive |
+| Ctrl+Q | Quitter |
 
 ## Exemples d'utilisation
 
@@ -208,8 +201,7 @@ itinerary.add_waypoint(departure)
 itinerary.add_waypoint(destination)
 itinerary.set_start_time("2025-06-17", "14:00")
 
-# Calcul avec météo
-itinerary.set_api_key("votre_cle_api")
+# Calcul avec météo (API préconfigurée)
 itinerary.create_legs()
 
 # Export
@@ -295,10 +287,10 @@ from vfr_planner.export import export_to_excel, export_to_pdf
 pip install -r requirements.txt
 ```
 
-**API météo ne fonctionne pas**
-- Vérifiez votre clé API
+**Problèmes d'API météo**
+- L'API Tomorrow.io est préconfigurée et devrait fonctionner automatiquement
 - Testez votre connexion internet
-- Consultez les quotas Tomorrow.io
+- Utilisez le bouton "Test API météo" dans l'interface
 
 **Base de données d'aéroports vide**
 - Vérifiez la présence d'`airports.csv`
@@ -346,16 +338,46 @@ footer (optionnel)
 
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
+## Fonctionnalités avancées
+
+### Gestion automatique des arrêts carburant
+
+Le système analyse automatiquement l'autonomie de l'aéronef et propose des arrêts de ravitaillement si nécessaire:
+
+```python
+# Le système vérifie automatiquement
+if leg.fuel_left - reserve_fuel < 0:
+    # Recherche du meilleur aéroport de ravitaillement
+    refuel_airport = find_nearest_refuel_airport(current_position, aircraft)
+```
+
+### Correction météo en temps réel
+
+Les calculs de vent utilisent la météo prédite au moment exact de passage:
+
+- Récupération météo au milieu de chaque segment
+- Interpolation temporelle précise
+- Correction automatique des caps et vitesses sol
+
+### Export professionnel
+
+Les documents générés respectent les standards aéronautiques:
+
+- Plans de vol conformes OACI
+- Calculs de carburant détaillés
+- Informations de sécurité incluses
+- Formats prêts pour l'impression
+
 ## Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence MIT. Voir le fichier [LICENSE.md](LICENSE.md) pour plus de détails.
 
 ## Équipe de développement
 
-- **Antoine Gingras**
-- **Matthew Meyer**
-- **Richard Nguekam**
-- **Gabriel Wong-Lapierre**
+- **Antoine Gingras** - Développement interface et calculs
+- **Matthew Meyer** - Architecture et base de données
+- **Richard Nguekam** - Intégration météo et export
+- **Gabriel Wong-Lapierre** - Documentation et tests
 
 ## Remerciements
 
@@ -370,7 +392,7 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 Pour des questions ou problèmes:
 
 1. Consultez la documentation dans `/docs`
-2. Vérifiez les [Issues GitHub](issues)
+2. Vérifiez les [Issues GitHub](../../issues)
 3. Contactez l'équipe via le forum du cours
 
 ---
