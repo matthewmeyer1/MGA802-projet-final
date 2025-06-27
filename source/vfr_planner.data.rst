@@ -1,4 +1,4 @@
-vfr\_planner.data package
+data package
 =========================
 
 Subpackages
@@ -12,7 +12,7 @@ Subpackages
 Submodules
 ----------
 
-vfr\_planner.data.airport\_db module
+airport\_db module
 ------------------------------------
 
 .. automodule:: vfr_planner.data.airport_db

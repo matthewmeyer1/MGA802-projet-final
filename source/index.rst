@@ -5,7 +5,7 @@
 
 Documentation pour le planificateur de vol VFR
 ===================
-Welcome to the VFR Flight Planner documentation ! Below are listed the modules of the program.
+Bienvenue dans la documentation du programme VFR Flight Planner ! Ci-dessous sont listés les modules et sous-modules. Libre à vous d'explorer ces modules et leurs fonctions !
 
 
 .. toctree::

@@ -1,8 +1,8 @@
-Projet Final
+Planificateur de vol VFR
 ============
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 5
 
    main
    vfr_planner

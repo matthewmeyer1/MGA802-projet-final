@@ -1,10 +1,10 @@
-vfr\_planner.data.extraction package
+extraction package
 ====================================
 
 Submodules
 ----------
 
-vfr\_planner.data.extraction.extraction module
+extraction module
 ----------------------------------------------
 
 .. automodule:: vfr_planner.data.extraction.extraction

@@ -1,10 +1,10 @@
-vfr\_planner.utils package
+utils
 ==========================
 
 Submodules
 ----------
 
-vfr\_planner.utils.constants module
+constants module
 -----------------------------------
 
 .. automodule:: vfr_planner.utils.constants

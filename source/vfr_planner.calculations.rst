@@ -1,27 +1,27 @@
-vfr\_planner.calculations package
+calculations
 =================================
 
-Submodules
-----------
+**Sous-module**
+----------------------
 
-vfr\_planner.calculations.aeroport\_refuel module
--------------------------------------------------
+aeroport\_refuel module
+-------------------------
 
 .. automodule:: vfr_planner.calculations.aeroport_refuel
    :members:
    :show-inheritance:
    :undoc-members:
 
-vfr\_planner.calculations.navigation module
--------------------------------------------
+navigation module
+-------------------------
 
 .. automodule:: vfr_planner.calculations.navigation
    :members:
    :show-inheritance:
    :undoc-members:
 
-vfr\_planner.calculations.weather module
-----------------------------------------
+weather module
+-------------------
 
 .. automodule:: vfr_planner.calculations.weather
    :members:
@@ -29,7 +29,7 @@ vfr\_planner.calculations.weather module
    :undoc-members:
 
 Module contents
----------------
+--------------------
 
 .. automodule:: vfr_planner.calculations
    :members:
