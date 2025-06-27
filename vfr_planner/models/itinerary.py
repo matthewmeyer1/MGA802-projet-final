@@ -1,5 +1,6 @@
 """
-Modèle de données pour l'itinéraire complet
+Modèle de données pour l'itinéraire complet - VERSION CORRIGÉE
+Corrections du timing météo
 """
 
 import datetime
@@ -27,31 +28,51 @@ class Itinerary:
         """Définir l'aéronef"""
         self.aircraft = aircraft
 
-    def set_start_time(self, date_str: str, time_str: str, timezone_str: str = "America/Montreal"):
+    def set_start_time_from_flight_info(self, flight_info: Dict[str, Any], timezone_str: str = "America/Montreal"):
         """
-        Définir l'heure de départ
+        Définir l'heure de départ à partir des informations de vol de l'utilisateur
 
         Args:
-            date_str: Date au format YYYY-MM-DD
-            time_str: Heure au format HH:MM
+            flight_info: Dictionnaire contenant 'date' et 'departure_time'
             timezone_str: Fuseau horaire
         """
         try:
+            date_str = flight_info.get('date', '')
+            time_str = flight_info.get('departure_time', '')
+
+            print(f"Setting start time from flight info: date='{date_str}', time='{time_str}'")
+
             # Parser la date
-            if date_str:
-                year, month, day = map(int, date_str.split('-'))
+            if date_str and '-' in date_str:
+                try:
+                    year, month, day = map(int, date_str.split('-'))
+                except ValueError:
+                    # Format alternatif possible
+                    today = datetime.date.today()
+                    year, month, day = today.year, today.month, today.day
+                    print(f"Date parsing failed, using today: {year}-{month}-{day}")
             else:
                 today = datetime.date.today()
                 year, month, day = today.year, today.month, today.day
+                print(f"No date provided, using today: {year}-{month}-{day}")
 
             # Parser l'heure
             if time_str and ':' in time_str:
-                hour, minute = map(int, time_str.split(':'))
+                try:
+                    hour, minute = map(int, time_str.split(':'))
+                except ValueError:
+                    hour, minute = 10, 0
+                    print(f"Time parsing failed, using default: {hour}:{minute}")
             elif time_str:
-                hour = int(time_str)
-                minute = 0
+                try:
+                    hour = int(time_str)
+                    minute = 0
+                except ValueError:
+                    hour, minute = 10, 0
+                    print(f"Time parsing failed, using default: {hour}:{minute}")
             else:
                 hour, minute = 10, 0
+                print(f"No time provided, using default: {hour}:{minute}")
 
             # Créer datetime avec timezone
             dt = datetime.datetime(year, month, day, hour, minute)
@@ -59,11 +80,25 @@ class Itinerary:
             dt = tz.localize(dt)
             self.start_time = dt.astimezone(pytz.utc)
 
-            print(f"Heure de départ définie: {self.start_time.strftime('%Y-%m-%d %H:%M UTC')}")
+            print(f"✅ Heure de départ définie: {self.start_time.strftime('%Y-%m-%d %H:%M UTC')} (local: {dt.strftime('%Y-%m-%d %H:%M %Z')})")
 
         except Exception as e:
-            print(f"Erreur parsing date/heure: {e}")
+            print(f"❌ Erreur parsing date/heure: {e}")
+            # Fallback vers maintenant
             self.start_time = datetime.datetime.now(pytz.utc)
+            print(f"Using current time as fallback: {self.start_time.strftime('%Y-%m-%d %H:%M UTC')}")
+
+    def set_start_time(self, date_str: str, time_str: str, timezone_str: str = "America/Montreal"):
+        """
+        Définir l'heure de départ (méthode legacy - utilisez set_start_time_from_flight_info)
+
+        Args:
+            date_str: Date au format YYYY-MM-DD
+            time_str: Heure au format HH:MM
+            timezone_str: Fuseau horaire
+        """
+        flight_info = {'date': date_str, 'departure_time': time_str}
+        self.set_start_time_from_flight_info(flight_info, timezone_str)
 
     def set_api_key(self, api_key: str):
         """Définir la clé API météo"""
@@ -72,6 +107,9 @@ class Itinerary:
     def set_flight_info(self, info: Dict[str, Any]):
         """Définir les informations de vol"""
         self.flight_info.update(info)
+        # Automatiquement mettre à jour l'heure de départ si les infos sont présentes
+        if 'date' in info or 'departure_time' in info:
+            self.set_start_time_from_flight_info(self.flight_info)
 
     def add_waypoint(self, waypoint: Waypoint, index: Optional[int] = None):
         """
@@ -117,7 +155,7 @@ class Itinerary:
 
     def create_legs(self, recalculate: bool = True):
         """
-        Créer les segments de vol entre les waypoints
+        Créer les segments de vol entre les waypoints avec timing météo corrigé
 
         Args:
             recalculate: Recalculer tous les paramètres de vol
@@ -128,13 +166,22 @@ class Itinerary:
         if not self.aircraft:
             raise ValueError("Aéronef requis pour les calculs")
 
+        # S'assurer qu'on a une heure de départ
         if not self.start_time:
-            self.start_time = datetime.datetime.now(pytz.utc)
+            print("⚠️ Pas d'heure de départ définie, utilisation des infos de vol ou heure actuelle")
+            if self.flight_info:
+                self.set_start_time_from_flight_info(self.flight_info)
+            else:
+                self.start_time = datetime.datetime.now(pytz.utc)
+
+        print(f"🕐 Création des legs avec heure de départ: {self.start_time.strftime('%Y-%m-%d %H:%M UTC')}")
 
         self.legs.clear()
-        current_time = self.start_time
+        leg_start_time = self.start_time  # Heure de début du leg courant
 
         for i in range(len(self.waypoints) - 1):
+            print(f"\n--- Leg {i+1}: {self.waypoints[i].name} → {self.waypoints[i+1].name} ---")
+
             leg = Leg(
                 starting_wp=self.waypoints[i],
                 ending_wp=self.waypoints[i + 1],
@@ -147,8 +194,11 @@ class Itinerary:
                 previous_total_fuel = self.legs[-1].fuel_burn_total if self.legs else 0
                 previous_fuel = self.legs[-1].fuel_left if self.legs else self.aircraft.fuel_capacity
 
-                leg.calculate_all(
-                    start_time=current_time,
+                print(f"   Heure début leg: {leg_start_time.strftime('%H:%M UTC')}")
+
+                # CORRECTION: Calculer la météo au milieu du leg
+                leg.calculate_all_with_timing(
+                    leg_start_time=leg_start_time,
                     previous_total_time=previous_total_time,
                     previous_fuel_left=previous_fuel,
                     previous_total_fuel=previous_total_fuel,
@@ -156,23 +206,29 @@ class Itinerary:
                     api_key=self.api_key
                 )
 
-                # Avancer l'heure pour le prochain segment
-                current_time += datetime.timedelta(minutes=leg.time_leg)
+                print(f"   Durée leg: {leg.time_leg:.1f} min")
+                print(f"   Météo au milieu du leg: {leg.wind_dir:.0f}°/{leg.wind_speed:.0f}kn")
 
+                # Mettre à jour l'heure pour le prochain leg
+                leg_start_time += datetime.timedelta(minutes=leg.time_leg)
+                print(f"   Prochaine heure début: {leg_start_time.strftime('%H:%M UTC')}")
+
+            # Vérification carburant et ajout d'arrêts si nécessaire
             reserve_fuel = (45 / 60) * self.aircraft.fuel_burn
             if leg.fuel_left - reserve_fuel < 0:
-                print(f"Not enough fuel, need to stop after {leg}")
+                print(f"⛽ Carburant insuffisant, recherche aéroport de ravitaillement")
                 added_wp, leg1, leg2 = aeroport_proche(leg, self.aircraft)
 
-                if not leg1 is None:
-                    #self.add_waypoint(added_wp, index = i + 1)
-                    # Calculer tous les paramètres
+                if leg1 is not None:
+                    print(f"   Ajout arrêt carburant: {added_wp.name}")
+
+                    # Recalculer le premier segment
                     previous_total_time = self.legs[-1].time_tot if self.legs else 0
                     previous_total_fuel = self.legs[-1].fuel_burn_total if self.legs else 0
                     previous_fuel = self.legs[-1].fuel_left if self.legs else self.aircraft.fuel_capacity
 
-                    leg1.calculate_all(
-                        start_time=current_time,
+                    leg1.calculate_all_with_timing(
+                        leg_start_time=leg_start_time,
                         previous_total_time=previous_total_time,
                         previous_fuel_left=previous_fuel,
                         previous_total_fuel=previous_total_fuel,
@@ -181,27 +237,32 @@ class Itinerary:
                     )
 
                     self.legs.append(leg1)
+                    leg_start_time += datetime.timedelta(minutes=leg1.time_leg)
+
+                    # Faire le plein
                     leg1.fuel_left = self.aircraft.fuel_capacity
-                    # Calculer tous les paramètres
+
+                    # Recalculer le second segment
                     previous_total_time = self.legs[-1].time_tot if self.legs else 0
                     previous_total_fuel = self.legs[-1].fuel_burn_total if self.legs else 0
-                    previous_fuel = self.legs[-1].fuel_left if self.legs else self.aircraft.fuel_capacity
 
-                    leg2.calculate_all(
-                        start_time=current_time,
+                    leg2.calculate_all_with_timing(
+                        leg_start_time=leg_start_time,
                         previous_total_time=previous_total_time,
-                        previous_fuel_left=previous_fuel,
+                        previous_fuel_left=self.aircraft.fuel_capacity,  # Plein fait
                         previous_total_fuel=previous_total_fuel,
                         fuel_burn_rate=self.aircraft.fuel_burn,
                         api_key=self.api_key
                     )
 
-
                     self.legs.append(leg2)
+                    leg_start_time += datetime.timedelta(minutes=leg2.time_leg)
                 else:
                     self.legs.append(leg)
             else:
                 self.legs.append(leg)
+
+        print(f"\n✅ {len(self.legs)} segments créés avec timing météo corrigé")
 
     def recalculate_all(self):
         """Recalculer tous les segments avec les paramètres actuels"""
@@ -374,7 +435,7 @@ class Itinerary:
             'fuel_capacity': self.aircraft.fuel_capacity if self.aircraft else 0,
             'fuel_burn': self.aircraft.fuel_burn if self.aircraft else 7.5,
             'reserve_fuel': self.flight_info.get('reserve_time', 45),
-            'weather_brief': 'Obtained via Tomorrow.io API',
+            'weather_brief': 'Obtained via Tomorrow.io API with timing correction',
             'notam_check': 'Required',
             'flight_following': 'Recommended'
         }
@@ -403,7 +464,8 @@ class Itinerary:
                 'fuel_total': leg_dict['Fuel burn tot (gal)'],
                 'fuel_left': leg_dict['Fuel left (gal)'],
                 'eta': eta_str,
-                'remarks': f"Wind: {leg_dict['Wind Direction (deg)']}°/{leg_dict['Wind Speed (kn)']}kn"
+                'remarks': f"Wind @ midpoint: {leg_dict['Wind Direction (deg)']}°/{leg_dict['Wind Speed (kn)']}kn",
+                'weather_time': leg_dict.get('Time start', 'N/A')
             }
             legs_data.append(leg_data)
 
@@ -427,17 +489,19 @@ class Itinerary:
 def create_itinerary_from_gui(waypoints: List[Dict], aircraft_params: Dict,
                               flight_params: Dict, api_key: str = None) -> Itinerary:
     """
-    Créer un itinéraire depuis les données de l'interface GUI
+    Créer un itinéraire depuis les données de l'interface GUI avec timing corrigé
 
     Args:
         waypoints: Liste de {'name': str, 'lat': float, 'lon': float}
         aircraft_params: {'tas': float, 'fuel_burn': float, etc.}
-        flight_params: {'date': str, 'time': str, etc.}
+        flight_params: {'date': str, 'departure_time': str, etc.}
         api_key: Clé API météo
 
     Returns:
-        Itinéraire configuré
+        Itinéraire configuré avec timing météo corrigé
     """
+    print(f"🔧 Création itinéraire GUI avec flight_params: {flight_params}")
+
     # Créer l'aéronef
     aircraft = Aircraft(
         cruise_speed=aircraft_params.get('tas', 110),
@@ -461,18 +525,16 @@ def create_itinerary_from_gui(waypoints: List[Dict], aircraft_params: Dict,
         )
         itinerary.add_waypoint(waypoint)
 
-    # Configurer heure de départ et infos de vol
-    itinerary.set_start_time(
-        flight_params.get('date', ''),
-        flight_params.get('time', '')
-    )
+    # CORRECTION: Utiliser les informations de vol pour définir l'heure de départ
     itinerary.set_flight_info(flight_params)
 
     # Configurer API météo
     if api_key:
         itinerary.set_api_key(api_key)
 
-    # Créer les segments
+    print(f"🕐 Heure de départ configurée: {itinerary.start_time}")
+
+    # Créer les segments avec timing corrigé
     itinerary.create_legs()
 
     return itinerary

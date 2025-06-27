@@ -5,6 +5,16 @@ from ..models.leg import Leg
 from ..models.waypoint import Waypoint
 
 def aeroport_proche(leg, aircraft):
+    """
+    Finds the closest airport.
+
+    :param leg: The first number.
+    :type leg: int
+    :param aircraft: The second number.
+    :type aircraft: int
+    :return: None
+    :rtype: None
+    """
     start_wp = leg.starting_wp
     end_wp = leg.ending_wp
 

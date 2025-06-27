@@ -30,12 +30,12 @@ class WeatherService:
     def get_weather_for_leg(self, start_wp: Waypoint, end_wp: Waypoint,
                            start_time: datetime.datetime) -> Dict[str, Any]:
         """
-        Obtenir la météo pour un segment de vol
+        Obtenir la météo pour un segment de vol avec timing précis
 
         Args:
             start_wp: Waypoint de départ
             end_wp: Waypoint d'arrivée
-            start_time: Heure de début du segment
+            start_time: Heure pour laquelle récupérer la météo (peut être milieu du leg)
 
         Returns:
             Dictionnaire avec données météo
@@ -48,28 +48,37 @@ class WeatherService:
             center_lat = (start_wp.lat + end_wp.lat) / 2
             center_lon = (start_wp.lon + end_wp.lon) / 2
 
-            # Vérifier le cache
-            cache_key = f"{center_lat:.3f},{center_lon:.3f},{start_time.strftime('%Y%m%d%H')}"
+            print(f"      🌤️ Récupération météo:")
+            print(f"         Position: {center_lat:.4f}, {center_lon:.4f} (centre du leg)")
+            print(f"         Heure: {start_time.strftime('%Y-%m-%d %H:%M:%S UTC')}")
+
+            # Vérifier le cache avec timing précis
+            cache_key = f"{center_lat:.3f},{center_lon:.3f},{start_time.strftime('%Y%m%d%H%M')}"
             if cache_key in self._cache:
                 cached_data, cache_time = self._cache[cache_key]
-                if (datetime.datetime.now() - cache_time).seconds < self._cache_duration:
+                cache_age = (datetime.datetime.now() - cache_time).seconds
+                if cache_age < self._cache_duration:
+                    print(f"         📋 Cache hit (âge: {cache_age}s)")
                     return cached_data
 
             # Faire l'appel API
+            print(f"         🌐 Appel API Tomorrow.io...")
             weather_data = self._fetch_tomorrow_io_weather(center_lat, center_lon, start_time)
 
-            # Mettre en cache
+            # Mettre en cache avec timing précis
             self._cache[cache_key] = (weather_data, datetime.datetime.now())
+
+            print(f"         ✅ Météo récupérée: {weather_data['wind_direction']:.0f}°/{weather_data['wind_speed']:.0f}kn")
 
             return weather_data
 
         except Exception as e:
-            print(f"Erreur météo: {e}")
+            print(f"         ❌ Erreur météo: {e}")
             return self._get_default_weather()
 
     def _fetch_tomorrow_io_weather(self, lat: float, lon: float,
                                   start_time: datetime.datetime) -> Dict[str, Any]:
-        """Récupérer la météo depuis Tomorrow.io"""
+        """Récupérer la météo depuis Tomorrow.io avec gestion de timing améliorée"""
 
         url = f"{self.base_url}/weather/forecast"
         params = {
@@ -97,26 +106,53 @@ class WeatherService:
 
         data = response.json()
 
-        # Trouver l'heure la plus proche
-        target_time = start_time.strftime("%Y-%m-%dT%H:00:00Z")
+        # Convertir start_time en format API (arrondi à l'heure)
+        target_hour = start_time.replace(minute=0, second=0, microsecond=0)
+        target_time = target_hour.strftime("%Y-%m-%dT%H:00:00Z")
 
-        # Chercher la bonne heure dans les données
+        print(f"         🕐 Recherche données pour: {target_time}")
+
+        # Chercher l'heure exacte ou la plus proche
+        best_match = None
+        min_time_diff = float('inf')
+
         for hour_data in data["timelines"]["hourly"]:
+            # Convertir le timestamp de l'API en datetime
+            api_time_str = hour_data["time"]
+            if api_time_str.endswith('Z'):
+                api_time_str = api_time_str[:-1] + '+00:00'
+            hour_time = datetime.datetime.fromisoformat(api_time_str)
+
+            time_diff = abs((hour_time - target_hour).total_seconds())
+
+            if time_diff < min_time_diff:
+                min_time_diff = time_diff
+                best_match = hour_data
+
+            # Si match exact, utiliser directement
             if hour_data["time"] == target_time:
+                print(f"         🎯 Match exact trouvé: {target_time}")
                 return self._parse_tomorrow_io_data(hour_data)
 
-        # Si l'heure exacte n'est pas trouvée, utiliser la première disponible
+        # Utiliser le meilleur match trouvé
+        if best_match:
+            time_diff_hours = min_time_diff / 3600
+            print(f"         📍 Meilleur match: {best_match['time']} (écart: {time_diff_hours:.1f}h)")
+            return self._parse_tomorrow_io_data(best_match)
+
+        # Fallback sur la première heure disponible
         if data["timelines"]["hourly"]:
             first_hour = data["timelines"]["hourly"][0]
+            print(f"         ⚠️ Utilisation première heure disponible: {first_hour['time']}")
             return self._parse_tomorrow_io_data(first_hour)
 
         raise Exception("Aucune donnée météo disponible")
 
     def _parse_tomorrow_io_data(self, hour_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Parser les données de Tomorrow.io"""
+        """Parser les données de Tomorrow.io avec info de timing"""
         values = hour_data["values"]
 
-        return {
+        parsed_data = {
             'time': hour_data["time"],
             'wind_direction': values.get("windDirection", 270),
             'wind_speed': values.get("windSpeed", 15) * 1.943844,  # m/s -> knots
@@ -125,12 +161,18 @@ class WeatherService:
             'cloud_cover': values.get("cloudCover", 20),  # %
             'precipitation': values.get("precipitationIntensity", 0),  # mm/h
             'weather_code': values.get("weatherCode", 1000),
-            'source': 'Tomorrow.io'
+            'source': 'Tomorrow.io API',
+            'api_timestamp': datetime.datetime.now().isoformat()
         }
 
+        print(f"         📊 Données parsées: Vent {parsed_data['wind_direction']:.0f}°/{parsed_data['wind_speed']:.0f}kn, "
+              f"Temp {parsed_data['temperature']:.0f}°C, Vis {parsed_data['visibility']:.0f}km")
+
+        return parsed_data
+
     def _get_default_weather(self) -> Dict[str, Any]:
-        """Retourner des valeurs météo par défaut"""
-        return {
+        """Retourner des valeurs météo par défaut avec timestamp"""
+        default_data = {
             'time': datetime.datetime.now().isoformat(),
             'wind_direction': 270,  # Vent d'ouest
             'wind_speed': 15,  # 15 knots
@@ -139,8 +181,13 @@ class WeatherService:
             'cloud_cover': 25,
             'precipitation': 0,
             'weather_code': 1000,
-            'source': 'Default values'
+            'source': 'Default values (API error)',
+            'api_timestamp': datetime.datetime.now().isoformat()
         }
+
+        print(f"         🔧 Utilisation valeurs par défaut: {default_data['wind_direction']:.0f}°/{default_data['wind_speed']:.0f}kn")
+
+        return default_data
 
     def get_weather_for_point(self, waypoint: Waypoint,
                              time: datetime.datetime) -> Dict[str, Any]:
@@ -209,43 +256,152 @@ class WeatherService:
             return {'error': str(e)}
 
     def analyze_weather_for_route(self, waypoints: list,
-                                 start_time: datetime.datetime) -> Dict[str, Any]:
+                                 start_time: datetime.datetime,
+                                 aircraft_speed: float = 110) -> Dict[str, Any]:
         """
-        Analyser la météo pour un itinéraire complet
+        Analyser la météo pour un itinéraire complet avec timing réaliste
 
         Args:
             waypoints: Liste des waypoints
-            start_time: Heure de départ
+            start_time: Heure de départ RÉELLE du vol
+            aircraft_speed: Vitesse de croisière pour calculer les temps de vol
 
         Returns:
-            Analyse météo de la route
+            Analyse météo de la route avec timing correct
         """
         weather_points = []
         current_time = start_time
 
+        print(f"🌤️ Analyse météo route avec timing réel:")
+        print(f"   Départ: {start_time.strftime('%Y-%m-%d %H:%M UTC')}")
+        print(f"   Vitesse: {aircraft_speed} kn")
+
         try:
             for i, wp in enumerate(waypoints):
+                print(f"   WP{i+1}: {wp.name} à {current_time.strftime('%H:%M UTC')}")
+
                 weather = self.get_weather_for_point(wp, current_time)
                 weather_points.append({
                     'waypoint': wp.name,
-                    'time': current_time.strftime("%H:%M"),
+                    'time': current_time.strftime("%H:%M UTC"),
                     'weather': weather
                 })
 
-                # Avancer d'une heure pour le prochain waypoint (approximation)
-                current_time += datetime.timedelta(hours=1)
+                # Calculer le temps de vol vers le prochain waypoint (si il y en a un)
+                if i < len(waypoints) - 1:
+                    next_wp = waypoints[i + 1]
+
+                    # Calculer distance vers le prochain waypoint
+                    from ..calculations.navigation import calculate_distance
+                    distance_nm = calculate_distance(wp.lat, wp.lon, next_wp.lat, next_wp.lon)
+
+                    # Calculer temps de vol (en minutes)
+                    flight_time_minutes = (distance_nm / aircraft_speed) * 60
+
+                    print(f"      → {next_wp.name}: {distance_nm:.1f}NM, {flight_time_minutes:.0f}min")
+
+                    # Avancer l'heure pour le prochain waypoint
+                    current_time += datetime.timedelta(minutes=flight_time_minutes)
 
             # Analyser les tendances
             analysis = self._analyze_weather_trends(weather_points)
 
+            print(f"✅ Analyse météo terminée: {len(weather_points)} points")
+
             return {
                 'route_weather': weather_points,
                 'analysis': analysis,
-                'generated_at': datetime.datetime.now().isoformat()
+                'generated_at': datetime.datetime.now().isoformat(),
+                'flight_start_time': start_time.isoformat(),
+                'aircraft_speed': aircraft_speed
             }
 
         except Exception as e:
-            print(f"Erreur analyse météo route: {e}")
+            print(f"❌ Erreur analyse météo route: {e}")
+            import traceback
+            traceback.print_exc()
+            return {'error': str(e)}
+
+    def analyze_weather_for_itinerary(self, itinerary) -> Dict[str, Any]:
+        """
+        Analyser la météo pour un itinéraire déjà calculé avec timing précis
+
+        Cette méthode utilise les temps de vol précis de l'itinéraire calculé
+
+        Args:
+            itinerary: Objet Itinerary avec legs calculés
+
+        Returns:
+            Analyse météo détaillée avec timing exact
+        """
+        if not itinerary.waypoints or not itinerary.start_time:
+            return {'error': 'Itinéraire incomplet (pas de waypoints ou heure de départ)'}
+
+        weather_points = []
+        current_time = itinerary.start_time
+
+        print(f"🌤️ Analyse météo pour itinéraire calculé:")
+        print(f"   Départ: {current_time.strftime('%Y-%m-%d %H:%M UTC')}")
+        print(f"   Waypoints: {len(itinerary.waypoints)}")
+        print(f"   Legs: {len(itinerary.legs)}")
+
+        try:
+            # Premier waypoint (départ)
+            wp = itinerary.waypoints[0]
+            print(f"   WP1: {wp.name} à {current_time.strftime('%H:%M UTC')} (départ)")
+
+            weather = self.get_weather_for_point(wp, current_time)
+            weather_points.append({
+                'waypoint': wp.name,
+                'time': current_time.strftime("%H:%M UTC"),
+                'weather': weather,
+                'leg_info': 'Départ'
+            })
+
+            # Waypoints suivants basés sur les legs calculés
+            for i, leg in enumerate(itinerary.legs):
+                # Temps d'arrivée au waypoint = temps de départ + temps total du leg
+                arrival_time = itinerary.start_time + datetime.timedelta(minutes=leg.time_tot)
+
+                wp = leg.ending_wp
+                print(f"   WP{i+2}: {wp.name} à {arrival_time.strftime('%H:%M UTC')} "
+                      f"(après {leg.time_leg:.0f}min de vol)")
+
+                weather = self.get_weather_for_point(wp, arrival_time)
+                weather_points.append({
+                    'waypoint': wp.name,
+                    'time': arrival_time.strftime("%H:%M UTC"),
+                    'weather': weather,
+                    'leg_info': f"Leg {i+1}: {leg.time_leg:.0f}min, {leg.distance:.1f}NM"
+                })
+
+            # Analyser les tendances
+            analysis = self._analyze_weather_trends(weather_points)
+
+            # Ajouter des informations spécifiques à l'itinéraire
+            if itinerary.legs:
+                analysis['flight_summary'] = {
+                    'total_time_minutes': itinerary.legs[-1].time_tot,
+                    'total_distance_nm': sum(leg.distance for leg in itinerary.legs),
+                    'departure_time': itinerary.start_time.strftime('%Y-%m-%d %H:%M UTC'),
+                    'arrival_time': (itinerary.start_time +
+                                   datetime.timedelta(minutes=itinerary.legs[-1].time_tot)).strftime('%H:%M UTC')
+                }
+
+            print(f"✅ Analyse météo itinéraire terminée: {len(weather_points)} points")
+
+            return {
+                'route_weather': weather_points,
+                'analysis': analysis,
+                'generated_at': datetime.datetime.now().isoformat(),
+                'flight_start_time': itinerary.start_time.isoformat(),
+                'method': 'calculated_itinerary'
+            }
+
+        except Exception as e:
+            print(f"❌ Erreur analyse météo itinéraire: {e}")
+            import traceback
+            traceback.print_exc()
             return {'error': str(e)}
 
     def _analyze_weather_trends(self, weather_points: list) -> Dict[str, Any]:

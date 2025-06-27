@@ -1,5 +1,6 @@
 """
-Modèle de données pour les segments de vol (legs)
+Modèle de données pour les segments de vol (legs) - VERSION CORRIGÉE
+Corrections du timing météo : météo calculée au milieu du leg
 """
 
 import math
@@ -36,8 +37,9 @@ class Leg:
     fuel_burn_total: float = field(init=False, default=0.0)  # Carburant total cumulé en gallons
     fuel_left: float = field(init=False, default=0.0)
 
-    # Métadonnées
-    time_start: Optional[str] = field(init=False, default=None)  # Heure de début
+    # Métadonnées de timing
+    time_start: Optional[str] = field(init=False, default=None)  # Heure de début du leg
+    time_weather: Optional[str] = field(init=False, default=None)  # Heure pour laquelle la météo a été récupérée
     weather_error: Optional[str] = field(init=False, default=None)  # Erreur météo
 
     def __post_init__(self):
@@ -81,6 +83,7 @@ class Leg:
                 self.wind_speed = manual_wind_speed
                 if manual_wind_direction is not None:
                     self.wind_dir = manual_wind_direction
+                self.time_weather = start_time.strftime("%H:%M UTC (manual)")
             else:
                 # Utiliser service météo
                 weather_service = WeatherService(api_key)
@@ -90,13 +93,69 @@ class Leg:
 
                 self.wind_dir = weather_data['wind_direction']
                 self.wind_speed = weather_data['wind_speed']
-                self.time_start = weather_data.get('time', start_time.isoformat())
+                self.time_start = start_time.strftime("%H:%M UTC")
+                self.time_weather = weather_data.get('time', start_time.isoformat())
 
             # Calculer les corrections de vent
             self._calculate_wind_correction()
 
         except Exception as e:
-            print(f"Erreur météo pour {self.name}: {e}")
+            print(f"❌ Erreur météo pour {self.name}: {e}")
+            self.weather_error = str(e)
+            self._use_default_wind()
+
+    def calculate_wind_effects_at_midpoint(self, leg_start_time: datetime.datetime,
+                                           api_key: Optional[str] = None,
+                                           manual_wind_speed: Optional[float] = None,
+                                           manual_wind_direction: Optional[float] = None):
+        """
+        NOUVEAU: Calculer les effets du vent au milieu du segment
+
+        Cette méthode fait une estimation initiale du temps de vol, puis récupère
+        la météo au milieu du segment pour des calculs plus précis.
+
+        Args:
+            leg_start_time: Heure de début du segment
+            api_key: Clé API pour météo en ligne
+            manual_wind_speed: Vitesse du vent manuelle (knots)
+            manual_wind_direction: Direction du vent manuelle (degrés)
+        """
+        try:
+            # 1. Estimation initiale du temps de vol (sans vent)
+            estimated_time_minutes = (self.distance / self.tas) * 60
+
+            # 2. Calculer l'heure au milieu du segment
+            midpoint_time = leg_start_time + datetime.timedelta(minutes=estimated_time_minutes / 2)
+
+            print(f"      Estimation temps vol: {estimated_time_minutes:.1f} min")
+            print(f"      Météo récupérée pour: {midpoint_time.strftime('%H:%M UTC')} (milieu du leg)")
+
+            # Utiliser vent manuel si fourni
+            if manual_wind_speed is not None:
+                self.wind_speed = manual_wind_speed
+                if manual_wind_direction is not None:
+                    self.wind_dir = manual_wind_direction
+                self.time_weather = midpoint_time.strftime("%H:%M UTC (manual)")
+                print(f"      Vent manuel: {self.wind_dir:.0f}°/{self.wind_speed:.0f}kn")
+            else:
+                # 3. Récupérer la météo pour le milieu du segment
+                weather_service = WeatherService(api_key)
+                weather_data = weather_service.get_weather_for_leg(
+                    self.starting_wp, self.ending_wp, midpoint_time
+                )
+
+                self.wind_dir = weather_data['wind_direction']
+                self.wind_speed = weather_data['wind_speed']
+                self.time_start = leg_start_time.strftime("%H:%M UTC")
+                self.time_weather = midpoint_time.strftime("%H:%M UTC")
+
+                print(f"      Vent API: {self.wind_dir:.0f}°/{self.wind_speed:.0f}kn")
+
+            # 4. Calculer les corrections de vent
+            self._calculate_wind_correction()
+
+        except Exception as e:
+            print(f"❌ Erreur météo au milieu du leg pour {self.name}: {e}")
             self.weather_error = str(e)
             self._use_default_wind()
 
@@ -104,6 +163,8 @@ class Leg:
         """Utiliser des valeurs de vent par défaut"""
         self.wind_dir = 270  # Vent d'ouest
         self.wind_speed = 15  # 15 knots
+        self.time_weather = "Default wind"
+        print(f"      Vent par défaut: {self.wind_dir:.0f}°/{self.wind_speed:.0f}kn")
         self._calculate_wind_correction()
 
     def _calculate_wind_correction(self):
@@ -118,6 +179,7 @@ class Leg:
                 if abs(sine_wca) > 1:
                     # Vent trop fort, approximation
                     self.wca = 30 if sine_wca > 0 else -30
+                    print(f"      ⚠️ Vent très fort! WCA limité à {self.wca}°")
                 else:
                     wca_rad = math.asin(sine_wca)
                     self.wca = math.degrees(wca_rad)
@@ -129,14 +191,17 @@ class Leg:
                 wind_component = self.wind_speed * math.cos(wind_angle + math.radians(self.wca))
                 self.gs = self.tas + wind_component
 
+                print(f"      WCA: {self.wca:+.1f}°, TH: {self.th:.0f}°, GS: {self.gs:.0f}kn")
+
             else:
                 # Pas de vent
                 self.wca = 0
                 self.th = self.tc
                 self.gs = self.tas
+                print(f"      Pas de vent, GS = TAS = {self.gs:.0f}kn")
 
         except (ValueError, ZeroDivisionError) as e:
-            print(f"Erreur calcul vent: {e}")
+            print(f"❌ Erreur calcul vent: {e}")
             # Valeurs de fallback
             self.wca = 0
             self.th = self.tc
@@ -149,11 +214,13 @@ class Leg:
             self.mh = nav_calc.true_to_magnetic_heading(
                 self.th, self.starting_wp.lat, self.starting_wp.lon
             )
+            print(f"      Cap magnétique: {self.mh:.0f}°")
         except Exception as e:
-            print(f"Erreur calcul magnétique: {e}")
+            print(f"❌ Erreur calcul magnétique: {e}")
             # Approximation pour l'est du Canada
             magnetic_variation = -15.0
             self.mh = (self.th + magnetic_variation) % 360
+            print(f"      Cap magnétique (approx): {self.mh:.0f}°")
 
     def calculate_times(self, previous_total_time: float = 0):
         """
@@ -168,6 +235,7 @@ class Leg:
             self.time_leg = (self.distance / self.tas) * 60  # fallback
 
         self.time_tot = self.time_leg + previous_total_time
+        print(f"      Temps leg: {self.time_leg:.1f} min, Temps total: {self.time_tot:.1f} min")
 
     def calculate_fuel_burn(self, fuel_burn_rate: float, previous_total_fuel: float = 0, previous_fuel_left: float=0):
         """
@@ -176,11 +244,13 @@ class Leg:
         Args:
             fuel_burn_rate: Taux de consommation en GPH
             previous_total_fuel: Carburant total cumulé des segments précédents en gallons
+            previous_fuel_left: Carburant restant au début du leg
         """
-
         self.fuel_burn_leg = (self.time_leg / 60) * fuel_burn_rate
         self.fuel_burn_total = self.fuel_burn_leg + previous_total_fuel
         self.fuel_left = previous_fuel_left - self.fuel_burn_leg
+
+        print(f"      Carburant leg: {self.fuel_burn_leg:.1f} gal, Restant: {self.fuel_left:.1f} gal")
 
     def calculate_all(self, start_time: datetime.datetime,
                       previous_total_time: float = 0,
@@ -191,25 +261,62 @@ class Leg:
                       manual_wind_speed: Optional[float] = None,
                       manual_wind_direction: Optional[float] = None):
         """
-        Effectuer tous les calculs pour ce segment
+        Effectuer tous les calculs pour ce segment (méthode legacy)
 
         Args:
             start_time: Heure de début
             previous_total_time: Temps cumulé des segments précédents
             previous_total_fuel: Carburant cumulé des segments précédents
-            previouse_fuel_left: Carburant restant dans la tank
+            previous_fuel_left: Carburant restant dans la tank
             fuel_burn_rate: Taux de consommation en GPH
             api_key: Clé API météo
             manual_wind_speed: Vent manuel (knots)
             manual_wind_direction: Direction vent manuel (degrés)
         """
-        # 1. Calculer vent et corrections
+        # 1. Calculer vent et corrections (au début du leg)
         self.calculate_wind_effects(start_time, api_key, manual_wind_speed, manual_wind_direction)
 
         # 2. Calculer cap magnétique
         self.calculate_magnetic_heading()
 
         # 3. Calculer temps
+        self.calculate_times(previous_total_time)
+
+        # 4. Calculer carburant
+        self.calculate_fuel_burn(fuel_burn_rate, previous_total_fuel, previous_fuel_left)
+
+    def calculate_all_with_timing(self, leg_start_time: datetime.datetime,
+                                  previous_total_time: float = 0,
+                                  previous_total_fuel: float = 0,
+                                  fuel_burn_rate: float = 6.7,
+                                  previous_fuel_left: float = 0,
+                                  api_key: Optional[str] = None,
+                                  manual_wind_speed: Optional[float] = None,
+                                  manual_wind_direction: Optional[float] = None):
+        """
+        NOUVELLE MÉTHODE: Effectuer tous les calculs avec timing météo corrigé
+
+        La météo est récupérée au milieu du segment pour plus de précision.
+
+        Args:
+            leg_start_time: Heure de début du leg
+            previous_total_time: Temps cumulé des segments précédents
+            previous_total_fuel: Carburant cumulé des segments précédents
+            previous_fuel_left: Carburant restant dans la tank
+            fuel_burn_rate: Taux de consommation en GPH
+            api_key: Clé API météo
+            manual_wind_speed: Vent manuel (knots)
+            manual_wind_direction: Direction vent manuel (degrés)
+        """
+        print(f"   🧮 Calculs pour {self.name}")
+
+        # 1. Calculer vent et corrections au MILIEU du leg
+        self.calculate_wind_effects_at_midpoint(leg_start_time, api_key, manual_wind_speed, manual_wind_direction)
+
+        # 2. Calculer cap magnétique
+        self.calculate_magnetic_heading()
+
+        # 3. Calculer temps (avec les corrections de vent)
         self.calculate_times(previous_total_time)
 
         # 4. Calculer carburant
@@ -222,6 +329,7 @@ class Leg:
             'Ending WP': self.ending_wp.name,
             'Distance (NM)': round(self.distance, 1),
             'Time start': self.time_start or '',
+            'Time weather': self.time_weather or '',  # NOUVEAU: heure météo
             'Wind Direction (deg)': round(self.wind_dir, 0),
             'Wind Speed (kn)': round(self.wind_speed, 1),
             'True course (deg)': round(self.tc, 0),
@@ -306,12 +414,23 @@ class Leg:
     def get_wind_summary(self) -> str:
         """Obtenir un résumé du vent"""
         if self.has_weather_data():
-            return f"{self.wind_dir:03.0f}°/{self.wind_speed:.0f}kn"
+            time_info = f" @ {self.time_weather}" if self.time_weather else ""
+            return f"{self.wind_dir:03.0f}°/{self.wind_speed:.0f}kn{time_info}"
         else:
             return "Vent non disponible"
 
+    def get_weather_timing_info(self) -> str:
+        """NOUVEAU: Obtenir les informations de timing météo"""
+        if self.time_start and self.time_weather:
+            return f"Leg: {self.time_start} | Météo: {self.time_weather}"
+        elif self.time_weather:
+            return f"Météo: {self.time_weather}"
+        else:
+            return "Timing non disponible"
+
     def __str__(self) -> str:
-        return f"{self.name}: {self.distance:.1f}NM, {self.tc:.0f}°"
+        wind_info = f" (Vent: {self.get_wind_summary()})" if self.has_weather_data() else ""
+        return f"{self.name}: {self.distance:.1f}NM, {self.tc:.0f}°{wind_info}"
 
     def __repr__(self) -> str:
         return f"Leg(from='{self.starting_wp.name}', to='{self.ending_wp.name}', distance={self.distance:.1f})"
