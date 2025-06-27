@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche">
-      <change afterPath="$PROJECT_DIR$/make.bat" afterDir="false" />
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Bugfix / Clean de la documentation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfr_planner/calculations/aeroport_refuel.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/calculations/aeroport_refuel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfr_planner/calculations/navigation.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/calculations/navigation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,11 +22,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gwl_structure_cleanup" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -69,7 +65,7 @@
     "Python.testing.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Documentation",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/antoi/Bureau/ETS/Session 12/MGA802/Projet Final"
   }
@@ -183,7 +179,63 @@
       <option name="project" value="LOCAL" />
       <updated>1750780754694</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Initialisation de la documention">
+      <option name="closed" value="true" />
+      <created>1751002858410</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1751002858410</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Initialisation de la documention">
+      <option name="closed" value="true" />
+      <created>1751002887857</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1751002887857</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Documentation pour les dossiers data et calculation">
+      <option name="closed" value="true" />
+      <created>1751006182346</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1751006182346</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Documentation pour les dossiers data et calculation">
+      <option name="closed" value="true" />
+      <created>1751017088437</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1751017088437</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Mise en page de la documentation">
+      <option name="closed" value="true" />
+      <created>1751053077940</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1751053077940</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Mise en page de la documentation">
+      <option name="closed" value="true" />
+      <created>1751053092302</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1751053092302</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Bugfix / Clean de la documentation">
+      <option name="closed" value="true" />
+      <created>1751058799669</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1751058799669</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +258,11 @@
     <MESSAGE value="gui incorporation" />
     <MESSAGE value="improved gui" />
     <MESSAGE value="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche" />
+    <MESSAGE value="Initialisation de la documention" />
+    <MESSAGE value="Documentation pour les dossiers data et calculation" />
+    <MESSAGE value="Mise en page de la documentation" />
+    <MESSAGE value="Bugfix / Clean de la documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix / Clean de la documentation" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
