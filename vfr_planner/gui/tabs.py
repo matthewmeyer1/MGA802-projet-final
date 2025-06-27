@@ -8,6 +8,7 @@ import folium
 import webbrowser
 import os
 from typing import Dict, List, Any, Optional
+import json
 
 from .widgets import AirportSearchWidget, CustomWaypointDialog, add_tooltip
 
@@ -199,13 +200,118 @@ class AircraftTab(ttk.Frame):
 
     def save_aircraft_profile(self):
         """Sauvegarder le profil d'aéronef"""
-        # Placeholder pour future implémentation
-        messagebox.showinfo("Info", "Fonctionnalité de sauvegarde à implémenter")
+        try:
+            # Obtenir les données actuelles de l'aéronef et du vol
+            aircraft_data = self.get_aircraft_data()
+            flight_data = self.get_flight_data()
+
+            # Vérifier qu'il y a des données à sauvegarder
+            if not any(aircraft_data.values()) and not any(flight_data.values()):
+                messagebox.showwarning("Attention", "Aucune donnée à sauvegarder")
+                return
+
+            # Demander le nom du fichier de sauvegarde
+            filename = filedialog.asksaveasfilename(
+                title="Sauvegarder le profil d'aéronef",
+                defaultextension=".json",
+                filetypes=[
+                    ("Profils d'aéronef", "*.json"),
+                    ("Tous les fichiers", "*.*")
+                ],
+                initialdir=os.path.join(os.path.expanduser("~"), "Documents", "VFR_Planner", "Aircraft_Profiles")
+            )
+
+            if not filename:
+                return
+
+            # Créer le répertoire si nécessaire
+            os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+            # Préparer les données à sauvegarder
+            profile_data = {
+                'profile_info': {
+                    'name': os.path.splitext(os.path.basename(filename))[0],
+                    'created_at': self.main_window.root.tk.call('clock', 'format',
+                                                                self.main_window.root.tk.call('clock', 'seconds'),
+                                                                '-format', '%Y-%m-%d %H:%M:%S'),
+                    'vfr_planner_version': getattr(self.main_window, '__version__', '1.0.0')
+                },
+                'aircraft': aircraft_data,
+                'flight': flight_data
+            }
+
+            # Sauvegarder dans le fichier JSON
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(profile_data, f, indent=2, ensure_ascii=False)
+
+            # Confirmation
+            profile_name = os.path.splitext(os.path.basename(filename))[0]
+            messagebox.showinfo("Succès", f"Profil d'aéronef '{profile_name}' sauvegardé avec succès")
+            self.main_window.status_bar.set_status(f"Profil {profile_name} sauvegardé")
+
+        except Exception as e:
+            messagebox.showerror("Erreur", f"Erreur lors de la sauvegarde du profil:\n{str(e)}")
 
     def load_aircraft_profile(self):
         """Charger un profil d'aéronef"""
-        # Placeholder pour future implémentation
-        messagebox.showinfo("Info", "Fonctionnalité de chargement à implémenter")
+        try:
+            # Sélectionner le fichier à charger
+            filename = filedialog.askopenfilename(
+                title="Charger un profil d'aéronef",
+                filetypes=[
+                    ("Profils d'aéronef", "*.json"),
+                    ("Tous les fichiers", "*.*")
+                ],
+                initialdir=os.path.join(os.path.expanduser("~"), "Documents", "VFR_Planner", "Aircraft_Profiles")
+            )
+
+            if not filename:
+                return
+
+            # Charger les données depuis le fichier
+            with open(filename, 'r', encoding='utf-8') as f:
+                profile_data = json.load(f)
+
+            # Vérifier la structure du fichier
+            if 'aircraft' not in profile_data and 'flight' not in profile_data:
+                messagebox.showerror("Erreur", "Fichier de profil invalide")
+                return
+
+            # Effacer les champs actuels
+            self.clear_all()
+
+            # Charger les données d'aéronef
+            aircraft_data = profile_data.get('aircraft', {})
+            for key, value in aircraft_data.items():
+                if key in self.aircraft_entries and value:
+                    entry = self.aircraft_entries[key]
+                    entry.delete(0, tk.END)
+                    entry.insert(0, str(value))
+
+            # Charger les données de vol
+            flight_data = profile_data.get('flight', {})
+            for key, value in flight_data.items():
+                if key in self.flight_entries and value:
+                    entry = self.flight_entries[key]
+                    entry.delete(0, tk.END)
+                    entry.insert(0, str(value))
+
+            # Confirmation
+            profile_name = profile_data.get('profile_info', {}).get('name',
+                                                                    os.path.splitext(os.path.basename(filename))[0])
+            messagebox.showinfo("Succès", f"Profil d'aéronef '{profile_name}' chargé avec succès")
+            self.main_window.status_bar.set_status(f"Profil {profile_name} chargé")
+
+            # Marquer le projet comme modifié
+            if hasattr(self.main_window, 'mark_unsaved'):
+                self.main_window.mark_unsaved()
+
+        except FileNotFoundError:
+            messagebox.showerror("Erreur", "Fichier de profil introuvable")
+        except json.JSONDecodeError:
+            messagebox.showerror("Erreur", "Fichier de profil corrompu ou invalide")
+        except Exception as e:
+            messagebox.showerror("Erreur", f"Erreur lors du chargement du profil:\n{str(e)}")
 
 
 class AirportsTab(ttk.Frame):
