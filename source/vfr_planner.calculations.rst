@@ -1,10 +1,10 @@
-calculations
+Paquet *calculations*
 =================================
 
 **Sous-module**
 ----------------------
 
-aeroport\_refuel module
+Module *aeroport\_refuel*
 -------------------------
 
 .. automodule:: vfr_planner.calculations.aeroport_refuel
@@ -12,7 +12,7 @@ aeroport\_refuel module
    :show-inheritance:
    :undoc-members:
 
-navigation module
+Module *navigation*
 -------------------------
 
 .. automodule:: vfr_planner.calculations.navigation
@@ -20,18 +20,10 @@ navigation module
    :show-inheritance:
    :undoc-members:
 
-weather module
+Module *weather*
 -------------------
 
 .. automodule:: vfr_planner.calculations.weather
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-Module contents
---------------------
-
-.. automodule:: vfr_planner.calculations
    :members:
    :show-inheritance:
    :undoc-members:

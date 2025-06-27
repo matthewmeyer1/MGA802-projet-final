@@ -5,11 +5,10 @@
 
 Documentation pour le planificateur de vol VFR
 ===================
-Bienvenue dans la documentation du programme VFR Flight Planner ! Ci-dessous sont listés les modules et sous-modules. Libre à vous d'explorer ces modules et leurs fonctions !
-
+Bienvenue dans la documentation du programme VFR Flight Planner ! Cette application est un outil pour faciliter le travail de planification de vol par VFR de pilotes amateurs. Ci-dessous sont listés les paquets et modules de l'application. Libre à vous d'explorer ces modules et leurs fonctions !
 
 .. toctree::
-   :maxdepth: 4
-   :caption: Contents:
+   :maxdepth: 3
+   :caption: Table des matières:
 
    modules

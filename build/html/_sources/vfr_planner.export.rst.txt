@@ -1,10 +1,10 @@
-Paquet d'export
+Paquet *export*
 ===========================
 
 **Sous-module**
 ----------
 
-excel\_export module
+Module *excel\_export*
 ----------------------------------------
 
 .. automodule:: vfr_planner.export.excel_export
@@ -12,18 +12,10 @@ excel\_export module
    :show-inheritance:
    :undoc-members:
 
-pdf\_export module
+Module *pdf\_export module*
 --------------------------------------
 
 .. automodule:: vfr_planner.export.pdf_export
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-Module contents
----------------
-
-.. automodule:: vfr_planner.export
    :members:
    :show-inheritance:
    :undoc-members:

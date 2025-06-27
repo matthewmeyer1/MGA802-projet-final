@@ -1,10 +1,10 @@
-models
+Paquet *models*
 ===========================
 
-Submodules
-----------
+**Sous-module**
+--------------------
 
-aircraft module
+Module *aircraft*
 -----------------------------------
 
 .. automodule:: vfr_planner.models.aircraft
@@ -12,7 +12,7 @@ aircraft module
    :show-inheritance:
    :undoc-members:
 
-itinerary module
+Module *itinerary*
 ------------------------------------
 
 .. automodule:: vfr_planner.models.itinerary
@@ -20,7 +20,7 @@ itinerary module
    :show-inheritance:
    :undoc-members:
 
-leg module
+Module *leg*
 ------------------------------
 
 .. automodule:: vfr_planner.models.leg
@@ -28,18 +28,10 @@ leg module
    :show-inheritance:
    :undoc-members:
 
-waypoint module
+Module *waypoint*
 -----------------------------------
 
 .. automodule:: vfr_planner.models.waypoint
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-Module contents
----------------
-
-.. automodule:: vfr_planner.models
    :members:
    :show-inheritance:
    :undoc-members:

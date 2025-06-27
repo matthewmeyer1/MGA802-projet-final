@@ -3,7 +3,7 @@
 VFR Planner - Application principale
 
 Outil de planification de vol VFR pour pilotes privés
-Projet MGA802-01 - École Polytechnique de Montréal
+Projet MGA802-01 - École de technologie supérieur
 
 Usage:
     python vfr_planner_app.py

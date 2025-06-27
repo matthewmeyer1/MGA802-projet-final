@@ -1,7 +1,7 @@
-vfr\_planner package
+Paquet *planner*
 ====================
 
-Subpackages
+**Sous-paquet**
 -----------
 
 .. toctree::
@@ -13,11 +13,3 @@ Subpackages
    vfr_planner.gui
    vfr_planner.models
    vfr_planner.utils
-
-Module contents
----------------
-
-.. automodule:: vfr_planner
-   :members:
-   :show-inheritance:
-   :undoc-members:

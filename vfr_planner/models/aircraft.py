@@ -182,15 +182,14 @@ AIRCRAFT_PRESETS = {
 
 
 def get_aircraft_preset(aircraft_type: str) -> Optional[Aircraft]:
-    def get_aircraft_preset(aircraft_type: str) -> Optional[Aircraft]:
-        """
-        Obtenir un aéronef prédéfini selon son identifiant.
+    """
+    Obtenir un aéronef prédéfini selon son identifiant.
 
-        :param aircraft_type: Type d'aéronef (ex. ``'C172'``, ``'PA28'``, ``'C152'``).
-        :type aircraft_type: str
-        :return: L’objet Aircraft correspondant ou ``None`` si non trouvé.
-        :rtype: Optional[Aircraft]
-        """
+    :param aircraft_type: Type d'aéronef (ex. ``'C172'``, ``'PA28'``, ``'C152'``).
+    :type aircraft_type: str
+    :return: L’objet Aircraft correspondant ou ``None`` si non trouvé.
+    :rtype: Optional[Aircraft]
+    """
     return AIRCRAFT_PRESETS.get(aircraft_type.upper())
 
 

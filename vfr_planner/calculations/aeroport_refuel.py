@@ -8,12 +8,12 @@ def aeroport_proche(leg, aircraft):
     """
     Finds the closest airport.
 
-    :param leg: The first number.
-    :type leg: int
-    :param aircraft: The second number.
-    :type aircraft: int
-    :return: None
-    :rtype: None
+    :param leg: Dernier Leg avant de manquer de carburant
+    :type leg: Leg
+    :param aircraft: Propriété de l'avion
+    :type aircraft: Aircraft
+    :return: Le waypoint de l'aéroport le plus près, le premier leg pour se rendre à l'aéroport et un deuxième leg pour se rendre au prochain waypoint
+    :rtype: Waypoint, Leg, Leg
     """
     start_wp = leg.starting_wp
     end_wp = leg.ending_wp
