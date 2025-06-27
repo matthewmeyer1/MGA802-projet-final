@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>vfr_planner.data package &#8212; VFR Planner  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="vfr_planner.data.extraction package" href="vfr_planner.data.extraction.html" />
+    <link rel="prev" title="vfr_planner.calculations package" href="vfr_planner.calculations.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>VFR Planner  documentation</span></a></h1>
+        <h2 class="heading"><span>vfr_planner.data package</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="vfr_planner.calculations.html">vfr_planner.calculations package</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="vfr_planner.data.extraction.html">vfr_planner.data.extraction package</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="vfr-planner-data-package">
+<h1>vfr_planner.data package<a class="headerlink" href="#vfr-planner-data-package" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vfr_planner.data.extraction.html">vfr_planner.data.extraction package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vfr_planner.data.extraction.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vfr_planner.data.extraction.html#module-vfr_planner.data.extraction.extraction">vfr_planner.data.extraction.extraction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vfr_planner.data.extraction.html#module-vfr_planner.data.extraction">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-vfr_planner.data.airport_db">
+<span id="vfr-planner-data-airport-db-module"></span><h2>vfr_planner.data.airport_db module<a class="headerlink" href="#module-vfr_planner.data.airport_db" title="Link to this heading">¶</a></h2>
+<p>Base de données d’aéroports pour la planification VFR</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.data.airport_db.</span></span><span class="sig-name descname"><span class="pre">AirportDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Gestionnaire de la base de données d’aéroports</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.apply_filters">
+<span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.apply_filters" title="Link to this definition">¶</a></dt>
+<dd><p>Appliquer les filtres actuels</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.export_filtered_airports">
+<span class="sig-name descname"><span class="pre">export_filtered_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.export_filtered_airports" title="Link to this definition">¶</a></dt>
+<dd><p>Exporter les aéroports filtrés vers un fichier CSV</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filename: Nom du fichier de sortie</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_airport_by_code">
+<span class="sig-name descname"><span class="pre">get_airport_by_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_airport_by_code" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir un aéroport par code</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>code: Code d’aéroport (ICAO, IATA, ident, local, GPS)</p>
+</dd>
+<dt>Returns:</dt><dd><p>Dictionnaire d’aéroport ou None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_airports_by_type">
+<span class="sig-name descname"><span class="pre">get_airports_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_airports_by_type" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir les aéroports par type</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>airport_type: Type d’aéroport</p>
+</dd>
+<dt>Returns:</dt><dd><p>Liste d’aéroports du type spécifié</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_airports_near_point">
+<span class="sig-name descname"><span class="pre">get_airports_near_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_airports_near_point" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir les aéroports près d’un point</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>lat: Latitude du point
+lon: Longitude du point
+radius_nm: Rayon de recherche en milles nautiques</p>
+</dd>
+<dt>Returns:</dt><dd><p>Liste d’aéroports dans le rayon</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_available_countries">
+<span class="sig-name descname"><span class="pre">get_available_countries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_available_countries" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir la liste des pays disponibles</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_available_types">
+<span class="sig-name descname"><span class="pre">get_available_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_available_types" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir la liste des types d’aéroports disponibles</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_filter_stats">
+<span class="sig-name descname"><span class="pre">get_filter_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_filter_stats" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir des statistiques sur les filtres</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.get_statistics">
+<span class="sig-name descname"><span class="pre">get_statistics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.get_statistics" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir des statistiques détaillées sur la base de données</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.load_airports">
+<span class="sig-name descname"><span class="pre">load_airports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.load_airports" title="Link to this definition">¶</a></dt>
+<dd><p>Charger la base de données d’aéroports</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.reset_filters">
+<span class="sig-name descname"><span class="pre">reset_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.reset_filters" title="Link to this definition">¶</a></dt>
+<dd><p>Réinitialiser tous les filtres</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.search_airports">
+<span class="sig-name descname"><span class="pre">search_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.search_airports" title="Link to this definition">¶</a></dt>
+<dd><p>Rechercher des aéroports</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>query: Terme de recherche
+max_results: Nombre max de résultats</p>
+</dd>
+<dt>Returns:</dt><dd><p>Liste de dictionnaires d’aéroports</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.AirportDatabase.update_filters">
+<span class="sig-name descname"><span class="pre">update_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icao_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iata_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.airport_db.AirportDatabase.update_filters" title="Link to this definition">¶</a></dt>
+<dd><p>Mettre à jour les filtres</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.get_airport_by_code">
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.data.airport_db.</span></span><span class="sig-name descname"><span class="pre">get_airport_by_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.get_airport_by_code" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir un aéroport par code</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.get_airports_near">
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.data.airport_db.</span></span><span class="sig-name descname"><span class="pre">get_airports_near</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.get_airports_near" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir les aéroports près d’un point</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vfr_planner.data.airport_db.search_airports">
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.data.airport_db.</span></span><span class="sig-name descname"><span class="pre">search_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.airport_db.search_airports" title="Link to this definition">¶</a></dt>
+<dd><p>Rechercher des aéroports</p>
+</dd></dl>
+
+</section>
+<section id="module-vfr_planner.data">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vfr_planner.data" title="Link to this heading">¶</a></h2>
+<p>Données et base de données d’aéroports</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.data.</span></span><span class="sig-name descname"><span class="pre">AirportDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Gestionnaire de la base de données d’aéroports</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.apply_filters">
+<span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.apply_filters" title="Link to this definition">¶</a></dt>
+<dd><p>Appliquer les filtres actuels</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.export_filtered_airports">
+<span class="sig-name descname"><span class="pre">export_filtered_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.export_filtered_airports" title="Link to this definition">¶</a></dt>
+<dd><p>Exporter les aéroports filtrés vers un fichier CSV</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filename: Nom du fichier de sortie</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_airport_by_code">
+<span class="sig-name descname"><span class="pre">get_airport_by_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_airport_by_code" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir un aéroport par code</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>code: Code d’aéroport (ICAO, IATA, ident, local, GPS)</p>
+</dd>
+<dt>Returns:</dt><dd><p>Dictionnaire d’aéroport ou None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_airports_by_type">
+<span class="sig-name descname"><span class="pre">get_airports_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airport_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_airports_by_type" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir les aéroports par type</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>airport_type: Type d’aéroport</p>
+</dd>
+<dt>Returns:</dt><dd><p>Liste d’aéroports du type spécifié</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_airports_near_point">
+<span class="sig-name descname"><span class="pre">get_airports_near_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_airports_near_point" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir les aéroports près d’un point</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>lat: Latitude du point
+lon: Longitude du point
+radius_nm: Rayon de recherche en milles nautiques</p>
+</dd>
+<dt>Returns:</dt><dd><p>Liste d’aéroports dans le rayon</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_available_countries">
+<span class="sig-name descname"><span class="pre">get_available_countries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_available_countries" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir la liste des pays disponibles</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_available_types">
+<span class="sig-name descname"><span class="pre">get_available_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_available_types" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir la liste des types d’aéroports disponibles</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_filter_stats">
+<span class="sig-name descname"><span class="pre">get_filter_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_filter_stats" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir des statistiques sur les filtres</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.get_statistics">
+<span class="sig-name descname"><span class="pre">get_statistics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.get_statistics" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir des statistiques détaillées sur la base de données</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.load_airports">
+<span class="sig-name descname"><span class="pre">load_airports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.load_airports" title="Link to this definition">¶</a></dt>
+<dd><p>Charger la base de données d’aéroports</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.reset_filters">
+<span class="sig-name descname"><span class="pre">reset_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.reset_filters" title="Link to this definition">¶</a></dt>
+<dd><p>Réinitialiser tous les filtres</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.search_airports">
+<span class="sig-name descname"><span class="pre">search_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.search_airports" title="Link to this definition">¶</a></dt>
+<dd><p>Rechercher des aéroports</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>query: Terme de recherche
+max_results: Nombre max de résultats</p>
+</dd>
+<dt>Returns:</dt><dd><p>Liste de dictionnaires d’aéroports</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vfr_planner.data.AirportDatabase.update_filters">
+<span class="sig-name descname"><span class="pre">update_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icao_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iata_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.data.AirportDatabase.update_filters" title="Link to this definition">¶</a></dt>
+<dd><p>Mettre à jour les filtres</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vfr_planner.data.get_airport_by_code">
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.data.</span></span><span class="sig-name descname"><span class="pre">get_airport_by_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#vfr_planner.data.get_airport_by_code" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir un aéroport par code</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vfr_planner.data.get_airports_near">
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.data.</span></span><span class="sig-name descname"><span class="pre">get_airports_near</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_nm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.get_airports_near" title="Link to this definition">¶</a></dt>
+<dd><p>Obtenir les aéroports près d’un point</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vfr_planner.data.search_airports">
+<span class="sig-prename descclassname"><span class="pre">vfr_planner.data.</span></span><span class="sig-name descname"><span class="pre">search_airports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.data.search_airports" title="Link to this definition">¶</a></dt>
+<dd><p>Rechercher des aéroports</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="vfr_planner.calculations.html">vfr_planner.calculations package</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="vfr_planner.data.extraction.html">vfr_planner.data.extraction package</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 
+
+Copyright 2025 Matthew Mayer, Gabriel Wong-Lapierre, Antoine Gingras, Richard Nguekam
+
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

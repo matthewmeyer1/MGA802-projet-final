@@ -1,0 +1,23 @@
+vfr\_planner package
+====================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   vfr_planner.calculations
+   vfr_planner.data
+   vfr_planner.export
+   vfr_planner.gui
+   vfr_planner.models
+   vfr_planner.utils
+
+Module contents
+---------------
+
+.. automodule:: vfr_planner
+   :members:
+   :show-inheritance:
+   :undoc-members:
