@@ -12,7 +12,12 @@ from ..models.waypoint import Waypoint
 
 
 class WeatherService:
-    """Service pour obtenir les données météorologiques"""
+    """
+    Service pour obtenir les données météorologiques à partir de Tomorrow.io
+
+    :param api_key: Clé API pour l'accès au service Tomorrow.io
+    :type api_key: Optional[str]
+    """
 
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key
@@ -24,21 +29,34 @@ class WeatherService:
         self._cache_duration = 3600  # 1 heure
 
     def set_api_key(self, api_key: str):
-        """Définir la clé API"""
+        """
+        Définir ou mettre à jour la clé API utilisée pour accéder au service Tomorrow.io.
+
+        :param api_key: Nouvelle clé API
+        :type api_key: str
+        """
         self.api_key = api_key
 
     def get_weather_for_leg(self, start_wp: Waypoint, end_wp: Waypoint,
                            start_time: datetime.datetime) -> Dict[str, Any]:
         """
-        Obtenir la météo pour un segment de vol avec timing précis
+        Obtenir la météo pour un segment de vol avec un timing précis.
 
-        Args:
-            start_wp: Waypoint de départ
-            end_wp: Waypoint d'arrivée
-            start_time: Heure pour laquelle récupérer la météo (peut être milieu du leg)
+        La position utilisée est le centre géographique du segment entre `start_wp` et `end_wp`.
+        Les résultats peuvent être mis en cache pour éviter des appels redondants à l’API.
 
-        Returns:
-            Dictionnaire avec données météo
+        :param start_wp: Waypoint de départ
+        :type start_wp: Waypoint
+        :param end_wp: Waypoint d'arrivée
+        :type end_wp: Waypoint
+        :param start_time: Heure exacte pour laquelle récupérer les conditions météo
+        :type start_time: datetime.datetime
+
+        :raises ValueError: Si la clé API n’est pas définie
+        :raises Exception: En cas d’erreur lors de la récupération météo
+
+        :return: Dictionnaire contenant les données météo, incluant la direction et la vitesse du vent
+        :rtype: Dict[str, Any]
         """
         try:
             if not self.api_key:
@@ -77,9 +95,26 @@ class WeatherService:
             return self._get_default_weather()
 
     def _fetch_tomorrow_io_weather(self, lat: float, lon: float,
-                                  start_time: datetime.datetime) -> Dict[str, Any]:
-        """Récupérer la météo depuis Tomorrow.io avec gestion de timing améliorée"""
+                                   start_time: datetime.datetime) -> Dict[str, Any]:
+        """
+        Récupérer les données météorologiques depuis Tomorrow.io pour une position et une heure données.
 
+        Cette méthode effectue un appel à l'API Tomorrow.io, puis recherche dans la réponse
+        l'heure correspondant le mieux à `start_time`. Si aucun match exact n'est trouvé,
+        elle retourne la valeur la plus proche ou la première disponible.
+
+        :param lat: Latitude du point d'intérêt
+        :type lat: float
+        :param lon: Longitude du point d'intérêt
+        :type lon: float
+        :param start_time: Date et heure pour lesquelles la météo est requise
+        :type start_time: datetime.datetime
+
+        :raises Exception: Si aucune donnée horaire n'est disponible dans la réponse API
+
+        :return: Dictionnaire des données météo formatées
+        :rtype: Dict[str, Any]
+        """
         url = f"{self.base_url}/weather/forecast"
         params = {
             "location": f"{lat},{lon}",
@@ -117,7 +152,6 @@ class WeatherService:
         min_time_diff = float('inf')
 
         for hour_data in data["timelines"]["hourly"]:
-            # Convertir le timestamp de l'API en datetime
             api_time_str = hour_data["time"]
             if api_time_str.endswith('Z'):
                 api_time_str = api_time_str[:-1] + '+00:00'
@@ -129,18 +163,15 @@ class WeatherService:
                 min_time_diff = time_diff
                 best_match = hour_data
 
-            # Si match exact, utiliser directement
             if hour_data["time"] == target_time:
                 print(f"         🎯 Match exact trouvé: {target_time}")
                 return self._parse_tomorrow_io_data(hour_data)
 
-        # Utiliser le meilleur match trouvé
         if best_match:
             time_diff_hours = min_time_diff / 3600
             print(f"         📍 Meilleur match: {best_match['time']} (écart: {time_diff_hours:.1f}h)")
             return self._parse_tomorrow_io_data(best_match)
 
-        # Fallback sur la première heure disponible
         if data["timelines"]["hourly"]:
             first_hour = data["timelines"]["hourly"][0]
             print(f"         ⚠️ Utilisation première heure disponible: {first_hour['time']}")
@@ -149,7 +180,17 @@ class WeatherService:
         raise Exception("Aucune donnée météo disponible")
 
     def _parse_tomorrow_io_data(self, hour_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Parser les données de Tomorrow.io avec info de timing"""
+        """
+        Extraire et transformer les données météorologiques d'une heure donnée fournies par Tomorrow.io.
+
+        Les unités sont converties si nécessaire (par exemple, m/s -> knots pour le vent).
+
+        :param hour_data: Données brutes pour une heure donnée depuis l’API Tomorrow.io
+        :type hour_data: Dict[str, Any]
+
+        :return: Dictionnaire contenant les valeurs météo normalisées
+        :rtype: Dict[str, Any]
+        """
         values = hour_data["values"]
 
         parsed_data = {
@@ -165,13 +206,21 @@ class WeatherService:
             'api_timestamp': datetime.datetime.now().isoformat()
         }
 
-        print(f"         📊 Données parsées: Vent {parsed_data['wind_direction']:.0f}°/{parsed_data['wind_speed']:.0f}kn, "
-              f"Temp {parsed_data['temperature']:.0f}°C, Vis {parsed_data['visibility']:.0f}km")
+        print(
+            f"         📊 Données parsées: Vent {parsed_data['wind_direction']:.0f}°/{parsed_data['wind_speed']:.0f}kn, "
+            f"Temp {parsed_data['temperature']:.0f}°C, Vis {parsed_data['visibility']:.0f}km")
 
         return parsed_data
 
     def _get_default_weather(self) -> Dict[str, Any]:
-        """Retourner des valeurs météo par défaut avec timestamp"""
+        """
+        Fournir un jeu de données météo par défaut en cas d'échec de l’appel à l’API.
+
+        Ces valeurs peuvent être utilisées comme solution de repli pour assurer la continuité du traitement.
+
+        :return: Dictionnaire contenant des valeurs météo par défaut
+        :rtype: Dict[str, Any]
+        """
         default_data = {
             'time': datetime.datetime.now().isoformat(),
             'wind_direction': 270,  # Vent d'ouest
@@ -185,35 +234,45 @@ class WeatherService:
             'api_timestamp': datetime.datetime.now().isoformat()
         }
 
-        print(f"         🔧 Utilisation valeurs par défaut: {default_data['wind_direction']:.0f}°/{default_data['wind_speed']:.0f}kn")
+        print(
+            f"         🔧 Utilisation valeurs par défaut: {default_data['wind_direction']:.0f}°/{default_data['wind_speed']:.0f}kn")
 
         return default_data
 
     def get_weather_for_point(self, waypoint: Waypoint,
-                             time: datetime.datetime) -> Dict[str, Any]:
+                              time: datetime.datetime) -> Dict[str, Any]:
         """
-        Obtenir la météo pour un point spécifique
+        Obtenir la météo pour un point spécifique à un instant donné.
 
-        Args:
-            waypoint: Point de navigation
-            time: Heure désirée
+        Cette méthode est un raccourci utilisant `get_weather_for_leg` avec le même point en départ et arrivée.
 
-        Returns:
-            Données météo
+        :param waypoint: Point de navigation
+        :type waypoint: Waypoint
+        :param time: Heure pour laquelle la météo est demandée
+        :type time: datetime.datetime
+
+        :return: Données météo au point donné
+        :rtype: Dict[str, Any]
         """
         return self.get_weather_for_leg(waypoint, waypoint, time)
 
     def get_extended_forecast(self, waypoint: Waypoint,
-                            days: int = 3) -> Dict[str, Any]:
+                              days: int = 3) -> Dict[str, Any]:
         """
-        Obtenir les prévisions étendues pour un point
+        Obtenir les prévisions météorologiques étendues (par jour) pour un point.
 
-        Args:
-            waypoint: Point de navigation
-            days: Nombre de jours de prévision
+        Cette méthode interroge l'API Tomorrow.io avec un pas de temps journalier,
+        et retourne les prévisions pour le nombre de jours spécifié.
 
-        Returns:
-            Prévisions étendues
+        :param waypoint: Point géographique pour lequel obtenir les prévisions
+        :type waypoint: Waypoint
+        :param days: Nombre de jours de prévision (maximum 5 recommandé)
+        :type days: int
+
+        :raises Exception: Si l'appel à l'API échoue ou les données sont invalides
+
+        :return: Dictionnaire contenant les prévisions journalières ou une erreur
+        :rtype: Dict[str, Any]
         """
         try:
             if not self.api_key:
@@ -256,18 +315,26 @@ class WeatherService:
             return {'error': str(e)}
 
     def analyze_weather_for_route(self, waypoints: list,
-                                 start_time: datetime.datetime,
-                                 aircraft_speed: float = 110) -> Dict[str, Any]:
+                                  start_time: datetime.datetime,
+                                  aircraft_speed: float = 110) -> Dict[str, Any]:
         """
-        Analyser la météo pour un itinéraire complet avec timing réaliste
+        Analyser la météo tout au long d'un itinéraire aérien en tenant compte du timing réel.
 
-        Args:
-            waypoints: Liste des waypoints
-            start_time: Heure de départ RÉELLE du vol
-            aircraft_speed: Vitesse de croisière pour calculer les temps de vol
+        Cette méthode calcule les horaires de passage aux différents waypoints en fonction de
+        la vitesse de croisière, puis récupère la météo à chaque point en conséquence.
+        Une synthèse météo est ensuite générée via `_analyze_weather_trends`.
 
-        Returns:
-            Analyse météo de la route avec timing correct
+        :param waypoints: Liste ordonnée des points de passage de la route
+        :type waypoints: list[Waypoint]
+        :param start_time: Heure réelle de départ du vol
+        :type start_time: datetime.datetime
+        :param aircraft_speed: Vitesse de croisière en nœuds (knots)
+        :type aircraft_speed: float
+
+        :raises Exception: En cas d’erreur pendant le traitement météo de l’itinéraire
+
+        :return: Dictionnaire avec les conditions météo détaillées par segment et une analyse globale
+        :rtype: Dict[str, Any]
         """
         weather_points = []
         current_time = start_time
@@ -278,7 +345,7 @@ class WeatherService:
 
         try:
             for i, wp in enumerate(waypoints):
-                print(f"   WP{i+1}: {wp.name} à {current_time.strftime('%H:%M UTC')}")
+                print(f"   WP{i + 1}: {wp.name} à {current_time.strftime('%H:%M UTC')}")
 
                 weather = self.get_weather_for_point(wp, current_time)
                 weather_points.append({
@@ -287,23 +354,20 @@ class WeatherService:
                     'weather': weather
                 })
 
-                # Calculer le temps de vol vers le prochain waypoint (si il y en a un)
+                # Calcul du temps de vol vers le prochain point
                 if i < len(waypoints) - 1:
                     next_wp = waypoints[i + 1]
 
-                    # Calculer distance vers le prochain waypoint
+                    # Import dynamique pour éviter la dépendance globale
                     from ..calculations.navigation import calculate_distance
                     distance_nm = calculate_distance(wp.lat, wp.lon, next_wp.lat, next_wp.lon)
 
-                    # Calculer temps de vol (en minutes)
                     flight_time_minutes = (distance_nm / aircraft_speed) * 60
 
                     print(f"      → {next_wp.name}: {distance_nm:.1f}NM, {flight_time_minutes:.0f}min")
 
-                    # Avancer l'heure pour le prochain waypoint
                     current_time += datetime.timedelta(minutes=flight_time_minutes)
 
-            # Analyser les tendances
             analysis = self._analyze_weather_trends(weather_points)
 
             print(f"✅ Analyse météo terminée: {len(weather_points)} points")
@@ -324,15 +388,16 @@ class WeatherService:
 
     def analyze_weather_for_itinerary(self, itinerary) -> Dict[str, Any]:
         """
-        Analyser la météo pour un itinéraire déjà calculé avec timing précis
+        Analyser la météo pour un itinéraire déjà calculé, avec des timings précis.
 
-        Cette méthode utilise les temps de vol précis de l'itinéraire calculé
+        Cette méthode utilise les durées de vol précalculées dans les `legs` de l'objet `Itinerary`,
+        et récupère les conditions météo à chaque point de l'itinéraire au moment estimé de passage.
 
-        Args:
-            itinerary: Objet Itinerary avec legs calculés
+        :param itinerary: Objet contenant les waypoints, les legs (segments) et l'heure de départ
+        :type itinerary: Itinerary
 
-        Returns:
-            Analyse météo détaillée avec timing exact
+        :return: Dictionnaire contenant les conditions météo par segment et une analyse globale
+        :rtype: Dict[str, Any]
         """
         if not itinerary.waypoints or not itinerary.start_time:
             return {'error': 'Itinéraire incomplet (pas de waypoints ou heure de départ)'}
@@ -346,7 +411,6 @@ class WeatherService:
         print(f"   Legs: {len(itinerary.legs)}")
 
         try:
-            # Premier waypoint (départ)
             wp = itinerary.waypoints[0]
             print(f"   WP1: {wp.name} à {current_time.strftime('%H:%M UTC')} (départ)")
 
@@ -358,13 +422,11 @@ class WeatherService:
                 'leg_info': 'Départ'
             })
 
-            # Waypoints suivants basés sur les legs calculés
             for i, leg in enumerate(itinerary.legs):
-                # Temps d'arrivée au waypoint = temps de départ + temps total du leg
                 arrival_time = itinerary.start_time + datetime.timedelta(minutes=leg.time_tot)
-
                 wp = leg.ending_wp
-                print(f"   WP{i+2}: {wp.name} à {arrival_time.strftime('%H:%M UTC')} "
+
+                print(f"   WP{i + 2}: {wp.name} à {arrival_time.strftime('%H:%M UTC')} "
                       f"(après {leg.time_leg:.0f}min de vol)")
 
                 weather = self.get_weather_for_point(wp, arrival_time)
@@ -372,20 +434,18 @@ class WeatherService:
                     'waypoint': wp.name,
                     'time': arrival_time.strftime("%H:%M UTC"),
                     'weather': weather,
-                    'leg_info': f"Leg {i+1}: {leg.time_leg:.0f}min, {leg.distance:.1f}NM"
+                    'leg_info': f"Leg {i + 1}: {leg.time_leg:.0f}min, {leg.distance:.1f}NM"
                 })
 
-            # Analyser les tendances
             analysis = self._analyze_weather_trends(weather_points)
 
-            # Ajouter des informations spécifiques à l'itinéraire
             if itinerary.legs:
                 analysis['flight_summary'] = {
                     'total_time_minutes': itinerary.legs[-1].time_tot,
                     'total_distance_nm': sum(leg.distance for leg in itinerary.legs),
                     'departure_time': itinerary.start_time.strftime('%Y-%m-%d %H:%M UTC'),
                     'arrival_time': (itinerary.start_time +
-                                   datetime.timedelta(minutes=itinerary.legs[-1].time_tot)).strftime('%H:%M UTC')
+                                     datetime.timedelta(minutes=itinerary.legs[-1].time_tot)).strftime('%H:%M UTC')
                 }
 
             print(f"✅ Analyse météo itinéraire terminée: {len(weather_points)} points")
@@ -405,7 +465,18 @@ class WeatherService:
             return {'error': str(e)}
 
     def _analyze_weather_trends(self, weather_points: list) -> Dict[str, Any]:
-        """Analyser les tendances météo sur la route"""
+        """
+        Analyser les tendances météo globales à partir des différents points de l'itinéraire.
+
+        Cette méthode agrège les données météo (vent, visibilité, précipitations) et
+        génère une synthèse statistique, ainsi que des alertes pertinentes.
+
+        :param weather_points: Liste de points contenant des données météo
+        :type weather_points: list[Dict[str, Any]]
+
+        :return: Analyse statistique et alertes météo
+        :rtype: Dict[str, Any]
+        """
         if not weather_points:
             return {}
 
@@ -436,7 +507,18 @@ class WeatherService:
         }
 
     def _circular_mean(self, angles: list) -> float:
-        """Calculer la moyenne d'angles (pour direction du vent)"""
+        """
+        Calculer la moyenne circulaire d'une liste d'angles (en degrés).
+
+        Utile pour déterminer la moyenne des directions du vent,
+        en prenant en compte la circularité (0° ≈ 360°).
+
+        :param angles: Liste d'angles en degrés
+        :type angles: list[float]
+
+        :return: Moyenne circulaire en degrés (0–360)
+        :rtype: float
+        """
         if not angles:
             return 0
 
@@ -447,25 +529,35 @@ class WeatherService:
         return (math.degrees(mean_rad) + 360) % 360
 
     def _generate_weather_alerts(self, weather_points: list) -> list:
-        """Générer des alertes météo"""
+        """
+        Générer une liste d'alertes météo à partir des conditions observées sur l'itinéraire.
+
+        Les alertes incluent :
+        - Vent fort (>25 kn)
+        - Visibilité réduite (<5 km)
+        - Précipitations significatives (>1 mm/h)
+        - Couverture nuageuse élevée (>80%)
+
+        :param weather_points: Liste des points météo analysés
+        :type weather_points: list[Dict[str, Any]]
+
+        :return: Liste d'alertes (chaînes de caractères)
+        :rtype: list[str]
+        """
         alerts = []
 
         for wp in weather_points:
             weather = wp['weather']
 
-            # Alerte vent fort
             if weather['wind_speed'] > 25:
                 alerts.append(f"Vent fort à {wp['waypoint']}: {weather['wind_speed']:.0f} kn")
 
-            # Alerte visibilité réduite
             if weather['visibility'] < 5:
                 alerts.append(f"Visibilité réduite à {wp['waypoint']}: {weather['visibility']:.1f} km")
 
-            # Alerte précipitations
             if weather['precipitation'] > 1:
                 alerts.append(f"Précipitations à {wp['waypoint']}: {weather['precipitation']:.1f} mm/h")
 
-            # Alerte couverture nuageuse élevée
             if weather['cloud_cover'] > 80:
                 alerts.append(f"Ciel très nuageux à {wp['waypoint']}: {weather['cloud_cover']:.0f}%")
 
@@ -473,13 +565,16 @@ class WeatherService:
 
     def get_weather_summary_text(self, weather_data: Dict[str, Any]) -> str:
         """
-        Générer un résumé textuel de la météo
+        Générer un résumé textuel des conditions météo.
 
-        Args:
-            weather_data: Données météo
+        Le résumé inclut la direction et la vitesse du vent, la température,
+        la visibilité, ainsi que les précipitations si présentes.
 
-        Returns:
-            Résumé textuel
+        :param weather_data: Dictionnaire des données météo
+        :type weather_data: Dict[str, Any]
+
+        :return: Chaîne de résumé textuel des conditions météo
+        :rtype: str
         """
         if 'error' in weather_data:
             return f"Erreur météo: {weather_data['error']}"
@@ -502,7 +597,15 @@ class WeatherService:
         return summary
 
     def _wind_direction_to_cardinal(self, direction: float) -> str:
-        """Convertir direction du vent en point cardinal"""
+        """
+        Convertir une direction angulaire (en degrés) en point cardinal.
+
+        :param direction: Direction en degrés (0 à 360)
+        :type direction: float
+
+        :return: Point cardinal (ex. : N, NE, SSW)
+        :rtype: str
+        """
         directions = [
             "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
             "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"
@@ -513,13 +616,15 @@ class WeatherService:
 
     def is_weather_suitable_for_vfr(self, weather_data: Dict[str, Any]) -> Tuple[bool, list]:
         """
-        Vérifier si les conditions météo sont adaptées au VFR
+        Vérifier si les conditions météo sont compatibles avec un vol en VFR (Visual Flight Rules).
 
-        Args:
-            weather_data: Données météo
+        Évalue la visibilité, la couverture nuageuse, les précipitations et le vent.
 
-        Returns:
-            Tuple (suitable, reasons)
+        :param weather_data: Données météo analysées
+        :type weather_data: Dict[str, Any]
+
+        :return: Tuple (adapté, raisons), où 'adapté' est un booléen et 'raisons' une liste d'explications
+        :rtype: Tuple[bool, list]
         """
         reasons = []
         suitable = True
@@ -558,15 +663,46 @@ weather_service = WeatherService()
 # Fonctions utilitaires exportées
 def get_weather_for_leg(start_wp: Waypoint, end_wp: Waypoint,
                        start_time: datetime.datetime, api_key: str = None) -> Dict[str, Any]:
-    """Obtenir la météo pour un segment"""
+    """
+    Obtenir les données météo pour un segment de vol entre deux waypoints.
+
+    :param start_wp: Waypoint de départ
+    :type start_wp: Waypoint
+    :param end_wp: Waypoint d’arrivée
+    :type end_wp: Waypoint
+    :param start_time: Heure à laquelle le segment est survolé
+    :type start_time: datetime.datetime
+    :param api_key: Clé API Tomorrow.io (optionnelle)
+    :type api_key: str, optional
+
+    :return: Données météo pour ce segment
+    :rtype: Dict[str, Any]
+    """
     if api_key:
         weather_service.set_api_key(api_key)
     return weather_service.get_weather_for_leg(start_wp, end_wp, start_time)
 
 def get_weather_summary(weather_data: Dict[str, Any]) -> str:
-    """Obtenir un résumé météo"""
+    """
+    Générer un résumé textuel à partir des données météo.
+
+    :param weather_data: Dictionnaire contenant les données météo
+    :type weather_data: Dict[str, Any]
+
+    :return: Résumé texte
+    :rtype: str
+    """
     return weather_service.get_weather_summary_text(weather_data)
 
 def check_vfr_conditions(weather_data: Dict[str, Any]) -> Tuple[bool, list]:
-    """Vérifier les conditions VFR"""
+    """
+    Vérifier si les conditions météo sont favorables au vol à vue (VFR).
+
+    :param weather_data: Données météo
+    :type weather_data: Dict[str, Any]
+
+    :return: Tuple contenant un booléen (conditions favorables ou non)
+             et une liste d’explications/alertes
+    :rtype: Tuple[bool, list]
+    """
     return weather_service.is_weather_suitable_for_vfr(weather_data)

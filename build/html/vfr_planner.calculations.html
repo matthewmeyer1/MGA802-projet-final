@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>vfr_planner.calculations package &#8212; VFR Planner  documentation</title>
+    <title>vfr_planner.calculations package &#8212; VFR Flight Planner  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
     <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -17,7 +17,7 @@
     <link rel="prev" title="vfr_planner package" href="vfr_planner.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>VFR Planner  documentation</span></a></h1>
+          <span>VFR Flight Planner  documentation</span></a></h1>
         <h2 class="heading"><span>vfr_planner.calculations package</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="Top">
@@ -413,16 +413,27 @@
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">WeatherService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Service pour obtenir les données météorologiques</p>
+<p>Service pour obtenir les données météorologiques à partir de Tomorrow.io</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>api_key</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – Clé API pour l’accès au service Tomorrow.io</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.analyze_weather_for_itinerary">
 <span class="sig-name descname"><span class="pre">analyze_weather_for_itinerary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.analyze_weather_for_itinerary" title="Link to this definition">¶</a></dt>
-<dd><p>Analyser la météo pour un itinéraire déjà calculé avec timing précis</p>
-<p>Cette méthode utilise les temps de vol précis de l’itinéraire calculé</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>itinerary: Objet Itinerary avec legs calculés</p>
+<dd><p>Analyser la météo pour un itinéraire déjà calculé, avec des timings précis.</p>
+<p>Cette méthode utilise les durées de vol précalculées dans les <cite>legs</cite> de l’objet <cite>Itinerary</cite>,
+et récupère les conditions météo à chaque point de l’itinéraire au moment estimé de passage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>itinerary</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Itinerary" title="vfr_planner.Itinerary"><em>Itinerary</em></a>) – Objet contenant les waypoints, les legs (segments) et l’heure de départ</p>
 </dd>
-<dt>Returns:</dt><dd><p>Analyse météo détaillée avec timing exact</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire contenant les conditions météo par segment et une analyse globale</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -430,13 +441,26 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.analyze_weather_for_route">
 <span class="sig-name descname"><span class="pre">analyze_weather_for_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraft_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">110</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.analyze_weather_for_route" title="Link to this definition">¶</a></dt>
-<dd><p>Analyser la météo pour un itinéraire complet avec timing réaliste</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoints: Liste des waypoints
-start_time: Heure de départ RÉELLE du vol
-aircraft_speed: Vitesse de croisière pour calculer les temps de vol</p>
+<dd><p>Analyser la météo tout au long d’un itinéraire aérien en tenant compte du timing réel.</p>
+<p>Cette méthode calcule les horaires de passage aux différents waypoints en fonction de
+la vitesse de croisière, puis récupère la météo à chaque point en conséquence.
+Une synthèse météo est ensuite générée via <cite>_analyze_weather_trends</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoints</strong> (<em>list</em><em>[</em><a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a><em>]</em>) – Liste ordonnée des points de passage de la route</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure réelle de départ du vol</p></li>
+<li><p><strong>aircraft_speed</strong> (<em>float</em>) – Vitesse de croisière en nœuds (knots)</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Analyse météo de la route avec timing correct</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur pendant le traitement météo de l’itinéraire</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire avec les conditions météo détaillées par segment et une analyse globale</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -444,12 +468,24 @@ aircraft_speed: Vitesse de croisière pour calculer les temps de vol</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.get_extended_forecast">
 <span class="sig-name descname"><span class="pre">get_extended_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_extended_forecast" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les prévisions étendues pour un point</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoint: Point de navigation
-days: Nombre de jours de prévision</p>
+<dd><p>Obtenir les prévisions météorologiques étendues (par jour) pour un point.</p>
+<p>Cette méthode interroge l’API Tomorrow.io avec un pas de temps journalier,
+et retourne les prévisions pour le nombre de jours spécifié.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoint</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Point géographique pour lequel obtenir les prévisions</p></li>
+<li><p><strong>days</strong> (<em>int</em>) – Nombre de jours de prévision (maximum 5 recommandé)</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Prévisions étendues</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Si l’appel à l’API échoue ou les données sont invalides</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant les prévisions journalières ou une erreur</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -457,13 +493,28 @@ days: Nombre de jours de prévision</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.get_weather_for_leg">
 <span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_for_leg" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un segment de vol avec timing précis</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>start_wp: Waypoint de départ
-end_wp: Waypoint d’arrivée
-start_time: Heure pour laquelle récupérer la météo (peut être milieu du leg)</p>
+<dd><p>Obtenir la météo pour un segment de vol avec un timing précis.</p>
+<p>La position utilisée est le centre géographique du segment entre <cite>start_wp</cite> et <cite>end_wp</cite>.
+Les résultats peuvent être mis en cache pour éviter des appels redondants à l’API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_wp</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Waypoint de départ</p></li>
+<li><p><strong>end_wp</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Waypoint d’arrivée</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure exacte pour laquelle récupérer les conditions météo</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Dictionnaire avec données météo</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – Si la clé API n’est pas définie</p></li>
+<li><p><strong>Exception</strong> – En cas d’erreur lors de la récupération météo</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant les données météo, incluant la direction et la vitesse du vent</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -471,12 +522,20 @@ start_time: Heure pour laquelle récupérer la météo (peut être milieu du leg
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.get_weather_for_point">
 <span class="sig-name descname"><span class="pre">get_weather_for_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_for_point" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un point spécifique</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoint: Point de navigation
-time: Heure désirée</p>
+<dd><p>Obtenir la météo pour un point spécifique à un instant donné.</p>
+<p>Cette méthode est un raccourci utilisant <cite>get_weather_for_leg</cite> avec le même point en départ et arrivée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoint</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Point de navigation</p></li>
+<li><p><strong>time</strong> (<em>datetime.datetime</em>) – Heure pour laquelle la météo est demandée</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Données météo</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Données météo au point donné</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -484,11 +543,18 @@ time: Heure désirée</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.get_weather_summary_text">
 <span class="sig-name descname"><span class="pre">get_weather_summary_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.get_weather_summary_text" title="Link to this definition">¶</a></dt>
-<dd><p>Générer un résumé textuel de la météo</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>weather_data: Données météo</p>
+<dd><p>Générer un résumé textuel des conditions météo.</p>
+<p>Le résumé inclut la direction et la vitesse du vent, la température,
+la visibilité, ainsi que les précipitations si présentes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire des données météo</p>
 </dd>
-<dt>Returns:</dt><dd><p>Résumé textuel</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Chaîne de résumé textuel des conditions météo</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -496,11 +562,17 @@ time: Heure désirée</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.is_weather_suitable_for_vfr">
 <span class="sig-name descname"><span class="pre">is_weather_suitable_for_vfr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.is_weather_suitable_for_vfr" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier si les conditions météo sont adaptées au VFR</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>weather_data: Données météo</p>
+<dd><p>Vérifier si les conditions météo sont compatibles avec un vol en VFR (Visual Flight Rules).</p>
+<p>Évalue la visibilité, la couverture nuageuse, les précipitations et le vent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données météo analysées</p>
 </dd>
-<dt>Returns:</dt><dd><p>Tuple (suitable, reasons)</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple (adapté, raisons), où ‘adapté’ est un booléen et ‘raisons’ une liste d’explications</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[bool, list]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -508,7 +580,12 @@ time: Heure désirée</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.WeatherService.set_api_key">
 <span class="sig-name descname"><span class="pre">set_api_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.weather.WeatherService.set_api_key" title="Link to this definition">¶</a></dt>
-<dd><p>Définir la clé API</p>
+<dd><p>Définir ou mettre à jour la clé API utilisée pour accéder au service Tomorrow.io.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>api_key</strong> (<em>str</em>) – Nouvelle clé API</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -516,19 +593,58 @@ time: Heure désirée</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.check_vfr_conditions">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">check_vfr_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.check_vfr_conditions" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier les conditions VFR</p>
+<dd><p>Vérifier si les conditions météo sont favorables au vol à vue (VFR).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données météo</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple contenant un booléen (conditions favorables ou non)
+et une liste d’explications/alertes</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[bool, list]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.get_weather_for_leg">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.get_weather_for_leg" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un segment</p>
+<dd><p>Obtenir les données météo pour un segment de vol entre deux waypoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_wp</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Waypoint de départ</p></li>
+<li><p><strong>end_wp</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Waypoint d’arrivée</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure à laquelle le segment est survolé</p></li>
+<li><p><strong>api_key</strong> (<em>str</em><em>, </em><em>optional</em>) – Clé API Tomorrow.io (optionnelle)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Données météo pour ce segment</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.weather.get_weather_summary">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.weather.</span></span><span class="sig-name descname"><span class="pre">get_weather_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.weather.get_weather_summary" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir un résumé météo</p>
+<dd><p>Générer un résumé textuel à partir des données météo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire contenant les données météo</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Résumé texte</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -789,16 +905,27 @@ time: Heure désirée</p>
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">WeatherService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.WeatherService" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Service pour obtenir les données météorologiques</p>
+<p>Service pour obtenir les données météorologiques à partir de Tomorrow.io</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>api_key</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – Clé API pour l’accès au service Tomorrow.io</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.analyze_weather_for_itinerary">
 <span class="sig-name descname"><span class="pre">analyze_weather_for_itinerary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itinerary</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.analyze_weather_for_itinerary" title="Link to this definition">¶</a></dt>
-<dd><p>Analyser la météo pour un itinéraire déjà calculé avec timing précis</p>
-<p>Cette méthode utilise les temps de vol précis de l’itinéraire calculé</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>itinerary: Objet Itinerary avec legs calculés</p>
+<dd><p>Analyser la météo pour un itinéraire déjà calculé, avec des timings précis.</p>
+<p>Cette méthode utilise les durées de vol précalculées dans les <cite>legs</cite> de l’objet <cite>Itinerary</cite>,
+et récupère les conditions météo à chaque point de l’itinéraire au moment estimé de passage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>itinerary</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Itinerary" title="vfr_planner.Itinerary"><em>Itinerary</em></a>) – Objet contenant les waypoints, les legs (segments) et l’heure de départ</p>
 </dd>
-<dt>Returns:</dt><dd><p>Analyse météo détaillée avec timing exact</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire contenant les conditions météo par segment et une analyse globale</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -806,13 +933,26 @@ time: Heure désirée</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.analyze_weather_for_route">
 <span class="sig-name descname"><span class="pre">analyze_weather_for_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraft_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">110</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.analyze_weather_for_route" title="Link to this definition">¶</a></dt>
-<dd><p>Analyser la météo pour un itinéraire complet avec timing réaliste</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoints: Liste des waypoints
-start_time: Heure de départ RÉELLE du vol
-aircraft_speed: Vitesse de croisière pour calculer les temps de vol</p>
+<dd><p>Analyser la météo tout au long d’un itinéraire aérien en tenant compte du timing réel.</p>
+<p>Cette méthode calcule les horaires de passage aux différents waypoints en fonction de
+la vitesse de croisière, puis récupère la météo à chaque point en conséquence.
+Une synthèse météo est ensuite générée via <cite>_analyze_weather_trends</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoints</strong> (<em>list</em><em>[</em><a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a><em>]</em>) – Liste ordonnée des points de passage de la route</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure réelle de départ du vol</p></li>
+<li><p><strong>aircraft_speed</strong> (<em>float</em>) – Vitesse de croisière en nœuds (knots)</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Analyse météo de la route avec timing correct</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – En cas d’erreur pendant le traitement météo de l’itinéraire</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire avec les conditions météo détaillées par segment et une analyse globale</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -820,12 +960,24 @@ aircraft_speed: Vitesse de croisière pour calculer les temps de vol</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.get_extended_forecast">
 <span class="sig-name descname"><span class="pre">get_extended_forecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.get_extended_forecast" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir les prévisions étendues pour un point</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoint: Point de navigation
-days: Nombre de jours de prévision</p>
+<dd><p>Obtenir les prévisions météorologiques étendues (par jour) pour un point.</p>
+<p>Cette méthode interroge l’API Tomorrow.io avec un pas de temps journalier,
+et retourne les prévisions pour le nombre de jours spécifié.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoint</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Point géographique pour lequel obtenir les prévisions</p></li>
+<li><p><strong>days</strong> (<em>int</em>) – Nombre de jours de prévision (maximum 5 recommandé)</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Prévisions étendues</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Si l’appel à l’API échoue ou les données sont invalides</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant les prévisions journalières ou une erreur</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -833,13 +985,28 @@ days: Nombre de jours de prévision</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.get_weather_for_leg">
 <span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.get_weather_for_leg" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un segment de vol avec timing précis</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>start_wp: Waypoint de départ
-end_wp: Waypoint d’arrivée
-start_time: Heure pour laquelle récupérer la météo (peut être milieu du leg)</p>
+<dd><p>Obtenir la météo pour un segment de vol avec un timing précis.</p>
+<p>La position utilisée est le centre géographique du segment entre <cite>start_wp</cite> et <cite>end_wp</cite>.
+Les résultats peuvent être mis en cache pour éviter des appels redondants à l’API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_wp</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Waypoint de départ</p></li>
+<li><p><strong>end_wp</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Waypoint d’arrivée</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure exacte pour laquelle récupérer les conditions météo</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Dictionnaire avec données météo</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – Si la clé API n’est pas définie</p></li>
+<li><p><strong>Exception</strong> – En cas d’erreur lors de la récupération météo</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant les données météo, incluant la direction et la vitesse du vent</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -847,12 +1014,20 @@ start_time: Heure pour laquelle récupérer la météo (peut être milieu du leg
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.get_weather_for_point">
 <span class="sig-name descname"><span class="pre">get_weather_for_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.get_weather_for_point" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un point spécifique</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>waypoint: Point de navigation
-time: Heure désirée</p>
+<dd><p>Obtenir la météo pour un point spécifique à un instant donné.</p>
+<p>Cette méthode est un raccourci utilisant <cite>get_weather_for_leg</cite> avec le même point en départ et arrivée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>waypoint</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Point de navigation</p></li>
+<li><p><strong>time</strong> (<em>datetime.datetime</em>) – Heure pour laquelle la météo est demandée</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Données météo</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Données météo au point donné</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -860,11 +1035,18 @@ time: Heure désirée</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.get_weather_summary_text">
 <span class="sig-name descname"><span class="pre">get_weather_summary_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.get_weather_summary_text" title="Link to this definition">¶</a></dt>
-<dd><p>Générer un résumé textuel de la météo</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>weather_data: Données météo</p>
+<dd><p>Générer un résumé textuel des conditions météo.</p>
+<p>Le résumé inclut la direction et la vitesse du vent, la température,
+la visibilité, ainsi que les précipitations si présentes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire des données météo</p>
 </dd>
-<dt>Returns:</dt><dd><p>Résumé textuel</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Chaîne de résumé textuel des conditions météo</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -872,11 +1054,17 @@ time: Heure désirée</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.is_weather_suitable_for_vfr">
 <span class="sig-name descname"><span class="pre">is_weather_suitable_for_vfr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.is_weather_suitable_for_vfr" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier si les conditions météo sont adaptées au VFR</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>weather_data: Données météo</p>
+<dd><p>Vérifier si les conditions météo sont compatibles avec un vol en VFR (Visual Flight Rules).</p>
+<p>Évalue la visibilité, la couverture nuageuse, les précipitations et le vent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données météo analysées</p>
 </dd>
-<dt>Returns:</dt><dd><p>Tuple (suitable, reasons)</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple (adapté, raisons), où ‘adapté’ est un booléen et ‘raisons’ une liste d’explications</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[bool, list]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -884,7 +1072,12 @@ time: Heure désirée</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vfr_planner.calculations.WeatherService.set_api_key">
 <span class="sig-name descname"><span class="pre">set_api_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vfr_planner.calculations.WeatherService.set_api_key" title="Link to this definition">¶</a></dt>
-<dd><p>Définir la clé API</p>
+<dd><p>Définir ou mettre à jour la clé API utilisée pour accéder au service Tomorrow.io.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>api_key</strong> (<em>str</em>) – Nouvelle clé API</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -961,19 +1154,58 @@ time: Heure désirée</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.check_vfr_conditions">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">check_vfr_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.check_vfr_conditions" title="Link to this definition">¶</a></dt>
-<dd><p>Vérifier les conditions VFR</p>
+<dd><p>Vérifier si les conditions météo sont favorables au vol à vue (VFR).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Données météo</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple contenant un booléen (conditions favorables ou non)
+et une liste d’explications/alertes</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[bool, list]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.get_weather_for_leg">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">get_weather_for_leg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_wp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint" title="vfr_planner.models.waypoint.Waypoint"><span class="pre">Waypoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#vfr_planner.calculations.get_weather_for_leg" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir la météo pour un segment</p>
+<dd><p>Obtenir les données météo pour un segment de vol entre deux waypoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_wp</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Waypoint de départ</p></li>
+<li><p><strong>end_wp</strong> (<a class="reference internal" href="vfr_planner.html#vfr_planner.Waypoint" title="vfr_planner.Waypoint"><em>Waypoint</em></a>) – Waypoint d’arrivée</p></li>
+<li><p><strong>start_time</strong> (<em>datetime.datetime</em>) – Heure à laquelle le segment est survolé</p></li>
+<li><p><strong>api_key</strong> (<em>str</em><em>, </em><em>optional</em>) – Clé API Tomorrow.io (optionnelle)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Données météo pour ce segment</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vfr_planner.calculations.get_weather_summary">
 <span class="sig-prename descclassname"><span class="pre">vfr_planner.calculations.</span></span><span class="sig-name descname"><span class="pre">get_weather_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#vfr_planner.calculations.get_weather_summary" title="Link to this definition">¶</a></dt>
-<dd><p>Obtenir un résumé météo</p>
+<dd><p>Générer un résumé textuel à partir des données météo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Dictionnaire contenant les données météo</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Résumé texte</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
