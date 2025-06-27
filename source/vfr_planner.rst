@@ -2,7 +2,7 @@ Paquet *planner*
 ====================
 
 **Sous-paquet**
------------
+---------------------
 
 .. toctree::
    :maxdepth: 4

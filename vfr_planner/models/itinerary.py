@@ -1,6 +1,6 @@
 """
-Modèle de données pour l'itinéraire complet - VERSION CORRIGÉE
-Corrections du timing météo
+Ce module contient la classe Itinerary.
+Cette classe contient et calcule les données pour les itinéraires.
 """
 
 import datetime

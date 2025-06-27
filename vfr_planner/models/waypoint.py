@@ -1,5 +1,6 @@
 """
-Modèle de données pour les waypoints
+Ce module contient la classe Waypoint.
+Cette classe contient et calcule les données pour les waypoints.
 """
 
 from typing import Dict, Any, Optional

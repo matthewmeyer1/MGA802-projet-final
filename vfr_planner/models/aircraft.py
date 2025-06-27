@@ -1,5 +1,6 @@
 """
-Modèle de données pour les aéronefs
+Ce module contient la classe Aircraft.
+Cette classe contient et calcule les données pour les aéronefs
 """
 
 from typing import Dict, Any, Optional

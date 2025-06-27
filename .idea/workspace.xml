@@ -4,8 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Bugfix / Clean de la documentation">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Merge doc into main, add license">
+      <change beforePath="$PROJECT_DIR$/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/vfr_planner.calculations.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/vfr_planner.calculations.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/vfr_planner.data.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/vfr_planner.data.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/vfr_planner.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/vfr_planner.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/vfr_planner.export.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/vfr_planner.export.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/vfr_planner.models.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/vfr_planner.models.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/vfr_planner_app.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/vfr_planner_app.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/vfr_planner.data.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/vfr_planner.data.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/vfr_planner.export.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/vfr_planner.export.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/vfr_planner.models.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/vfr_planner.models.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/vfr_planner.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/vfr_planner.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/vfr_planner_app.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/vfr_planner_app.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_static/base-stemmer.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_static/base-stemmer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_static/french-stemmer.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_static/french-stemmer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_static/translations.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_static/translations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/modules.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/modules.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/vfr_planner.calculations.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/vfr_planner.calculations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/vfr_planner.data.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/vfr_planner.data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/vfr_planner.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/vfr_planner.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/vfr_planner.models.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/vfr_planner.models.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/vfr_planner_app.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/vfr_planner_app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/vfr_planner.data.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/vfr_planner.data.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/vfr_planner.export.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/vfr_planner.export.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/vfr_planner.models.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/vfr_planner.models.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/vfr_planner.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/vfr_planner.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/vfr_planner_app.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/vfr_planner_app.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/models/aircraft.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/models/aircraft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/models/itinerary.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/models/itinerary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/models/leg.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/models/leg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/models/waypoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/models/waypoint.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,15 +93,17 @@
     "Python.legs.executor": "Run",
     "Python.main.executor": "Run",
     "Python.testing.executor": "Run",
+    "Python.vfr_planner_app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Documentation",
+    "git-widget-placeholder": "documentation",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/antoi/Bureau/ETS/Session 12/MGA802/Projet Final"
+    "last_opened_file_path": "C:/Users/antoi/Downloads"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\antoi\Downloads" />
       <recent name="C:\Users\gabri\PycharmProjects\MGA802-projet-final\data\ressources\csv" />
       <recent name="C:\Users\matth\PycharmProjects\MGA802-projet-final\data\ressources\csv" />
       <recent name="C:\Users\antoi\OneDrive\Desktop\ETS\Session 12\MGA802\Projet Final\data\extraction" />
@@ -235,7 +267,31 @@
       <option name="project" value="LOCAL" />
       <updated>1751058799669</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Bugfix / Clean de la documentation">
+      <option name="closed" value="true" />
+      <created>1751059360499</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1751059360499</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Bugfix / Clean de la documentation">
+      <option name="closed" value="true" />
+      <created>1751059712189</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1751059712189</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Merge doc into main, add license">
+      <option name="closed" value="true" />
+      <created>1751059988895</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1751059988895</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -262,7 +318,8 @@
     <MESSAGE value="Documentation pour les dossiers data et calculation" />
     <MESSAGE value="Mise en page de la documentation" />
     <MESSAGE value="Bugfix / Clean de la documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfix / Clean de la documentation" />
+    <MESSAGE value="Merge doc into main, add license" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge doc into main, add license" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

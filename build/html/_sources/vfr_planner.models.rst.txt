@@ -4,7 +4,7 @@ Paquet *models*
 **Sous-module**
 --------------------
 
-Module *aircraft*
+Class *aircraft*
 -----------------------------------
 
 .. automodule:: vfr_planner.models.aircraft
@@ -12,7 +12,7 @@ Module *aircraft*
    :show-inheritance:
    :undoc-members:
 
-Module *itinerary*
+Class *itinerary*
 ------------------------------------
 
 .. automodule:: vfr_planner.models.itinerary
@@ -20,7 +20,7 @@ Module *itinerary*
    :show-inheritance:
    :undoc-members:
 
-Module *leg*
+Class *leg*
 ------------------------------
 
 .. automodule:: vfr_planner.models.leg
@@ -28,7 +28,7 @@ Module *leg*
    :show-inheritance:
    :undoc-members:
 
-Module *waypoint*
+Class *waypoint*
 -----------------------------------
 
 .. automodule:: vfr_planner.models.waypoint

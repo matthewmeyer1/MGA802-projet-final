@@ -1,5 +1,5 @@
 Module *Application VFR Planner*
-==============================
+=======================================
 
 .. automodule:: vfr_planner_app
    :members:

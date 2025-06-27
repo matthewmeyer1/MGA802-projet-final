@@ -1,6 +1,7 @@
 """
-Modèle de données pour les segments de vol (legs) - VERSION CORRIGÉE
-Corrections du timing météo : météo calculée au milieu du leg
+Ce module contient la classe Leg.
+Cette classe contient et calcule les données pour les Leg.
+Un Leg est un trajet entre deux waypoints.
 """
 
 import math
