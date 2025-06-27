@@ -17,15 +17,20 @@ class NavigationCalculator:
 
     def haversine_distance(self, lat1: float, lon1: float, lat2: float, lon2: float) -> float:
         """
-        Calculer la distance haversine entre deux points
+        Calcule la distance haversine entre deux points.
 
-        Args:
-            lat1, lon1: Coordonnées du premier point (degrés)
-            lat2, lon2: Coordonnées du second point (degrés)
-
-        Returns:
-            Distance en milles nautiques
+        :param lat1: Latitude du premier point (en degrés).
+        :type lat1: float
+        :param lon1: Longitude du premier point (en degrés).
+        :type lon1: float
+        :param lat2: Latitude du second point (en degrés).
+        :type lat2: float
+        :param lon2: Longitude du second point (en degrés).
+        :type lon2: float
+        :return: Distance entre les deux points en milles nautiques.
+        :rtype: float
         """
+
         # Conversion en radians
         lat1_rad = math.radians(lat1)
         lon1_rad = math.radians(lon1)
@@ -46,15 +51,20 @@ class NavigationCalculator:
 
     def great_circle_bearing(self, lat1: float, lon1: float, lat2: float, lon2: float) -> float:
         """
-        Calculer le cap initial du grand cercle entre deux points
+        Calcule le cap initial du grand cercle entre deux points.
 
-        Args:
-            lat1, lon1: Coordonnées du point de départ (degrés)
-            lat2, lon2: Coordonnées du point d'arrivée (degrés)
-
-        Returns:
-            Cap en degrés (0-360)
+        :param lat1: Latitude du point de départ (en degrés).
+        :type lat1: float
+        :param lon1: Longitude du point de départ (en degrés).
+        :type lon1: float
+        :param lat2: Latitude du point d'arrivée (en degrés).
+        :type lat2: float
+        :param lon2: Longitude du point d'arrivée (en degrés).
+        :type lon2: float
+        :return: Cap initial en degrés (0–360).
+        :rtype: float
         """
+
         lat1_rad = math.radians(lat1)
         lat2_rad = math.radians(lat2)
         dlon_rad = math.radians(lon2 - lon1)
@@ -71,17 +81,23 @@ class NavigationCalculator:
     def wind_correction_angle(self, true_course: float, wind_direction: float,
                               wind_speed: float, tas: float) -> Tuple[float, float, float]:
         """
-        Calculer l'angle de correction de vent et la vitesse sol
+        Calcule l'angle de correction de vent et la vitesse sol.
 
-        Args:
-            true_course: Cap vrai désiré (degrés)
-            wind_direction: Direction du vent (d'où vient le vent, degrés)
-            wind_speed: Vitesse du vent (knots)
-            tas: Vitesse vraie de l'aéronef (knots)
-
-        Returns:
-            Tuple (wca, true_heading, ground_speed)
+        :param true_course: Cap vrai désiré (en degrés).
+        :type true_course: float
+        :param wind_direction: Direction du vent (d'où il vient, en degrés).
+        :type wind_direction: float
+        :param wind_speed: Vitesse du vent (en knots).
+        :type wind_speed: float
+        :param tas: Vitesse vraie de l'aéronef (en knots).
+        :type tas: float
+        :return: Un tuple contenant :
+                 - wca : Wind Correction Angle (en degrés),
+                 - true_heading : Cap vrai corrigé (en degrés),
+                 - ground_speed : Vitesse sol (en knots).
+        :rtype: tuple[float, float, float]
         """
+
         if wind_speed == 0 or tas == 0:
             return 0.0, true_course, tas
 
@@ -116,15 +132,16 @@ class NavigationCalculator:
 
     def true_to_magnetic_heading(self, true_heading: float, lat: float, lon: float) -> float:
         """
-        Convertir un cap vrai en cap magnétique
+        Convertit un cap vrai en cap magnétique.
 
-        Args:
-            true_heading: Cap vrai (degrés)
-            lat: Latitude (degrés)
-            lon: Longitude (degrés)
-
-        Returns:
-            Cap magnétique (degrés)
+        :param true_heading: Cap vrai (en degrés).
+        :type true_heading: float
+        :param lat: Latitude (en degrés).
+        :type lat: float
+        :param lon: Longitude (en degrés).
+        :type lon: float
+        :return: Cap magnétique (en degrés).
+        :rtype: float
         """
         try:
             # Essayer d'utiliser la bibliothèque geomag si disponible
@@ -148,14 +165,14 @@ class NavigationCalculator:
 
     def _approximate_magnetic_variation(self, lat: float, lon: float) -> float:
         """
-        Approximation de la déclinaison magnétique pour l'Amérique du Nord
+        Approxime la déclinaison magnétique pour l'Amérique du Nord.
 
-        Args:
-            lat: Latitude (degrés)
-            lon: Longitude (degrés)
-
-        Returns:
-            Déclinaison magnétique approximative (degrés)
+        :param lat: Latitude (en degrés).
+        :type lat: float
+        :param lon: Longitude (en degrés).
+        :type lon: float
+        :return: Déclinaison magnétique approximative (en degrés).
+        :rtype: float
         """
         # Approximations basées sur les zones géographiques
         if -100 <= lon <= -60 and 40 <= lat <= 60:
@@ -173,16 +190,24 @@ class NavigationCalculator:
     def cross_track_distance(self, lat1: float, lon1: float, lat2: float, lon2: float,
                              lat3: float, lon3: float) -> float:
         """
-        Calculer la distance perpendiculaire d'un point à une route
+        Calcule la distance perpendiculaire d'un point à une route.
 
-        Args:
-            lat1, lon1: Point de départ de la route
-            lat2, lon2: Point d'arrivée de la route
-            lat3, lon3: Point dont on veut la distance à la route
-
-        Returns:
-            Distance perpendiculaire en milles nautiques (positive = droite, négative = gauche)
+        :param lat1: Latitude du point de départ de la route (en degrés).
+        :type lat1: float
+        :param lon1: Longitude du point de départ de la route (en degrés).
+        :type lon1: float
+        :param lat2: Latitude du point d'arrivée de la route (en degrés).
+        :type lat2: float
+        :param lon2: Longitude du point d'arrivée de la route (en degrés).
+        :type lon2: float
+        :param lat3: Latitude du point dont on veut la distance à la route (en degrés).
+        :type lat3: float
+        :param lon3: Longitude du point dont on veut la distance à la route (en degrés).
+        :type lon3: float
+        :return: Distance perpendiculaire en milles nautiques (positive = à droite de la route, négative = à gauche).
+        :rtype: float
         """
+
         # Convertir en radians
         lat1_rad = math.radians(lat1)
         lon1_rad = math.radians(lon1)
@@ -206,16 +231,24 @@ class NavigationCalculator:
     def along_track_distance(self, lat1: float, lon1: float, lat2: float, lon2: float,
                              lat3: float, lon3: float) -> float:
         """
-        Calculer la distance le long de la route jusqu'au point perpendiculaire
+        Calcule la distance le long de la route jusqu'au point perpendiculaire.
 
-        Args:
-            lat1, lon1: Point de départ de la route
-            lat2, lon2: Point d'arrivée de la route
-            lat3, lon3: Point de référence
-
-        Returns:
-            Distance le long de la route en milles nautiques
+        :param lat1: Latitude du point de départ de la route (en degrés).
+        :type lat1: float
+        :param lon1: Longitude du point de départ de la route (en degrés).
+        :type lon1: float
+        :param lat2: Latitude du point d'arrivée de la route (en degrés).
+        :type lat2: float
+        :param lon2: Longitude du point d'arrivée de la route (en degrés).
+        :type lon2: float
+        :param lat3: Latitude du point de référence (en degrés).
+        :type lat3: float
+        :param lon3: Longitude du point de référence (en degrés).
+        :type lon3: float
+        :return: Distance le long de la route en milles nautiques.
+        :rtype: float
         """
+
         # Distance du point de départ au point test
         d13 = self.haversine_distance(lat1, lon1, lat3, lon3) * self.NM_TO_KM / self.EARTH_RADIUS_KM
 
@@ -232,15 +265,20 @@ class NavigationCalculator:
     def intermediate_point(self, lat1: float, lon1: float, lat2: float, lon2: float,
                            fraction: float) -> Tuple[float, float]:
         """
-        Calculer un point intermédiaire sur une route
+        Calcule un point intermédiaire sur une route.
 
-        Args:
-            lat1, lon1: Point de départ
-            lat2, lon2: Point d'arrivée
-            fraction: Fraction de la route (0.0 = départ, 1.0 = arrivée)
-
-        Returns:
-            Tuple (latitude, longitude) du point intermédiaire
+        :param lat1: Latitude du point de départ (en degrés).
+        :type lat1: float
+        :param lon1: Longitude du point de départ (en degrés).
+        :type lon1: float
+        :param lat2: Latitude du point d'arrivée (en degrés).
+        :type lat2: float
+        :param lon2: Longitude du point d'arrivée (en degrés).
+        :type lon2: float
+        :param fraction: Fraction de la route (0.0 = départ, 1.0 = arrivée).
+        :type fraction: float
+        :return: Tuple contenant la latitude et la longitude du point intermédiaire (en degrés).
+        :rtype: tuple[float, float]
         """
         lat1_rad = math.radians(lat1)
         lon1_rad = math.radians(lon1)
@@ -264,14 +302,14 @@ class NavigationCalculator:
 
     def time_to_fly(self, distance_nm: float, ground_speed_kn: float) -> float:
         """
-        Calculer le temps de vol
+        Calcule le temps de vol.
 
-        Args:
-            distance_nm: Distance en milles nautiques
-            ground_speed_kn: Vitesse sol en knots
-
-        Returns:
-            Temps en minutes
+        :param distance_nm: Distance en milles nautiques.
+        :type distance_nm: float
+        :param ground_speed_kn: Vitesse sol en knots.
+        :type ground_speed_kn: float
+        :return: Temps de vol en minutes.
+        :rtype: float
         """
         if ground_speed_kn <= 0:
             return float('inf')
@@ -280,29 +318,30 @@ class NavigationCalculator:
 
     def fuel_consumption(self, time_minutes: float, burn_rate_gph: float) -> float:
         """
-        Calculer la consommation de carburant
+        Calcule la consommation de carburant.
 
-        Args:
-            time_minutes: Temps de vol en minutes
-            burn_rate_gph: Taux de consommation en gallons par heure
-
-        Returns:
-            Consommation en gallons
+        :param time_minutes: Temps de vol en minutes.
+        :type time_minutes: float
+        :param burn_rate_gph: Taux de consommation en gallons par heure.
+        :type burn_rate_gph: float
+        :return: Consommation totale en gallons.
+        :rtype: float
         """
         return (time_minutes / 60.0) * burn_rate_gph
 
     def descent_distance(self, altitude_loss_ft: float, descent_rate_fpm: float,
                          ground_speed_kn: float) -> float:
         """
-        Calculer la distance de descente
+        Calcule la distance de descente.
 
-        Args:
-            altitude_loss_ft: Perte d'altitude en pieds
-            descent_rate_fpm: Taux de descente en pieds par minute
-            ground_speed_kn: Vitesse sol en knots
-
-        Returns:
-            Distance de descente en milles nautiques
+        :param altitude_loss_ft: Perte d'altitude en pieds.
+        :type altitude_loss_ft: float
+        :param descent_rate_fpm: Taux de descente en pieds par minute.
+        :type descent_rate_fpm: float
+        :param ground_speed_kn: Vitesse sol en knots.
+        :type ground_speed_kn: float
+        :return: Distance de descente en milles nautiques.
+        :rtype: float
         """
         if descent_rate_fpm <= 0:
             return 0.0
@@ -313,15 +352,16 @@ class NavigationCalculator:
     def climb_distance(self, altitude_gain_ft: float, climb_rate_fpm: float,
                        ground_speed_kn: float) -> float:
         """
-        Calculer la distance de montée
+        Calcule la distance de montée.
 
-        Args:
-            altitude_gain_ft: Gain d'altitude en pieds
-            climb_rate_fpm: Taux de montée en pieds par minute
-            ground_speed_kn: Vitesse sol en knots
-
-        Returns:
-            Distance de montée en milles nautiques
+        :param altitude_gain_ft: Gain d'altitude en pieds.
+        :type altitude_gain_ft: float
+        :param climb_rate_fpm: Taux de montée en pieds par minute.
+        :type climb_rate_fpm: float
+        :param ground_speed_kn: Vitesse sol en knots.
+        :type ground_speed_kn: float
+        :return: Distance de montée en milles nautiques.
+        :rtype: float
         """
         if climb_rate_fpm <= 0:
             return 0.0
@@ -336,21 +376,74 @@ nav_calc = NavigationCalculator()
 
 # Fonctions utilitaires exportées
 def calculate_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Calculer la distance entre deux points"""
+    """
+    Calcule la distance entre deux points géographiques.
+
+    :param lat1: Latitude du premier point (en degrés).
+    :type lat1: float
+    :param lon1: Longitude du premier point (en degrés).
+    :type lon1: float
+    :param lat2: Latitude du second point (en degrés).
+    :type lat2: float
+    :param lon2: Longitude du second point (en degrés).
+    :type lon2: float
+    :return: Distance entre les deux points en milles nautiques.
+    :rtype: float
+    """
     return nav_calc.haversine_distance(lat1, lon1, lat2, lon2)
 
 
 def calculate_bearing(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Calculer le cap entre deux points"""
+    """
+    Calcule le cap initial (bearing) entre deux points géographiques.
+
+    :param lat1: Latitude du point de départ (en degrés).
+    :type lat1: float
+    :param lon1: Longitude du point de départ (en degrés).
+    :type lon1: float
+    :param lat2: Latitude du point d'arrivée (en degrés).
+    :type lat2: float
+    :param lon2: Longitude du point d'arrivée (en degrés).
+    :type lon2: float
+    :return: Cap initial entre les deux points en degrés (0-360).
+    :rtype: float
+    """
     return nav_calc.great_circle_bearing(lat1, lon1, lat2, lon2)
 
 
 def calculate_wind_correction(true_course: float, wind_direction: float,
-                              wind_speed: float, tas: float) -> Tuple[float, float, float]:
-    """Calculer la correction de vent"""
+                              wind_speed: float, tas: float) -> tuple[float, float, float]:
+    """
+    Calcule l'angle de correction de vent, le cap vrai corrigé et la vitesse sol.
+
+    :param true_course: Cap vrai désiré (en degrés).
+    :type true_course: float
+    :param wind_direction: Direction du vent (d'où vient le vent, en degrés).
+    :type wind_direction: float
+    :param wind_speed: Vitesse du vent (en knots).
+    :type wind_speed: float
+    :param tas: Vitesse vraie de l'aéronef (en knots).
+    :type tas: float
+    :return: Tuple contenant :
+             - l'angle de correction de vent (WCA) en degrés,
+             - le cap vrai corrigé en degrés,
+             - la vitesse sol en knots.
+    :rtype: tuple[float, float, float]
+    """
     return nav_calc.wind_correction_angle(true_course, wind_direction, wind_speed, tas)
 
 
 def true_to_magnetic(true_heading: float, lat: float, lon: float) -> float:
-    """Convertir cap vrai en cap magnétique"""
+    """
+    Convertit un cap vrai en cap magnétique selon la position géographique.
+
+    :param true_heading: Cap vrai (en degrés).
+    :type true_heading: float
+    :param lat: Latitude du point (en degrés).
+    :type lat: float
+    :param lon: Longitude du point (en degrés).
+    :type lon: float
+    :return: Cap magnétique correspondant (en degrés).
+    :rtype: float
+    """
     return nav_calc.true_to_magnetic_heading(true_heading, lat, lon)

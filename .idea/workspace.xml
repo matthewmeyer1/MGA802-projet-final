@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche" />
+    <list default="true" id="9735db3c-6c18-4253-b7f4-fdddd182ec2a" name="Changes" comment="Ajout des l'aeroport de refuel, qui ajoute des legs pour laeroport le plus proche">
+      <change afterPath="$PROJECT_DIR$/make.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/calculations/aeroport_refuel.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/calculations/aeroport_refuel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfr_planner/calculations/navigation.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfr_planner/calculations/navigation.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/matthewmeyer1/MGA802-projet-final.git&quot;,
-    &quot;accountId&quot;: &quot;17898e08-7fb1-42f0-8556-25642ee0817a&quot;
+    &quot;accountId&quot;: &quot;7c315147-7500-4033-b3d4-e1604d13336f&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -54,6 +59,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.__init__.executor": "Run",
     "Python.aeroport_refuel.executor": "Run",
+    "Python.conf.executor": "Run",
     "Python.extraction.executor": "Run",
     "Python.gui_improved.executor": "Run",
     "Python.gui_itinerary.executor": "Run",
@@ -63,8 +69,9 @@
     "Python.testing.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "rollback",
-    "last_opened_file_path": "C:/Users/gabri/PycharmProjects/MGA802-projet-final/data/ressources/csv"
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/antoi/Bureau/ETS/Session 12/MGA802/Projet Final"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -75,6 +82,8 @@
       <recent name="C:\Users\antoi\OneDrive\Desktop\ETS\Session 12\MGA802\Projet Final\data\ressources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\antoi\Bureau\ETS\Session 12\MGA802\Projet Final" />
+      <recent name="C:\Users\antoi\Bureau\ETS\Session 12\MGA802\Projet Final\source" />
       <recent name="C:\Users\gabri\PycharmProjects\MGA802-projet-final" />
       <recent name="C:\Users\gabri\PycharmProjects\MGA802-projet-final\vfr_export" />
     </key>
@@ -82,7 +91,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
+        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
       </set>
     </attachedChunks>
   </component>
