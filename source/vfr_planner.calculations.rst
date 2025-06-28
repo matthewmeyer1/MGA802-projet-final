@@ -1,9 +1,6 @@
 Paquet *calculations*
 =================================
 
-**Sous-module**
-----------------------
-
 Module *aeroport\_refuel*
 -------------------------
 

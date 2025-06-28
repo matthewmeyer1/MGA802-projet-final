@@ -1,16 +1,12 @@
 Paquet *data*
 =========================
 
-**Sous-paquet**
-----------------------------
 
 .. toctree::
    :maxdepth: 4
 
    vfr_planner.data.extraction
 
-**Sous-module**
---------------------
 
 Module *airport\_db*
 ------------------------------------

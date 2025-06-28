@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="fr" data-content_root="./">
@@ -7,44 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Documentation pour le planificateur de vol VFR &#8212; Documentation VFR Flight Planner </title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d75fae25" />
-    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css?v=5283bb3d" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
     <script src="_static/documentation_options.js?v=d1a510d7"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=e6b791cb"></script>
-    <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Planificateur de vol VFR" href="modules.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <!--[if lt IE 9]>
-    <script src="_static/css3-mediaqueries.js"></script>
-    <![endif]-->
+    <link rel="next" title="Planificateur de vol VFR" href="modules.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="Index général"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Index des modules Python"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="modules.html" title="Planificateur de vol VFR"
-             accesskey="N">suivant</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">Documentation VFR Flight Planner </a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Documentation pour le planificateur de vol VFR</a></li> 
-      </ul>
-    </div>  
+      <div class="header" role="banner"><h1 class="heading"><a href="#">
+          <span>Documentation VFR Flight Planner </span></a></h1>
+        <h2 class="heading"><span>Documentation pour le planificateur de vol VFR</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        <a class="uplink" href="#">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="modules.html">Planificateur de vol VFR</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   <section id="documentation-pour-le-planificateur-de-vol-vfr">
 <h1>Documentation pour le planificateur de vol VFR<a class="headerlink" href="#documentation-pour-le-planificateur-de-vol-vfr" title="Lien vers cette rubrique">¶</a></h1>
 <p>Bienvenue dans la documentation du programme VFR Flight Planner ! Cette application est un outil pour faciliter le travail de planification de vol par VFR de pilotes amateurs. Ci-dessous sont listés les paquets et modules de l’application. Libre à vous d’explorer ces modules et leurs fonctions !</p>
@@ -57,7 +44,366 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vfr_planner.html">Paquet <em>planner</em></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vfr_planner.html#sous-paquet"><strong>Sous-paquet</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vfr_planner.calculations.html">Paquet <em>calculations</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.calculations.html#sous-module"><strong>Sous-module</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.calculations.html#module-vfr_planner.calculations.aeroport_refuel">Module <em>aeroport_refuel</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.aeroport_refuel.aeroport_proche"><code class="docutils literal notranslate"><span class="pre">aeroport_proche()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.calculations.html#module-vfr_planner.calculations.navigation">Module <em>navigation</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.along_track_distance"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.along_track_distance()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.climb_distance"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.climb_distance()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.cross_track_distance"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.cross_track_distance()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.descent_distance"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.descent_distance()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.fuel_consumption"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.fuel_consumption()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.great_circle_bearing"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.great_circle_bearing()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.haversine_distance"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.haversine_distance()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.intermediate_point"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.intermediate_point()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.time_to_fly"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.time_to_fly()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.true_to_magnetic_heading"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.true_to_magnetic_heading()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.NavigationCalculator.wind_correction_angle"><code class="docutils literal notranslate"><span class="pre">NavigationCalculator.wind_correction_angle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.calculate_bearing"><code class="docutils literal notranslate"><span class="pre">calculate_bearing()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.calculate_distance"><code class="docutils literal notranslate"><span class="pre">calculate_distance()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.calculate_wind_correction"><code class="docutils literal notranslate"><span class="pre">calculate_wind_correction()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.navigation.true_to_magnetic"><code class="docutils literal notranslate"><span class="pre">true_to_magnetic()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.calculations.html#module-vfr_planner.calculations.weather">Module <em>weather</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService"><code class="docutils literal notranslate"><span class="pre">WeatherService</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService.analyze_weather_for_itinerary"><code class="docutils literal notranslate"><span class="pre">WeatherService.analyze_weather_for_itinerary()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService.analyze_weather_for_route"><code class="docutils literal notranslate"><span class="pre">WeatherService.analyze_weather_for_route()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService.get_extended_forecast"><code class="docutils literal notranslate"><span class="pre">WeatherService.get_extended_forecast()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService.get_weather_for_leg"><code class="docutils literal notranslate"><span class="pre">WeatherService.get_weather_for_leg()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService.get_weather_for_point"><code class="docutils literal notranslate"><span class="pre">WeatherService.get_weather_for_point()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService.get_weather_summary_text"><code class="docutils literal notranslate"><span class="pre">WeatherService.get_weather_summary_text()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService.is_weather_suitable_for_vfr"><code class="docutils literal notranslate"><span class="pre">WeatherService.is_weather_suitable_for_vfr()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.WeatherService.set_api_key"><code class="docutils literal notranslate"><span class="pre">WeatherService.set_api_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.check_vfr_conditions"><code class="docutils literal notranslate"><span class="pre">check_vfr_conditions()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.get_weather_for_leg"><code class="docutils literal notranslate"><span class="pre">get_weather_for_leg()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.calculations.html#vfr_planner.calculations.weather.get_weather_summary"><code class="docutils literal notranslate"><span class="pre">get_weather_summary()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vfr_planner.data.html">Paquet <em>data</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.data.html#sous-paquet"><strong>Sous-paquet</strong></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.data.extraction.html">Paquet <em>extraction</em></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.extraction.html#sous-module"><strong>Sous-module</strong></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.extraction.html#module-vfr_planner.data.extraction.extraction">Module <em>extraction</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.data.html#sous-module"><strong>Sous-module</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.data.html#module-vfr_planner.data.airport_db">Module <em>airport_db</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase"><code class="docutils literal notranslate"><span class="pre">AirportDatabase</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.apply_filters"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.apply_filters()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.export_filtered_airports"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.export_filtered_airports()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.get_airport_by_code"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.get_airport_by_code()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.get_airports_by_type"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.get_airports_by_type()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.get_airports_near_point"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.get_airports_near_point()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.get_available_countries"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.get_available_countries()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.get_available_types"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.get_available_types()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.get_filter_stats"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.get_filter_stats()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.get_statistics"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.get_statistics()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.load_airports"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.load_airports()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.reset_filters"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.reset_filters()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.search_airports"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.search_airports()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.AirportDatabase.update_filters"><code class="docutils literal notranslate"><span class="pre">AirportDatabase.update_filters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.get_airport_by_code"><code class="docutils literal notranslate"><span class="pre">get_airport_by_code()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.get_airports_near"><code class="docutils literal notranslate"><span class="pre">get_airports_near()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.data.html#vfr_planner.data.airport_db.search_airports"><code class="docutils literal notranslate"><span class="pre">search_airports()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vfr_planner.export.html">Paquet <em>export</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.export.html#sous-module"><strong>Sous-module</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.export.html#module-vfr_planner.export.excel_export">Module <em>excel_export</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.excel_export.add_flight_summary_sheet"><code class="docutils literal notranslate"><span class="pre">add_flight_summary_sheet()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.excel_export.create_simple_excel_export"><code class="docutils literal notranslate"><span class="pre">create_simple_excel_export()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.excel_export.export_to_excel"><code class="docutils literal notranslate"><span class="pre">export_to_excel()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.excel_export.format_coordinates"><code class="docutils literal notranslate"><span class="pre">format_coordinates()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.excel_export.format_time"><code class="docutils literal notranslate"><span class="pre">format_time()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.export.html#module-vfr_planner.export.pdf_export">Module <em>pdf_export module</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.pdf_export.FlightPlanPDFGenerator"><code class="docutils literal notranslate"><span class="pre">FlightPlanPDFGenerator</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.pdf_export.FlightPlanPDFGenerator.generate_complete_plan"><code class="docutils literal notranslate"><span class="pre">FlightPlanPDFGenerator.generate_complete_plan()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.pdf_export.FlightPlanPDFGenerator.setup_custom_styles"><code class="docutils literal notranslate"><span class="pre">FlightPlanPDFGenerator.setup_custom_styles()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.pdf_export.create_flight_briefing_pdf"><code class="docutils literal notranslate"><span class="pre">create_flight_briefing_pdf()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.pdf_export.create_simple_pdf_export"><code class="docutils literal notranslate"><span class="pre">create_simple_pdf_export()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.export.html#vfr_planner.export.pdf_export.export_to_pdf"><code class="docutils literal notranslate"><span class="pre">export_to_pdf()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vfr_planner.gui.html">Paquet <em>gui</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.gui.html#sous-module"><strong>Sous-module</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.gui.html#module-vfr_planner.gui.main_window">Module <em>main_window</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.calculate_route"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.calculate_route()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.check_weather"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.check_weather()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.copy_plan"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.copy_plan()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.create_menu"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.create_menu()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.create_widgets"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.create_widgets()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.export_excel"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.export_excel()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.export_pdf"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.export_pdf()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.get_project_data"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.get_project_data()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.load_project_data"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.load_project_data()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.mark_saved"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.mark_saved()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.mark_unsaved"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.mark_unsaved()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.new_project"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.new_project()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.on_closing"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.on_closing()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.on_tab_changed"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.on_tab_changed()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.open_project"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.open_project()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.save_project"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.save_project()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.save_project_as"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.save_project_as()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.save_project_to_file"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.save_project_to_file()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.setup_bindings"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.setup_bindings()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.setup_window"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.setup_window()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.show_about"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.show_about()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.show_interactive_map"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.show_interactive_map()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.show_preferences"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.show_preferences()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.show_shortcuts"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.show_shortcuts()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.show_user_guide"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.show_user_guide()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.show_weather_analysis"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.show_weather_analysis()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.system_diagnostic"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.system_diagnostic()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.test_weather_api"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.test_weather_api()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.main_window.VFRPlannerGUI.update_status_bar"><code class="docutils literal notranslate"><span class="pre">VFRPlannerGUI.update_status_bar()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.gui.html#module-vfr_planner.gui.tabs">Module <em>tabs</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab"><code class="docutils literal notranslate"><span class="pre">AircraftTab</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.clear_all"><code class="docutils literal notranslate"><span class="pre">AircraftTab.clear_all()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.create_widgets"><code class="docutils literal notranslate"><span class="pre">AircraftTab.create_widgets()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.get_aircraft_data"><code class="docutils literal notranslate"><span class="pre">AircraftTab.get_aircraft_data()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.get_flight_data"><code class="docutils literal notranslate"><span class="pre">AircraftTab.get_flight_data()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.load_aircraft_profile"><code class="docutils literal notranslate"><span class="pre">AircraftTab.load_aircraft_profile()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.load_preset"><code class="docutils literal notranslate"><span class="pre">AircraftTab.load_preset()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.on_preset_selected"><code class="docutils literal notranslate"><span class="pre">AircraftTab.on_preset_selected()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.save_aircraft_profile"><code class="docutils literal notranslate"><span class="pre">AircraftTab.save_aircraft_profile()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AircraftTab.setup_defaults"><code class="docutils literal notranslate"><span class="pre">AircraftTab.setup_defaults()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab"><code class="docutils literal notranslate"><span class="pre">AirportsTab</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab.add_to_route"><code class="docutils literal notranslate"><span class="pre">AirportsTab.add_to_route()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab.create_widgets"><code class="docutils literal notranslate"><span class="pre">AirportsTab.create_widgets()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab.on_departure_selected"><code class="docutils literal notranslate"><span class="pre">AirportsTab.on_departure_selected()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab.on_destination_selected"><code class="docutils literal notranslate"><span class="pre">AirportsTab.on_destination_selected()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab.on_filters_updated"><code class="docutils literal notranslate"><span class="pre">AirportsTab.on_filters_updated()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab.show_on_map"><code class="docutils literal notranslate"><span class="pre">AirportsTab.show_on_map()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab.swap_airports"><code class="docutils literal notranslate"><span class="pre">AirportsTab.swap_airports()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.AirportsTab.update_flight_info"><code class="docutils literal notranslate"><span class="pre">AirportsTab.update_flight_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab"><code class="docutils literal notranslate"><span class="pre">PlanTab</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab.calculate_route"><code class="docutils literal notranslate"><span class="pre">PlanTab.calculate_route()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab.create_widgets"><code class="docutils literal notranslate"><span class="pre">PlanTab.create_widgets()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab.display_itinerary"><code class="docutils literal notranslate"><span class="pre">PlanTab.display_itinerary()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab.display_itinerary_with_timing"><code class="docutils literal notranslate"><span class="pre">PlanTab.display_itinerary_with_timing()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab.export_excel"><code class="docutils literal notranslate"><span class="pre">PlanTab.export_excel()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab.export_pdf"><code class="docutils literal notranslate"><span class="pre">PlanTab.export_pdf()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab.show_map"><code class="docutils literal notranslate"><span class="pre">PlanTab.show_map()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.PlanTab.test_api"><code class="docutils literal notranslate"><span class="pre">PlanTab.test_api()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab"><code class="docutils literal notranslate"><span class="pre">RouteTab</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.add_airport_waypoint"><code class="docutils literal notranslate"><span class="pre">RouteTab.add_airport_waypoint()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.add_custom_waypoint"><code class="docutils literal notranslate"><span class="pre">RouteTab.add_custom_waypoint()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.clear_waypoints"><code class="docutils literal notranslate"><span class="pre">RouteTab.clear_waypoints()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.create_widgets"><code class="docutils literal notranslate"><span class="pre">RouteTab.create_widgets()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.get_waypoints"><code class="docutils literal notranslate"><span class="pre">RouteTab.get_waypoints()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.move_waypoint_down"><code class="docutils literal notranslate"><span class="pre">RouteTab.move_waypoint_down()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.move_waypoint_up"><code class="docutils literal notranslate"><span class="pre">RouteTab.move_waypoint_up()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.on_waypoint_select"><code class="docutils literal notranslate"><span class="pre">RouteTab.on_waypoint_select()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.remove_waypoint"><code class="docutils literal notranslate"><span class="pre">RouteTab.remove_waypoint()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.tabs.RouteTab.update_waypoint_list"><code class="docutils literal notranslate"><span class="pre">RouteTab.update_waypoint_list()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.gui.html#module-vfr_planner.gui.widgets">Module <em>widgets</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.AirportSearchWidget"><code class="docutils literal notranslate"><span class="pre">AirportSearchWidget</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.AirportSearchWidget.clear"><code class="docutils literal notranslate"><span class="pre">AirportSearchWidget.clear()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.AirportSearchWidget.get_selected_airport"><code class="docutils literal notranslate"><span class="pre">AirportSearchWidget.get_selected_airport()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.AirportSearchWidget.on_search_change"><code class="docutils literal notranslate"><span class="pre">AirportSearchWidget.on_search_change()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.AirportSearchWidget.on_select"><code class="docutils literal notranslate"><span class="pre">AirportSearchWidget.on_select()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.AirportSearchWidget.set_airport"><code class="docutils literal notranslate"><span class="pre">AirportSearchWidget.set_airport()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.AirportSearchWidget.set_callback"><code class="docutils literal notranslate"><span class="pre">AirportSearchWidget.set_callback()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.CustomWaypointDialog"><code class="docutils literal notranslate"><span class="pre">CustomWaypointDialog</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.CustomWaypointDialog.cancel_clicked"><code class="docutils literal notranslate"><span class="pre">CustomWaypointDialog.cancel_clicked()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.CustomWaypointDialog.ok_clicked"><code class="docutils literal notranslate"><span class="pre">CustomWaypointDialog.ok_clicked()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.CustomWaypointDialog.on_type_change"><code class="docutils literal notranslate"><span class="pre">CustomWaypointDialog.on_type_change()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.FilterPanel"><code class="docutils literal notranslate"><span class="pre">FilterPanel</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.FilterPanel.create_widgets"><code class="docutils literal notranslate"><span class="pre">FilterPanel.create_widgets()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.FilterPanel.reset_filters"><code class="docutils literal notranslate"><span class="pre">FilterPanel.reset_filters()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.FilterPanel.setup_defaults"><code class="docutils literal notranslate"><span class="pre">FilterPanel.setup_defaults()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.FilterPanel.update_filters"><code class="docutils literal notranslate"><span class="pre">FilterPanel.update_filters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.InfoTooltip"><code class="docutils literal notranslate"><span class="pre">InfoTooltip</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.InfoTooltip.hide_tooltip"><code class="docutils literal notranslate"><span class="pre">InfoTooltip.hide_tooltip()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.InfoTooltip.show_tooltip"><code class="docutils literal notranslate"><span class="pre">InfoTooltip.show_tooltip()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.ProgressDialog"><code class="docutils literal notranslate"><span class="pre">ProgressDialog</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.ProgressDialog.cancel"><code class="docutils literal notranslate"><span class="pre">ProgressDialog.cancel()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.ProgressDialog.close"><code class="docutils literal notranslate"><span class="pre">ProgressDialog.close()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.ProgressDialog.is_cancelled"><code class="docutils literal notranslate"><span class="pre">ProgressDialog.is_cancelled()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.ProgressDialog.set_message"><code class="docutils literal notranslate"><span class="pre">ProgressDialog.set_message()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.StatusBarWidget"><code class="docutils literal notranslate"><span class="pre">StatusBarWidget</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.StatusBarWidget.set_airports_count"><code class="docutils literal notranslate"><span class="pre">StatusBarWidget.set_airports_count()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.StatusBarWidget.set_api_status"><code class="docutils literal notranslate"><span class="pre">StatusBarWidget.set_api_status()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.StatusBarWidget.set_status"><code class="docutils literal notranslate"><span class="pre">StatusBarWidget.set_status()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.gui.html#vfr_planner.gui.widgets.add_tooltip"><code class="docutils literal notranslate"><span class="pre">add_tooltip()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vfr_planner.models.html">Paquet <em>models</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.models.html#sous-module"><strong>Sous-module</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.models.html#module-vfr_planner.models.aircraft">Class <em>aircraft</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft"><code class="docutils literal notranslate"><span class="pre">Aircraft</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.aircraft_type"><code class="docutils literal notranslate"><span class="pre">Aircraft.aircraft_type</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.calculate_endurance"><code class="docutils literal notranslate"><span class="pre">Aircraft.calculate_endurance()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.calculate_range"><code class="docutils literal notranslate"><span class="pre">Aircraft.calculate_range()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.cruise_speed"><code class="docutils literal notranslate"><span class="pre">Aircraft.cruise_speed</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.empty_weight"><code class="docutils literal notranslate"><span class="pre">Aircraft.empty_weight</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.equipment"><code class="docutils literal notranslate"><span class="pre">Aircraft.equipment</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.from_dict"><code class="docutils literal notranslate"><span class="pre">Aircraft.from_dict()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.fuel_burn"><code class="docutils literal notranslate"><span class="pre">Aircraft.fuel_burn</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.fuel_capacity"><code class="docutils literal notranslate"><span class="pre">Aircraft.fuel_capacity</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.get_display_name"><code class="docutils literal notranslate"><span class="pre">Aircraft.get_display_name()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.is_valid_weight"><code class="docutils literal notranslate"><span class="pre">Aircraft.is_valid_weight()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.max_payload"><code class="docutils literal notranslate"><span class="pre">Aircraft.max_payload</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.registration"><code class="docutils literal notranslate"><span class="pre">Aircraft.registration</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.Aircraft.to_dict"><code class="docutils literal notranslate"><span class="pre">Aircraft.to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.get_aircraft_preset"><code class="docutils literal notranslate"><span class="pre">get_aircraft_preset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.aircraft.list_aircraft_presets"><code class="docutils literal notranslate"><span class="pre">list_aircraft_presets()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.models.html#module-vfr_planner.models.itinerary">Class <em>itinerary</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary"><code class="docutils literal notranslate"><span class="pre">Itinerary</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.add_waypoint"><code class="docutils literal notranslate"><span class="pre">Itinerary.add_waypoint()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.add_waypoint_from_airport"><code class="docutils literal notranslate"><span class="pre">Itinerary.add_waypoint_from_airport()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.add_waypoint_from_coords"><code class="docutils literal notranslate"><span class="pre">Itinerary.add_waypoint_from_coords()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.clear_waypoints"><code class="docutils literal notranslate"><span class="pre">Itinerary.clear_waypoints()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.create_legs"><code class="docutils literal notranslate"><span class="pre">Itinerary.create_legs()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.from_dict"><code class="docutils literal notranslate"><span class="pre">Itinerary.from_dict()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.get_departure_airport"><code class="docutils literal notranslate"><span class="pre">Itinerary.get_departure_airport()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.get_destination_airport"><code class="docutils literal notranslate"><span class="pre">Itinerary.get_destination_airport()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.get_eta_for_waypoint"><code class="docutils literal notranslate"><span class="pre">Itinerary.get_eta_for_waypoint()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.get_flight_plan_data"><code class="docutils literal notranslate"><span class="pre">Itinerary.get_flight_plan_data()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.get_fuel_analysis"><code class="docutils literal notranslate"><span class="pre">Itinerary.get_fuel_analysis()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.get_summary"><code class="docutils literal notranslate"><span class="pre">Itinerary.get_summary()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.move_waypoint"><code class="docutils literal notranslate"><span class="pre">Itinerary.move_waypoint()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.needs_fuel_stops"><code class="docutils literal notranslate"><span class="pre">Itinerary.needs_fuel_stops()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.recalculate_all"><code class="docutils literal notranslate"><span class="pre">Itinerary.recalculate_all()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.remove_waypoint"><code class="docutils literal notranslate"><span class="pre">Itinerary.remove_waypoint()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.set_aircraft"><code class="docutils literal notranslate"><span class="pre">Itinerary.set_aircraft()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.set_api_key"><code class="docutils literal notranslate"><span class="pre">Itinerary.set_api_key()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.set_flight_info"><code class="docutils literal notranslate"><span class="pre">Itinerary.set_flight_info()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.set_start_time"><code class="docutils literal notranslate"><span class="pre">Itinerary.set_start_time()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.set_start_time_from_flight_info"><code class="docutils literal notranslate"><span class="pre">Itinerary.set_start_time_from_flight_info()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.to_dataframe"><code class="docutils literal notranslate"><span class="pre">Itinerary.to_dataframe()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.Itinerary.to_dict"><code class="docutils literal notranslate"><span class="pre">Itinerary.to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.itinerary.create_itinerary_from_gui"><code class="docutils literal notranslate"><span class="pre">create_itinerary_from_gui()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.models.html#module-vfr_planner.models.leg">Class <em>leg</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg"><code class="docutils literal notranslate"><span class="pre">Leg</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.calculate_all"><code class="docutils literal notranslate"><span class="pre">Leg.calculate_all()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.calculate_all_with_timing"><code class="docutils literal notranslate"><span class="pre">Leg.calculate_all_with_timing()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.calculate_fuel_burn"><code class="docutils literal notranslate"><span class="pre">Leg.calculate_fuel_burn()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.calculate_magnetic_heading"><code class="docutils literal notranslate"><span class="pre">Leg.calculate_magnetic_heading()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.calculate_times"><code class="docutils literal notranslate"><span class="pre">Leg.calculate_times()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.calculate_wind_effects"><code class="docutils literal notranslate"><span class="pre">Leg.calculate_wind_effects()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.calculate_wind_effects_at_midpoint"><code class="docutils literal notranslate"><span class="pre">Leg.calculate_wind_effects_at_midpoint()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.distance"><code class="docutils literal notranslate"><span class="pre">Leg.distance</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.ending_wp"><code class="docutils literal notranslate"><span class="pre">Leg.ending_wp</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.from_dict"><code class="docutils literal notranslate"><span class="pre">Leg.from_dict()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.fuel_burn_leg"><code class="docutils literal notranslate"><span class="pre">Leg.fuel_burn_leg</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.fuel_burn_total"><code class="docutils literal notranslate"><span class="pre">Leg.fuel_burn_total</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.fuel_left"><code class="docutils literal notranslate"><span class="pre">Leg.fuel_left</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.get_eta"><code class="docutils literal notranslate"><span class="pre">Leg.get_eta()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.get_eta_string"><code class="docutils literal notranslate"><span class="pre">Leg.get_eta_string()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.get_weather_timing_info"><code class="docutils literal notranslate"><span class="pre">Leg.get_weather_timing_info()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.get_wind_summary"><code class="docutils literal notranslate"><span class="pre">Leg.get_wind_summary()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.gs"><code class="docutils literal notranslate"><span class="pre">Leg.gs</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.has_weather_data"><code class="docutils literal notranslate"><span class="pre">Leg.has_weather_data()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.mh"><code class="docutils literal notranslate"><span class="pre">Leg.mh</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.name"><code class="docutils literal notranslate"><span class="pre">Leg.name</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.starting_wp"><code class="docutils literal notranslate"><span class="pre">Leg.starting_wp</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.tas"><code class="docutils literal notranslate"><span class="pre">Leg.tas</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.tc"><code class="docutils literal notranslate"><span class="pre">Leg.tc</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.th"><code class="docutils literal notranslate"><span class="pre">Leg.th</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.time_leg"><code class="docutils literal notranslate"><span class="pre">Leg.time_leg</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.time_start"><code class="docutils literal notranslate"><span class="pre">Leg.time_start</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.time_tot"><code class="docutils literal notranslate"><span class="pre">Leg.time_tot</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.time_weather"><code class="docutils literal notranslate"><span class="pre">Leg.time_weather</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.to_dict"><code class="docutils literal notranslate"><span class="pre">Leg.to_dict()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.wca"><code class="docutils literal notranslate"><span class="pre">Leg.wca</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.weather_error"><code class="docutils literal notranslate"><span class="pre">Leg.weather_error</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.wind_dir"><code class="docutils literal notranslate"><span class="pre">Leg.wind_dir</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.leg.Leg.wind_speed"><code class="docutils literal notranslate"><span class="pre">Leg.wind_speed</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.models.html#module-vfr_planner.models.waypoint">Class <em>waypoint</em></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint"><code class="docutils literal notranslate"><span class="pre">Waypoint</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.alt"><code class="docutils literal notranslate"><span class="pre">Waypoint.alt</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.bearing_to"><code class="docutils literal notranslate"><span class="pre">Waypoint.bearing_to()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.distance_to"><code class="docutils literal notranslate"><span class="pre">Waypoint.distance_to()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.from_airport"><code class="docutils literal notranslate"><span class="pre">Waypoint.from_airport()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.from_dict"><code class="docutils literal notranslate"><span class="pre">Waypoint.from_dict()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.get_airport_info"><code class="docutils literal notranslate"><span class="pre">Waypoint.get_airport_info()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.get_coordinates_string"><code class="docutils literal notranslate"><span class="pre">Waypoint.get_coordinates_string()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.get_display_name"><code class="docutils literal notranslate"><span class="pre">Waypoint.get_display_name()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.info"><code class="docutils literal notranslate"><span class="pre">Waypoint.info</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.is_airport"><code class="docutils literal notranslate"><span class="pre">Waypoint.is_airport()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.lat"><code class="docutils literal notranslate"><span class="pre">Waypoint.lat</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.lon"><code class="docutils literal notranslate"><span class="pre">Waypoint.lon</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.name"><code class="docutils literal notranslate"><span class="pre">Waypoint.name</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.to_dict"><code class="docutils literal notranslate"><span class="pre">Waypoint.to_dict()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.Waypoint.waypoint_type"><code class="docutils literal notranslate"><span class="pre">Waypoint.waypoint_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.create_waypoint_from_coordinates"><code class="docutils literal notranslate"><span class="pre">create_waypoint_from_coordinates()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="vfr_planner.models.html#vfr_planner.models.waypoint.create_waypoint_from_dms"><code class="docutils literal notranslate"><span class="pre">create_waypoint_from_dms()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vfr_planner.utils.html">Paquet <em>utils</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.utils.html#sous-module"><strong>Sous-module</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vfr_planner.utils.html#module-vfr_planner.utils.constants">Module <em>constants</em></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vfr_planner_app.html">Module <em>Application VFR Planner</em></a><ul>
@@ -73,54 +419,17 @@
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h4>Sujet suivant</h4>
-    <p class="topless"><a href="modules.html"
-                          title="Chapitre suivant">Planificateur de vol VFR</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Cette page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/index.rst.txt"
-            rel="nofollow">Montrer le code source</a></li>
-    </ul>
-   </div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Recherche rapide</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        <a class="uplink" href="#">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="modules.html">Planificateur de vol VFR</a>&#160;&#160;»
+        </p>
+
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="Index général"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Index des modules Python"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="modules.html" title="Planificateur de vol VFR"
-             >suivant</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">Documentation VFR Flight Planner </a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Documentation pour le planificateur de vol VFR</a></li> 
-      </ul>
-    </div>
+
     <div class="footer" role="contentinfo">
     &#169; Copyright 
 
