@@ -99,7 +99,7 @@ git clone https://github.com/matthewmeyer1/MGA802-projet-final.git
 cd MGA802-projet-final
 
 # Installer le package
-pip install -i https://test.pypi.org/simple/ VFR-flight-planner==0.1
+pip install -i https://test.pypi.org/simple/ VFR-flight-planner
 
 # Installer les dépendances
 pip install -r requirements.txt
